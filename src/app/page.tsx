@@ -1,103 +1,229 @@
-import Image from "next/image";
+import React from 'react';
+import Accordion from '@/components/Accordion';
+import Navbar from '@/components/Navbar';
+import AdCard from '@/components/AdsCard';
+import Footer from '@/components/Footer';
+import { ArticleListItem } from '@/components/ArticleListItem';
+import { ArticleCard } from '@/components/ArticleCard';
+import { SectionHeader } from '@/components/SectionHeader';
+import { HeroArticle } from '@/components/HeroArticle';
+import { FeaturedArticle } from '@/components/FeaturedArticle';
 
-export default function Home() {
+const Home: React.FC = () => {
+  const sampleArticles = [
+    {
+      author: "Brandon",
+      timeAgo: "8 mins ago",
+      title: "7 Simple Habits That Can Transform Your Daily Productivity"
+    },
+    {
+      author: "Clare Run",
+      timeAgo: "36 mins ago",
+      title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being"
+    },
+    {
+      author: "Matthew",
+      timeAgo: "29 mins ago",
+      title: "The Future of Work: How AI and Automation Will Reshape Our Care..."
+    }
+  ];
+
+  const accordionItems = [
+    {
+      title: "Web & Mobile Experience design",
+      articles: [
+        { author: "Brandon", time: "8 mins ago", title: "7 Simple Habits That Can Transform Your Daily Productivity" },
+        { author: "Clare Run", time: "36 mins ago", title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being" },
+        { author: "Matthew", time: "29 mins ago", title: "The Future of Work: How AI and Automation Will Reshape Our Care..." },
+      ],
+    },
+    {
+      title: "3D design and animation",
+      articles: [
+        { author: "Brandon", time: "8 mins ago", title: "7 Simple Habits That Can Transform Your Daily Productivity" },
+        { author: "Clare Run", time: "36 mins ago", title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being" },
+        { author: "Matthew", time: "29 mins ago", title: "The Future of Work: How AI and Automation Will Reshape Our Care..." },
+      ],
+    },
+    {
+      title: "Motion design and video",
+      articles: [
+        { author: "Brandon", time: "8 mins ago", title: "7 Simple Habits That Can Transform Your Daily Productivity" },
+        { author: "Clare Run", time: "36 mins ago", title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being" },
+        { author: "Matthew", time: "29 mins ago", title: "The Future of Work: How AI and Automation Will Reshape Our Care..." },
+      ],
+    },
+  ];
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="bg-[#F9FAFB] text-[#121212]">
+      <Navbar />
+      <main className="relative p-4">
+        <div className="flex flex-wrap md:flex-nowrap gap-8 w-fit mx-auto items-start justify-center flex-col-reverse lg:flex-row">
+          <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
+            <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
+              <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
+                <HeroArticle
+                  imageUrl="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+                  author="Brandon"
+                  timeAgo="8 mins ago"
+                  title="7 Simple Habits That Can Transform Your Daily Productivity"
+                  likes={2300}
+                  comments={1000}
+                  writerName="Alex Haslam"
+                  writerTitle="Reputable writer"
+                  writerImage="https://randomuser.me/api/portraits/men/45.jpg"
+                />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+                <div>
+                  <FeaturedArticle
+                    imageUrl="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80"
+                    author="Sarah D."
+                    timeAgo="20 mins ago"
+                    title="TennisHub is the ultimate destination for tennis enthusias..."
+                  />
+
+                  <div className="flex flex-wrap flex-col gap-4 w-full">
+                    <div className="space-y-6">
+                      {sampleArticles.map((article, index) => (
+                        <ArticleListItem
+                          key={index}
+                          author={article.author}
+                          timeAgo={article.timeAgo}
+                          title={article.title}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <SectionHeader title="Recommended" />
+              <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#DDDDDD] my-4">
+                <ArticleCard
+                  author="Alex Haslam"
+                  timeAgo="20 mins ago"
+                  title="Office Plants: A Cure for Burnout? Study Shows They Boost Productivity."
+                  excerpt="A study from the University of Queensland shows that adding plants to the workplace can increase productivity..."
+                  imageUrl="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80"
+                  date="Apr 17, 2025"
+                  readTime="5 min reads"
+                  category="Lifestyle"
+                  showImage={true}
+                  showButton={true}
+                  className="w-full h-fit lg:max-w-[320px] bg-white rounded-2xl p-0 border border-[#EEEEEE]"
+                />
+
+                <div className="flex flex-col gap-4">
+                  {[...Array(3)].map((_, index) => (
+                    <ArticleCard
+                      key={index}
+                      author="Felix"
+                      timeAgo="15 mins ago"
+                      title="TennisHub has quickly become a leading name in the world of tennis shopping, offer..."
+                      date="Apr 17, 2025"
+                      readTime="5 min reads"
+                      category="Lifestyle"
+                      likes={890}
+                      comments={78}
+                      showMetrics={true}
+                      className="p-4"
+                    />
+                  ))}
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  {[...Array(3)].map((_, index) => (
+                    <ArticleCard
+                      key={index}
+                      author="Felix"
+                      timeAgo="15 mins ago"
+                      title="TennisHub has quickly become a leading name in the world of tennis shopping, offer..."
+                      date="Apr 17, 2025"
+                      readTime="5 min reads"
+                      category="Lifestyle"
+                      likes={890}
+                      comments={78}
+                      showMetrics={true}
+                      className="p-4"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              <SectionHeader title="Popular Now" />
+              <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
+                <ArticleCard
+                  author="Sara"
+                  timeAgo="34 mins ago"
+                  title="Customer Service Trends Take Center Stage in Indonesian Cin..."
+                  imageUrl="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+                  showImage={true}
+                  className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white max-w-full lg:max-w-xs"
+                />
+
+                <div className="space-y-6">
+                  {[...sampleArticles, sampleArticles[2]].map((article, index) => (
+                    <ArticleListItem
+                      key={index}
+                      author={article.author}
+                      timeAgo={article.timeAgo}
+                      title={article.title}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Event Announcements */}
+              <SectionHeader title="Sponsored Article" />
+              <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
+                <div className="flex flex-col flex-wrap gap-4">
+                  <ArticleCard
+                    author="Alex Haslam"
+                    timeAgo="20 mins ago"
+                    title="Office Plants: A Cure for Burnout? Study Shows They Boost Productivity."
+                    excerpt="A study from the University of Queensland shows that adding plants to the workplace can increase productivity..."
+                    date="Apr 17, 2025"
+                    readTime="5 min reads"
+                    category="Lifestyle"
+                    showButton={true}
+                    className="border border-[#EEEEEE] w-full h-fit max-w-[320px] bg-white rounded-2xl p-6 mb-8"
+                  />
+                </div>
+
+                <div className="space-y-6">
+                  {[...sampleArticles, sampleArticles[2]].map((article, index) => (
+                    <ArticleListItem
+                      key={index}
+                      author={article.author}
+                      timeAgo={article.timeAgo}
+                      title={article.title}
+                    />
+                  ))}
+                </div>
+              </div>
+            </section>
+
+            <section className="px-6 md:px-4 py-8 border-b border-[#DDDDDD]">
+              <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                <h2 className="text-5xl font-bold">THE TECH SPOTLIGHT</h2>
+                <p className="text-gray-700 text-lg">
+                  <span className="text-purple-500 text-xl mr-2">→</span>
+                  More relevant to a tech news context, inviting readers to learn about trends, startups, gadgets, and AI.
+                </p>
+              </div>
+              <Accordion items={accordionItems} />
+            </section>
+          </section>
+          <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
+            <AdCard gradient />
+            <AdCard />
+          </section>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
-}
+};
+
+export default Home;

@@ -1,0 +1,102 @@
+<svg viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="loadingGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="loadingAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shimmer effect -->
+    <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgba(255,255,255,0);stop-opacity:0" />
+      <stop offset="50%" style="stop-color:rgba(255,255,255,0.3);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgba(255,255,255,0);stop-opacity:0" />
+      <animateTransform
+        attributeName="gradientTransform"
+        type="translate"
+        values="-200 0; 200 0; -200 0"
+        dur="2s"
+        repeatCount="indefinite"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Main logo background with pulse animation -->
+  <rect x="5" y="5" width="190" height="50" rx="8" fill="url(#loadingGradient)">
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="1.5s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Animated newspaper icon -->
+  <g transform="translate(15, 12)">
+    <rect x="0" y="0" width="20" height="26" rx="2" fill="white" opacity="0.9">
+      <animate attributeName="opacity" values="0.7;0.9;0.7" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Header bar with slide animation -->
+    <rect x="2" y="3" width="16" height="2" rx="1" fill="url(#loadingAccent)">
+      <animate attributeName="width" values="0;16;16" dur="1s" repeatCount="indefinite"/>
+    </rect>
+    
+    <!-- Content lines with staggered animation -->
+    <rect x="2" y="7" width="10" height="1" rx="0.5" fill="white" opacity="0.7">
+      <animate attributeName="width" values="0;10;10" dur="1.2s" begin="0.2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="2" y="10" width="12" height="1" rx="0.5" fill="white" opacity="0.7">
+      <animate attributeName="width" values="0;12;12" dur="1.2s" begin="0.4s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="2" y="13" width="8" height="1" rx="0.5" fill="white" opacity="0.7">
+      <animate attributeName="width" values="0;8;8" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="2" y="16" width="14" height="1" rx="0.5" fill="white" opacity="0.7">
+      <animate attributeName="width" values="0;14;14" dur="1.2s" begin="0.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="2" y="19" width="11" height="1" rx="0.5" fill="white" opacity="0.7">
+      <animate attributeName="width" values="0;11;11" dur="1.2s" begin="1s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="2" y="22" width="9" height="1" rx="0.5" fill="white" opacity="0.7">
+      <animate attributeName="width" values="0;9;9" dur="1.2s" begin="1.2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Main text "TEKSY" with typewriter effect -->
+  <text x="50" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">
+    <animate attributeName="opacity" values="0;1;1;1" dur="2s" repeatCount="indefinite"/>
+    TEKSY
+  </text>
+  
+  <!-- Pulsing accent dot -->
+  <circle cx="135" cy="32" r="3" fill="url(#loadingAccent)">
+    <animate attributeName="r" values="2;4;2" dur="1s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <!-- Subtitle "NEWS" with fade in -->
+  <text x="145" y="38" font-family="Arial, sans-serif" font-size="12" font-weight="normal" fill="white" opacity="0.8">
+    <animate attributeName="opacity" values="0;0.8;0.8" dur="2.5s" repeatCount="indefinite"/>
+    NEWS
+  </text>
+  
+  <!-- Shimmer overlay effect -->
+  <rect x="5" y="5" width="190" height="50" rx="8" fill="url(#shimmer)"/>
+  
+  <!-- Subtle border with glow -->
+  <rect x="5" y="5" width="190" height="50" rx="8" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+    <animate attributeName="stroke-opacity" values="0.1;0.3;0.1" dur="2s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Loading dots -->
+  <g transform="translate(75, 50)">
+    <circle cx="0" cy="0" r="2" fill="white" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="8" cy="0" r="2" fill="white" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="16" cy="0" r="2" fill="white" opacity="0.6">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+</svg>
