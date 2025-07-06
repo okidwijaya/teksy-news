@@ -152,8 +152,8 @@ export default function Navbar() {
                                             {parent.children.map((child) => (
                                                 <Link
                                                     key={child.id}
-                                                    href={`/category/${child.slug}`}
-                                                    className="!text-[13px] text-center block px-4 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                                                    href={`/blogs/${child.slug}`}
+                                                    className="!text-[13px] text-left block px-4 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                                                 >
                                                     {child.name}
                                                 </Link>
@@ -184,7 +184,7 @@ export default function Navbar() {
                             {Array.isArray(parent.children) && parent.children.length > 0 ? (
                                 <>
                                     <button
-                                        className="!text-[13px] flex items-center justify-between w-full px-3 py-2 text-[#E5E7EB] hover:text-[#F96E2A] hover:bg-gray-50 rounded-md transition-colors duration-200"
+                                        className="!text-[13px] flex items-left justify-between w-full px-3 py-2 text-[#E5E7EB] hover:text-[#F96E2A] hover:bg-gray-50 rounded-md transition-colors duration-200"
                                         onClick={() => toggleParent(parent.id)}
                                         aria-label="Toggle category"
                                     >
@@ -203,7 +203,7 @@ export default function Navbar() {
                                         {parent.children.map((child) => (
                                             <Link
                                                 key={child.id}
-                                                href={`/category/${child.slug}`}
+                                                href={`/blogs/${child.slug}`}
                                                 className="!text-[13px] text-left block px-4 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                                             >
                                                 {child.name}

@@ -1,4 +1,6 @@
+'use client'
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 interface HeroArticleProps {
@@ -26,6 +28,11 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
     writerImage,
     className = ''
 }) => {
+      const router = useRouter();
+    
+      const handleClick = (id:string) => {
+        router.push(`/article/${id}`);
+      };
     return (
         <div className={`w-full max-w-full lg:max-w-xl bg-white rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
             <div className="relative w-full h-[400px] md:h-full">
@@ -44,7 +51,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                         <span className="mx-2">•</span>
                         <h6>{timeAgo}</h6>
                     </div>
-                    <div className="text-lg font-semibold mb-1">
+                    <div onClick={()=> handleClick(title)} className="text-lg font-semibold mb-1">
                         {title}
                     </div>
                 </div>

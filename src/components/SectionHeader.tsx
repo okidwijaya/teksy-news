@@ -32,7 +32,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
                 </svg>
             </div>
             {showViewAll && (
-                <Link href="#" className="text-[#121212] font-medium hover:underline">
+                <Link href="/blogs" className="text-[#121212] font-medium hover:underline">
                     <ArrowUpRight className='w-6 h-6 bg-[#121212] text-[#E5E7EB] rounded-sm' />
                 </Link>
             )}

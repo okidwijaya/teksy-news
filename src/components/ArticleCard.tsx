@@ -1,10 +1,12 @@
+'use client'
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface ArticleCardProps {
-  author: string;
-  timeAgo: string;
+  author?: string;
+  timeAgo?: string;
   title: string;
   excerpt?: string;
   imageUrl?: string;
@@ -35,6 +37,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   showButton = false,
   className = ''
 }) => {
+  const router = useRouter();
+
+  const handleClick = (id:string) => {
+    router.push(`/article/${id}`);
+  };
   return (
     <div className={`border border-[#EEEEEE] h-fit rounded-2xl bg-white max-w-[768px] ${className}`}>
       {showImage && imageUrl && (
@@ -63,7 +70,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         )}
 
-        <div className={`font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
+        <div onClick={() => handleClick(title)} className={`font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
           {title}
         </div>
 

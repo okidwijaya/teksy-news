@@ -1,5 +1,5 @@
 import React from 'react';
-import ArticleCard from './ArticleCard';
+import { ArticleCard } from '@/components/ArticleCard';
 import { Article } from '../types';
 
 interface ArticleListProps {
@@ -12,7 +12,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
             {articles.map((article) => (
                 <ArticleCard
                     key={article.id}
-                    article={article}
+                    title={article.title}
                 />
             ))}
         </div>

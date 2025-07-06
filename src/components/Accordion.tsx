@@ -48,7 +48,7 @@ export default function Accordion({ items }: AccordionProps) {
                                         <span>{art.time}</span>
                                     </div>
                                     <div className="text-lg font-semibold mb-1">{art.title}</div>
-                                    <Link href="#" className="text-gray-700 underline text-sm">Read more</Link>
+                                    <Link href={`/post/${item.title}`} className="text-gray-700 underline text-sm">Read more</Link>
                                 </div>
                             ))}
                         </div>

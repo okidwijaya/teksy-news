@@ -1,5 +1,7 @@
+'use client'
 import React from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 interface ArticleListItemProps {
   author: string;
@@ -16,6 +18,11 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({
   showBorder = true,
   className = ''
 }) => {
+    const router = useRouter();
+  
+    const handleClick = (id:string) => {
+      router.push(`/article/${id}`);
+    };
   return (
     <div className={`${showBorder ? 'border-b border-b-[#DDDDDD] pb-2' : ''} ${className}`}>
       <div className="flex items-center text-sm text-gray-700 mb-1">
@@ -23,7 +30,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({
         <span className="mx-2">•</span>
         <span>{timeAgo}</span>
       </div>
-      <div className="text-lg font-semibold mb-1">
+      <div onClick={()=> handleClick(title)} className="text-lg font-semibold mb-1">
         {title}
       </div>
       <Link href="#" className="text-gray-700 underline text-sm">
