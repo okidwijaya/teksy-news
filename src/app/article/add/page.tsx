@@ -87,7 +87,8 @@ const Page: React.FC = () => {
         featured_image: featuredImageUrl,
       };
 
-      const res = await fetch('/api/articles', {
+      console.log(payload)
+      const res = await fetch('/api/article', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -101,17 +102,6 @@ const Page: React.FC = () => {
     }
   };
 
-
-    // const modules = {
-    //     toolbar: [
-    //         [{ header: [1, 2, 3, false] }],
-    //         ['bold', 'italic', 'underline', 'strike'],
-    //         [{ list: 'ordered' }, { list: 'bullet' }],
-    //         ['blockquote', 'code-block'],
-    //         ['link', 'image'],
-    //         ['clean']
-    //     ]
-    // };
 
     useEffect(() => {
         const now = new Date();
@@ -130,26 +120,9 @@ const Page: React.FC = () => {
         }
     };
 
-    // const handleContentChangeQuill = (content: string) => {
-    //     setFormData(prev => ({ ...prev, content }));
-    // };
-
     const handleContentChange = (content?: string) => {
         setFormData(prev => ({ ...prev, content: content || '' }));
     };
-
-    // const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    //     const file = e.target.files?.[0];
-    //     if (file) {
-    //         setFormData(prev => ({ ...prev, featuredImage: file }));
-
-    //         const reader = new FileReader();
-    //         reader.onload = (event) => {
-    //             setImagePreview(event.target?.result as string);
-    //         };
-    //         reader.readAsDataURL(file);
-    //     }
-    // };
 
      const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -292,13 +265,6 @@ const Page: React.FC = () => {
                             Content
                         </label>
                         <div className="h-80">
-                            {/* <ReactQuill
-                                theme="snow"
-                                value={formData.content}
-                                onChange={handleContentChangeQuill}
-                                modules={modules}
-                                className="h-64"
-                            /> */}
                             <MDEditor
                                 value={formData.content}
                                 onChange={handleContentChange}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../public/logo.svg"
 import { Category } from "@/lib/getCategories";
+import { supabase } from "@/lib/supabase";
 
 export default function Navbar() {
     const [categories, setCategories] = useState<Category[]>([]);
@@ -20,6 +21,16 @@ export default function Navbar() {
         }));
     };
 
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            const { data: { user } } = await supabase.auth.getUser();
+            console.log(user);
+        };
+
+        fetchUser();
+    }, []);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -51,8 +62,6 @@ export default function Navbar() {
     // useEffect(() => {
     //     if (!mobileMenuOpen) setMobileCategoriesOpen(false);
     // }, [mobileMenuOpen]);
-
-
 
     return (
         <nav

@@ -14,6 +14,7 @@ export async function POST(req: NextRequest) {
       metaDescription,
       urlHandle,
       tags,
+      featured_image
     } = await req.json();
 
     // 1. Ensure Author exists
@@ -58,6 +59,7 @@ export async function POST(req: NextRequest) {
           published_at: publishDate,
           meta_title: pageTitle,
           meta_description: metaDescription,
+          featured_image,
         },
       ])
       .select()
