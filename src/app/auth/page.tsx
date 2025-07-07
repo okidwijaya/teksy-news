@@ -20,7 +20,7 @@ export default function Page() {
     const [email, setEmail] = useState("");
     const [fullName, setFullName] = useState("");
     const [password, setPassword] = useState("");
-    const [confrimPassword, setConfrimPassword] = useState("");
+    // const [confrimPassword, setConfrimPassword] = useState("");
 
 
     useEffect(() => {
@@ -88,10 +88,10 @@ export default function Page() {
         setTnC(!isTnC);
     }
 
-    useEffect(() => {
-        setConfrimPassword("")
-        console.log(confrimPassword)
-    }, [])
+    // useEffect(() => {
+    //     setConfrimPassword("")
+    //     console.log(confrimPassword)
+    // }, [])
 
     return (
         <div className="flex items-center justify-center px-4 h-screen bg-white">

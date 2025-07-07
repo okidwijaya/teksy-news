@@ -66,7 +66,7 @@ export default function Page({ params }: Props) {
           <p>Artificial Intelligence is no longer a futuristic concept ...</p>
           <h2>The Current State of AI in Web Development</h2>
           <p>One of the most significant impacts of AI in web development is the emergence of intelligent design systems...</p>
-          <blockquote>"AI is not replacing web developers; it's augmenting their capabilities..."</blockquote>
+          <blockquote>AI is not replacing web developers; its augmenting their capabilities...</blockquote>
           <h3>Key Benefits of AI Integration</h3>
           <p>The benefits of integrating AI into web development are numerous and significant...</p>
         </div>

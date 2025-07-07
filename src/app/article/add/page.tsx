@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image'; // adjust path as needed
+import Image from 'next/image';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -411,7 +412,9 @@ const Page: React.FC = () => {
                         </div>
                         {imagePreview && (
                             <div className="mt-3">
-                                <img
+                                <Image
+                                width={100}
+                                height={100}
                                     src={imagePreview}
                                     alt="Preview"
                                     className="h-32 w-32 object-cover rounded-md"
