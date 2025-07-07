@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
+import { uploadImageWithProgress } from '@/lib/upload-image'; // adjust path as needed
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -39,7 +40,7 @@ const Page: React.FC = () => {
         allowComments: true,
         pageTitle: '',
         metaDescription: '',
-        urlHandle: 'products/',
+        urlHandle: 'article/',
         tags: []
     });
 
@@ -49,16 +50,67 @@ const Page: React.FC = () => {
     const [tagIdCounter, setTagIdCounter] = useState(0);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const modules = {
-        toolbar: [
-            [{ header: [1, 2, 3, false] }],
-            ['bold', 'italic', 'underline', 'strike'],
-            [{ list: 'ordered' }, { list: 'bullet' }],
-            ['blockquote', 'code-block'],
-            ['link', 'image'],
-            ['clean']
-        ]
-    };
+    const [uploadProgress, setUploadProgress] = useState(0);
+    // const handleSubmit = async (e: React.FormEvent) => {
+    //     e.preventDefault();
+
+    //     let featuredImageUrl = '';
+    //     if (formData.featuredImage) {
+    //         const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
+    //         featuredImageUrl = url;
+    //     }
+
+    //     const submissionData = {
+    //         ...formData,
+    //         featuredImageUrl,
+    //         tags: tags,
+    //     };
+
+    //     console.log('Form submitted:', submissionData);
+    //     alert('Blog post created successfully!');
+    // };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      let featuredImageUrl = '';
+      if (formData.featuredImage) {
+        const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
+        featuredImageUrl = url;
+      }
+
+      const payload = {
+        ...formData,
+        tags: tags.map((tag) => tag.text),
+        featured_image: featuredImageUrl,
+      };
+
+      const res = await fetch('/api/articles', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) throw new Error('Failed to create article');
+      alert('Article created successfully!');
+    } catch (error) {
+      console.error(error);
+      alert('Error creating article');
+    }
+  };
+
+
+    // const modules = {
+    //     toolbar: [
+    //         [{ header: [1, 2, 3, false] }],
+    //         ['bold', 'italic', 'underline', 'strike'],
+    //         [{ list: 'ordered' }, { list: 'bullet' }],
+    //         ['blockquote', 'code-block'],
+    //         ['link', 'image'],
+    //         ['clean']
+    //     ]
+    // };
 
     useEffect(() => {
         const now = new Date();
@@ -77,26 +129,50 @@ const Page: React.FC = () => {
         }
     };
 
-    const handleContentChangeQuill = (content: string) => {
-        setFormData(prev => ({ ...prev, content }));
-    };
+    // const handleContentChangeQuill = (content: string) => {
+    //     setFormData(prev => ({ ...prev, content }));
+    // };
 
     const handleContentChange = (content?: string) => {
         setFormData(prev => ({ ...prev, content: content || '' }));
     };
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            setFormData(prev => ({ ...prev, featuredImage: file }));
+    // const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    //     const file = e.target.files?.[0];
+    //     if (file) {
+    //         setFormData(prev => ({ ...prev, featuredImage: file }));
 
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                setImagePreview(event.target?.result as string);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
+    //         const reader = new FileReader();
+    //         reader.onload = (event) => {
+    //             setImagePreview(event.target?.result as string);
+    //         };
+    //         reader.readAsDataURL(file);
+    //     }
+    // };
+
+     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+    const maxSizeMB = 5;
+
+    if (!validTypes.includes(file.type)) {
+      alert('Only JPG, PNG, or WEBP formats are allowed.');
+      return;
+    }
+
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      alert(`File size must be under ${maxSizeMB}MB.`);
+      return;
+    }
+
+    setFormData((prev) => ({ ...prev, featuredImage: file }));
+
+    const reader = new FileReader();
+    reader.onload = (event) => setImagePreview(event.target?.result as string);
+    reader.readAsDataURL(file);
+  };
 
     const removeImage = () => {
         setFormData(prev => ({ ...prev, featuredImage: undefined }));
@@ -154,18 +230,6 @@ const Page: React.FC = () => {
         }
     };
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-
-        const submissionData = {
-            ...formData,
-            tags: tags
-        };
-
-        console.log('Form submitted:', submissionData);
-        alert('Blog post created successfully!');
-    };
-
     const saveDraft = () => {
         const draftData = {
             ...formData,
@@ -184,6 +248,14 @@ const Page: React.FC = () => {
 
     return (
         <main className="max-w-4xl mx-auto p-6">
+            {uploadProgress > 0 && uploadProgress < 100 && (
+                <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
+                    <div
+                        className="bg-green-500 h-2.5 rounded-full"
+                        style={{ width: `${uploadProgress}%` }}
+                    ></div>
+                </div>
+            )}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
                 {/* Header */}
                 <div className="mb-8">
@@ -261,7 +333,7 @@ const Page: React.FC = () => {
                             <button
                                 type="button"
                                 onClick={addTag}
-                                className="px-4 py-2 bg-blue-[#F96E2A] text-white rounded-md hover:bg-blue-[#F96E2A] focus:ring-2 focus:ring-[#F96E2A]"
+                                className="px-4 py-2 bg-[#F96E2A] text-white rounded-md hover:bg-[#F96E2A] focus:ring-2 focus:ring-[#F96E2A]"
                             >
                                 Add
                             </button>
@@ -278,13 +350,13 @@ const Page: React.FC = () => {
                             {tags.map((tag) => (
                                 <span
                                     key={tag.id}
-                                    className="inline-flex items-center gap-1 px-2 py-1 bg-blue-[#F96E2A] text-blue-[#F96E2A] rounded-full text-sm"
+                                    className="inline-flex items-center gap-1 px-2 py-1 bg-[#F96E2A] text-blue-[#F96E2A] rounded-full text-sm"
                                 >
                                     {tag.text}
                                     <button
                                         type="button"
                                         onClick={() => removeTag(tag.id)}
-                                        className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-blue-[#F96E2A] transition-colors"
+                                        className="w-4 h-4 flex items-center justify-center rounded-full hover:bg-[#F96E2A] transition-colors"
                                         title="Remove tag"
                                     >
                                         ×
@@ -542,7 +614,7 @@ const Page: React.FC = () => {
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 text-sm font-medium text-white bg-blue-[#F96E2A] border border-transparent rounded-md hover:bg-blue-[#F96E2A] focus:outline-none focus:ring-2 focus:ring-[#F96E2A]"
+                            className="px-4 py-2 text-sm font-medium text-white bg-[#F96E2A] border border-transparent rounded-md hover:bg-[#F96E2A] focus:outline-none focus:ring-2 focus:ring-[#F96E2A]"
                         >
                             Create Post
                         </button>

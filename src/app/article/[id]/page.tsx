@@ -1,6 +1,6 @@
 'use client'
 import Head from "next/head";
-import { useRouter } from "next/navigation"
+// import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -12,9 +12,10 @@ export default function Page({ params }: Props) {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
+    console.log(params)
     const handleScroll = () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
