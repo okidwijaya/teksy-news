@@ -109,7 +109,6 @@ const Page: React.FC = () => {
     };
 
     const supabase = createClientComponentClient();
-    const [authDebug, ] = useState<any>(null);
 
     useEffect(() => {
         const checkSession = async () => {
@@ -240,13 +239,6 @@ const Page: React.FC = () => {
 
     return (
         <main className="max-w-4xl mx-auto p-6">
-
-            {authDebug && (
-                <div className="bg-gray-100 p-4 rounded mb-4">
-                    <h3>Auth Debug Info:</h3>
-                    <pre>{JSON.stringify(authDebug, null, 2)}</pre>
-                </div>
-            )}
 
             {uploadProgress > 0 && uploadProgress < 100 && (
                 <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
