@@ -1,10 +1,4 @@
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default function Page({ params }: PageProps) {
+export default function Page({ params }: { params: { id: string } }) {
   return (
     <div>
       <h1>Page</h1>
