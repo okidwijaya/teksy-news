@@ -2,13 +2,12 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import { uploadImageWithProgress } from '@/lib/upload-image'; // adjust path as needed
+import { uploadImageWithProgress } from '@/lib/upload-image'; 
 import Image from 'next/image';
-import { supabase } from '@/lib/supabase';
+// import { supabase } from '@/lib/supabase';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-const { data: { user } } = await supabase.auth.getUser();
-if (!user) throw new Error('Unauthorized');
+const supabase = createClientComponentClient();
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
