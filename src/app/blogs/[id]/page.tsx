@@ -1,12 +1,14 @@
-import React from 'react'
-
-type Props = {
-    params: { id: string };
+type PageProps = {
+  params: {
+    id: string;
+  };
 };
 
-export default function Page(props: Props) {
-    
-    return (
-        <div>page <p>{props.params.id}</p></div>
-    )
+export default function Page({ params }: PageProps) {
+  return (
+    <div>
+      <h1>Page</h1>
+      <p>{params.id}</p>
+    </div>
+  );
 }
