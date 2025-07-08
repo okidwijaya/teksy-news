@@ -1,16 +1,7 @@
-import React from "react";
-
-type MyPageProps = {
-  params: {
-    id: string;
-  };
-};
-
-export default function Page({ params }: MyPageProps) {
+export default function Page() {
   return (
     <div>
       <h1>Page</h1>
-      <p>{params.id}</p>
     </div>
   );
 }
