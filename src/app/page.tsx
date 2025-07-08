@@ -174,7 +174,6 @@ const Home: React.FC = () => {
                 </div>
               </div>
 
-              {/* Event Announcements */}
               <SectionHeader title="Sponsored Article" />
               <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
                 <div className="flex flex-col flex-wrap gap-4">

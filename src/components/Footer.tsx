@@ -5,7 +5,7 @@ export default function Footer() {
     return (
         <footer className="bg-[#E5E7EB] text-[#374151] py-12 px-8 md:px-20">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-12">
-                {/* Left Column */}
+                
                 <div className="space-y-6">
                     <div className="text-4xl font-bold">TECHY</div>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 text-sm text-gray-400">
@@ -37,7 +37,7 @@ export default function Footer() {
                         </div>
                     </div>
                 </div>
-                {/* Right Column */}
+            
                 <div className="space-y-6">
                     <h2 className="text-2xl font-bold text-[#374151]">
                         Stay Ahead in Tech. Get the News That Matters.

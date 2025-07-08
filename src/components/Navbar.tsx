@@ -21,8 +21,6 @@ export default function Navbar() {
         }));
     };
 
-    const [user, setUser] = useState(null);
-
     useEffect(() => {
         const fetchUser = async () => {
             const { data: { user } } = await supabase.auth.getUser();
@@ -70,7 +68,7 @@ export default function Navbar() {
         >
             <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    {/* Logo */}
+                  
                     <div className="flex-shrink-0 flex gap-4 flex-row flex-wrap">
                         <Link
                             href="/"
@@ -86,7 +84,6 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    {/* Search & CTA */}
                     <div className="hidden md:flex items-center space-x-4">
                         <div className="relative group hover:border border-[#DDDDDD] rounded-2xl">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -98,7 +95,7 @@ export default function Navbar() {
                         </div>
                         <Link href="#" className="bg-[#FF6000] text-[#121212] px-4 py-2 rounded-2xl hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Subscribe</Link>
                     </div>
-                    {/* Mobile menu button */}
+                 
                     <div className="lg:hidden">
                         <button
                             id="mobileMenuBtn"
@@ -112,7 +109,7 @@ export default function Navbar() {
                         </button>
                     </div>
                 </div>
-                {/* Desktop Menu */}
+              
                 <div className="hidden lg:flex items-center space-x-8 pt-4 pb-6">
                     {/* <Link href="#" className="text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200">Home</Link>
                             <div className="relative group">
@@ -174,7 +171,7 @@ export default function Navbar() {
             {/* Mobile Menu */}
             <div id="mobileMenu" className={`lg:hidden ${mobileMenuOpen ? "" : "hidden"} bg-[#121212] border-t border-gray-100`}>
                 <div className="px-4 pt-2 pb-3 space-y-1">
-                    {/* Mobile Search */}
+          
                     <div className="relative mb-3 group">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -226,7 +223,7 @@ export default function Navbar() {
                             )}
                         </div>
                     ))}
-                    {/* Mobile CTA */}
+            
                     <div className="pt-3 border-t border-gray-100 mt-3">
                         <Link href="#" className="block w-full bg-[#F96E2A] text-white text-center px-4 py-2 rounded-lg font-medium hover:bg-[#F96E2A] transition-colors duration-200">
                             Subscribe to Newsletter

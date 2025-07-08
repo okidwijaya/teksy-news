@@ -10,9 +10,6 @@ import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 const { data: { user } } = await supabase.auth.getUser();
 if (!user) throw new Error('Unauthorized');
 
-const userName = user.user_metadata.full_name || user.user_metadata.name || user.email || 'Unknown User';
-
-
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
     loading: () => <div className="h-80 bg-gray-100 animate-pulse rounded">Loading editor...</div>
@@ -112,7 +109,7 @@ const Page: React.FC = () => {
     };
 
     const supabase = createClientComponentClient();
-    const [authDebug, setAuthDebug] = useState<any>(null);
+    const [authDebug, ] = useState<any>(null);
 
     useEffect(() => {
         const checkSession = async () => {
