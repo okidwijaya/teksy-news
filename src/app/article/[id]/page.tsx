@@ -1,6 +1,5 @@
 'use client'
 import Head from "next/head";
-// import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react";
 
 type Props = {
@@ -8,11 +7,10 @@ type Props = {
 };
 
 export default function Page({ params }: Props) {
-    const [isLiked, setIsLiked] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  // const router = useRouter();
 
   useEffect(() => {
     console.log(params)

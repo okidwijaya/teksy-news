@@ -4,6 +4,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image'; // adjust path as needed
 import Image from 'next/image';
+import { supabase } from '@/lib/supabase';
+import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+
+const { data: { user } } = await supabase.auth.getUser();
+if (!user) throw new Error('Unauthorized');
+
+const userName = user.user_metadata.full_name || user.user_metadata.name || user.email || 'Unknown User';
+
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -20,7 +28,6 @@ interface BlogPost {
     content: string;
     featuredImage?: File;
     summary: string;
-    author: string;
     publishDate: string;
     status: 'draft' | 'publish' | 'scheduled';
     allowComments: boolean;
@@ -35,7 +42,6 @@ const Page: React.FC = () => {
         title: '',
         content: '',
         summary: '',
-        author: 'John Doe',
         publishDate: '',
         status: 'draft',
         allowComments: true,
@@ -52,55 +58,70 @@ const Page: React.FC = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
 
     const [uploadProgress, setUploadProgress] = useState(0);
-    // const handleSubmit = async (e: React.FormEvent) => {
-    //     e.preventDefault();
-
-    //     let featuredImageUrl = '';
-    //     if (formData.featuredImage) {
-    //         const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
-    //         featuredImageUrl = url;
-    //     }
-
-    //     const submissionData = {
-    //         ...formData,
-    //         featuredImageUrl,
-    //         tags: tags,
-    //     };
-
-    //     console.log('Form submitted:', submissionData);
-    //     alert('Blog post created successfully!');
-    // };
 
     const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+        e.preventDefault();
 
-    try {
-      let featuredImageUrl = '';
-      if (formData.featuredImage) {
-        const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
-        featuredImageUrl = url;
-      }
+        try {
+            const { data: { user } } = await supabase.auth.getUser();
 
-      const payload = {
-        ...formData,
-        tags: tags.map((tag) => tag.text),
-        featured_image: featuredImageUrl,
-      };
+            if (!user) {
+                alert('Please log in to create articles');
+                return;
+            }
 
-      console.log(payload)
-      const res = await fetch('/api/article', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
+            const userName = user.user_metadata?.full_name ||
+                user.user_metadata?.name ||
+                user.email ||
+                'Unknown User';
 
-      if (!res.ok) throw new Error('Failed to create article');
-      alert('Article created successfully!');
-    } catch (error) {
-      console.error(error);
-      alert('Error creating article');
-    }
-  };
+            let featuredImageUrl = '';
+            if (formData.featuredImage) {
+                const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
+                featuredImageUrl = url;
+            }
+
+            const payload = {
+                ...formData,
+                name: userName,
+                tags: tags.map((tag) => tag.text),
+                featured_image: featuredImageUrl,
+            };
+
+            console.log(payload);
+
+            const res = await fetch('/api/article', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify(payload),
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error || 'Failed to create article');
+            }
+
+            alert('Article created successfully!');
+        } catch (error) {
+            console.error(error);
+            alert('Error creating article: ' + error);
+        }
+    };
+
+    const supabase = createClientComponentClient();
+    const [authDebug, setAuthDebug] = useState<any>(null);
+
+    useEffect(() => {
+        const checkSession = async () => {
+            const { data: { session }, error } = await supabase.auth.getSession();
+            console.log('Session:', session);
+            console.log('Auth error:', error);
+        };
+        checkSession();
+    }, []);
 
 
     useEffect(() => {
@@ -124,29 +145,29 @@ const Page: React.FC = () => {
         setFormData(prev => ({ ...prev, content: content || '' }));
     };
 
-     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
 
-    const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
-    const maxSizeMB = 5;
+        const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
+        const maxSizeMB = 5;
 
-    if (!validTypes.includes(file.type)) {
-      alert('Only JPG, PNG, or WEBP formats are allowed.');
-      return;
-    }
+        if (!validTypes.includes(file.type)) {
+            alert('Only JPG, PNG, or WEBP formats are allowed.');
+            return;
+        }
 
-    if (file.size > maxSizeMB * 1024 * 1024) {
-      alert(`File size must be under ${maxSizeMB}MB.`);
-      return;
-    }
+        if (file.size > maxSizeMB * 1024 * 1024) {
+            alert(`File size must be under ${maxSizeMB}MB.`);
+            return;
+        }
 
-    setFormData((prev) => ({ ...prev, featuredImage: file }));
+        setFormData((prev) => ({ ...prev, featuredImage: file }));
 
-    const reader = new FileReader();
-    reader.onload = (event) => setImagePreview(event.target?.result as string);
-    reader.readAsDataURL(file);
-  };
+        const reader = new FileReader();
+        reader.onload = (event) => setImagePreview(event.target?.result as string);
+        reader.readAsDataURL(file);
+    };
 
     const removeImage = () => {
         setFormData(prev => ({ ...prev, featuredImage: undefined }));
@@ -222,6 +243,14 @@ const Page: React.FC = () => {
 
     return (
         <main className="max-w-4xl mx-auto p-6">
+
+            {authDebug && (
+                <div className="bg-gray-100 p-4 rounded mb-4">
+                    <h3>Auth Debug Info:</h3>
+                    <pre>{JSON.stringify(authDebug, null, 2)}</pre>
+                </div>
+            )}
+
             {uploadProgress > 0 && uploadProgress < 100 && (
                 <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
                     <div
@@ -231,7 +260,6 @@ const Page: React.FC = () => {
                 </div>
             )}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-                {/* Header */}
                 <div className="mb-8">
                     <h1 className="text-2xl font-bold text-gray-900">
                         Create New Blog Post
@@ -242,7 +270,6 @@ const Page: React.FC = () => {
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    {/* Title */}
                     <div>
                         <label htmlFor="title" className="block text-sm font-medium text-gray-700 mb-2">
                             Title <span className="text-red-500">*</span>
@@ -259,7 +286,6 @@ const Page: React.FC = () => {
                         />
                     </div>
 
-                    {/* Content Editor */}
                     <div className="mb-6">
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Content
@@ -276,7 +302,6 @@ const Page: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Tags */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Tags <span className="text-gray-500 font-normal">({tags.length}/20)</span>
@@ -333,7 +358,6 @@ const Page: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Featured Image */}
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
                             Featured Image
@@ -379,8 +403,8 @@ const Page: React.FC = () => {
                         {imagePreview && (
                             <div className="mt-3">
                                 <Image
-                                width={100}
-                                height={100}
+                                    width={100}
+                                    height={100}
                                     src={imagePreview}
                                     alt="Preview"
                                     className="h-32 w-32 object-cover rounded-md"
@@ -396,7 +420,6 @@ const Page: React.FC = () => {
                         )}
                     </div>
 
-                    {/* Summary */}
                     <div>
                         <label htmlFor="summary" className="block text-sm font-medium text-gray-700 mb-2">
                             Summary / Excerpt
@@ -420,7 +443,7 @@ const Page: React.FC = () => {
                     </div>
 
                     {/* Author Name */}
-                    <div>
+                    {/* <div className='hidden'>
                         <label htmlFor="author" className="block text-sm font-medium text-gray-700 mb-2">
                             Author Name
                         </label>
@@ -433,9 +456,8 @@ const Page: React.FC = () => {
                             placeholder="Enter author name..."
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-[#F96E2A] outline-none"
                         />
-                    </div>
+                    </div> */}
 
-                    {/* Publish Date */}
                     <div>
                         <label htmlFor="publishDate" className="block text-sm font-medium text-gray-700 mb-2">
                             Publish Date
@@ -457,7 +479,6 @@ const Page: React.FC = () => {
                         </p>
                     </div>
 
-                    {/* Status */}
                     <div>
                         <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-2">
                             Status
@@ -475,7 +496,6 @@ const Page: React.FC = () => {
                         </select>
                     </div>
 
-                    {/* Allow Comments */}
                     <div className="flex items-center">
                         <input
                             type="checkbox"
@@ -490,7 +510,6 @@ const Page: React.FC = () => {
                         </label>
                     </div>
 
-                    {/* SEO Section */}
                     <div className="bg-white rounded-lg p-0">
                         <div className="flex justify-between items-center mb-4">
                             <h2 className="text-lg font-semibold text-gray-900">
@@ -503,7 +522,6 @@ const Page: React.FC = () => {
                             appear in a search engine listing
                         </p>
 
-                        {/* Page Title */}
                         <div className="mb-6">
                             <label htmlFor="pageTitle" className="block text-sm font-medium text-gray-700 mb-2">
                                 Page title
@@ -524,7 +542,6 @@ const Page: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* Meta Description */}
                         <div className="mb-6">
                             <label htmlFor="metaDescription" className="block text-sm font-medium text-gray-700 mb-2">
                                 Meta description
@@ -545,7 +562,6 @@ const Page: React.FC = () => {
                             </div>
                         </div>
 
-                        {/* URL Handle */}
                         <div className="mb-6">
                             <label htmlFor="urlHandle" className="block text-sm font-medium text-gray-700 mb-2">
                                 URL handle
@@ -566,7 +582,6 @@ const Page: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Action Buttons */}
                     <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
                         <button
                             type="button"

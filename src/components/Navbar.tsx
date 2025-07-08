@@ -59,10 +59,6 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // useEffect(() => {
-    //     if (!mobileMenuOpen) setMobileCategoriesOpen(false);
-    // }, [mobileMenuOpen]);
-
     return (
         <nav
             id="navbar"
