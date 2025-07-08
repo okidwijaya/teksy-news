@@ -7,7 +7,7 @@ import Image from 'next/image';
 // import { supabase } from '@/lib/supabase';
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
 
-const supabase = createClientComponentClient();
+// const supabase = createClientComponentClient();
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,

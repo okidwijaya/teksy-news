@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Head from "next/head";
-import { createClientComponentClient } from "@/lib/supabase"; // adjust this path
+import { createClientComponentClient } from "@/lib/supabase"; 
+import Image from "next/image";
 
 type Props = {
   params: Promise<{ id: string }>;
@@ -32,14 +33,12 @@ export default function Page({ params }: Props) {
 
   const supabase = createClientComponentClient();
 
-  // Extract ID from params
   useEffect(() => {
     params.then(resolvedParams => {
       setId(resolvedParams.id);
     });
   }, [params]);
 
-  // Fetch Article Data
   useEffect(() => {
     if (!id) return;
 
@@ -118,14 +117,14 @@ export default function Page({ params }: Props) {
 
         {article.featured_image && (
           <div className="w-full h-64 rounded-xl bg-gray-200 mb-10 relative overflow-hidden">
-            <img src={article.featured_image} alt={article.title} className="object-cover w-full h-full" />
+            <Image width={100} height={100} src={article.featured_image} alt={article.title} className="object-cover w-full h-full" />
           </div>
         )}
 
         <div className="prose max-w-none text-gray-700" dangerouslySetInnerHTML={{ __html: article.content }} />
 
         <div className="flex items-center gap-4 mt-12 bg-gray-100 p-4 rounded-xl">
-          <img src={article.author?.avatar || '/default-avatar.png'} alt={article.author?.name} className="w-12 h-12 rounded-full" />
+          <Image width={100} height={100} src={article.author?.avatar || '/default-avatar.png'} alt={article.author?.name} className="w-12 h-12 rounded-full" />
           <div>
             <h4 className="font-semibold text-gray-900">{article.author?.name}</h4>
             <p className="text-gray-500 text-sm">Author</p>
