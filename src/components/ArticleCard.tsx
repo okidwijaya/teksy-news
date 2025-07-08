@@ -70,7 +70,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         )}
 
-        <div onClick={() => handleClick(title)} className={`font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
+        <div onClick={() => handleClick(title)} className={`cursor-pointer font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
           {title}
         </div>
 

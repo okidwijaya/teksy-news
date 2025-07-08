@@ -30,7 +30,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({
         <span className="mx-2">•</span>
         <span>{timeAgo}</span>
       </div>
-      <div onClick={()=> handleClick(title)} className="text-lg font-semibold mb-1">
+      <div onClick={()=> handleClick(title)} className="cursor-pointer text-lg font-semibold mb-1">
         {title}
       </div>
       <Link href="#" className="text-gray-700 underline text-sm">

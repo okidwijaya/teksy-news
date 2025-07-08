@@ -3,17 +3,27 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export default function Page({ params }: Props) {
+  const [id, setId] = useState<string>('');
+
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+   useEffect(() => {
+    params.then(resolvedParams => {
+      setId(resolvedParams.id);
+      console.log(resolvedParams.id);
+    });
+  }, [params]);
+
+  console.log(id);
+
   useEffect(() => {
-    console.log(params)
     const handleScroll = () => {
       const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;

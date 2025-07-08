@@ -19,7 +19,7 @@ export default function Accordion({ items }: AccordionProps) {
             {items.map((item, idx) => (
                 <div className="py-6" key={item.title}>
                     <button
-                        className="w-full text-left flex justify-between items-center font-medium group"
+                        className="cursor-pointer w-full text-left flex justify-between items-center font-medium group"
                         onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
                     >
                         <h6>{item.title}</h6>

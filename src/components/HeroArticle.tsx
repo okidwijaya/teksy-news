@@ -51,7 +51,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                         <span className="mx-2">•</span>
                         <h6>{timeAgo}</h6>
                     </div>
-                    <div onClick={()=> handleClick(title)} className="text-lg font-semibold mb-1">
+                    <div onClick={()=> handleClick(title)} className="cursor-pointer text-lg font-semibold mb-1">
                         {title}
                     </div>
                 </div>
