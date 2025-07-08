@@ -1,16 +1,16 @@
-import { Metadata } from 'next';
+import React from "react";
 
-export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
-  return {
-    title: `Blog ${params.id}`,
+type MyPageProps = {
+  params: {
+    id: string;
   };
-}
+};
 
-export default function Page({ params }: { params: { id: string } }) {
+export default function Page({ params }: MyPageProps) {
   return (
     <div>
-      <h1>Blog Detail</h1>
-      <p>ID: {params.id}</p>
+      <h1>Page</h1>
+      <p>{params.id}</p>
     </div>
   );
 }
