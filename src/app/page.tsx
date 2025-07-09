@@ -8,6 +8,7 @@ import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
 import { HeroArticle } from '@/components/HeroArticle';
 import { FeaturedArticle } from '@/components/FeaturedArticle';
+import placeholderImage from '../../public/placeholder-image.webp'
 
 const Home: React.FC = () => {
   const sampleArticles = [
@@ -64,7 +65,7 @@ const Home: React.FC = () => {
             <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
               <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
                 <HeroArticle
-                  imageUrl="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+                  imageUrl={placeholderImage.src}
                   author="Brandon"
                   timeAgo="8 mins ago"
                   title="7 Simple Habits That Can Transform Your Daily Productivity"
@@ -72,12 +73,12 @@ const Home: React.FC = () => {
                   comments={1000}
                   writerName="Alex Haslam"
                   writerTitle="Reputable writer"
-                  writerImage="https://randomuser.me/api/portraits/men/45.jpg"
+                  writerImage={placeholderImage.src}
                 />
 
                 <div>
                   <FeaturedArticle
-                    imageUrl="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80"
+                    imageUrl={placeholderImage.src}
                     author="Sarah D."
                     timeAgo="20 mins ago"
                     title="TennisHub is the ultimate destination for tennis enthusias..."
@@ -105,7 +106,7 @@ const Home: React.FC = () => {
                   timeAgo="20 mins ago"
                   title="Office Plants: A Cure for Burnout? Study Shows They Boost Productivity."
                   excerpt="A study from the University of Queensland shows that adding plants to the workplace can increase productivity..."
-                  imageUrl="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80"
+                  imageUrl={placeholderImage.src}
                   date="Apr 17, 2025"
                   readTime="5 min reads"
                   category="Lifestyle"
@@ -157,7 +158,7 @@ const Home: React.FC = () => {
                   author="Sara"
                   timeAgo="34 mins ago"
                   title="Customer Service Trends Take Center Stage in Indonesian Cin..."
-                  imageUrl="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80"
+                  imageUrl={placeholderImage.src}
                   showImage={true}
                   className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white max-w-full lg:max-w-xs"
                 />

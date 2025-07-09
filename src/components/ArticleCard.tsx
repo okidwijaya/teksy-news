@@ -3,6 +3,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import placeholderImage from "../../public/placeholder-image.webp"
 
 interface ArticleCardProps {
   author?: string;
@@ -84,21 +85,21 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           <div className="flex items-center mb-3">
             <div className="flex -space-x-2">
               <Image
-                src="https://randomuser.me/api/portraits/men/32.jpg"
+                src={placeholderImage.src}
                 width={28}
                 height={28}
                 className="rounded-full border-2 border-white"
                 alt="User 1"
               />
               <Image
-                src="https://randomuser.me/api/portraits/women/44.jpg"
+                src={placeholderImage.src}
                 width={28}
                 height={28}
                 className="rounded-full border-2 border-white"
                 alt="User 2"
               />
               <Image
-                src="https://randomuser.me/api/portraits/men/54.jpg"
+                src={placeholderImage.src}
                 width={28}
                 height={28}
                 className="rounded-full border-2 border-white"

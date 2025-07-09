@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
+import placeholderImage from "../../public/placeholder-image.webp"
 
 interface HeroArticleProps {
     imageUrl: string;
@@ -60,21 +61,21 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                     <div className="flex items-center">
                         <div className="flex -space-x-2">
                             <Image
-                                src="https://randomuser.me/api/portraits/men/32.jpg"
+                                src={placeholderImage.src}
                                 width={36}
                                 height={36}
                                 className="rounded-full border-2 border-white"
                                 alt="User 1"
                             />
                             <Image
-                                src="https://randomuser.me/api/portraits/women/44.jpg"
+                                src={placeholderImage.src}
                                 width={36}
                                 height={36}
                                 className="rounded-full border-2 border-white"
                                 alt="User 2"
                             />
                             <Image
-                                src="https://randomuser.me/api/portraits/men/54.jpg"
+                                src={placeholderImage.src}
                                 width={36}
                                 height={36}
                                 className="rounded-full border-2 border-white"
