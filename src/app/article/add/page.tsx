@@ -99,7 +99,7 @@ const Page: React.FC = () => {
                 throw new Error(errorData.error || 'Failed to create article');
             }
 
-            const result = await res.json();
+            // const result = await res.json();
             
             // Reset form after successful submission
             setFormData({

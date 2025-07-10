@@ -21,13 +21,13 @@ export default function Navbar() {
         }));
     };
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const { data: { user } } = await supabase.auth.getUser();
-        };
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         const { data: { user } } = await supabase.auth.getUser();
+    //     };
 
-        fetchUser();
-    }, []);
+    //     fetchUser();
+    // }, []);
 
     useEffect(() => {
         const fetchCategories = async () => {
