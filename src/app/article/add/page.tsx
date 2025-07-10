@@ -2,12 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
-import { uploadImageWithProgress } from '@/lib/upload-image'; 
+import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
-// import { supabase } from '@/lib/supabase';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
-
-// const supabase = createClientComponentClient();
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -31,6 +27,7 @@ interface BlogPost {
     metaDescription: string;
     urlHandle: string;
     tags: Tag[];
+    category?: string;
 }
 
 const Page: React.FC = () => {
@@ -44,7 +41,8 @@ const Page: React.FC = () => {
         pageTitle: '',
         metaDescription: '',
         urlHandle: 'article/',
-        tags: []
+        tags: [],
+        category: ''
     });
 
     const [imagePreview, setImagePreview] = useState<string>('');
@@ -52,24 +50,20 @@ const Page: React.FC = () => {
     const [tagInput, setTagInput] = useState('');
     const [tagIdCounter, setTagIdCounter] = useState(0);
     const fileInputRef = useRef<HTMLInputElement>(null);
-
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
+
+    useEffect(() => {
+        const now = new Date();
+        const localDateTime = now.toISOString().slice(0, 16);
+        setFormData(prev => ({ ...prev, publishDate: localDateTime }));
+    }, []);
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
-            const { data: { user } } = await supabase.auth.getUser();
-
-            if (!user) {
-                alert('Please log in to create articles');
-                return;
-            }
-
-            const userName = user.user_metadata?.full_name ||
-                user.user_metadata?.name ||
-                user.email ||
-                'Unknown User';
+            setIsSubmitting(true);
 
             let featuredImageUrl = '';
             if (formData.featuredImage) {
@@ -78,13 +72,18 @@ const Page: React.FC = () => {
             }
 
             const payload = {
-                ...formData,
-                name: userName,
+                title: formData.title,
+                content: formData.content,
+                summary: formData.summary,
+                publishDate: formData.publishDate,
+                status: formData.status,
+                pageTitle: formData.pageTitle,
+                metaDescription: formData.metaDescription,
+                urlHandle: formData.urlHandle,
                 tags: tags.map((tag) => tag.text),
                 featured_image: featuredImageUrl,
+                category: formData.category || 'Uncategorized'
             };
-
-            console.log(payload);
 
             const res = await fetch('/api/article', {
                 method: 'POST',
@@ -100,30 +99,35 @@ const Page: React.FC = () => {
                 throw new Error(errorData.error || 'Failed to create article');
             }
 
+            const result = await res.json();
+            
+            // Reset form after successful submission
+            setFormData({
+                title: '',
+                content: '',
+                summary: '',
+                publishDate: new Date().toISOString().slice(0, 16),
+                status: 'draft',
+                allowComments: true,
+                pageTitle: '',
+                metaDescription: '',
+                urlHandle: 'article/',
+                tags: [],
+                category: ''
+            });
+            setTags([]);
+            setImagePreview('');
+            setUploadProgress(0);
+
             alert('Article created successfully!');
+
         } catch (error) {
-            console.error(error);
-            alert('Error creating article: ' + error);
+            console.error('Submit error:', error);
+            alert('Error creating article: ' + (error instanceof Error ? error.message : 'Unknown error'));
+        } finally {
+            setIsSubmitting(false);
         }
     };
-
-    const supabase = createClientComponentClient();
-
-    useEffect(() => {
-        const checkSession = async () => {
-            const { data: { session }, error } = await supabase.auth.getSession();
-            console.log('Session:', session);
-            console.log('Auth error:', error);
-        };
-        checkSession();
-    }, []);
-
-
-    useEffect(() => {
-        const now = new Date();
-        const localDateTime = now.toISOString().slice(0, 16);
-        setFormData(prev => ({ ...prev, publishDate: localDateTime }));
-    }, []);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
@@ -220,15 +224,33 @@ const Page: React.FC = () => {
         }
     };
 
-    const saveDraft = () => {
+    const saveDraft = async () => {
         const draftData = {
             ...formData,
             status: 'draft' as const,
-            tags: tags
+            tags: tags.map(tag => tag.text)
         };
 
-        console.log('Draft saved:', draftData);
-        alert('Draft saved successfully!');
+        try {
+            const res = await fetch('/api/article', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify(draftData),
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.error || 'Failed to save draft');
+            }
+
+            alert('Draft saved successfully!');
+        } catch (error) {
+            console.error('Save draft error:', error);
+            alert('Error saving draft: ' + (error instanceof Error ? error.message : 'Unknown error'));
+        }
     };
 
     const getSummaryCount = () => formData.summary.length;
@@ -236,9 +258,9 @@ const Page: React.FC = () => {
     const getDescriptionCount = () => formData.metaDescription.length;
     const getTagInputCount = () => tagInput.length;
 
+
     return (
         <main className="max-w-4xl mx-auto p-6">
-
             {uploadProgress > 0 && uploadProgress < 100 && (
                 <div className="w-full bg-gray-200 rounded-full h-2.5 mt-3">
                     <div
@@ -565,7 +587,7 @@ const Page: React.FC = () => {
                                 />
                             </div>
                             <div className="mt-1 text-xs text-gray-500">
-                                https://yourstore.com/products/
+                                https://yourstore.com/article
                             </div>
                         </div>
                     </div>
@@ -586,9 +608,10 @@ const Page: React.FC = () => {
                         </button>
                         <button
                             type="submit"
-                            className="px-4 py-2 text-sm font-medium text-white bg-[#F96E2A] border border-transparent rounded-md hover:bg-[#F96E2A] focus:outline-none focus:ring-2 focus:ring-[#F96E2A]"
+                            // disabled={!user || isSubmitting}
+                            className="px-4 py-2 text-sm font-medium text-white bg-[#F96E2A] border border-transparent rounded-md hover:bg-[#F96E2A] focus:outline-none focus:ring-2 focus:ring-[#F96E2A] disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                            Create Post
+                            {isSubmitting ? 'Creating...' : 'Create Post'}
                         </button>
                     </div>
                 </form>

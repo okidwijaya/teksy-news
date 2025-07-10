@@ -66,7 +66,6 @@ export default function Page() {
             try {
                 const result = await signUp(email, password, fullName);
                 alert('Signup successful! Auto-logged in!');
-                console.log('singup',result)
                 setTimeout(() => {
                     router.push('/');
                 }, 3500)

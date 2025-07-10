@@ -41,3 +41,6 @@ yarn-error.log*
 next-env.d.ts
 
 backup-index.txt
+backup-article-page.txt
+backup-article-route.txt
+backup-useauth.txt

@@ -11,6 +11,7 @@ export default function LoadingLogoDefault() {
                 width={100}
                 height={100}
                 priority
+                className='w-full h-auto'
             />
         </div>
     )

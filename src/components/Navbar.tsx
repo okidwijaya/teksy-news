@@ -24,7 +24,6 @@ export default function Navbar() {
     useEffect(() => {
         const fetchUser = async () => {
             const { data: { user } } = await supabase.auth.getUser();
-            console.log(user);
         };
 
         fetchUser();
@@ -36,7 +35,6 @@ export default function Navbar() {
                 const res = await fetch("/api/categories");
                 const result = await res.json();
                 setCategories(result.data);
-                console.log(result)
             } catch (err) {
                 console.error("Failed to load categories", err);
             }
@@ -60,16 +58,16 @@ export default function Navbar() {
     return (
         <nav
             id="navbar"
-            className={`bg-[#121212] text-[#E5E7EB] border-b border-b-[#EEEEEE] transition-all duration-300 z-50 ${navbarFixed ? "fixed top-0 left-0 right-0" : "relative"
+            className={`bg-[#121212] text-[#E5E7EB] border-b border-b-[#EEEEEE] transition-all duration-300 z-50 ${navbarFixed ? "lg:max-w-[1240px] lg:mx-auto lg:rounded-4xl fixed top-0 left-0 right-0 lg:mt-2" : "relative"
                 }`}
             style={{
-                transform: navbarHidden ? "translateY(-100%)" : "translateY(0)",
+                transform: navbarHidden ? "translateY(-140%)" : "translateY(0)",
             }}
-        >
+            >
             <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                  
-                    <div className="flex-shrink-0 flex gap-4 flex-row flex-wrap">
+
+                    <div className="flex-shrink-0 flex gap-4 flex-row flex-wrap items-center">
                         <Link
                             href="/"
                             className="text-2xl w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
@@ -82,6 +80,36 @@ export default function Navbar() {
                                 priority
                             />
                         </Link>
+
+                        <div className="hidden lg:flex items-center space-x-8 p-4 gap-4">
+                            {categories.map((parent) => (
+                                <div key={parent.id} className="group relative mx-auto w-full text-center">
+                                    {Array.isArray(parent.children) && parent.children.length > 0 ?
+                                        <>
+                                            <button className="text-center text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200 flex items-center">
+                                                {parent.name}
+                                                <svg className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="#F96E2A" viewBox="0 0 24 24">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                                </svg>
+                                            </button>
+                                            <div className="absolute left-0 mt-2 w-48 bg-[#121212] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-[#F96E2A]">
+                                                <div className="py-2">
+                                                    {parent.children.map((child) => (
+                                                        <Link
+                                                            key={child.id}
+                                                            href={`/blogs/${child.slug}`}
+                                                            className="text-left block px-4 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                                                        >
+                                                            {child.name}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </>
+                                        : <Link href={`/category/${parent.slug}`} className="text-center text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200">{parent.name}</Link>}
+                                </div>
+                            ))}
+                        </div>
                     </div>
 
                     <div className="hidden md:flex items-center space-x-4">
@@ -95,7 +123,7 @@ export default function Navbar() {
                         </div>
                         <Link href="#" className="bg-[#FF6000] text-[#121212] px-4 py-2 rounded-2xl hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Subscribe</Link>
                     </div>
-                 
+
                     <div className="lg:hidden">
                         <button
                             id="mobileMenuBtn"
@@ -109,38 +137,10 @@ export default function Navbar() {
                         </button>
                     </div>
                 </div>
-              
-                <div className="hidden lg:flex items-center space-x-8 pt-4 pb-6">
-                    {/* <Link href="#" className="text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200">Home</Link>
-                            <div className="relative group">
-                                <button className="text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200 flex items-center">
-                                    Categories
-                                    <svg className="ml-1 h-4 w-4 transition-transform duration-200 group-hover:rotate-180" fill="none" stroke="#F96E2A" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
-                                </button>
-                                <div className="absolute left-0 mt-2 w-48 bg-[#121212] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-[#F96E2A]">
-                                    <div className="py-2">
-                                        {categories.map((cat) => (
-                                            <Link key={cat} href="#" className="block px-4 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200">{cat}</Link>
-                                        ))} 
-                                    </div>
-                                </div>
-                            </div> */}
 
+                <div className="hidden lg:hidden items-center space-x-8 pt-4 pb-6">
                     {categories.map((parent) => (
                         <div key={parent.id} className="group relative mx-auto w-full text-center">
-                            {/* <Link
-                                        href={`/category/${parent.slug}`}
-                                        className="block px-4 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
-                                    >
-                                        {parent.name}
-                                    </Link> */}
-
-                            {/* <Link href="#" className="text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200 relative">
-                                Trending
-                                <span className="absolute -top-1 -right-1 h-2 w-2 bg-red-500 rounded-full"></span>
-                            </Link> */}
                             {Array.isArray(parent.children) && parent.children.length > 0 ?
                                 <>
                                     <button className="!text-[13px] text-center text-[#E5E7EB] hover:text-[#F96E2A] font-medium transition-colors duration-200 flex items-center">
@@ -171,7 +171,7 @@ export default function Navbar() {
             {/* Mobile Menu */}
             <div id="mobileMenu" className={`lg:hidden ${mobileMenuOpen ? "" : "hidden"} bg-[#121212] border-t border-gray-100`}>
                 <div className="px-4 pt-2 pb-3 space-y-1">
-          
+
                     <div className="relative mb-3 group">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -223,7 +223,7 @@ export default function Navbar() {
                             )}
                         </div>
                     ))}
-            
+
                     <div className="pt-3 border-t border-gray-100 mt-3">
                         <Link href="#" className="block w-full bg-[#F96E2A] text-white text-center px-4 py-2 rounded-lg font-medium hover:bg-[#F96E2A] transition-colors duration-200">
                             Subscribe to Newsletter
