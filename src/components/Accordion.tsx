@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 type AccordionItem = {
     title: string;
-    articles: { author: string; time: string; title: string }[];
+    articles: { slug: string; author_id: string | number; time: string; title: string }[];
 };
 
 type AccordionProps = {
@@ -43,12 +43,12 @@ export default function Accordion({ items }: AccordionProps) {
                             {item.articles.map((art, i) => (
                                 <div key={i}>
                                     <div className="flex items-center text-sm text-gray-700 mb-1">
-                                        <span className="font-semibold">{art.author}</span>
+                                        <span className="font-semibold">{art.author_id}</span>
                                         <span className="mx-2">•</span>
                                         <span>{art.time}</span>
                                     </div>
                                     <div className="text-lg font-semibold mb-1">{art.title}</div>
-                                    <Link href={`/post/${item.title}`} className="text-gray-700 underline text-sm">Read more</Link>
+                                    <Link href={`/article/${art.slug}`} className="text-gray-700 underline text-sm">Read more</Link>
                                 </div>
                             ))}
                         </div>

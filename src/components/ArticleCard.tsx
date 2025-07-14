@@ -13,13 +13,14 @@ interface ArticleCardProps {
   imageUrl?: string;
   date?: string;
   readTime?: string;
-  category?: string;
+  category?: string | number | string[];
   likes?: number;
   comments?: number;
   showMetrics?: boolean;
   showImage?: boolean;
   showButton?: boolean;
   className?: string;
+  slug: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -36,7 +37,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   showMetrics = false,
   showImage = false,
   showButton = false,
-  className = ''
+  className = '',
+  slug
 }) => {
   const router = useRouter();
 
@@ -71,7 +73,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
           </div>
         )}
 
-        <div onClick={() => handleClick(title)} className={`cursor-pointer font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
+        <div onClick={() => handleClick(slug)} className={`cursor-pointer font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
           {title}
         </div>
 

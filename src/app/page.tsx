@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import Accordion from '@/components/Accordion';
 import Navbar from '@/components/Navbar';
 import AdCard from '@/components/AdsCard';
@@ -9,219 +10,235 @@ import { SectionHeader } from '@/components/SectionHeader';
 import { HeroArticle } from '@/components/HeroArticle';
 import { FeaturedArticle } from '@/components/FeaturedArticle';
 import placeholderImage from '../../public/placeholder-image.webp'
+import { supabase } from '@/lib/supabase';
 
 const Home: React.FC = () => {
-  const sampleArticles = [
-    {
-      author: "Brandon",
-      timeAgo: "8 mins ago",
-      title: "7 Simple Habits That Can Transform Your Daily Productivity"
-    },
-    {
-      author: "Clare Run",
-      timeAgo: "36 mins ago",
-      title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being"
-    },
-    {
-      author: "Matthew",
-      timeAgo: "29 mins ago",
-      title: "The Future of Work: How AI and Automation Will Reshape Our Care..."
+  const [posts, setPosts] = useState<any[]>([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const { data, error } = await supabase
+        .from('articles')
+        .select(`
+    *,
+    author:author_id (
+      id,
+      name,
+      bio,
+      avatar
+    )
+  `)
+        .order('created_at', { ascending: false })
+
+      if (error) {
+        setError(error.message)
+        console.error('Error fetching posts:', error.message)
+      } else {
+        setPosts(data as any[])
+      }
+      setLoading(false)
     }
-  ];
+
+    fetchPosts()
+  }, [])
+  console.log('posts', posts)
 
   const accordionItems = [
     {
       title: "Web & Mobile Experience design",
-      articles: [
-        { author: "Brandon", time: "8 mins ago", title: "7 Simple Habits That Can Transform Your Daily Productivity" },
-        { author: "Clare Run", time: "36 mins ago", title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being" },
-        { author: "Matthew", time: "29 mins ago", title: "The Future of Work: How AI and Automation Will Reshape Our Care..." },
-      ],
+      articles: posts,
     },
     {
       title: "3D design and animation",
-      articles: [
-        { author: "Brandon", time: "8 mins ago", title: "7 Simple Habits That Can Transform Your Daily Productivity" },
-        { author: "Clare Run", time: "36 mins ago", title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being" },
-        { author: "Matthew", time: "29 mins ago", title: "The Future of Work: How AI and Automation Will Reshape Our Care..." },
-      ],
+      articles: posts,
     },
     {
       title: "Motion design and video",
-      articles: [
-        { author: "Brandon", time: "8 mins ago", title: "7 Simple Habits That Can Transform Your Daily Productivity" },
-        { author: "Clare Run", time: "36 mins ago", title: "The Power of Mindful Eating: How It Impacts Your Health and Well-Being" },
-        { author: "Matthew", time: "29 mins ago", title: "The Future of Work: How AI and Automation Will Reshape Our Care..." },
-      ],
+      articles: posts,
     },
   ];
 
   return (
     <div className="bg-[#F9FAFB] text-[#121212]">
-      <Navbar />
-      <main className="relative p-4">
-        <div className="flex flex-wrap md:flex-nowrap gap-8 w-fit mx-auto items-start justify-center flex-col-reverse lg:flex-row">
-          <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
-            <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
-              <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
-                <HeroArticle
-                  imageUrl={placeholderImage.src}
-                  author="Brandon"
-                  timeAgo="8 mins ago"
-                  title="7 Simple Habits That Can Transform Your Daily Productivity"
-                  likes={2300}
-                  comments={1000}
-                  writerName="Alex Haslam"
-                  writerTitle="Reputable writer"
-                  writerImage={placeholderImage.src}
-                />
+      {!loading ?
+        <>
+          <main className="relative p-4">
+            <div className="flex flex-wrap md:flex-nowrap gap-8 w-fit mx-auto items-start justify-center flex-col-reverse lg:flex-row">
+              <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
+                <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
+                  <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
+                    {posts && (<HeroArticle
+                      imageUrl={placeholderImage.src}
+                      author={posts[0].author.name}
+                      timeAgo={posts[0].published_at}
+                      title={posts[0].title}
+                      likes={2300}
+                      comments={1000}
+                      writerName={posts[0].author.name}
+                      writerTitle={posts[0].author.name}
+                      writerImage={placeholderImage.src}
+                      slug={posts[0].slug}
+                    />)}
 
-                <div>
-                  <FeaturedArticle
-                    imageUrl={placeholderImage.src}
-                    author="Sarah D."
-                    timeAgo="20 mins ago"
-                    title="TennisHub is the ultimate destination for tennis enthusias..."
-                  />
+                    <div>
+                      {posts && (<FeaturedArticle
+                        imageUrl={placeholderImage.src}
+                        author={posts[1].author.name}
+                        timeAgo={posts[1].published_at}
+                        title={posts[1].title}
+                        slug={posts[1].slug}
+                      />)}
 
-                  <div className="flex flex-wrap flex-col gap-4 w-full">
-                    <div className="space-y-6">
-                      {sampleArticles.map((article, index) => (
-                        <ArticleListItem
-                          key={index}
-                          author={article.author}
-                          timeAgo={article.timeAgo}
-                          title={article.title}
+                      <div className="flex flex-wrap flex-col gap-4 w-full">
+                        <div className="space-y-6">
+                          {posts.slice(2).map((item) => (
+                            <ArticleListItem
+                              key={item.id}
+                              author={item.author.name}
+                              timeAgo={item.timeAgo}
+                              title={item.title}
+                              slug={item.slug}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <SectionHeader title="Recommended" />
+                  <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#DDDDDD] my-4">
+                    {posts && (<ArticleCard
+                      author={posts[0].author.name}
+                      timeAgo={posts[0].published_at}
+                      title={posts[0].title}
+                      excerpt={posts[0].meta_description}
+                      imageUrl={placeholderImage.src}
+                      date={posts[0].published_at}
+                      readTime={posts[0].reading_time}
+                      category={posts[0].category_id}
+                      showImage={true}
+                      showButton={true}
+                      slug={posts[0].slug}
+                      className="w-full h-fit lg:max-w-[320px] bg-white rounded-2xl p-0 border border-[#EEEEEE]"
+                    />)}
+
+                    <div className="flex flex-col gap-4">
+                      {posts.map((item) => (
+                        <ArticleCard
+                          key={item.id}
+                          author={item.author.name}
+                          timeAgo={item.published_at}
+                          title={item.title}
+                          date={item.published_at}
+                          readTime={item.reading_time}
+                          category={item.category_id}
+                          slug={item.slug}
+                          likes={890}
+                          comments={78}
+                          showMetrics={true}
+                          className="p-4"
+                        />
+                      ))}
+                    </div>
+
+                    <div className="flex flex-col gap-4">
+                      {posts.map((item) => (
+                        <ArticleCard
+                          key={item.id}
+                          author={item.author.name}
+                          timeAgo={item.published_at}
+                          title={item.title}
+                          date={item.published_at}
+                          readTime={item.reading_time}
+                          category={item.category_id}
+                          slug={item.slug}
+                          likes={890}
+                          comments={78}
+                          showMetrics={true}
+                          className="p-4"
                         />
                       ))}
                     </div>
                   </div>
-                </div>
-              </div>
 
-              <SectionHeader title="Recommended" />
-              <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#DDDDDD] my-4">
-                <ArticleCard
-                  author="Alex Haslam"
-                  timeAgo="20 mins ago"
-                  title="Office Plants: A Cure for Burnout? Study Shows They Boost Productivity."
-                  excerpt="A study from the University of Queensland shows that adding plants to the workplace can increase productivity..."
-                  imageUrl={placeholderImage.src}
-                  date="Apr 17, 2025"
-                  readTime="5 min reads"
-                  category="Lifestyle"
-                  showImage={true}
-                  showButton={true}
-                  className="w-full h-fit lg:max-w-[320px] bg-white rounded-2xl p-0 border border-[#EEEEEE]"
-                />
+                  <SectionHeader title="Popular Now" />
+                  <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
+                    {posts && (<ArticleCard
+                      author={posts[0].author.name}
+                      timeAgo={posts[0].timeAgo}
+                      title={posts[0].title}
+                      imageUrl={placeholderImage.src}
+                      showImage={true}
+                      slug={posts[0].slug}
+                      className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white max-w-full lg:max-w-xs"
+                    />)}
 
-                <div className="flex flex-col gap-4">
-                  {[...Array(3)].map((_, index) => (
-                    <ArticleCard
-                      key={index}
-                      author="Felix"
-                      timeAgo="15 mins ago"
-                      title="TennisHub has quickly become a leading name in the world of tennis shopping, offer..."
-                      date="Apr 17, 2025"
-                      readTime="5 min reads"
-                      category="Lifestyle"
-                      likes={890}
-                      comments={78}
-                      showMetrics={true}
-                      className="p-4"
-                    />
-                  ))}
-                </div>
+                    <div className="space-y-6">
+                      {posts.slice(2).map((item) => (
+                        <ArticleListItem
+                          key={item.id}
+                          author={item.author.name}
+                          timeAgo={item.timeAgo}
+                          title={item.title}
+                          slug={item.slug}
+                        />
+                      ))}
+                    </div>
+                  </div>
 
-                <div className="flex flex-col gap-4">
-                  {[...Array(3)].map((_, index) => (
-                    <ArticleCard
-                      key={index}
-                      author="Felix"
-                      timeAgo="15 mins ago"
-                      title="TennisHub has quickly become a leading name in the world of tennis shopping, offer..."
-                      date="Apr 17, 2025"
-                      readTime="5 min reads"
-                      category="Lifestyle"
-                      likes={890}
-                      comments={78}
-                      showMetrics={true}
-                      className="p-4"
-                    />
-                  ))}
-                </div>
-              </div>
+                  <SectionHeader title="Sponsored Article" />
+                  <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
+                    <div className="flex flex-col flex-wrap gap-4">
+                      {posts && (<ArticleCard
+                        author={posts[0].author.name}
+                        timeAgo={posts[0].timeAgo}
+                        title={posts[0].title}
+                        excerpt={posts[0].meta_description}
+                        imageUrl={placeholderImage.src}
+                        date={posts[0].published_at}
+                        readTime={posts[0].reading_time}
+                        category={posts[0].category_id}
+                        slug={posts[0].slug}
+                        showButton={true}
+                        className="border border-[#EEEEEE] w-full h-fit max-w-[320px] bg-white rounded-2xl p-6 mb-8"
+                      />)}
+                    </div>
 
-              <SectionHeader title="Popular Now" />
-              <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
-                <ArticleCard
-                  author="Sara"
-                  timeAgo="34 mins ago"
-                  title="Customer Service Trends Take Center Stage in Indonesian Cin..."
-                  imageUrl={placeholderImage.src}
-                  showImage={true}
-                  className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white max-w-full lg:max-w-xs"
-                />
+                    <div className="space-y-6">
+                      {posts.slice(1).map((item) => (
+                        <ArticleListItem
+                          key={item.id}
+                          author={item.author.name}
+                          timeAgo={item.timeAgo}
+                          title={item.title}
+                          slug={item.slug}
+                        />
+                      ))}
+                    </div>
+                  </div>
+                </section>
 
-                <div className="space-y-6">
-                  {[...sampleArticles, sampleArticles[2]].map((article, index) => (
-                    <ArticleListItem
-                      key={index}
-                      author={article.author}
-                      timeAgo={article.timeAgo}
-                      title={article.title}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <SectionHeader title="Sponsored Article" />
-              <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
-                <div className="flex flex-col flex-wrap gap-4">
-                  <ArticleCard
-                    author="Alex Haslam"
-                    timeAgo="20 mins ago"
-                    title="Office Plants: A Cure for Burnout? Study Shows They Boost Productivity."
-                    excerpt="A study from the University of Queensland shows that adding plants to the workplace can increase productivity..."
-                    date="Apr 17, 2025"
-                    readTime="5 min reads"
-                    category="Lifestyle"
-                    showButton={true}
-                    className="border border-[#EEEEEE] w-full h-fit max-w-[320px] bg-white rounded-2xl p-6 mb-8"
-                  />
-                </div>
-
-                <div className="space-y-6">
-                  {[...sampleArticles, sampleArticles[2]].map((article, index) => (
-                    <ArticleListItem
-                      key={index}
-                      author={article.author}
-                      timeAgo={article.timeAgo}
-                      title={article.title}
-                    />
-                  ))}
-                </div>
-              </div>
-            </section>
-
-            <section className="px-6 md:px-4 py-8 border-b border-[#DDDDDD]">
-              <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                <h2 className="text-5xl font-bold">THE TECH SPOTLIGHT</h2>
-                <p className="text-gray-700 text-lg">
-                  <span className="text-purple-500 text-xl mr-2">→</span>
-                  More relevant to a tech news context, inviting readers to learn about trends, startups, gadgets, and AI.
-                </p>
-              </div>
-              <Accordion items={accordionItems} />
-            </section>
-          </section>
-          <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
-            <AdCard gradient />
-            <AdCard />
-          </section>
-        </div>
-      </main>
-      <Footer />
+                <section className="px-6 md:px-4 py-8 border-b border-[#DDDDDD]">
+                  <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                    <h2 className="text-5xl font-bold">THE TECH SPOTLIGHT</h2>
+                    <p className="text-gray-700 text-lg">
+                      <span className="text-purple-500 text-xl mr-2">→</span>
+                      More relevant to a tech news context, inviting readers to learn about trends, startups, gadgets, and AI.
+                    </p>
+                  </div>
+                  <Accordion items={accordionItems} />
+                </section>
+              </section>
+              <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
+                <AdCard gradient />
+                <AdCard />
+              </section>
+            </div>
+          </main>
+        </>
+        : <p>Loading</p>}
     </div>
   );
 };

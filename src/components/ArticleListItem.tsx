@@ -4,11 +4,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 interface ArticleListItemProps {
-  author: string;
+  author: string | number;
   timeAgo: string;
   title: string;
   showBorder?: boolean;
   className?: string;
+  slug: string;
 }
 
 export const ArticleListItem: React.FC<ArticleListItemProps> = ({
@@ -16,7 +17,8 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({
   timeAgo,
   title,
   showBorder = true,
-  className = ''
+  className = '',
+  slug
 }) => {
     const router = useRouter();
   
@@ -30,7 +32,7 @@ export const ArticleListItem: React.FC<ArticleListItemProps> = ({
         <span className="mx-2">•</span>
         <span>{timeAgo}</span>
       </div>
-      <div onClick={()=> handleClick(title)} className="cursor-pointer text-lg font-semibold mb-1">
+      <div onClick={()=> handleClick(slug)} className="cursor-pointer text-lg font-semibold mb-1">
         {title}
       </div>
       <Link href="#" className="text-gray-700 underline text-sm">

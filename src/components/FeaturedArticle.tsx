@@ -5,10 +5,11 @@ import { useRouter } from 'next/navigation';
 
 interface FeaturedArticleProps {
     imageUrl: string;
-    author: string;
+    author: string | number;
     timeAgo: string;
     title: string;
     className?: string;
+    slug: string;
 }
 
 export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
@@ -16,7 +17,8 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
     author,
     timeAgo,
     title,
-    className = ''
+    className = '',
+    slug
 }) => {
       const router = useRouter();
     
@@ -39,7 +41,7 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
                         <span className="mx-2">•</span>
                         <h6>{timeAgo}</h6>
                     </div>
-                    <div onClick={()=> handleClick(title)} className="cursor-pointer text-white font-medium text-lg leading-tight">
+                    <div onClick={()=> handleClick(slug)} className="cursor-pointer text-white font-medium text-lg leading-tight">
                         {title}
                     </div>
                 </div>
