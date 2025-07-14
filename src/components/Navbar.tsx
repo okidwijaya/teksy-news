@@ -4,7 +4,6 @@ import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../public/logo.svg"
 import { Category } from "@/lib/getCategories";
-import { supabase } from "@/lib/supabase";
 
 export default function Navbar() {
     const [categories, setCategories] = useState<Category[]>([]);

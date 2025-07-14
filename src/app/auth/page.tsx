@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { signUp, login } from '@/lib/auth';
+import { login } from '@/lib/auth';
 import LoadingLogoDefault from '@/components/Loading';
 import Link from 'next/link';
 
