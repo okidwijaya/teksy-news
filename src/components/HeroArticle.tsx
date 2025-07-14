@@ -36,6 +36,8 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
       const handleClick = (id:string) => {
         router.push(`/article/${id}`);
       };
+
+      console.log(timeAgo)
     return (
         <div className={`w-full max-w-full lg:max-w-xl bg-white rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
             <div className="relative w-full h-[400px] md:h-full">
@@ -47,7 +49,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                 />
             </div>
 
-            <div className="absolute left-0 bottom-0 w-full flex flex-col px-6 pb-4">
+            <div className="absolute left-0 bottom-0 w-full flex flex-col px-6 pb-4 bg-gradient-to-t from-[#121212]/70 to-transparent">
                 <div className="text-white">
                     <div className="flex items-center text-sm text-white mb-1">
                         <span className="font-semibold">{author}</span>

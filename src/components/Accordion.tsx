@@ -2,13 +2,32 @@
 import Link from "next/link";
 import React, { useState } from "react";
 
+type Author = {
+  id: number;
+  name: string;
+  bio?: string;
+  avatar?: string;
+};
+
 type AccordionItem = {
     title: string;
-    articles: { slug: string; author_id: string | number; time: string; title: string }[];
+    articles: { slug: string; author: Author; published_at: string; title: string }[];
 };
 
 type AccordionProps = {
     items: AccordionItem[];
+};
+
+const formatPublishDate = (date: string) => {
+  const dateIso = new Date(date);
+  const formattedID = dateIso.toLocaleString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  return formattedID;
 };
 
 export default function Accordion({ items }: AccordionProps) {
@@ -43,9 +62,9 @@ export default function Accordion({ items }: AccordionProps) {
                             {item.articles.map((art, i) => (
                                 <div key={i}>
                                     <div className="flex items-center text-sm text-gray-700 mb-1">
-                                        <span className="font-semibold">{art.author_id}</span>
+                                        <span className="font-semibold">{art.author.name}</span>
                                         <span className="mx-2">•</span>
-                                        <span>{art.time}</span>
+                                        <span>{formatPublishDate(art.published_at)}</span>
                                     </div>
                                     <div className="text-lg font-semibold mb-1">{art.title}</div>
                                     <Link href={`/article/${art.slug}`} className="text-gray-700 underline text-sm">Read more</Link>

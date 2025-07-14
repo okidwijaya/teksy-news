@@ -11,6 +11,20 @@ import { HeroArticle } from '@/components/HeroArticle';
 import { FeaturedArticle } from '@/components/FeaturedArticle';
 import placeholderImage from '../../public/placeholder-image.webp'
 import { supabase } from '@/lib/supabase';
+import { timeAgo } from '@/lib/timeAgo';
+
+const formatPublishDate = (date: string) => {
+  const dateIso = new Date(date);
+  const formattedID = dateIso.toLocaleString('id-ID', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+  return formattedID;
+};
+
 
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<any[]>([])
@@ -43,7 +57,6 @@ const Home: React.FC = () => {
 
     fetchPosts()
   }, [])
-  console.log('posts', posts)
 
   const accordionItems = [
     {
@@ -72,7 +85,7 @@ const Home: React.FC = () => {
                     {posts && (<HeroArticle
                       imageUrl={placeholderImage.src}
                       author={posts[0].author.name}
-                      timeAgo={posts[0].published_at}
+                      timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       likes={2300}
                       comments={1000}
@@ -86,7 +99,7 @@ const Home: React.FC = () => {
                       {posts && (<FeaturedArticle
                         imageUrl={placeholderImage.src}
                         author={posts[1].author.name}
-                        timeAgo={posts[1].published_at}
+                        timeAgo={timeAgo(posts[1].published_at)}
                         title={posts[1].title}
                         slug={posts[1].slug}
                       />)}
@@ -97,7 +110,7 @@ const Home: React.FC = () => {
                             <ArticleListItem
                               key={item.id}
                               author={item.author.name}
-                              timeAgo={item.timeAgo}
+                              timeAgo={formatPublishDate(item.published_at)}
                               title={item.title}
                               slug={item.slug}
                             />
@@ -111,7 +124,7 @@ const Home: React.FC = () => {
                   <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#DDDDDD] my-4">
                     {posts && (<ArticleCard
                       author={posts[0].author.name}
-                      timeAgo={posts[0].published_at}
+                      timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       excerpt={posts[0].meta_description}
                       imageUrl={placeholderImage.src}
@@ -129,9 +142,9 @@ const Home: React.FC = () => {
                         <ArticleCard
                           key={item.id}
                           author={item.author.name}
-                          timeAgo={item.published_at}
+                          timeAgo={formatPublishDate(item.published_at)}
                           title={item.title}
-                          date={item.published_at}
+                          date={formatPublishDate(item.published_at)}
                           readTime={item.reading_time}
                           category={item.category_id}
                           slug={item.slug}
@@ -148,9 +161,9 @@ const Home: React.FC = () => {
                         <ArticleCard
                           key={item.id}
                           author={item.author.name}
-                          timeAgo={item.published_at}
+                          timeAgo={formatPublishDate(item.published_at)}
                           title={item.title}
-                          date={item.published_at}
+                          date={formatPublishDate(item.published_at)}
                           readTime={item.reading_time}
                           category={item.category_id}
                           slug={item.slug}
@@ -167,7 +180,7 @@ const Home: React.FC = () => {
                   <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
                     {posts && (<ArticleCard
                       author={posts[0].author.name}
-                      timeAgo={posts[0].timeAgo}
+                      timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       imageUrl={placeholderImage.src}
                       showImage={true}
@@ -175,14 +188,15 @@ const Home: React.FC = () => {
                       className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white max-w-full lg:max-w-xs"
                     />)}
 
-                    <div className="space-y-6">
-                      {posts.slice(2).map((item) => (
+                    <div className="space-y-6 w-full max-w-lg">
+                      {posts.slice(1).map((item) => (
                         <ArticleListItem
-                          key={item.id}
-                          author={item.author.name}
-                          timeAgo={item.timeAgo}
+                          key={item.id || item.slug}
+                          author={item.author?.name ?? 'Anon'}
+                          timeAgo={formatPublishDate(item.published_at ?? '')}
                           title={item.title}
                           slug={item.slug}
+                          className="min-w-full w-full max-w-full lg:max-w-full"
                         />
                       ))}
                     </div>
@@ -193,7 +207,7 @@ const Home: React.FC = () => {
                     <div className="flex flex-col flex-wrap gap-4">
                       {posts && (<ArticleCard
                         author={posts[0].author.name}
-                        timeAgo={posts[0].timeAgo}
+                        timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
                         excerpt={posts[0].meta_description}
                         imageUrl={placeholderImage.src}
@@ -206,14 +220,15 @@ const Home: React.FC = () => {
                       />)}
                     </div>
 
-                    <div className="space-y-6">
+                    <div className="space-y-6 w-full max-w-lg">
                       {posts.slice(1).map((item) => (
                         <ArticleListItem
-                          key={item.id}
-                          author={item.author.name}
-                          timeAgo={item.timeAgo}
+                          key={item.id || item.slug}
+                          author={item.author?.name ?? 'Anon'}
+                          timeAgo={formatPublishDate(item.published_at ?? '')}
                           title={item.title}
                           slug={item.slug}
+                          className="min-w-full w-full max-w-full lg:max-w-full"
                         />
                       ))}
                     </div>
