@@ -185,7 +185,7 @@ const Home: React.FC = () => {
                       imageUrl={placeholderImage.src}
                       showImage={true}
                       slug={posts[0].slug}
-                      className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white max-w-full lg:max-w-xs"
+                      className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white w-full max-w-full lg:max-w-[320px]"
                     />)}
 
                     <div className="space-y-6 w-full max-w-lg">
@@ -216,7 +216,7 @@ const Home: React.FC = () => {
                         category={posts[0].category_id}
                         slug={posts[0].slug}
                         showButton={true}
-                        className="border border-[#EEEEEE] w-full h-fit max-w-[320px] bg-white rounded-2xl p-6 mb-8"
+                        className="border border-[#EEEEEE] h-fit w-full max-w-full lg:max-w-[320px] bg-white rounded-2xl p-6 mb-8"
                       />)}
                     </div>
 

@@ -64,7 +64,6 @@ export default function Page() {
         setIsAuthLoading(true);
         if (isTnC) {
             try {
-                // const result = await signUp(email, password, fullName);
                 alert('Signup successful! Auto-logged in!');
                 setTimeout(() => {
                     router.push('/');

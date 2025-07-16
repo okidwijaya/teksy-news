@@ -20,14 +20,6 @@ export default function Navbar() {
         }));
     };
 
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         const { data: { user } } = await supabase.auth.getUser();
-    //     };
-
-    //     fetchUser();
-    // }, []);
-
     useEffect(() => {
         const fetchCategories = async () => {
             try {

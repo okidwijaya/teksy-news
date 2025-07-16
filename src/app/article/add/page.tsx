@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { supabase } from '@/lib/supabase';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -31,6 +33,8 @@ interface BlogPost {
 }
 
 const Page: React.FC = () => {
+    const router = useRouter();
+
     const [formData, setFormData] = useState<BlogPost>({
         title: '',
         content: '',
@@ -52,6 +56,7 @@ const Page: React.FC = () => {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
+
 
     useEffect(() => {
         const now = new Date();
@@ -99,9 +104,6 @@ const Page: React.FC = () => {
                 throw new Error(errorData.error || 'Failed to create article');
             }
 
-            // const result = await res.json();
-            
-            // Reset form after successful submission
             setFormData({
                 title: '',
                 content: '',
@@ -258,6 +260,15 @@ const Page: React.FC = () => {
     const getDescriptionCount = () => formData.metaDescription.length;
     const getTagInputCount = () => tagInput.length;
 
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            console.error('Logout failed:', error.message);
+        } else {
+            router.refresh();
+            router.push('/');
+        }
+    };
 
     return (
         <main className="max-w-4xl mx-auto p-6">
@@ -277,6 +288,9 @@ const Page: React.FC = () => {
                     <p className="text-gray-600 mt-2">
                         Fill in the details below to create your blog post
                     </p>
+                    <button onClick={handleLogout}>
+                        Logout
+                    </button>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -608,7 +622,6 @@ const Page: React.FC = () => {
                         </button>
                         <button
                             type="submit"
-                            // disabled={!user || isSubmitting}
                             className="px-4 py-2 text-sm font-medium text-white bg-[#F96E2A] border border-transparent rounded-md hover:bg-[#F96E2A] focus:outline-none focus:ring-2 focus:ring-[#F96E2A] disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             {isSubmitting ? 'Creating...' : 'Create Post'}
