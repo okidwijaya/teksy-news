@@ -5,10 +5,11 @@ import Head from "next/head";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { createClientComponentClient } from "@/lib/supabase";
+import Link from "next/link";
 
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void;
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -310,7 +311,6 @@ export default function Page() {
   return (
     <>
       <Head>
-        {/* Essential Meta Tags */}
         <title>{article.title} | Your Site Name</title>
         <meta name="description" content={article.meta_description || article.excerpt} />
         <meta name="keywords" content={article.keywords || article.tags?.join(', ')} />
@@ -319,7 +319,6 @@ export default function Page() {
         <meta name="language" content="en-US" />
         <meta name="revisit-after" content="7 days" />
 
-        {/* Open Graph Tags */}
         <meta property="og:title" content={article.title} />
         <meta property="og:description" content={article.meta_description || article.excerpt} />
         <meta property="og:type" content="article" />
@@ -344,7 +343,6 @@ export default function Page() {
           <meta key={index} property="article:tag" content={tag} />
         ))}
 
-        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
         <meta name="twitter:description" content={article.meta_description || article.excerpt} />
@@ -354,11 +352,9 @@ export default function Page() {
           <meta name="twitter:image" content={article.featured_image} />
         )}
 
-        {/* Additional SEO Tags */}
         <meta name="theme-color" content="#10b981" />
         <link rel="canonical" href={typeof window !== 'undefined' ? window.location.href : ''} />
 
-        {/* Structured Data */}
         {generateStructuredData() && (
           <script
             type="application/ld+json"
@@ -369,29 +365,27 @@ export default function Page() {
         )}
       </Head>
 
-      {/* Progress Bars */}
       <div
         className="fixed top-0 left-0 h-1 bg-emerald-600 z-50 transition-all duration-150"
         style={{ width: `${scrollProgress}%` }}
       />
 
       <main className="max-w-4xl mx-auto p-6">
-        {/* Breadcrumb Navigation */}
         <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
           <ol className="flex items-center space-x-2">
             <li>
-              <a href="/" className="hover:text-emerald-600">Home</a>
+              <Link href="/" className="hover:text-emerald-600">Home</Link>
             </li>
             <li>
               <span className="mx-2">›</span>
-              <a href="/articles" className="hover:text-emerald-600">Articles</a>
+              <Link href="/articles" className="hover:text-emerald-600">Articles</Link>
             </li>
             {article.category && (
               <li>
                 <span className="mx-2">›</span>
-                <a href={`/category/${article.category.toLowerCase()}`} className="hover:text-emerald-600">
+                <Link href={`/category/${article.category.toLowerCase()}`} className="hover:text-emerald-600">
                   {article.category}
-                </a>
+                </Link>
               </li>
             )}
             <li>
@@ -401,7 +395,6 @@ export default function Page() {
           </ol>
         </nav>
 
-        {/* Article Header */}
         <header className="text-center mb-10">
           {article.category && (
             <div className="mb-4">
@@ -453,23 +446,21 @@ export default function Page() {
             </span>
           </div>
 
-          {/* Tags */}
           {article.tags && article.tags.length > 0 && (
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {article.tags.map((tag, index) => (
-                <a
+                <Link
                   key={index}
                   href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
                   className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors"
                 >
                   #{tag}
-                </a>
+                </Link>
               ))}
             </div>
           )}
         </header>
 
-        {/* Featured Image */}
         {article.featured_image && (
           <figure className="w-full h-64 md:h-80 lg:h-96 rounded-xl bg-gray-200 mb-10 relative overflow-hidden shadow-lg">
             <Image
@@ -484,7 +475,6 @@ export default function Page() {
           </figure>
         )}
 
-        {/* Table of Contents (if content has headings) */}
         {article.content.includes('<h2>') && (
           <div className="bg-gray-50 p-6 rounded-xl mb-10 border">
             <h2 className="text-lg font-semibold mb-4 text-gray-900">Table of Contents</h2>
@@ -493,7 +483,7 @@ export default function Page() {
                 dangerouslySetInnerHTML={{
                   __html: article.content
                     .match(/<h[2-3][^>]*>(.*?)<\/h[2-3]>/g)
-                    ?.map((heading, index) => {
+                    ?.map((heading) => {
                       const level = parseInt(heading.match(/<h([2-3])/)?.[1] || '2');
                       const text = heading.replace(/<[^>]*>/g, '');
                       const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
@@ -505,28 +495,25 @@ export default function Page() {
           </div>
         )}
 
-        {/* Article Content */}
         <article
           className="prose prose-lg max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
 
-        {/* Related Articles Section */}
         <div className="mt-16 p-6 bg-gray-50 rounded-xl border">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Continue Reading</h3>
           <div className="flex flex-wrap gap-2">
-            <a href="/articles" className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+            <Link href="/articles" className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
               View All Articles
-            </a>
+            </Link>
             {article.category && (
-              <a href={`/category/${article.category.toLowerCase()}`} className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+              <Link href={`/category/${article.category.toLowerCase()}`} className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
                 More in {article.category}
-              </a>
+              </Link>
             )}
           </div>
         </div>
 
-        {/* Author Info */}
         {article.author && (
           <div className="flex items-start gap-4 mt-12 bg-gray-50 p-6 rounded-xl border">
             <div className="relative flex-shrink-0">
@@ -550,34 +537,34 @@ export default function Page() {
               {article.author.social_links && (
                 <div className="flex gap-3">
                   {article.author.social_links.twitter && (
-                    <a
+                    <Link
                       href={article.author.social_links.twitter}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-500 hover:text-blue-600 text-sm"
                     >
                       Twitter
-                    </a>
+                    </Link>
                   )}
                   {article.author.social_links.linkedin && (
-                    <a
+                    <Link
                       href={article.author.social_links.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-700 hover:text-blue-800 text-sm"
                     >
                       LinkedIn
-                    </a>
+                    </Link>
                   )}
                   {article.author.social_links.website && (
-                    <a
+                    <Link
                       href={article.author.social_links.website}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-emerald-600 hover:text-emerald-700 text-sm"
                     >
                       Website
-                    </a>
+                    </Link>
                   )}
                 </div>
               )}
@@ -585,7 +572,6 @@ export default function Page() {
           </div>
         )}
 
-        {/* Action Buttons */}
         <div className="flex justify-center gap-4 my-10 border-t border-b py-6">
           <button
             onClick={() => setIsLiked(!isLiked)}
@@ -663,7 +649,6 @@ export default function Page() {
           </button>
         </div>
 
-        {/* Debug Info (remove in production) */}
         {process.env.NODE_ENV === 'development' && (
           <div className="mt-8 p-4 bg-gray-100 rounded-lg">
             <h3 className="font-bold mb-2">Debug Info:</h3>

@@ -1,9 +1,7 @@
 "use client"
 import React, { useEffect, useState } from 'react';
 import Accordion from '@/components/Accordion';
-import Navbar from '@/components/Navbar';
 import AdCard from '@/components/AdsCard';
-import Footer from '@/components/Footer';
 import { ArticleListItem } from '@/components/ArticleListItem';
 import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -12,6 +10,10 @@ import { FeaturedArticle } from '@/components/FeaturedArticle';
 import placeholderImage from '../../public/placeholder-image.webp'
 import { supabase } from '@/lib/supabase';
 import { timeAgo } from '@/lib/timeAgo';
+import { Article } from '@/types';
+// import Navbar from '@/components/Navbar';
+// import Footer from '@/components/Footer';
+
 
 const formatPublishDate = (date: string) => {
   const dateIso = new Date(date);
@@ -27,7 +29,7 @@ const formatPublishDate = (date: string) => {
 
 
 const Home: React.FC = () => {
-  const [posts, setPosts] = useState<any[]>([])
+  const [posts, setPosts] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -50,7 +52,7 @@ const Home: React.FC = () => {
         setError(error.message)
         console.error('Error fetching posts:', error.message)
       } else {
-        setPosts(data as any[])
+        setPosts(data as Article[])
       }
       setLoading(false)
     }
@@ -58,20 +60,30 @@ const Home: React.FC = () => {
     fetchPosts()
   }, [])
 
+  const mappedArticles = posts.map((article) => ({
+    ...article,
+    author: {
+      ...article.author,
+      id: typeof article.author.id === 'string' ? Number(article.author.id) : article.author.id,
+    },
+  }));
+
   const accordionItems = [
     {
       title: "Web & Mobile Experience design",
-      articles: posts,
+      articles: mappedArticles,
     },
     {
       title: "3D design and animation",
-      articles: posts,
+      articles: mappedArticles,
     },
     {
       title: "Motion design and video",
-      articles: posts,
+      articles: mappedArticles,
     },
   ];
+
+  console.log(error)
 
   return (
     <div className="bg-[#F9FAFB] text-[#121212]">
@@ -82,7 +94,7 @@ const Home: React.FC = () => {
               <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
                 <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
                   <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
-                    {posts && (<HeroArticle
+                    {posts.length > 0 && (<HeroArticle
                       imageUrl={placeholderImage.src}
                       author={posts[0].author.name}
                       timeAgo={timeAgo(posts[0].published_at)}
@@ -129,7 +141,7 @@ const Home: React.FC = () => {
                       excerpt={posts[0].meta_description}
                       imageUrl={placeholderImage.src}
                       date={posts[0].published_at}
-                      readTime={posts[0].reading_time}
+                      readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
                       category={posts[0].category_id}
                       showImage={true}
                       showButton={true}
@@ -145,7 +157,7 @@ const Home: React.FC = () => {
                           timeAgo={formatPublishDate(item.published_at)}
                           title={item.title}
                           date={formatPublishDate(item.published_at)}
-                          readTime={item.reading_time}
+                          readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
                           category={item.category_id}
                           slug={item.slug}
                           likes={890}
@@ -164,7 +176,7 @@ const Home: React.FC = () => {
                           timeAgo={formatPublishDate(item.published_at)}
                           title={item.title}
                           date={formatPublishDate(item.published_at)}
-                          readTime={item.reading_time}
+                          readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
                           category={item.category_id}
                           slug={item.slug}
                           likes={890}
@@ -212,7 +224,7 @@ const Home: React.FC = () => {
                         excerpt={posts[0].meta_description}
                         imageUrl={placeholderImage.src}
                         date={posts[0].published_at}
-                        readTime={posts[0].reading_time}
+                        readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
                         category={posts[0].category_id}
                         slug={posts[0].slug}
                         showButton={true}

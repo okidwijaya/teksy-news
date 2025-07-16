@@ -25,7 +25,7 @@ export default function Page() {
 
     fetchPosts()
   }, []) 
-  console.log('posts', posts)
+  console.log('posts', posts, loading, error)
   return (
     <div>article</div>
   )

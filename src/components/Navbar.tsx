@@ -5,6 +5,7 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../../public/logo.svg"
 import { Category } from "@/lib/getCategories";
 
+
 export default function Navbar() {
     const [categories, setCategories] = useState<Category[]>([]);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
