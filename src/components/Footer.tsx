@@ -32,7 +32,10 @@ export default function Footer() {
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Contact</h4>
                             <ul className="space-y-1">
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Reach us</Link></li>
+                                <li><Link href="/contact-us" className="hover:text-[#1C1C1C]">Reach us</Link></li>
+                                <li><Link href="/about-us" className="hover:text-[#1C1C1C]">About us</Link></li>
+                                <li><Link href="/faq" className="hover:text-[#1C1C1C]">FAQ's</Link></li>
+                                <li><Link href="/privacy-policies" className="hover:text-[#1C1C1C]">Privacy Policies</Link></li>
                             </ul>
                         </div>
                     </div>

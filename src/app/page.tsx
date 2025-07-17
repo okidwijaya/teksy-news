@@ -7,7 +7,6 @@ import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
 import { HeroArticle } from '@/components/HeroArticle';
 import { FeaturedArticle } from '@/components/FeaturedArticle';
-import placeholderImage from '../../public/placeholder-image.webp'
 import { supabase } from '@/lib/supabase';
 import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
@@ -95,7 +94,7 @@ const Home: React.FC = () => {
                 <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
                   <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
                     {posts.length > 0 && (<HeroArticle
-                      imageUrl={placeholderImage.src}
+                      imageUrl="/assets/placeholder-image.webp"
                       author={posts[0].author.name}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
@@ -103,13 +102,13 @@ const Home: React.FC = () => {
                       comments={1000}
                       writerName={posts[0].author.name}
                       writerTitle={posts[0].author.name}
-                      writerImage={placeholderImage.src}
+                      writerImage="/assets/placeholder-image.webp"
                       slug={posts[0].slug}
                     />)}
 
                     <div>
                       {posts && (<FeaturedArticle
-                        imageUrl={placeholderImage.src}
+                        imageUrl="/assets/placeholder-image.webp"
                         author={posts[1].author.name}
                         timeAgo={timeAgo(posts[1].published_at)}
                         title={posts[1].title}
@@ -139,7 +138,7 @@ const Home: React.FC = () => {
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       excerpt={posts[0].meta_description}
-                      imageUrl={placeholderImage.src}
+                      imageUrl="/assets/placeholder-image.webp"
                       date={posts[0].published_at}
                       readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
                       category={posts[0].category_id}
@@ -194,7 +193,7 @@ const Home: React.FC = () => {
                       author={posts[0].author.name}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
-                      imageUrl={placeholderImage.src}
+                      imageUrl="/assets/placeholder-image.webp"
                       showImage={true}
                       slug={posts[0].slug}
                       className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white w-full max-w-full lg:max-w-[320px]"
@@ -222,7 +221,7 @@ const Home: React.FC = () => {
                         timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
                         excerpt={posts[0].meta_description}
-                        imageUrl={placeholderImage.src}
+                        imageUrl="/assets/placeholder-image.webp"
                         date={posts[0].published_at}
                         readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
                         category={posts[0].category_id}
