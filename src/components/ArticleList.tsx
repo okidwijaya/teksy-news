@@ -13,7 +13,7 @@ const ArticleList: React.FC<ArticleListProps> = ({ articles }) => {
                 <ArticleCard
                     key={article.id}
                     title={article.title}
-                />
+                    slug={article.slug}                />
             ))}
         </div>
     );
