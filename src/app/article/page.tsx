@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 
 export default function Page() {
-  const [posts, setPosts] = useState<any[]>([])
+  const [posts, setPosts] = useState<unknown[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -18,7 +18,7 @@ export default function Page() {
         setError(error.message)
         console.error('Error fetching posts:', error.message)
       } else {
-        setPosts(data as any[])
+        setPosts(data as unknown[])
       }
       setLoading(false)
     }
@@ -27,7 +27,9 @@ export default function Page() {
   }, []) 
   console.log('posts', posts, loading, error)
   return (
-    <div>article</div>
+    <>
+      <p>article</p>
+    </>
   )
 }
 
