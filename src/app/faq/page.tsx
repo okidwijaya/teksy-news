@@ -59,6 +59,8 @@ export default function Page() {
         },
     ];
 
+    console.log('posts', posts, loading, error)
+
     return (
         <>
             <section className="px-6 md:px-4 py-8 border-b border-[#DDDDDD]">
