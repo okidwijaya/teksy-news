@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import { createClientComponentClient } from "@/lib/supabase";
 import Link from "next/link";
+import { MdPreview } from 'md-editor-rt';
+import 'md-editor-rt/lib/style.css';
 
 declare global {
   interface Window {
@@ -495,10 +497,14 @@ export default function Page() {
           </div>
         )}
 
-        <article
+        {/* <article
           className="prose prose-lg max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100"
           dangerouslySetInnerHTML={{ __html: article.content }}
-        />
+        /> */}
+        <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
+          <MdPreview modelValue={article.content} />
+        </div>
+
 
         <div className="mt-16 p-6 bg-gray-50 rounded-xl border">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Continue Reading</h3>
@@ -649,7 +655,7 @@ export default function Page() {
           </button>
         </div>
 
-        {process.env.NODE_ENV === 'development' && (
+        {/* {process.env.NODE_ENV === 'development' && (
           <div className="mt-8 p-4 bg-gray-100 rounded-lg">
             <h3 className="font-bold mb-2">Debug Info:</h3>
             <pre className="text-xs overflow-auto">
@@ -662,7 +668,7 @@ export default function Page() {
               }, null, 2)}
             </pre>
           </div>
-        )}
+        )} */}
       </main>
     </>
   );
