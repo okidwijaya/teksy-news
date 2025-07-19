@@ -10,6 +10,7 @@ import { FeaturedArticle } from '@/components/FeaturedArticle';
 import { supabase } from '@/lib/supabase';
 import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
+import LoadingLogoDefault from '@/components/Loading';
 // import Navbar from '@/components/Navbar';
 // import Footer from '@/components/Footer';
 
@@ -264,7 +265,7 @@ const Home: React.FC = () => {
             </div>
           </main>
         </>
-        : <p>Loading</p>}
+        : <LoadingLogoDefault />}
     </div>
   );
 };
