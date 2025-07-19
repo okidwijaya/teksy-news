@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -52,7 +52,7 @@ export default function Page() {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [readingProgress, setReadingProgress] = useState(0);
+  // const [readingProgress, setReadingProgress] = useState(0);
 
   const supabase = createClientComponentClient();
 
@@ -162,8 +162,11 @@ export default function Page() {
           100,
           Math.max(0, ((scrollTop + windowHeight - articleTop) / articleHeight) * 100)
         );
+        const readingProgressRef = useRef(0);
 
-        setReadingProgress(articleProgress);
+        // inside handleScroll:
+        readingProgressRef.current = articleProgress;
+        // setReadingProgress(articleProgress);
 
         if (articleProgress >= 25 && articleProgress < 26) {
           if (typeof window !== 'undefined' && window.gtag) {

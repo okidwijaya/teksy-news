@@ -38,16 +38,15 @@ const Home: React.FC = () => {
       const { data, error } = await supabase
         .from('articles')
         .select(`
-    *,
-    author:author_id (
-      id,
-      name,
-      bio,
-      avatar
-    )
-  `)
+          *,
+          authors:author_id (
+            id,
+            name,
+            bio,
+            avatar
+          )
+        `)
         .order('created_at', { ascending: false })
-
       if (error) {
         setError(error.message)
         console.error('Error fetching posts:', error.message)
@@ -108,7 +107,7 @@ const Home: React.FC = () => {
                     />)}
 
                     <div>
-                      {posts && (<FeaturedArticle
+                      {posts.length > 0 && (<FeaturedArticle
                         imageUrl="/assets/placeholder-image.webp"
                         author={posts[1].author.name}
                         timeAgo={timeAgo(posts[1].published_at)}
@@ -134,7 +133,7 @@ const Home: React.FC = () => {
 
                   <SectionHeader title="Recommended" />
                   <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#DDDDDD] my-4">
-                    {posts && (<ArticleCard
+                    {posts.length > 0 && (<ArticleCard
                       author={posts[0].author.name}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
@@ -190,7 +189,7 @@ const Home: React.FC = () => {
 
                   <SectionHeader title="Popular Now" />
                   <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
-                    {posts && (<ArticleCard
+                    {posts.length > 0 && (<ArticleCard
                       author={posts[0].author.name}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
@@ -217,7 +216,7 @@ const Home: React.FC = () => {
                   <SectionHeader title="Sponsored Article" />
                   <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
                     <div className="flex flex-col flex-wrap gap-4">
-                      {posts && (<ArticleCard
+                      {posts.length > 0 && (<ArticleCard
                         author={posts[0].author.name}
                         timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
