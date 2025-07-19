@@ -142,6 +142,7 @@ export default function Page() {
     fetchArticle();
   }, [slug]);
 
+  const readingProgressRef = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -162,7 +163,6 @@ export default function Page() {
           100,
           Math.max(0, ((scrollTop + windowHeight - articleTop) / articleHeight) * 100)
         );
-        const readingProgressRef = useRef(0);
 
         // inside handleScroll:
         readingProgressRef.current = articleProgress;
