@@ -5,7 +5,6 @@ import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { supabase } from '@/lib/supabase';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -261,13 +260,13 @@ const Page: React.FC = () => {
     const getTagInputCount = () => tagInput.length;
 
     const handleLogout = async () => {
-        const { error } = await supabase.auth.signOut();
-        if (error) {
-            console.error('Logout failed:', error.message);
-        } else {
-            router.refresh();
-            router.push('/');
-        }
+        // const { error } = await 
+        // if (error) {
+        //     console.error('Logout failed:', error.message);
+        // } else {
+        //     router.refresh();
+        //     router.push('/');
+        // }
     };
 
     return (

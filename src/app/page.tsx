@@ -7,7 +7,6 @@ import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
 import { HeroArticle } from '@/components/HeroArticle';
 import { FeaturedArticle } from '@/components/FeaturedArticle';
-import { supabase } from '@/lib/supabase';
 import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
 import LoadingLogoDefault from '@/components/Loading';
@@ -35,24 +34,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function fetchPosts() {
-      const { data, error } = await supabase
-        .from('articles')
-        .select(`
-          *,
-          authors:author_id (
-            id,
-            name,
-            bio,
-            avatar
-          )
-        `)
-        .order('created_at', { ascending: false })
-      if (error) {
-        setError(error.message)
-        console.error('Error fetching posts:', error.message)
-      } else {
-        setPosts(data as Article[])
-      }
+      
       setLoading(false)
     }
 

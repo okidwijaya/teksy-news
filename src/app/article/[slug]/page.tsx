@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { createClientComponentClient } from "@/lib/supabase";
 import Link from "next/link";
 import { MdPreview } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
@@ -54,8 +53,6 @@ export default function Page() {
   const [scrollProgress, setScrollProgress] = useState(0);
   // const [readingProgress, setReadingProgress] = useState(0);
 
-  const supabase = createClientComponentClient();
-
   useEffect(() => {
     const fetchArticle = async () => {
       console.log("=== Starting fetchArticle ===");
@@ -72,62 +69,41 @@ export default function Page() {
         setLoading(true);
         setError(null);
 
-        console.log("Making Supabase query for slug:", slug);
-
         const timeoutId = setTimeout(() => {
           console.log("Query timeout - forcing loading to stop");
           setLoading(false);
           setError("Request timed out");
         }, 10000);
 
-        const { data: articleData, error: articleError } = await supabase
-          .from("articles")
-          .select(`
-            *,
-            authors (
-              name,
-              avatar,
-              bio,
-              social_links
-            )
-          `)
-          .eq("slug", slug)
-          .eq("status", "published")
-          .maybeSingle();
 
-        console.log("slug:", slug);
-        console.log("data:", articleData);
-        console.log("error:", articleError);
+        // console.log("slug:", slug);
+        // console.log("data:", articleData);
+        // console.log("error:", articleError);
 
 
         clearTimeout(timeoutId);
+        // if (articleError) {
+        //   console.error("Article error details:", articleError);
+        //   setError(`Database error: ${articleError.message}`);
+        //   return;
+        // }
 
-        console.log("=== Query Results ===");
-        console.log("Article data:", articleData);
-        console.log("Article error:", articleError);
+        // if (!articleData) {
+        //   console.log("No article found");
+        //   setError("Article not found");
+        //   return;
+        // }
 
-        if (articleError) {
-          console.error("Article error details:", articleError);
-          setError(`Database error: ${articleError.message}`);
-          return;
-        }
+        // console.log("Article found, setting data...");
+        // setArticle(articleData);
 
-        if (!articleData) {
-          console.log("No article found");
-          setError("Article not found");
-          return;
-        }
-
-        console.log("Article found, setting data...");
-        setArticle(articleData);
-
-        if (typeof window !== 'undefined' && window.gtag) {
-          window.gtag('event', 'page_view', {
-            page_title: articleData.title,
-            page_location: window.location.href,
-            content_group1: articleData.category || 'Article'
-          });
-        }
+        // if (typeof window !== 'undefined' && window.gtag) {
+        //   window.gtag('event', 'page_view', {
+        //     page_title: articleData.title,
+        //     page_location: window.location.href,
+        //     content_group1: articleData.category || 'Article'
+        //   });
+        // }
 
       } catch (err) {
         console.error("Catch block error:", err);

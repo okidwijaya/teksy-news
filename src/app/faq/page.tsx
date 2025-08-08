@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react'
 import Accordion from '@/components/Accordion'
 import { Article } from '@/types';
-import { supabase } from '@/lib/supabase';
 
 export default function Page() {
     const [posts, setPosts] = useState<Article[]>([])
@@ -10,30 +9,7 @@ export default function Page() {
     const [error, setError] = useState<string | null>(null)
 
     useEffect(() => {
-        async function fetchPosts() {
-            const { data, error } = await supabase
-                .from('articles')
-                .select(`
-        *,
-        author:author_id (
-          id,
-          name,
-          bio,
-          avatar
-        )
-      `)
-                .order('created_at', { ascending: false })
-
-            if (error) {
-                setError(error.message)
-                console.error('Error fetching posts:', error.message)
-            } else {
-                setPosts(data as Article[])
-            }
-            setLoading(false)
-        }
-
-        fetchPosts()
+      
     }, [])
 
     const mappedArticles = posts.map((article) => ({

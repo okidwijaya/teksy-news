@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../public/logo.svg"
-import { Category } from "@/lib/getCategories";
+import { Category } from "@/lib/getCategories"; 
 
 
 export default function Navbar() {
@@ -22,17 +22,17 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const res = await fetch("/api/categories");
-                const result = await res.json();
-                setCategories(result.data);
-            } catch (err) {
-                console.error("Failed to load categories", err);
-            }
-        };
+        // const fetchCategories = async () => {
+        //     try {
+        //         const res = await fetch("/api/categories");
+        //         const result = await res.json();
+        //         setCategories(result.data);
+        //     } catch (err) {
+        //         console.error("Failed to load categories", err);
+        //     }
+        // };
 
-        fetchCategories();
+        // fetchCategories();
     }, []);
 
 
