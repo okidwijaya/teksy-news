@@ -7,6 +7,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { MdPreview } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
+import { getArticleBySlug } from "@/services/articleServices";
 
 declare global {
   interface Window {
@@ -14,44 +15,67 @@ declare global {
   }
 }
 
-type Article = {
+// Local Article type definition to handle both possible API response structures
+interface ArticleData {
   id: string;
   title: string;
   content: string;
-  excerpt: string;
-  featured_image: string | null;
+  excerpt?: string;
+  featured_image?: string | null;
   published_at: string;
   updated_at?: string;
-  reading_time: number;
-  author_id: string;
+  reading_time?: number;
+  author_id?: string;
   slug: string;
   meta_description?: string;
+  meta_title?: string;
   keywords?: string;
-  category?: string;
-  tags?: string[];
-  author: {
+  status?: string;
+  views?: number;
+  is_featured?: boolean;
+  created_at?: string;
+  // Category can be either string or object depending on API response
+  category?: string | {
+    id?: string;
     name: string;
-    avatar: string | null;
+    slug?: string;
+  } | null;
+  // Tags can be either string array or object array
+  tags?: string[] | Array<{
+    id: string;
+    name: string;
+    slug: string;
+  }>;
+  author?: {
+    id: string;
+    user_id?: string;
+    email?: string;
+    name?: string;
+    avatar?: string | null;
     bio?: string;
     social_links?: {
       twitter?: string;
       linkedin?: string;
       website?: string;
     };
-  } | null;
-};
+  };
+  images?: Array<{
+    id: number;
+    article: string;
+    alt_text: string;
+  }>;
+}
 
 export default function Page() {
   const params = useParams();
   const slug = typeof params?.slug === "string" ? params.slug : Array.isArray(params?.slug) ? params.slug[0] : '';
-  const [article, setArticle] = useState<Article | null>(null);
+  const [article, setArticle] = useState<ArticleData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isLiked, setIsLiked] = useState(false);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  // const [readingProgress, setReadingProgress] = useState(0);
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -69,41 +93,30 @@ export default function Page() {
         setLoading(true);
         setError(null);
 
-        const timeoutId = setTimeout(() => {
-          console.log("Query timeout - forcing loading to stop");
-          setLoading(false);
-          setError("Request timed out");
-        }, 10000);
+        // Call the API service directly instead of using useApi hook
+        const response = await getArticleBySlug(slug);
+        console.log("Raw API response:", response);
+        
+        // Check if the response has a data property or is the data itself
+        const articleData = response?.data || response;
+        console.log("Processed article data:", articleData);
 
+        if (!articleData) {
+          console.log("No article found in response");
+          setError("Article not found");
+          return;
+        }
 
-        // console.log("slug:", slug);
-        // console.log("data:", articleData);
-        // console.log("error:", articleError);
+        console.log("Article found, setting data...");
+        setArticle(articleData);
 
-
-        clearTimeout(timeoutId);
-        // if (articleError) {
-        //   console.error("Article error details:", articleError);
-        //   setError(`Database error: ${articleError.message}`);
-        //   return;
-        // }
-
-        // if (!articleData) {
-        //   console.log("No article found");
-        //   setError("Article not found");
-        //   return;
-        // }
-
-        // console.log("Article found, setting data...");
-        // setArticle(articleData);
-
-        // if (typeof window !== 'undefined' && window.gtag) {
-        //   window.gtag('event', 'page_view', {
-        //     page_title: articleData.title,
-        //     page_location: window.location.href,
-        //     content_group1: articleData.category || 'Article'
-        //   });
-        // }
+        if (typeof window !== 'undefined' && window.gtag) {
+          window.gtag('event', 'page_view', {
+            page_title: articleData.title,
+            page_location: window.location.href,
+            content_group1: typeof articleData.category === 'string' ? articleData.category : ((articleData.category as { name?: string })?.name || 'Article')
+          });
+        }
 
       } catch (err) {
         console.error("Catch block error:", err);
@@ -140,9 +153,7 @@ export default function Page() {
           Math.max(0, ((scrollTop + windowHeight - articleTop) / articleHeight) * 100)
         );
 
-        // inside handleScroll:
         readingProgressRef.current = articleProgress;
-        // setReadingProgress(articleProgress);
 
         if (articleProgress >= 25 && articleProgress < 26) {
           if (typeof window !== 'undefined' && window.gtag) {
@@ -160,11 +171,10 @@ export default function Page() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
   const shareOn = (platform: string) => {
     const url = encodeURIComponent(window.location.href);
     const title = encodeURIComponent(article?.title || document.title);
-    const excerpt = encodeURIComponent(article?.excerpt || '');
+    const excerpt = encodeURIComponent(article?.excerpt || article?.meta_description || '');
 
     const links: Record<string, string> = {
       twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}&via=YourSite`,
@@ -206,7 +216,6 @@ export default function Page() {
     setIsShareOpen(false);
   };
 
-
   const generateStructuredData = () => {
     if (!article) return null;
 
@@ -214,7 +223,7 @@ export default function Page() {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": article.title,
-      "description": article.meta_description || article.excerpt,
+      "description": article.meta_description || article.excerpt || 'Article description',
       "image": article.featured_image ? [article.featured_image] : [],
       "datePublished": article.published_at,
       "dateModified": article.updated_at || article.published_at,
@@ -238,8 +247,8 @@ export default function Page() {
       },
       "wordCount": article.content.replace(/<[^>]*>/g, '').split(/\s+/).length,
       "timeRequired": `PT${article.reading_time}M`,
-      "keywords": article.keywords || article.tags?.join(', '),
-      "articleSection": article.category,
+      "keywords": article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : ''),
+      "articleSection": typeof article.category === 'string' ? article.category : article.category?.name,
       "inLanguage": "en-US"
     };
 
@@ -294,15 +303,15 @@ export default function Page() {
     <>
       <Head>
         <title>{article.title} | Your Site Name</title>
-        <meta name="description" content={article.meta_description || article.excerpt} />
-        <meta name="keywords" content={article.keywords || article.tags?.join(', ')} />
+        <meta name="description" content={article.meta_description || article.excerpt || 'Article description'} />
+        <meta name="keywords" content={article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : '') || ''} />
         <meta name="author" content={article.author?.name || 'Unknown Author'} />
         <meta name="robots" content="index, follow" />
         <meta name="language" content="en-US" />
         <meta name="revisit-after" content="7 days" />
 
         <meta property="og:title" content={article.title} />
-        <meta property="og:description" content={article.meta_description || article.excerpt} />
+        <meta property="og:description" content={article.meta_description || article.excerpt || 'Article description'} />
         <meta property="og:type" content="article" />
         <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : ''} />
         <meta property="og:site_name" content="Your Site Name" />
@@ -320,14 +329,14 @@ export default function Page() {
           <meta property="article:modified_time" content={article.updated_at} />
         )}
         <meta property="article:author" content={article.author?.name || 'Unknown Author'} />
-        {article.category && <meta property="article:section" content={article.category} />}
+        {article.category && <meta property="article:section" content={typeof article.category === 'string' ? article.category : article.category.name} />}
         {article.tags && article.tags.map((tag, index) => (
-          <meta key={index} property="article:tag" content={tag} />
+          <meta key={index} property="article:tag" content={typeof tag === 'string' ? tag : tag.name} />
         ))}
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={article.title} />
-        <meta name="twitter:description" content={article.meta_description || article.excerpt} />
+        <meta name="twitter:description" content={article.meta_description || article.excerpt || 'Article description'} />
         <meta name="twitter:site" content="@YourTwitterHandle" />
         <meta name="twitter:creator" content="@YourTwitterHandle" />
         {article.featured_image && (
@@ -365,8 +374,8 @@ export default function Page() {
             {article.category && (
               <li>
                 <span className="mx-2">›</span>
-                <Link href={`/category/${article.category.toLowerCase()}`} className="hover:text-emerald-600">
-                  {article.category}
+                <Link href={`/category/${typeof article.category === 'string' ? article.category.toLowerCase() : article.category.slug}`} className="hover:text-emerald-600">
+                  {typeof article.category === 'string' ? article.category : article.category.name}
                 </Link>
               </li>
             )}
@@ -381,7 +390,7 @@ export default function Page() {
           {article.category && (
             <div className="mb-4">
               <span className="inline-block bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">
-                {article.category}
+                {typeof article.category === 'string' ? article.category : article.category.name}
               </span>
             </div>
           )}
@@ -391,7 +400,7 @@ export default function Page() {
           </h1>
 
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            {article.excerpt}
+            {article.excerpt || article.meta_description || 'No excerpt available'}
           </p>
 
           <div className="flex justify-center gap-6 text-gray-500 text-sm flex-wrap">
@@ -433,10 +442,10 @@ export default function Page() {
               {article.tags.map((tag, index) => (
                 <Link
                   key={index}
-                  href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/tags/${typeof tag === 'string' ? tag.toLowerCase().replace(/\s+/g, '-') : tag.slug}`}
                   className="inline-block bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-200 transition-colors"
                 >
-                  #{tag}
+                  #{typeof tag === 'string' ? tag : tag.name}
                 </Link>
               ))}
             </div>
@@ -477,14 +486,9 @@ export default function Page() {
           </div>
         )}
 
-        {/* <article
-          className="prose prose-lg max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100"
-          dangerouslySetInnerHTML={{ __html: article.content }}
-        /> */}
         <div id="article-content" className="prose prose-lg max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
           <MdPreview value={article.content} />
         </div>
-
 
         <div className="mt-16 p-6 bg-gray-50 rounded-xl border">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Continue Reading</h3>
@@ -493,8 +497,8 @@ export default function Page() {
               View All Articles
             </Link>
             {article.category && (
-              <Link href={`/category/${article.category.toLowerCase()}`} className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
-                More in {article.category}
+              <Link href={`/category/${typeof article.category === 'string' ? article.category.toLowerCase() : article.category.slug}`} className="inline-block bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition-colors">
+                More in {typeof article.category === 'string' ? article.category : article.category.name}
               </Link>
             )}
           </div>
@@ -634,21 +638,6 @@ export default function Page() {
             <span>{isBookmarked ? "Saved" : "Save"}</span>
           </button>
         </div>
-
-        {/* {process.env.NODE_ENV === 'development' && (
-          <div className="mt-8 p-4 bg-gray-100 rounded-lg">
-            <h3 className="font-bold mb-2">Debug Info:</h3>
-            <pre className="text-xs overflow-auto">
-              {JSON.stringify({
-                slug,
-                articleId: article.id,
-                authorId: article.author_id,
-                authorData: article.author,
-                readingProgress: Math.round(readingProgress)
-              }, null, 2)}
-            </pre>
-          </div>
-        )} */}
       </main>
     </>
   );

@@ -10,6 +10,7 @@ import { FeaturedArticle } from '@/components/FeaturedArticle';
 import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
 import LoadingLogoDefault from '@/components/Loading';
+import axios from 'axios';
 // import Navbar from '@/components/Navbar';
 // import Footer from '@/components/Footer';
 
@@ -34,9 +35,15 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     async function fetchPosts() {
-      
-      setLoading(false)
-    }
+        try {
+          const response = await axios.get('http://localhost:8000/blog/articles/');
+          console.log(response.data);
+          setPosts(response.data)
+        } catch (error) {
+          console.error(error);
+        }
+        setLoading(false)
+      }
 
     fetchPosts()
   }, [])

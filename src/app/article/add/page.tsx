@@ -5,31 +5,12 @@ import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { BlogPost, Tag } from '@/types';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
     loading: () => <div className="h-80 bg-gray-100 animate-pulse rounded">Loading editor...</div>
 });
-
-interface Tag {
-    id: number;
-    text: string;
-}
-
-interface BlogPost {
-    title: string;
-    content: string;
-    featuredImage?: File;
-    summary: string;
-    publishDate: string;
-    status: 'draft' | 'publish' | 'scheduled';
-    allowComments: boolean;
-    pageTitle: string;
-    metaDescription: string;
-    urlHandle: string;
-    tags: Tag[];
-    category?: string;
-}
 
 const Page: React.FC = () => {
     const router = useRouter();
