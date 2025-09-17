@@ -93,10 +93,9 @@ export default function Page() {
         setLoading(true);
         setError(null);
 
-        // Call the API service directly instead of using useApi hook
         const response = await getArticleBySlug(slug);
         console.log("Raw API response:", response);
-        
+
         // Check if the response has a data property or is the data itself
         const articleData = response?.data || response;
         console.log("Processed article data:", articleData);

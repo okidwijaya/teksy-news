@@ -3,7 +3,7 @@ import { error } from "console";
 import { headers } from "next/headers";
 
 const api = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API,
+    baseURL: process.env.NEXT_PUBLIC_API_CP,
     timeout: 35000,
     headers: {
         "Content-Type": "application/json",

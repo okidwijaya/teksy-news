@@ -36,9 +36,11 @@ const Home: React.FC = () => {
   useEffect(() => {
     async function fetchPosts() {
         try {
-          const response = await axios.get('http://localhost:8000/blog/articles/');
-          console.log(response.data);
-          setPosts(response.data)
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/all`);
+          console.log(response.data.result);
+
+        
+          setPosts(response.data.result)
         } catch (error) {
           console.error(error);
         }
@@ -52,7 +54,7 @@ const Home: React.FC = () => {
     ...article,
     author: {
       ...article.author,
-      id: typeof article.author.id === 'string' ? Number(article.author.id) : article.author.id,
+      id: typeof article.author === 'string' ? Number(article.author) : article.author,
     },
   }));
 
@@ -84,13 +86,13 @@ const Home: React.FC = () => {
                   <div className="mb-12 border-[#DDDDDD] flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
                     {posts.length > 0 && (<HeroArticle
                       imageUrl="/assets/placeholder-image.webp"
-                      author={posts[0].author.name}
+                      author={'Brian'}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       likes={2300}
                       comments={1000}
-                      writerName={posts[0].author.name}
-                      writerTitle={posts[0].author.name}
+                      writerName={'Brian'}
+                      writerTitle={'Brian'}
                       writerImage="/assets/placeholder-image.webp"
                       slug={posts[0].slug}
                     />)}
@@ -98,7 +100,7 @@ const Home: React.FC = () => {
                     <div>
                       {posts.length > 0 && (<FeaturedArticle
                         imageUrl="/assets/placeholder-image.webp"
-                        author={posts[1].author.name}
+                        author={'Brian'}
                         timeAgo={timeAgo(posts[1].published_at)}
                         title={posts[1].title}
                         slug={posts[1].slug}
@@ -109,7 +111,7 @@ const Home: React.FC = () => {
                           {posts.slice(2).map((item) => (
                             <ArticleListItem
                               key={item.id}
-                              author={item.author.name}
+                              author={'Brian'}
                               timeAgo={formatPublishDate(item.published_at)}
                               title={item.title}
                               slug={item.slug}
@@ -123,7 +125,7 @@ const Home: React.FC = () => {
                   <SectionHeader title="Recommended" />
                   <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#DDDDDD] my-4">
                     {posts.length > 0 && (<ArticleCard
-                      author={posts[0].author.name}
+                      author={'Brian'}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       excerpt={posts[0].meta_description}
@@ -141,7 +143,7 @@ const Home: React.FC = () => {
                       {posts.map((item) => (
                         <ArticleCard
                           key={item.id}
-                          author={item.author.name}
+                          author={'Brian'}
                           timeAgo={formatPublishDate(item.published_at)}
                           title={item.title}
                           date={formatPublishDate(item.published_at)}
@@ -160,7 +162,7 @@ const Home: React.FC = () => {
                       {posts.map((item) => (
                         <ArticleCard
                           key={item.id}
-                          author={item.author.name}
+                          author={'Brian'}
                           timeAgo={formatPublishDate(item.published_at)}
                           title={item.title}
                           date={formatPublishDate(item.published_at)}
@@ -179,7 +181,7 @@ const Home: React.FC = () => {
                   <SectionHeader title="Popular Now" />
                   <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
                     {posts.length > 0 && (<ArticleCard
-                      author={posts[0].author.name}
+                      author={'Brian'}
                       timeAgo={timeAgo(posts[0].published_at)}
                       title={posts[0].title}
                       imageUrl="/assets/placeholder-image.webp"
@@ -206,7 +208,7 @@ const Home: React.FC = () => {
                   <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
                     <div className="flex flex-col flex-wrap gap-4">
                       {posts.length > 0 && (<ArticleCard
-                        author={posts[0].author.name}
+                        author={'Brian'}
                         timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
                         excerpt={posts[0].meta_description}
