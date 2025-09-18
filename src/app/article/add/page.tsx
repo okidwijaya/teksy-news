@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 import { BlogPost, Tag } from '@/types';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
@@ -55,6 +55,8 @@ const Page: React.FC = () => {
                 const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
                 featuredImageUrl = url;
             }
+
+            console.log('Featured Image URL:', featuredImageUrl);
 
             const payload = {
                 title: formData.title,

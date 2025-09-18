@@ -31,7 +31,7 @@ const formatPublishDate = (date: string) => {
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  // const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchPosts() {

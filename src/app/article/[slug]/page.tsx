@@ -7,7 +7,7 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import { MdPreview } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
-import { getArticleBySlug } from "@/services/articleServices";
+// import { getArticleBySlug } from "@/services/articleServices";
 import axios from "axios";
 
 declare global {
@@ -249,6 +249,7 @@ export default function Page() {
       },
       "wordCount": article.content.replace(/<[^>]*>/g, '').split(/\s+/).length,
       "timeRequired": `PT${article.reading_time}M`,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       "keywords": article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : ''),
       "articleSection": typeof article.category === 'string' ? article.category : article.category?.name,
       "inLanguage": "en-US"
@@ -306,6 +307,7 @@ export default function Page() {
       <Head>
         <title>{article.title} | Your Site Name</title>
         <meta name="description" content={article.meta_description || article.excerpt || 'Article description'} />
+        {/* // eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <meta name="keywords" content={article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : '') || ''} />
         <meta name="author" content={article.author?.name || 'Unknown Author'} />
         <meta name="robots" content="index, follow" />
