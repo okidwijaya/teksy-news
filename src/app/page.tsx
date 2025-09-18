@@ -244,7 +244,7 @@ const Home: React.FC = () => {
                       More relevant to a tech news context, inviting readers to learn about trends, startups, gadgets, and AI.
                     </p>
                   </div>
-                  <Accordion items={accordionItems} />
+                  {/* <Accordion items={accordionItems} /> */}
                 </section>
               </section>
               <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
