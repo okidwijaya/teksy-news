@@ -1,6 +1,6 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import Accordion from '@/components/Accordion';
+// import Accordion from '@/components/Accordion';
 import AdCard from '@/components/AdsCard';
 import { ArticleListItem } from '@/components/ArticleListItem';
 import { ArticleCard } from '@/components/ArticleCard';
@@ -49,28 +49,28 @@ const Home: React.FC = () => {
     fetchPosts()
   }, [])
 
-  const mappedArticles = posts.map((article) => ({
-    ...article,
-    author: {
-      ...article.author,
-      id: typeof article.author === 'string' ? Number(article.author) : article.author,
-    },
-  }));
+  // const mappedArticles = posts.map((article) => ({
+  //   ...article,
+  //   author: {
+  //     ...article.author,
+  //     id: typeof article.author === 'string' ? Number(article.author) : article.author,
+  //   },
+  // }));
 
-  const accordionItems = [
-    {
-      title: "Web & Mobile Experience design",
-      articles: mappedArticles,
-    },
-    {
-      title: "3D design and animation",
-      articles: mappedArticles,
-    },
-    {
-      title: "Motion design and video",
-      articles: mappedArticles,
-    },
-  ];
+  // const accordionItems = [
+  //   {
+  //     title: "Web & Mobile Experience design",
+  //     articles: mappedArticles,
+  //   },
+  //   {
+  //     title: "3D design and animation",
+  //     articles: mappedArticles,
+  //   },
+  //   {
+  //     title: "Motion design and video",
+  //     articles: mappedArticles,
+  //   },
+  // ];
 
   // console.log(error)
 
