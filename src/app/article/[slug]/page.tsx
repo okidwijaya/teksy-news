@@ -8,6 +8,7 @@ import Link from "next/link";
 import { MdPreview } from 'md-editor-rt';
 import 'md-editor-rt/lib/style.css';
 import { getArticleBySlug } from "@/services/articleServices";
+import axios from "axios";
 
 declare global {
   interface Window {
@@ -77,6 +78,8 @@ export default function Page() {
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  // console.log('slug', slug)
+
   useEffect(() => {
     const fetchArticle = async () => {
       console.log("=== Starting fetchArticle ===");
@@ -93,11 +96,11 @@ export default function Page() {
         setLoading(true);
         setError(null);
 
-        const response = await getArticleBySlug(slug);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/article/${slug}`);
         console.log("Raw API response:", response);
 
         // Check if the response has a data property or is the data itself
-        const articleData = response?.data || response;
+        const articleData = response?.data.result[0] || response;
         console.log("Processed article data:", articleData);
 
         if (!articleData) {

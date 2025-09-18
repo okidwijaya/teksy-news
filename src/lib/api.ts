@@ -1,6 +1,6 @@
 import axios from "axios";
-import { error } from "console";
-import { headers } from "next/headers";
+// import { error } from "console";
+// import { headers } from "next/headers";
 
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_CP,

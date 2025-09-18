@@ -13,7 +13,7 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
 });
 
 const Page: React.FC = () => {
-    const router = useRouter();
+    // const router = useRouter();
 
     const [formData, setFormData] = useState<BlogPost>({
         title: '',
@@ -66,18 +66,39 @@ const Page: React.FC = () => {
                 metaDescription: formData.metaDescription,
                 urlHandle: formData.urlHandle,
                 tags: tags.map((tag) => tag.text),
-                featured_image: featuredImageUrl,
+                featured_image: '',
                 category: formData.category || 'Uncategorized'
             };
 
-            const res = await fetch('/api/article', {
+            // const payload = {
+            //     title: formData.title,
+            //     content: formData.content,
+            //     summary: formData.summary,
+            //     publishDate: formData.publishDate,
+            //     status: formData.status,
+            //     pageTitle: formData.pageTitle,
+            //     metaDescription: formData.metaDescription,
+            //     urlHandle: formData.urlHandle,
+            //     tags: tags.map((tag) => tag.text),
+            //     featured_image: featuredImageUrl,
+            //     category: formData.category || 'Uncategorized'
+            // };
+
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/articles/all`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                credentials: 'include',
                 body: JSON.stringify(payload),
             });
+            // const res = await fetch('/api/article', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     credentials: 'include',
+            //     body: JSON.stringify(payload),
+            // });
 
             if (!res.ok) {
                 const errorData = await res.json();

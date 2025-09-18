@@ -36,10 +36,9 @@ const Home: React.FC = () => {
   useEffect(() => {
     async function fetchPosts() {
         try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/all`);
-          console.log(response.data.result);
-
-        
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/articles/all`);
+          console.log('all', response.data.result);
+          console.log('all res', response);
           setPosts(response.data.result)
         } catch (error) {
           console.error(error);
@@ -73,7 +72,7 @@ const Home: React.FC = () => {
     },
   ];
 
-  console.log(error)
+  // console.log(error)
 
   return (
     <div className="bg-[#F9FAFB] text-[#121212]">

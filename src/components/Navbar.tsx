@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import logo from "../../public/logo.svg"
-import { Category } from "@/lib/getCategories"; 
+import { Category } from "@/lib/getCategories";
+import axios from "axios";
 
 
 export default function Navbar() {
@@ -22,17 +23,17 @@ export default function Navbar() {
     };
 
     useEffect(() => {
-        // const fetchCategories = async () => {
-        //     try {
-        //         const res = await fetch("/api/categories");
-        //         const result = await res.json();
-        //         setCategories(result.data);
-        //     } catch (err) {
-        //         console.error("Failed to load categories", err);
-        //     }
-        // };
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/articles/categories`);
+                console.log('categories', response);
+                setCategories(response.data.result);
+            } catch (err) {
+                console.error("Failed to load categories", err);
+            }
+        };
 
-        // fetchCategories();
+        fetchCategories();
     }, []);
 
 
@@ -55,7 +56,7 @@ export default function Navbar() {
             style={{
                 transform: navbarHidden ? "translateY(-140%)" : "translateY(0)",
             }}
-            >
+        >
             <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
 
