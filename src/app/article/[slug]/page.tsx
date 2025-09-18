@@ -307,7 +307,7 @@ export default function Page() {
       <Head>
         <title>{article.title} | Your Site Name</title>
         <meta name="description" content={article.meta_description || article.excerpt || 'Article description'} />
-        {/* // eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+        {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
         <meta name="keywords" content={article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : '') || ''} />
         <meta name="author" content={article.author?.name || 'Unknown Author'} />
         <meta name="robots" content="index, follow" />
