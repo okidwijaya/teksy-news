@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import './globals.css'
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Teksy News",
+  title: "Kickstart Ideas, Transform Applications",
   description: "Stay Updated and Catch it up",
   icons: {
     icon: 'logo.svg'

@@ -6,8 +6,6 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { MdPreview } from 'md-editor-rt';
-import 'md-editor-rt/lib/style.css';
-// import { getArticleBySlug } from "@/services/articleServices";
 import axios from "axios";
 
 declare global {
@@ -16,7 +14,6 @@ declare global {
   }
 }
 
-// Local Article type definition to handle both possible API response structures
 interface ArticleData {
   id: string;
   title: string;
@@ -35,13 +32,11 @@ interface ArticleData {
   views?: number;
   is_featured?: boolean;
   created_at?: string;
-  // Category can be either string or object depending on API response
   category?: string | {
     id?: string;
     name: string;
     slug?: string;
   } | null;
-  // Tags can be either string array or object array
   tags?: string[] | Array<{
     id: string;
     name: string;
@@ -78,15 +73,10 @@ export default function Page() {
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  // console.log('slug', slug)
 
   useEffect(() => {
     const fetchArticle = async () => {
-      console.log("=== Starting fetchArticle ===");
-      console.log("Slug value:", slug);
-
       if (!slug || slug === '') {
-        console.log("No slug provided, stopping loading");
         setLoading(false);
         setError("No article slug provided");
         return;
@@ -96,20 +86,15 @@ export default function Page() {
         setLoading(true);
         setError(null);
 
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/article/${slug}`);
-        console.log("Raw API response:", response);
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/article/${slug}`);
 
-        // Check if the response has a data property or is the data itself
         const articleData = response?.data.result[0] || response;
-        console.log("Processed article data:", articleData);
 
         if (!articleData) {
-          console.log("No article found in response");
           setError("Article not found");
           return;
         }
 
-        console.log("Article found, setting data...");
         setArticle(articleData);
 
         if (typeof window !== 'undefined' && window.gtag) {
@@ -121,11 +106,9 @@ export default function Page() {
         }
 
       } catch (err) {
-        console.error("Catch block error:", err);
         const errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
         setError(`An unexpected error occurred: ${errorMessage}`);
       } finally {
-        console.log("=== Finishing fetchArticle - setting loading to false ===");
         setLoading(false);
       }
     };
@@ -249,7 +232,6 @@ export default function Page() {
       },
       "wordCount": article.content.replace(/<[^>]*>/g, '').split(/\s+/).length,
       "timeRequired": `PT${article.reading_time}M`,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       "keywords": article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : ''),
       "articleSection": typeof article.category === 'string' ? article.category : article.category?.name,
       "inLanguage": "en-US"

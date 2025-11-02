@@ -35,8 +35,6 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
       const handleClick = (id:string) => {
         router.push(`/article/${id}`);
       };
-
-      console.log(timeAgo)
     return (
         <div className={`w-full max-w-full lg:max-w-xl bg-white rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
             <div className="relative w-full h-[400px] md:h-full">

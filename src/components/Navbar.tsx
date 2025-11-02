@@ -2,10 +2,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../../public/logo.svg"
+// import logo from "../../public/logo.svg"
+import logo from "@/public/assets/navbarlogo.svg";
 import { Category } from "@/lib/getCategories";
 import axios from "axios";
-
 
 export default function Navbar() {
     const [categories, setCategories] = useState<Category[]>([]);
@@ -25,8 +25,7 @@ export default function Navbar() {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await axios.get(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/articles/categories`);
-                console.log('categories', response);
+                const response = await axios.get(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/categories`);
                 setCategories(response.data.result);
             } catch (err) {
                 console.error("Failed to load categories", err);
@@ -66,10 +65,10 @@ export default function Navbar() {
                             className="text-2xl w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                         >
                             <Image
-                                src={logo}
+                                src="/assets/navbarlogo.svg"
                                 alt="Teksy"
-                                width={24}
-                                height={24}
+                                width={150}
+                                height={32}
                                 priority
                             />
                         </Link>

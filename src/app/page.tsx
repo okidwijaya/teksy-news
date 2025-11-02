@@ -1,7 +1,6 @@
 "use client"
-import React, { useEffect, useState } from 'react';
-// import Accordion from '@/components/Accordion';
 import AdCard from '@/components/AdsCard';
+import React, { useEffect, useState } from 'react';
 import { ArticleListItem } from '@/components/ArticleListItem';
 import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -11,8 +10,6 @@ import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
 import LoadingLogoDefault from '@/components/Loading';
 import axios from 'axios';
-// import Navbar from '@/components/Navbar';
-// import Footer from '@/components/Footer';
 
 
 const formatPublishDate = (date: string) => {
@@ -31,48 +28,20 @@ const formatPublishDate = (date: string) => {
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
-  // const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     async function fetchPosts() {
-        try {
-          const response = await axios.get(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/articles/all`);
-          console.log('all', response.data.result);
-          console.log('all res', response);
-          setPosts(response.data.result)
-        } catch (error) {
-          console.error(error);
-        }
-        setLoading(false)
+      try {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/all`);
+        setPosts(response.data.result)
+      } catch (error) {
+        console.error(error);
       }
+      setLoading(false)
+    }
 
     fetchPosts()
   }, [])
-
-  // const mappedArticles = posts.map((article) => ({
-  //   ...article,
-  //   author: {
-  //     ...article.author,
-  //     id: typeof article.author === 'string' ? Number(article.author) : article.author,
-  //   },
-  // }));
-
-  // const accordionItems = [
-  //   {
-  //     title: "Web & Mobile Experience design",
-  //     articles: mappedArticles,
-  //   },
-  //   {
-  //     title: "3D design and animation",
-  //     articles: mappedArticles,
-  //   },
-  //   {
-  //     title: "Motion design and video",
-  //     articles: mappedArticles,
-  //   },
-  // ];
-
-  // console.log(error)
 
   return (
     <div className="bg-[#F9FAFB] text-[#121212]">
@@ -244,7 +213,7 @@ const Home: React.FC = () => {
                       More relevant to a tech news context, inviting readers to learn about trends, startups, gadgets, and AI.
                     </p>
                   </div>
-                  {/* <Accordion items={accordionItems} /> */}
+                  
                 </section>
               </section>
               <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">

@@ -4,7 +4,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
-// import { useRouter } from 'next/navigation';
 import { BlogPost, Tag } from '@/types';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
@@ -13,7 +12,6 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
 });
 
 const Page: React.FC = () => {
-    // const router = useRouter();
 
     const [formData, setFormData] = useState<BlogPost>({
         title: '',
@@ -56,8 +54,6 @@ const Page: React.FC = () => {
                 featuredImageUrl = url;
             }
 
-            console.log('Featured Image URL:', featuredImageUrl);
-
             const payload = {
                 title: formData.title,
                 content: formData.content,
@@ -72,35 +68,14 @@ const Page: React.FC = () => {
                 category: formData.category || 'Uncategorized'
             };
 
-            // const payload = {
-            //     title: formData.title,
-            //     content: formData.content,
-            //     summary: formData.summary,
-            //     publishDate: formData.publishDate,
-            //     status: formData.status,
-            //     pageTitle: formData.pageTitle,
-            //     metaDescription: formData.metaDescription,
-            //     urlHandle: formData.urlHandle,
-            //     tags: tags.map((tag) => tag.text),
-            //     featured_image: featuredImageUrl,
-            //     category: formData.category || 'Uncategorized'
-            // };
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/api/v1/blog/articles/all`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/all`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(payload),
             });
-            // const res = await fetch('/api/article', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     credentials: 'include',
-            //     body: JSON.stringify(payload),
-            // });
 
             if (!res.ok) {
                 const errorData = await res.json();
@@ -264,13 +239,6 @@ const Page: React.FC = () => {
     const getTagInputCount = () => tagInput.length;
 
     const handleLogout = async () => {
-        // const { error } = await 
-        // if (error) {
-        //     console.error('Logout failed:', error.message);
-        // } else {
-        //     router.refresh();
-        //     router.push('/');
-        // }
     };
 
     return (

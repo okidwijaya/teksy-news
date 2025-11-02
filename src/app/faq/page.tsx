@@ -1,41 +1,7 @@
 'use client'
 import React from 'react'
-// import Accordion from '@/components/Accordion'
-// import { Article } from '@/types';
 
 export default function Page() {
-    // const [posts, setPosts] = useState<Article[]>([])
-    // const [loading, setLoading] = useState(true)
-    // const [error, setError] = useState<string | null>(null)
-
-    // useEffect(() => {
-      
-    // }, [])
-
-    // const mappedArticles = posts.map((article) => ({
-    //     ...article,
-    //     author: {
-    //         ...article.author,
-    //         id: typeof article.author.id === 'string' ? Number(article.author.id) : article.author.id,
-    //     },
-    // }));
-
-    // const accordionItems = [
-    //     {
-    //         title: "Web & Mobile Experience design",
-    //         articles: mappedArticles,
-    //     },
-    //     {
-    //         title: "3D design and animation",
-    //         articles: mappedArticles,
-    //     },
-    //     {
-    //         title: "Motion design and video",
-    //         articles: mappedArticles,
-    //     },
-    // ];
-
-    // console.log('posts', posts, loading, error)
 
     return (
         <>

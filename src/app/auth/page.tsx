@@ -1,7 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-// import { login } from '@/lib/auth';
 import LoadingLogoDefault from '@/components/Loading';
 import Link from 'next/link';
 
@@ -45,7 +44,6 @@ export default function Page() {
         e.preventDefault();
         setIsAuthLoading(true);
         try {
-            // const result = await login(email, password);
             localStorage.setItem("userSessionTeksy", JSON.stringify('dummy_token'));
             setTimeout(() => {
                 setIsAuthLoading(true);
