@@ -48,10 +48,10 @@ const Page: React.FC = () => {
         try {
             setIsSubmitting(true);
 
-            // let featuredImageUrl = '';
+            let featuredImageUrl = '';
             if (formData.featuredImage) {
-                const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
-                // featuredImageUrl = url;
+                const uploadRes = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
+                featuredImageUrl = uploadRes.url;
             }
 
             const payload = {
@@ -64,7 +64,7 @@ const Page: React.FC = () => {
                 metaDescription: formData.metaDescription,
                 urlHandle: formData.urlHandle,
                 tags: tags.map((tag) => tag.text),
-                featured_image: '',
+                featured_image: featuredImageUrl,
                 category: formData.category || 'Uncategorized'
             };
 
@@ -102,7 +102,7 @@ const Page: React.FC = () => {
             alert('Article created successfully!');
 
         } catch (error) {
-            console.error('Submit error:', error);
+            // console.error('Submit error:', error);
             alert('Error creating article: ' + (error instanceof Error ? error.message : 'Unknown error'));
         } finally {
             setIsSubmitting(false);
