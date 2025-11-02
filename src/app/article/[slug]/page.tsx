@@ -232,7 +232,7 @@ export default function Page() {
       },
       "wordCount": article.content.replace(/<[^>]*>/g, '').split(/\s+/).length,
       "timeRequired": `PT${article.reading_time}M`,
-      "keywords": article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? article.tags.join(', ') : article.tags.map((tag: any) => tag.name).join(', ')) : ''),
+      "keywords": article.keywords || (Array.isArray(article.tags) ? (typeof article.tags[0] === 'string' ? (article.tags as string[]).join(', ') : (article.tags as Array<{ name: string }>).map(tag => tag.name).join(', ')) : ''),
       "articleSection": typeof article.category === 'string' ? article.category : article.category?.name,
       "inLanguage": "en-US"
     };

@@ -48,10 +48,10 @@ const Page: React.FC = () => {
         try {
             setIsSubmitting(true);
 
-            let featuredImageUrl = '';
+            // let featuredImageUrl = '';
             if (formData.featuredImage) {
                 const { url } = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
-                featuredImageUrl = url;
+                // featuredImageUrl = url;
             }
 
             const payload = {
