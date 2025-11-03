@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import LoadingLogo from "../../public/loading-logo.svg"
+import LoadingLogo from "../../public/loading-kita.svg"
 
 export default function LoadingLogoDefault() {
     return (

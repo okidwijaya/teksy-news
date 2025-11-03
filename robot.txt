@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive or duplicate pages
+Disallow: /inventory/dashboard
+Disallow: /inventory/login
+Disallow: /inventory/register
+
+# Sitemap location
+Sitemap: https://www.kitadevelopers.com/sitemap.xml

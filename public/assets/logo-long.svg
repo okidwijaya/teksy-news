@@ -1,0 +1,66 @@
+<svg viewBox="0 0 400 90" xmlns="http://www.w3.org/2000/svg">
+    <!-- Background gradient -->
+    <defs>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563eb;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#1d4ed8;stop-opacity:1" />
+        </linearGradient>
+        <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d97706;stop-opacity:1" />
+        </linearGradient>
+
+        <!-- Shadow for depth -->
+        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.3" />
+        </filter>
+    </defs>
+
+    <!-- Main logo background with rounded corners -->
+    <rect x="5" y="5" width="390" height="80" rx="12" fill="url(#bgGradient)" filter="url(#shadow)" />
+
+    <!-- Newspaper icon -->
+    <g transform="translate(25, 18)">
+        <!-- Paper base -->
+        <rect x="0" y="0" width="38" height="50" rx="3" fill="white" opacity="0.95" />
+
+        <!-- Orange header bar -->
+        <rect x="3" y="5" width="32" height="4" rx="2" fill="url(#accentGradient)" />
+
+        <!-- Content lines with varying widths -->
+        <rect x="3" y="12" width="20" height="2" rx="1" fill="#d1d5db" />
+        <rect x="3" y="17" width="28" height="2" rx="1" fill="#d1d5db" />
+        <rect x="3" y="22" width="18" height="2" rx="1" fill="#d1d5db" />
+        <rect x="3" y="27" width="30" height="2" rx="1" fill="#d1d5db" />
+        <rect x="3" y="32" width="24" height="2" rx="1" fill="#d1d5db" />
+        <rect x="3" y="37" width="26" height="2" rx="1" fill="#d1d5db" />
+        <rect x="3" y="42" width="20" height="2" rx="1" fill="#d1d5db" />
+    </g>
+
+    <!-- Main text "KITA" -->
+    <text x="85" y="55" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="bold"
+        fill="white" letter-spacing="-1">
+        KITA
+    </text>
+
+    <!-- Accent dot separator -->
+    <circle cx="218" cy="42" r="5" fill="url(#accentGradient)" />
+
+    <!-- Tagline text -->
+    <text x="235" y="38" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="500"
+        fill="white" opacity="0.95">
+        Kickstart Ideas
+    </text>
+    <text x="235" y="53" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="500"
+        fill="white" opacity="0.95">
+        Transform Applications
+    </text>
+
+    <!-- Decorative border -->
+    <rect x="5" y="5" width="390" height="80" rx="12" fill="none" stroke="rgba(255,255,255,0.15)"
+        stroke-width="1.5" />
+
+    <!-- Inner glow effect -->
+    <rect x="6.5" y="6.5" width="387" height="77" rx="11" fill="none"
+        stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+</svg>

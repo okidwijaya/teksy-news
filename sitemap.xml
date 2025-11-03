@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+    <url><loc>https://www.kitadevelopers.com/</loc></url>
+    <url><loc>https://www.kitadevelopers.com/about</loc></url>
+    <url><loc>https://www.kitadevelopers.com/services</loc></url>
+    <url><loc>https://www.kitadevelopers.com/portfolio</loc></url>
+    <url><loc>https://www.kitadevelopers.com/contact</loc></url>
+
+    <!-- Inventory SaaS -->
+    <url><loc>https://www.kitadevelopers.com/inventory</loc></url>
+    <url><loc>https://www.kitadevelopers.com/inventory/features</loc></url>
+    <url><loc>https://www.kitadevelopers.com/inventory/pricing</loc></url>
+    <url><loc>https://www.kitadevelopers.com/inventory/login</loc></url>
+    <url><loc>https://www.kitadevelopers.com/inventory/register</loc></url>
+    <url><loc>https://www.kitadevelopers.com/inventory/dashboard</loc></url>
+
+    <!-- Blog -->
+    <url><loc>https://www.kitadevelopers.com/blog</loc></url>
+    <url><loc>https://www.kitadevelopers.com/blog/inventory-tips-for-small-business</loc></url>
+    <url><loc>https://www.kitadevelopers.com/blog/why-web-agency-should-offer-saas</loc></url>
+
+    <!-- Legal -->
+    <url><loc>https://www.kitadevelopers.com/privacy-policy</loc></url>
+    <url><loc>https://www.kitadevelopers.com/terms-of-service</loc></url>
+    <url><loc>https://www.kitadevelopers.com/faq</loc></url>
+</urlset>

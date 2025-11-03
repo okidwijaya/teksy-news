@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 // import logo from "@/public/assets/navbarlogo.svg";
+import logo from "../../public/final-logo.svg";
 import { Category } from "@/lib/getCategories";
 import axios from "axios";
 
@@ -64,9 +65,9 @@ export default function Navbar() {
                             className="text-2xl w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                         >
                             <Image
-                                src="/assets/navbarlogo.svg"
+                                src={logo}
                                 alt="Teksy"
-                                width={150}
+                                width={32}
                                 height={32}
                                 priority
                             />

@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "Kickstart Ideas, Transform Applications",
   description: "Stay Updated and Catch it up",
   icons: {
-    icon: 'logo.svg'
+    icon: 'final-logo.svg'
   }
 };
 
