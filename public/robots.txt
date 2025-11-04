@@ -1,0 +1,14 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /auth
+Disallow: /article/add
+Disallow: /api
+Disallow: /_next
+
+# Host
+Host: https://www.kitadevelopers.com
+
+# Sitemaps
+Sitemap: https://www.kitadevelopers.com/sitemap.xml
+Sitemap: https://www.kitadevelopers.com/api/sitemap
