@@ -8,7 +8,7 @@ interface BlogPost {
   updatedAt?: string;
 }
 
-const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_SITE_URL || 
+const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_API_CP || 
   (process.env.NODE_ENV === 'development' 
     ? 'http://localhost:3000'
     : 'https://www.kitadevelopers.com');
