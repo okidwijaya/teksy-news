@@ -8,9 +8,10 @@ interface BlogPost {
   updatedAt?: string;
 }
 
-const DEFAULT_DOMAIN = process.env.NODE_ENV === 'development' 
-  ? 'http://localhost:3000'
-  : 'https://www.kitadevelopers.com';
+const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_SITE_URL || 
+  (process.env.NODE_ENV === 'development' 
+    ? 'http://localhost:3000'
+    : 'https://www.kitadevelopers.com');
 
 export async function GET() {
   try {
