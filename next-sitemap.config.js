@@ -5,6 +5,8 @@ module.exports = {
   changefreq: 'daily',
   priority: 0.7,
   sitemapSize: 7000,
+  generateIndexSitemap: false, // Disable index sitemap as we're handling it manually
+  outDir: 'public',
   exclude: [
     '/auth',
     '/article/add',
