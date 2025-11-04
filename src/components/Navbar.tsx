@@ -156,7 +156,31 @@ export default function Navbar() {
                     </div>
                 </div>
 
-                <div className="hidden lg:hidden items-center space-x-8 pt-4 pb-6">
+                <div className="lg:hidden items-center space-x-8 pt-4 pb-6">
+                    <Link
+                        href="/services"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                    >
+                        Service
+                    </Link>
+                    <Link
+                        href="/pricing"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                    >
+                        Pricing
+                    </Link>
+                    <Link
+                        href="/portfolio"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                    >
+                        Portofolio
+                    </Link>
+                    <Link
+                        href="/about"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                    >
+                        About
+                    </Link>
                     {categories.map((parent) => (
                         <div key={parent.id} className="group relative mx-auto w-full text-center">
                             {Array.isArray(parent.children) && parent.children.length > 0 ?
@@ -186,7 +210,7 @@ export default function Navbar() {
                     ))}
                 </div>
             </div>
-            
+
             <div id="mobileMenu" className={`lg:hidden ${mobileMenuOpen ? "" : "hidden"} bg-[#121212] border-t border-gray-100`}>
                 <div className="px-4 pt-2 pb-3 space-y-1">
 
