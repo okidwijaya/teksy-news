@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 export default function Page() {
   // const [showBanner, setShowBanner] = useState(true);
 
@@ -137,7 +135,7 @@ export default function Page() {
 
           <div className="max-w-2xl mx-auto mt-12 text-center">
             <p className="text-white text-lg mb-6">
-              Need a custom solution? Let's discuss your project requirements.
+              Need a custom solution? Lets discuss your project requirements.
             </p>
             <button className="bg-white text-[#121212] px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all hover:-translate-y-1">
               Schedule Free Consultation

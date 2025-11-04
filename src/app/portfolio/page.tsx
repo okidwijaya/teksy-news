@@ -249,7 +249,7 @@ export default function Page() {
             Ready to Start Your Project?
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Let's create something amazing together. Schedule a free consultation to discuss your ideas.
+            Lets create something amazing together. Schedule a free consultation to discuss your ideas.
           </p>
           <button className="bg-black text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-800 transition-all hover:shadow-xl inline-flex items-center gap-2">
             Get Started Today

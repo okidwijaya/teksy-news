@@ -76,7 +76,7 @@ export default function Page() {
               Kickstart Ideas,<br />Transform Applications
             </h1>
             <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-              We're a passionate team of developers, designers, and innovators dedicated to turning your boldest ideas into powerful digital solutions.
+              Were a passionate team of developers, designers, and innovators dedicated to turning your boldest ideas into powerful digital solutions.
             </p>
           </div>
 
@@ -105,7 +105,7 @@ export default function Page() {
               We exist to bridge the gap between ambitious ideas and successful digital products. Every day, we help businesses transform their vision into scalable, user-friendly applications that drive real growth.
             </p>
             <p className="text-lg text-gray-600 leading-relaxed">
-              From startups launching their first MVP to enterprises scaling their operations, we provide the technical expertise and strategic guidance needed to succeed in today's digital landscape.
+              From startups launching their first MVP to enterprises scaling their operations, we provide the technical expertise and strategic guidance needed to succeed in today s digital landscape.
             </p>
           </div>
           <div className="bg-[#F96E2A] rounded-3xl p-8 md:p-12">
@@ -169,8 +169,8 @@ export default function Page() {
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-[#F7F7F7] to-[#121212] hidden md:block"></div>
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
-                <div key={index} className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'} text-left`}>
+                <div key={index} className={`flex items-center gap-8 ${index % 2 === 0 ?  'md:flex-row ' :  'md:flex-row-reverse '}`}>
+                  <div className={`flex-1 ${index % 2 === 0 ?  'md:text-right' : 'md:text-left'} text-left`}>
                     <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
                       <div className="text-3xl font-bold text-[#121212] mb-2">{milestone.year}</div>
                       <h3 className="text-xl font-bold text-gray-900 mb-2">{milestone.title}</h3>
@@ -190,7 +190,7 @@ export default function Page() {
             Ready to Transform Your Idea?
           </h2>
           <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-            Let's discuss how we can help you build something extraordinary. Schedule a free consultation with our team today.
+            Lets discuss how we can help you build something extraordinary. Schedule a free consultation with our team today.
           </p>
           <button className="bg-white text-[#121212] px-8 py-4 rounded-full font-bold text-lg hover:shadow-xl transition-all hover:-translate-y-1">
             Start Your Project
