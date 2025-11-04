@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  trailingSlash: true,
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -12,13 +14,13 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "randomuser.me",
         pathname: "/**",
-      }
+      },
     ],
   },
   webpack(config) {
     config.module.rules.push({
       test: /\.(webp)$/i,
-      type: 'asset/resource',
+      type: "asset/resource",
     });
     return config;
   },
