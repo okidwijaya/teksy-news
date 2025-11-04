@@ -50,12 +50,13 @@ export default function Navbar() {
     return (
         <nav
             id="navbar"
-            className={`bg-[#121212] text-[#E5E7EB] border-b border-b-[#EEEEEE] transition-all duration-300 z-50 ${navbarFixed ? "lg:max-w-[1240px] lg:mx-auto lg:rounded-4xl fixed top-0 left-0 right-0 lg:mt-2" : "relative"
+            className={`bg-[#121212] text-[#E5E7EB] transition-all duration-300 z-50 ${navbarFixed ? "lg:max-w-[920px] lg:mx-auto lg:rounded-4xl border border-[#EEEEEE] fixed top-0 left-0 right-0 lg:mt-2" : "relative"
                 }`}
             style={{
                 transform: navbarHidden ? "translateY(-140%)" : "translateY(0)",
             }}
         >
+            {/* border-b border-b-[#EEEEEE] */}
             <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
 
@@ -66,14 +67,39 @@ export default function Navbar() {
                         >
                             <Image
                                 src={logo}
-                                alt="Teksy"
+                                alt="KITA DEV"
                                 width={32}
                                 height={32}
                                 priority
                             />
                         </Link>
 
-                        <div className="hidden lg:flex items-center space-x-8 p-4 gap-4">
+                        <div className="hidden lg:flex items-center p-4 gap-0 uppercase">
+                            <Link
+                                href={`/services`}
+                                className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            >
+                                Service
+                            </Link>
+                            <Link
+                                href={`/pricing`}
+                                className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            >
+                                Pricing
+                            </Link>
+                            <Link
+                                href={`/portfolio`}
+                                className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            >
+                                Portofolio
+                            </Link>
+                            <Link
+                                href={`/about`}
+                                className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            >
+                                About
+                            </Link>
+
                             {categories.map((parent) => (
                                 <div key={parent.id} className="group relative mx-auto w-full text-center">
                                     {Array.isArray(parent.children) && parent.children.length > 0 ?
@@ -104,16 +130,16 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="hidden md:flex items-center space-x-4">
-                        <div className="relative group hover:border border-[#DDDDDD] rounded-2xl">
+                    <div className="hidden md:flex items-center space-x-2">
+                        <div className="relative group hover:border border-[#DDDDDD] rounded-md">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-2 border border-gray-300 rounded-2xl focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-64" />
+                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
                         </div>
-                        <Link href="#" className="bg-[#FF6000] text-[#121212] px-4 py-2 rounded-2xl hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Subscribe</Link>
+                        <Link href="/contact-us" className="bg-[#FF6000] text-[#121212] px-2 py-1 rounded-md hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Contact</Link>
                     </div>
 
                     <div className="lg:hidden">
@@ -160,7 +186,7 @@ export default function Navbar() {
                     ))}
                 </div>
             </div>
-            {/* Mobile Menu */}
+            
             <div id="mobileMenu" className={`lg:hidden ${mobileMenuOpen ? "" : "hidden"} bg-[#121212] border-t border-gray-100`}>
                 <div className="px-4 pt-2 pb-3 space-y-1">
 
@@ -216,9 +242,12 @@ export default function Navbar() {
                         </div>
                     ))}
 
-                    <div className="pt-3 border-t border-gray-100 mt-3">
-                        <Link href="#" className="block w-full bg-[#F96E2A] text-white text-center px-4 py-2 rounded-lg font-medium hover:bg-[#F96E2A] transition-colors duration-200">
-                            Subscribe to Newsletter
+                    <div className="pt-3 border-t border-gray-100 mt-3 grid grid-cols-[1fr_auto] gap-1">
+                        <Link href="#" className="w-full bg-[#F96E2A] text-white text-center px-4 py-2 rounded-lg font-bold uppercase flex flex-col items-center justify-center hover:bg-[#F96E2A] transition-colors duration-200">
+                            Subscribe our Newsletter
+                        </Link>
+                        <Link href="#" className="w-full bg-[#F96E2A] text-white text-center px-4 py-2 rounded-lg font-bold uppercase flex flex-col items-center justify-center hover:bg-[#F96E2A] transition-colors duration-200">
+                            Contact
                         </Link>
                     </div>
                 </div>

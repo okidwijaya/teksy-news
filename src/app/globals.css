@@ -18,13 +18,24 @@
     --foreground: #ededed;
   }
 
-  Link{
+  Link {
     color: #ffffff;
   }
 }
 
+/* --- Custom Keyframes --- */
+@keyframes flipX {
+  0%,
+  100% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(180deg);
+  }
+}
+
 body {
-  background: #CBDCEB;
+  background: #cbdceb;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -34,10 +45,15 @@ body {
   @apply bg-white text-gray-800;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   @apply font-bold;
 }
 
 a {
-  @apply  hover:underline cursor-pointer;
+  @apply hover:underline cursor-pointer;
 }

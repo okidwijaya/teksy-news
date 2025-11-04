@@ -6,14 +6,12 @@ import Link from 'next/link';
 export default function NotFound() {
     return (
         <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-purple-700 flex items-center justify-center">
-            {/* Background Shapes */}
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute -top-24 -left-24 w-72 h-72 bg-white/10 rounded-full animate-float" />
                 <div className="absolute -bottom-12 right-24 w-48 h-48 bg-white/10 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-float-delayed" />
                 <div className="absolute top-1/2 -right-16 w-36 h-36 bg-white/10 rounded-full animate-float-slow" />
             </div>
 
-            {/* Floating Icons */}
             <div className="absolute top-[20%] left-[10%] text-4xl opacity-30 animate-bounce-slow">
                 💡
             </div>
@@ -24,35 +22,28 @@ export default function NotFound() {
                 ⚡
             </div>
 
-            {/* Main Content */}
             <div className="relative z-10 text-center px-8 max-w-2xl">
-                {/* Logo */}
                 <div className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-[0.15em]">
                     KITA
                 </div>
 
-                {/* Tagline */}
                 <div className="text-sm md:text-base text-white/80 mb-8 tracking-wider">
                     Kickstart Ideas, Transform Applications
                 </div>
 
-                {/* 404 Error Code */}
                 <div className="text-8xl md:text-[10rem] font-black text-white leading-none mb-4 animate-glitch drop-shadow-[0_10px_30px_rgba(0,0,0,0.3)]">
                     404
                 </div>
 
-                {/* Heading */}
                 <h1 className="text-3xl md:text-4xl font-semibold text-white mb-4">
                     Oops! Page Not Found
                 </h1>
 
-                {/* Description */}
                 <p className="text-lg md:text-xl text-white/90 leading-relaxed mb-10">
                     The page you&apos;re looking for seems to have wandered off.
                     Don&apos;t worry, even the best ideas sometimes take unexpected turns!
                 </p>
 
-                {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                     <Link
                         href="/"

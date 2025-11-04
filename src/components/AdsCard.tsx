@@ -9,7 +9,7 @@ export default function AdCard({ gradient }: AdCardProps) {
     return (
         <div
             className={`w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] ${gradient
-                    ? "bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"
+                    ? "bg-gradient-to-r via-[#FF9013] from-[#121212] to-[#ededed]"
                     : "bg-[#121212]"
                 } p-6 flex flex-col items-center justify-between text-white rounded-2xl`}
         >
