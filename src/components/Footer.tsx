@@ -22,30 +22,29 @@ export default function Footer() {
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Pages</h4>
                             <ul className="space-y-1">
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Explore</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">News</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Culture</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Sustainability</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Connexions</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Inspire</Link></li>
+                                <li><Link href="/blogs" className="hover:text-[#1C1C1C]">News</Link></li>
+                                <li><Link href="/service" className="hover:text-[#1C1C1C]">Service</Link></li>
+                                <li><Link href="/pricing" className="hover:text-[#1C1C1C]">Pricing</Link></li>
+                                <li><Link href="/portofolio" className="hover:text-[#1C1C1C]">Portofolio</Link></li>
+                                {/* <li><Link href="#" className="hover:text-[#1C1C1C]">Demo</Link></li> */}
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Socials</h4>
                             <ul className="space-y-1">
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Twitter</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Instagram</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">LinkedIn</Link></li>
-                                <li><Link href="#" className="hover:text-[#1C1C1C]">Facebook</Link></li>
+                                <li><Link href="x.com/kitadevelopers" className="hover:text-[#1C1C1C]">Twitter</Link></li>
+                                <li><Link href="instagram.com/kitadevelopers" className="hover:text-[#1C1C1C]">Instagram</Link></li>
+                                <li><Link href="linkedin.com/kitadevelopers" className="hover:text-[#1C1C1C]">LinkedIn</Link></li>
+                                <li><Link href="facebook.com/kitadevelopers" className="hover:text-[#1C1C1C]">Facebook</Link></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Contact</h4>
                             <ul className="space-y-1">
-                                <li><Link href="/contact-us" className="hover:text-[#1C1C1C]">Reach us</Link></li>
-                                <li><Link href="/about-us" className="hover:text-[#1C1C1C]">About us</Link></li>
+                                <li><Link href="/about" className="hover:text-[#1C1C1C]">About us</Link></li>
                                 <li><Link href="/faq" className="hover:text-[#1C1C1C]">FAQ&apos;s</Link></li>
-                                <li><Link href="/privacy-policies" className="hover:text-[#1C1C1C]">Privacy Policies</Link></li>
+                                <li><Link href="/privacy-policy" className="hover:text-[#1C1C1C]">Privacy Policies</Link></li>
+                                <li><Link href="/terms-of-service" className="hover:text-[#1C1C1C]">Terms of Service</Link></li>
                             </ul>
                         </div>
                     </div>
