@@ -36,15 +36,15 @@ module.exports = {
     // Custom transform function for static routes
     const defaultPriorities = {
       '/': 1.0,
-      '/about': 1.0,
-      '/services': 1.0,
-      '/portfolio': 1.0,
-      '/pricing': 1.0,
-      '/contact-us': 1.0,
+      '/about': 0.8,
+      '/services': 0.8,
+      '/portfolio': 0.8,
+      '/pricing': 0.8,
+      '/contact-us': 0.7,
       '/blogs': 0.9,
-      '/faq': 1.0,
-      '/privacy-policy': 1.0,
-      '/terms-of-service': 1.0,
+      '/faq': 0.6,
+      '/privacy-policy': 0.5,
+      '/terms-of-service': 0.5,
     };
 
     return {

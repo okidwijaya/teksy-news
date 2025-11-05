@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-import api from '@/lib/api';
 
 interface BlogPost {
   id: string;
@@ -8,7 +7,7 @@ interface BlogPost {
   updatedAt?: string;
 }
 
-const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_SITE_URL || 
+const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_API_CP || 
   (process.env.NODE_ENV === 'development' 
     ? 'http://localhost:3000'
     : 'https://www.kitadevelopers.com');
@@ -16,10 +15,10 @@ const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_SITE_URL ||
 export async function GET() {
   try {
     // Add CORS headers for development
-    const headers = {
-      'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, stale-while-revalidate=600'
-    };
+    // const headers = {
+    //   'Content-Type': 'application/xml; charset=utf-8',
+    //   'Cache-Control': 'public, max-age=3600, stale-while-revalidate=600'
+    // };
 
     // Mock data for testing - replace this with your actual API call
     const posts = [
