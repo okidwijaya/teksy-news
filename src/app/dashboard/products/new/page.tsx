@@ -59,7 +59,8 @@ const Page: React.FC = () => {
     channels: ['Online Store'],
   });
 
-  const handleInputChange = (field: keyof FormDataProduct, value: string | boolean | string[]) => {
+  // const handleInputChange = (field: keyof FormDataProduct, value: string | boolean | string[]) => {
+  const handleInputChange = (field: keyof FormDataProduct, value: unknown) => {
     setFormData((prev) => ({
       ...prev,
       [field]: value,
