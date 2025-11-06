@@ -208,7 +208,7 @@ export default function Page() {
                   We warrant that our themes are free from defects in materials and workmanship under normal use. We warrant that custom development services will be performed with reasonable care and skill.
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  However, our themes and services are provided "as is" without warranty of any kind, either express or implied. We do not guarantee that our themes will meet your specific requirements or that they will be error-free, secure, or uninterrupted.
+                  However, our themes and services are provided &quot;as is&quot; without warranty of any kind, either express or implied. We do not guarantee that our themes will meet your specific requirements or that they will be error-free, secure, or uninterrupted.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
                   We are not responsible for issues arising from third-party services, hosting environments, or modifications made by you or other developers.
