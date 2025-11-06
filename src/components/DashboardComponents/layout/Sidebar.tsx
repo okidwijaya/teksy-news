@@ -12,6 +12,10 @@ import {
     BadgePercent,
 } from 'lucide-react';
 
+interface SideBarProps {
+    onClick?: () => void;
+}
+
 const mainNavItems = [
     {
         title: 'Home',
@@ -103,22 +107,32 @@ const settingsNavItems = [
 ];
 
 const getChildMenu = (href: string) => {
-  const slashCount = href.split('/').filter(Boolean).length;
-  return slashCount >= 3 ? 'pl-9' : '';
+    const slashCount = href.split('/').filter(Boolean).length;
+    return slashCount >= 3 ? 'pl-9 child-menu' : 'parent-menu';
 };
 
-export function Sidebar() {
+export function Sidebar({ onClick }: SideBarProps) {
     const pathname = usePathname();
 
+    const showChildMenu = (href: string) => {
+        const slashCount = href.split('/').filter(Boolean).length;
+        const slashCountPathname = pathname.split('/').filter(Boolean).length;
+        if (slashCount >= 3 && href.includes(pathname) && slashCountPathname >= 2) {
+            return 'active';
+        } else {
+            return 'hide';
+        }
+    }
     return (
-        <aside className="sidebar w-64 border-r-gray-500 bg-[#EBEBEB] text-[#212121] py-4 md:flex justify-between flex-col h-full">
+        <aside className="transition-all duration-300 ease-in-out sidebar w-64 border-r-gray-500 bg-[#EBEBEB] text-[#F1F1F1] py-4 md:flex justify-between flex-col h-full">
             <div className="flex-1 overflow-auto px-3 py-2 flex flex-col justify-between">
                 <nav className="flex flex-col">
                     {mainNavItems.map((item) => (
                         <Link
+                            onClick={onClick}
                             key={item.href}
                             href={item.href}
-                            className={`${getChildMenu(item.href)} flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 ${pathname === item.href ? "bg-gray-100 text-black font-semibold" : "text-gray-900"
+                            className={`${getChildMenu(item.href)} ${showChildMenu(item.href)} flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 ${pathname === item.href ? "bg-gray-100 text-black font-semibold" : "text-gray-900"
                                 }`}
                         >
                             {item.icon}
@@ -128,12 +142,13 @@ export function Sidebar() {
                 </nav>
 
                 <div className="mt-6">
-                    <h3 className="mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-[gray-500]">
+                    <h3 className="mb-2 px-3 text-xs font-semibold capitalize tracking-wider text-[#121212]">
                         Settings
                     </h3>
                     <nav className="flex flex-col">
                         {settingsNavItems.map((item) => (
                             <Link
+                                onClick={onClick}
                                 key={item.href}
                                 href={item.href}
                                 className={`flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100 ${pathname === item.href ? "bg-gray-100 text-black font-semibold" : "text-gray-900"

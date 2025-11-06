@@ -7,18 +7,24 @@ import { Menu, X } from 'lucide-react';
 import Sidebar from '@/components/DashboardComponents/layout/Sidebar';
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
+        const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const handleSidebarCloseByMenu = () => {
+        setSidebarOpen(false);
+    };
     return (
         <div className='w-full h-screen grid grid-cols-1'>
             <Navbar />
             <div className="relative bg-[#F1F1F1] flex flex-row overflow-hidden">
-                <Sidebar />
+                <div className='hidden md:block'>
+                    <Sidebar />
+                </div>
 
                 <button
                     className={`md:hidden w-fit h-[30px] block top-4 left-4 fixed inset-0 z-30 bg-gray-900/50 duration-200 ease-in-out opacity-100}`}
                     onClick={() => setSidebarOpen(true)}
                 >
-                    <Menu className='' />
+                    <Menu className='text-white' />
                 </button>
 
                 <div
@@ -31,16 +37,16 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                             onClick={() => setSidebarOpen(false)}
                             className="rounded-md p-2 text-white hover:bg-gray-100 hover:text-black"
                         >
-                            <X className="h-4 w-4" />
+                            <X className="h-4 w-4 text-white" />
                         </button>
                     </div>
-                    <Sidebar />
+                    <Sidebar onClick={handleSidebarCloseByMenu} />
                 </div>
 
                 <main className="w-full h-full p-0 overflow-auto">
                     {children}
                     <footer className="hidden border-t bg-white px-4 py-4 text-center text-sm text-gray-500 md:px-6 h-full">
-                        <p>© 2025 E-Commerce Admin. All rights reserved.</p>
+                        <p>© 2025 Cloudsand. All rights reserved.</p>
                     </footer>
                 </main>
             </div>
