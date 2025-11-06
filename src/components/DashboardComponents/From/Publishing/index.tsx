@@ -3,7 +3,7 @@ import React from 'react';
 
 interface PublishingProps {
     formData: FormDataProduct;
-    handleInputChange: (field: keyof FormDataProduct, value: any) => void;
+    handleInputChange: (field: keyof FormDataProduct, value: unknown) => void;
 }
 
 export const Publishing = ({

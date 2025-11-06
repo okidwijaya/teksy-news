@@ -3,7 +3,7 @@ import React from 'react';
 
 interface ProductOrganizationProps {
     formData: FormDataProduct;
-    handleInputChange: (field: keyof FormDataProduct, value: any) => void;
+    handleInputChange: (field: keyof FormDataProduct, value: string | number) => void;
 }
 
 export const ProductOrganization = ({

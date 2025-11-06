@@ -3,7 +3,7 @@ import React from 'react';
 
 interface StatusProps {
     value: string;
-    onChange: (field: keyof FormDataProduct, value: any) => void;
+    onChange: (field: keyof FormDataProduct, value: string | number) => void;
 }
 
 export const Status: React.FC<StatusProps> = ({ value, onChange }) => {

@@ -1,5 +1,6 @@
 import React from "react";
 import { Upload } from "lucide-react";
+import Image from "next/image";
 
 interface MediaUploadProps {
   value: string[];
@@ -43,7 +44,9 @@ export const MediaUpload: React.FC<MediaUploadProps> = ({ value, onChange }) => 
       {value.length > 0 && (
         <div className="mt-4 grid grid-cols-3 gap-4">
           {value.map((url, idx) => (
-            <img
+            <Image
+              width={100}
+              height={100}
               key={idx}
               src={url}
               alt={`uploaded-${idx}`}

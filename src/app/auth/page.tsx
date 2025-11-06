@@ -34,6 +34,8 @@ export default function Page() {
         }
     }, []);
 
+    console.log('Stored:', storedValue, isLoading);;
+
     // useEffect(() => {
     //     if (!isLoading && storedValue && storedValue.access_token) {
     //         router.push('/');

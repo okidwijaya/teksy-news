@@ -55,7 +55,7 @@ export default function Page() {
                   Privacy Policy
                 </h2>
                 <p className="text-gray-600 leading-relaxed mb-4">
-                  This privacy policy sets out how Creative Layer Inc. ("Creative Layer", "we", "us", or "our", and also doing business and "remx") collects, uses, and discloses, any personal information that you give us or that we collect when you use our website or Services. Creative Layer offers a platform that allows artists, brands and us to mint and sell NFTs and tokens and for purchasers to mint and buy NFTs ("Services").
+                  This privacy policy sets out how Creative Layer Inc. (&quot;Creative Layer&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;, and also doing business and &quot;remx&quot;) collects, uses, and discloses, any personal information that you give us or that we collect when you use our website or Services. Creative Layer offers a platform that allows artists, brands and us to mint and sell NFTs and tokens and for purchasers to mint and buy NFTs (&quot;Services&quot;).
                 </p>
                 <p className="text-gray-600 leading-relaxed mb-4">
                   By using our website or Services, or by choosing to give us personal information, you consent to this Privacy Policy and the processing of your Personal Information it describes. If you do not agree with any terms of this Privacy Policy, please exercise the choices we describe in this Policy, or do not use the Services and do not give us any personal information.

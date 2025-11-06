@@ -4,7 +4,7 @@ import { FormDataProduct } from '@/lib/productInterface';
 
 interface VariantsProps {
   formData: FormDataProduct;
-  onChange: (field: keyof FormDataProduct, value: any) => void;
+  onChange: (field: keyof FormDataProduct, value: unknown) => void;
 }
 
 export const Variants: React.FC<VariantsProps> = ({ formData, onChange }) => {

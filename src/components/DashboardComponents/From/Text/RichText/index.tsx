@@ -5,7 +5,7 @@ import {
     Underline,
     AlignLeft,
     Link,
-    Image,
+    Image as ImageIcon,
     List,
     MoreHorizontal,
     Code,
@@ -76,7 +76,7 @@ export const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
                     className="p-1 hover:bg-gray-200 rounded"
                     onClick={() => onChange("showImageDialog", true)}
                 >
-                    <Image className="w-4 h-4" />
+                    <ImageIcon className="w-4 h-4" />
                 </button>
 
                 <button

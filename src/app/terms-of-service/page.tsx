@@ -63,7 +63,7 @@ export default function Page() {
                   By purchasing, downloading, or using any of our themes or development services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our products or services.
                 </p>
                 <p className="text-gray-600 leading-relaxed">
-                  These terms constitute a legally binding agreement between you (the "Client" or "You") and us (the "Developer" or "We"). Your continued use of our services indicates your acceptance of these terms and any future modifications.
+                  These terms constitute a legally binding agreement between you (the &quot;Client&quot; or &quot;You&quot;) and us (the &quot;Developer&quot; or &quot;We&quot;). Your continued use of our services indicates your acceptance of these terms and any future modifications.
                 </p>
               </section>
 
