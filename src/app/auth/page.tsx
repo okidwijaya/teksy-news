@@ -1,8 +1,9 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import LoadingLogoDefault from '@/components/Loading';
 import Link from 'next/link';
+import logo from "../../../public/final-logo.svg";
+import Image from 'next/image';
 
 interface UserSession {
     access_token: string;
@@ -33,11 +34,11 @@ export default function Page() {
         }
     }, []);
 
-    useEffect(() => {
-        if (!isLoading && storedValue && storedValue.access_token) {
-            router.push('/');
-        }
-    }, [isLoading, storedValue, router]);
+    // useEffect(() => {
+    //     if (!isLoading && storedValue && storedValue.access_token) {
+    //         router.push('/');
+    //     }
+    // }, [isLoading, storedValue, router]);
 
 
     const handleSignin = async (e: React.FormEvent) => {
@@ -84,22 +85,28 @@ export default function Page() {
 
     return (
         <div className="flex items-center justify-center px-4 h-screen bg-white">
-            <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
-                <div className="flex flex-row-reverse justify-between items-start mb-4 gap-2">
-                    <Link href="/" className='w-fit'>
-                        <LoadingLogoDefault />
-                    </Link>
-                    <div className="flex justify-center mb-2 gap-2">
+            <div className="w-full max-w-[380px] bg-white rounded-xl shadow-md px-4 py-6">
+                <Link href="/" className='w-6 h-6 mr-auto ml-0'>
+                    <Image
+                        width={24}
+                        height={24}
+                        src={logo}
+                        alt="Loading..."
+                        className="w-6 h-6 object-contain block"
+                    />
+                </Link>
+                <div className="flex flex-row-reverse justify-between items-center mb-4 gap-2">
+                    <div className="w-full flex justify-center mb-2 gap-2">
                         <button
                             type="button"
-                            className={`py-0 px-0 cursor-pointer font-medium ${isLogin ? 'border-b-2 border-[#6B57E4] text-[#6B57E4] font-semibold' : 'text-gray-500'}`}
+                            className={`w-full text-center py-0 px-0 cursor-pointer font-medium ${isLogin ? 'border-b-2 border-[#261e4f] text-[#0b081a] font-semibold' : 'text-gray-500'}`}
                             onClick={() => setIsLogin(true)}
                         >
                             Sign In
                         </button>
                         <button
                             type="button"
-                            className={`py-2 px-0 cursor-pointer font-medium ${!isLogin ? 'border-b-2 border-[#6B57E4] text-[#6B57E4] font-semibold' : 'text-gray-500'}`}
+                            className={`w-full text-center py-2 px-0 cursor-pointer font-medium ${!isLogin ? 'border-b-2 border-[#261e4f] text-[#0b081a] font-semibold' : 'text-gray-500'}`}
                             onClick={() => setIsLogin(false)}
                         >
                             Register
@@ -107,26 +114,25 @@ export default function Page() {
                     </div>
                 </div>
 
-
                 {isLogin ? (
                     <>
                         <form
                             onSubmit={handleSignin}>
                             <div>
                                 <label className="block text-[12px] font-semibold text-[#212121]">Email</label>
-                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-2 border rounded-md" />
+                                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-1 border rounded-md" />
                             </div>
                             <div>
-                                <label className="block text-[12px] font-semibold text-[#212121]">Password</label>
-                                <input value={password} type="password" onChange={(e) => setPassword(e.target.value)} className="text-[12px] text-[#212121] mt-1 w-full px-4 py-2 border rounded-md" />
+                                <label className="block text-[12px] font-semibold text-[#212121] mt-2">Password</label>
+                                <input value={password} type="password" onChange={(e) => setPassword(e.target.value)} className="text-[12px] text-[#212121] mt-1 w-full px-4 py-1 border rounded-md" />
                             </div>
-                            <div className="flex items-center justify-between text-sm">
+                            <div className="flex items-center justify-end text-sm mt-2 mb-2">
                                 <label className="flex items-center text-[#212121]">
                                     <input type="checkbox" className="text-[12px] text-[#212121] mr-2" />
                                     Remember me
                                 </label>
                             </div>
-                            <button type="submit" className="w-full bg-[#212121] text-white py-2 rounded-md hover:bg-black">
+                            <button type="submit" className="w-full bg-[#212121] text-white py-2 rounded-md hover:bg-black uppercase font-semibold">
                                 {isAuthLoading ? "wait" : "Sign In"}
                             </button>
                         </form>
@@ -153,35 +159,35 @@ export default function Page() {
                         </div>
                     </>
                 ) : (
-                    <form className="space-y-4"
+                    <form className="space-y-2"
                         onSubmit={handleSignup}>
                         <div>
                             <label className="block text-[12px] font-semibold text-[#212121]">Full Name</label>
-                            <input value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-2 border rounded-md" />
+                            <input value={fullName} onChange={(e) => setFullName(e.target.value)} type="text" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-1 border rounded-md" />
                         </div>
                         <div>
                             <label className="block text-[12px] font-semibold text-[#212121]">Email</label>
-                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-2 border rounded-md" />
+                            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-1 border rounded-md" />
                         </div>
                         <div>
                             <label className="block text-[12px] font-semibold text-[#212121]">Password</label>
-                            <input value={password} type="password" onChange={(e) => setPassword(e.target.value)} className="text-[12px] text-[#212121] mt-1 w-full px-4 py-2 border rounded-md" />
+                            <input value={password} type="password" onChange={(e) => setPassword(e.target.value)} className="text-[12px] text-[#212121] mt-1 w-full px-4 py-1 border rounded-md" />
                         </div>
                         <div className="hidden">
                             <label className="block text-[12px] font-semibold text-[#212121]">Confirm Password</label>
-                            <input type="password" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-2 border rounded-md" />
+                            <input type="password" className="text-[12px] text-[#212121] mt-1 w-full px-4 py-1 border rounded-md" />
                         </div>
                         <div className="flex items-start">
                             <input onClick={tncAgreement} type="checkbox" className="mt-1 mr-2" />
                             <span className="text-sm text-[#212121]">I agree to the <a href="#" className="text-blue-600 underline">Terms & Conditions</a></span>
                         </div>
-                        <button type="submit" className="w-full bg-[#212121] text-white py-2 rounded-md hover:bg-gray-200">
+                        <button type="submit" className="w-full bg-[#212121] text-white py-2 rounded-md hover:bg-gray-200 uppercase font-semibold">
                             {isAuthLoading ? "wait" : "Register"}
                         </button>
                     </form>
                 )}
 
-                <p className="mt-6 text-center text-xs text-gray-400">&copy; 2023 Airspace Corporation</p>
+                <p className="mt-6 text-center text-xs text-gray-400">&copy; 2023 cloudsand</p>
             </div>
         </div>
     );

@@ -2,7 +2,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
-// import logo from "@/public/assets/navbarlogo.svg";
 import logo from "../../public/final-logo.svg";
 import { Category } from "@/lib/getCategories";
 import axios from "axios";

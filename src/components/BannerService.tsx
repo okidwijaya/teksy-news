@@ -1,12 +1,13 @@
 import React from 'react';
 import { Code, Smartphone, ShoppingBag, Server, Sparkles } from 'lucide-react';
+import Link from 'next/link';
 
 export default function BlogBanner() {
     const services = [
         { icon: Code, text: 'Premium Web Themes' },
         { icon: Smartphone, text: 'Mobile Development' },
         { icon: ShoppingBag, text: 'Shopify Solutions' },
-        { icon: Server, text: 'SaaS & Server Management' }
+        { icon: Server, text: 'SaaS Management' }
     ];
 
     return (
@@ -54,7 +55,7 @@ export default function BlogBanner() {
                                     <Icon className="w-6 h-6 text-white" />
                                 </div>
                                 <h3 className="text-white font-semibold text-sm md:text-base">
-                                    {service.text}
+                                    <Link href="/dashboard">{service.text}</Link>
                                 </h3>
                             </div>
                         );

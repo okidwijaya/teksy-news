@@ -102,7 +102,6 @@ const Page: React.FC = () => {
             alert('Article created successfully!');
 
         } catch (error) {
-            // console.error('Submit error:', error);
             alert('Error creating article: ' + (error instanceof Error ? error.message : 'Unknown error'));
         } finally {
             setIsSubmitting(false);

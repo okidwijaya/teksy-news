@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import './globals.css'
+import './globals.css';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
@@ -21,10 +21,10 @@ export const metadata: Metadata = {
     icon: 'final-logo.svg'
   },
   verification: {
-    google: 'YOUR_GOOGLE_SITE_VERIFICATION_ID', // Replace this with your actual verification ID from Google Search Console
+    google: 'YOUR_GOOGLE_SITE_VERIFICATION_ID',
     other: {
-      'baidu': 'YOUR_BAIDU_VERIFICATION_ID', // Optional: for Baidu search
-      'yandex': 'YOUR_YANDEX_VERIFICATION_ID', // Optional: for Yandex search
+      'baidu': 'YOUR_BAIDU_VERIFICATION_ID',
+      'yandex': 'YOUR_YANDEX_VERIFICATION_ID',
     }
   },
   robots: {
@@ -60,17 +60,14 @@ export default function RootLayout({
       }
     }
   };
-
-        return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+  return (
+    <html lang="en" suppressHydrationWarning={true}>
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} cz-shortcut-listen="true">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );
