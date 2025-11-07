@@ -36,7 +36,7 @@ export default function OrdersTable({ orders }: OrdersTableProps) {
         <div className="bg-white rounded-lg border border-gray-200 overflow-scroll">
             <OrdersTableHeader />
 
-            <div className="divide-y divide-gray-200 min-w-full overflow-scroll">
+            <div className="divide-y divide-gray-200 w-full min-w-[920px]">
                 {orders.map((order) => (
                     <OrderRow
                         key={order.id}

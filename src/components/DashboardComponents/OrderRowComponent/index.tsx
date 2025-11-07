@@ -24,7 +24,7 @@ interface OrderRowProps {
 
 export default function OrderRow({ order, isSelected, onSelect }: OrderRowProps) {
     return (
-        <div className="grid grid-cols-9 py-2 px-2 border-b border-gray-200 hover:bg-gray-50 min-w-full">
+        <div className="grid grid-cols-9 py-2 px-2 border-b border-gray-200 hover:bg-gray-50">
             <div className="flex items-center">
                 <input
                     type="checkbox"
@@ -32,22 +32,22 @@ export default function OrderRow({ order, isSelected, onSelect }: OrderRowProps)
                     onChange={() => onSelect(order.id)}
                     className="h-4 w-4 mr-4 rounded border-gray-300"
                 />
-                <span className="text-black font-light !text-[12px]">#{order.orderNumber}</span>
+                <span className="text-black font-light !text-[10px]">#{order.orderNumber}</span>
             </div>
 
-            <div className="text-[#212121] font-[12px]">
+            <div className="text-[#212121] text-[10px]">
                 <p>{order.date}</p>
             </div>
 
-            <div className="text-[#212121] font-[12px]">
+            <div className="text-[#212121] text-[10px]">
                 <p>{order.customer}</p>
             </div>
 
-            <div className="text-[#212121] font-[12px]">
+            <div className="text-[#212121] text-[10px]">
                 <p>{order.channel}</p>
             </div>
 
-            <div className="text-[#212121] font-[12px]">
+            <div className="text-[#212121] text-[10px]">
                 <p>{order.total}</p>
             </div>
 
@@ -59,7 +59,7 @@ export default function OrderRow({ order, isSelected, onSelect }: OrderRowProps)
                 <StatusBadge status={order.fulfillmentStatus} />
             </div>
 
-            <div className="text-[#212121] font-[12px]">
+            <div className="text-[#212121] text-[10px]">
                 <p>{order.itemCount} item{order.itemCount !== 1 ? 's' : ''}</p>
             </div>
 
