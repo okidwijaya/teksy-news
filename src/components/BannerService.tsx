@@ -1,7 +1,6 @@
 import React from 'react';
 import { Code, Smartphone, ShoppingBag, Server, Sparkles } from 'lucide-react';
 import Link from 'next/link';
-import { link } from 'fs';
 
 export default function BlogBanner() {
     const services = [
