@@ -16,7 +16,7 @@ export default function PageHeader({
   actionButtons = true
 }: PageHeaderProps) {
   return (
-    <div className="flex items-center justify-between pt-2 pb-6 px-4">
+    <div className="flex items-center justify-between pt-2 pb-6 px-4 flex-wrap md:flex-nowrap">
       <div className="flex items-center space-x-3">
         <div className="flex items-center">
           <div className="w-6 h-6 mr-2">

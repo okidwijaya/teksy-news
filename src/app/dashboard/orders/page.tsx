@@ -53,7 +53,7 @@ export default function OrdersPage() {
             <div className="flex-1 px-4 pb-6 space-y-6">
                 <OrdersSummary />
 
-                <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                <div className="bg-white rounded-lg border border-gray-200 min-w-full overflow-scroll">
                     <SearchAndFilter tabs={tabs} />
                     <OrdersTable orders={orders} />
                 </div>

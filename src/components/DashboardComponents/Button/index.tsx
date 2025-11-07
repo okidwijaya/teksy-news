@@ -47,7 +47,7 @@ const BaseButton: React.FC<ButtonProps> = ({
             onClick={onClick}
             disabled={disabled}
             className={cn(
-                "border border-gray-200 rounded-md inline-flex items-center gap-2 p-2 bg-white text-[#212121] hover:bg-hover-white transition disabled:opacity-50 disabled:cursor-not-allowed",
+                "border border-gray-200 rounded-md inline-flex items-center gap-2 p-2 bg-white text-[#212121] hover:bg-hover-white transition disabled:opacity-50 disabled:cursor-not-allowed text-[10px] md:text-[14px]",
                 className
             )}
         >   

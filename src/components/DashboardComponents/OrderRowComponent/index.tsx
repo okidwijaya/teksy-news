@@ -24,7 +24,7 @@ interface OrderRowProps {
 
 export default function OrderRow({ order, isSelected, onSelect }: OrderRowProps) {
     return (
-        <div className="grid grid-cols-9 py-2 px-2 border-b border-gray-200 hover:bg-gray-50">
+        <div className="grid grid-cols-9 py-2 px-2 border-b border-gray-200 hover:bg-gray-50 min-w-full">
             <div className="flex items-center">
                 <input
                     type="checkbox"

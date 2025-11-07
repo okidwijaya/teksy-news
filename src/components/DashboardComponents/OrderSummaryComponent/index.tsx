@@ -6,10 +6,10 @@ import StatsSummaryItem from '../StatSummaryItemOrder';
 
 export default function OrdersSummary() {
     return (
-        <div className="bg-white rounded-lg border border-[#D4D4D4] flex flex-row divide-x divide-[#D4D4D4]">
+        <div className="bg-white rounded-lg border border-[#D4D4D4] flex flex-wrap md:flex-nowrap flex-row divide-x divide-[#D4D4D4]">
             <TimeFilter period="Today" />
 
-            <div className="flex-1 grid grid-cols-5">
+            <div className="flex-1 grid grid-cols-2 md:grid-cols-5">
                 <StatsSummaryItem
                     title="Orders"
                     value="0"

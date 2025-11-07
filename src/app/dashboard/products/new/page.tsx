@@ -146,12 +146,10 @@ const Page: React.FC = () => {
               <div className="space-y-6">
                 <Status value={formData.status} onChange={handleInputChange} />
 
-
                 <Publishing
                   formData={formData}
                   handleInputChange={handleInputChange}
                 />
-
 
                 <ProductOrganization
                   formData={formData}

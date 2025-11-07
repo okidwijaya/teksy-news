@@ -20,7 +20,7 @@ interface TextEditorProps {
 export const TextEditor: React.FC<TextEditorProps> = ({ value, onChange }) => {
     return (
         <div className="border border-gray-300 rounded-md">
-            <div className="flex items-center gap-2 p-2 border-b border-gray-200 bg-gray-50">
+            <div className="flex items-center gap-2 p-2 border-b border-gray-200 bg-gray-50 flex-wrap md:flex-nowrap">
                 <select
                     className="text-sm border-none bg-transparent"
                     value={value.format}

@@ -77,7 +77,7 @@ export default function SearchAndFilter({ tabs, initialActiveTab }: SearchAndFil
     const [activeTab, setActiveTab] = React.useState<string>(initialActiveTab || tabs[0]);
 
     return (
-        <div className='border-b border-b-[#F1F1F1] flex items-center justify-between px-0 py-0'>
+        <div className='border-b border-b-[#F1F1F1] flex items-center justify-between px-0 py-0 overflow-scroll'>
             <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
             <SearchFilter />
         </div>

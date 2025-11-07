@@ -5,7 +5,7 @@ import { ChevronDown } from 'lucide-react';
 
 export default function OrdersTableHeader() {
   return (
-    <div className="grid grid-cols-9 border-t border-b border-gray-200 p-2 bg-white text-[12px] text-gray-500">
+    <div className="grid grid-cols-9 border-t border-b border-gray-200 p-2 bg-white text-[12px] text-gray-500 overflow-scroll">
       <div className="flex items-center">
         <input type="checkbox" className="font-[12px] h-4 w-4 mr-4 rounded border-gray-300" />
         <span className="font-light">Order</span>

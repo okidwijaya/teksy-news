@@ -44,7 +44,7 @@ const HeaderButton: React.FC<{ children: React.ReactNode; primary?: boolean }> =
 // Header Component
 const Header: React.FC = () => {
     return (
-        <div className="flex items-center justify-between mb-6 text-[#212121]">
+        <div className="flex items-center justify-between mb-6 text-[#212121] flex-wrap md:flex-nowrap">
             <div className="flex items-center">
                 <div className="w-6 h-6 mr-2">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

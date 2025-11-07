@@ -45,7 +45,6 @@ const Page: React.FC = () => {
             <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center">
               <div className="w-3 h-3 border-2 border-white rounded-sm"></div>
             </div>
-            <span className="text-gray-500">→</span>
             <h1 className="text-xl font-semibold text-gray-900">Create collection</h1>
           </div>
           <button className="bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors">
@@ -54,7 +53,7 @@ const Page: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex gap-6 p-6 max-w-7xl mx-auto">
+      <div className="flex gap-6 p-6 max-w-7xl mx-auto flex-column md:flex-row">
         {/* Main Content */}
         <div className="flex-1 space-y-6">
           {/* Title Section */}
@@ -74,7 +73,7 @@ const Page: React.FC = () => {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
                 <div className="border border-gray-300 rounded-lg">
                   {/* Rich Text Editor Toolbar */}
-                  <div className="flex items-center gap-1 p-2 border-b border-gray-200 bg-gray-50">
+                  <div className="flex items-center gap-1 p-2 border-b border-gray-200 bg-gray-50 flex-wrap md:flex-nowrap">
                     <select className="text-sm border-none bg-transparent focus:outline-none">
                       <option>Paragraph</option>
                     </select>
@@ -174,24 +173,24 @@ const Page: React.FC = () => {
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Products</h3>
             <div className="flex gap-4 mb-6">
-              <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <div className="flex-1 relative py-0">
+                <Search className="absolute left-3 py-0 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                 <input
                   type="text"
                   value={searchProducts}
                   onChange={(e) => setSearchProducts(e.target.value)}
                   placeholder="Search products"
-                  className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full pl-10 pr-3 py-0 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
-              <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+              <button className="text-[10px] md:text-[12px] px-4 !py-0 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
                 Browse
               </button>
               <div className="relative">
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="appearance-none bg-white border border-gray-300 rounded-lg px-3 py-2 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  className="text-[10px] md:text-[12px] appearance-none bg-white border border-gray-300 rounded-lg pl-3 py-1 pr-8 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option>Sort: Best selling</option>
                   <option>Sort: Newest</option>

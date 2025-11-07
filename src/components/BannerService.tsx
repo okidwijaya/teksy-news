@@ -1,13 +1,14 @@
 import React from 'react';
 import { Code, Smartphone, ShoppingBag, Server, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { link } from 'fs';
 
 export default function BlogBanner() {
     const services = [
-        { icon: Code, text: 'Premium Web Themes' },
-        { icon: Smartphone, text: 'Mobile Development' },
-        { icon: ShoppingBag, text: 'Shopify Solutions' },
-        { icon: Server, text: 'SaaS Management' }
+        { icon: Code, text: 'Premium Web Themes', link: '/dashboard' },
+        { icon: Smartphone, text: 'Mobile Development', link: '/dashboard' },
+        { icon: ShoppingBag, text: 'Shopify Solutions', link: '/dashboard' },
+        { icon: Server, text: 'ERP System', link: '/dashboard' },
     ];
 
     return (
@@ -47,7 +48,8 @@ export default function BlogBanner() {
                     {services.map((service, index) => {
                         const Icon = service.icon;
                         return (
-                            <div
+                            <Link
+                                href={service.link}
                                 key={index}
                                 className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center hover:bg-white/20 transition-all hover:scale-105 cursor-pointer border border-white/20"
                             >
@@ -55,9 +57,9 @@ export default function BlogBanner() {
                                     <Icon className="w-6 h-6 text-white" />
                                 </div>
                                 <h3 className="text-white font-semibold text-sm md:text-base">
-                                    <Link href="/dashboard">{service.text}</Link>
+                                    <p>{service.text}</p>
                                 </h3>
-                            </div>
+                            </Link>
                         );
                     })}
                 </div>
