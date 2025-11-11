@@ -129,7 +129,7 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="hidden md:flex items-center space-x-2">
+                    <div className="hidden md:flex items-center space-x-0">
                         <div className="relative group hover:border border-[#DDDDDD] rounded-md">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,7 +138,7 @@ export default function Navbar() {
                             </div>
                             <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
                         </div>
-                        <Link href="/contact-us" className="bg-[#FF6000] text-[#121212] px-2 py-1 rounded-md hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Contact</Link>
+                        <Link href="/contact-us" className="bg-[#FF6000] hidden text-[#121212] px-2 py-1 rounded-md hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Contact</Link>
                     </div>
 
                     <div className="lg:hidden">
