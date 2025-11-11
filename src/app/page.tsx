@@ -11,6 +11,7 @@ import { Article } from '@/types';
 import LoadingLogoDefault from '@/components/Loading';
 import axios from 'axios';
 import PublicLayout from '@/components/PublicLayout';
+import AdCardGoogle from '@/components/AdsCardGoogle';
 
 
 const formatPublishDate = (date: string) => {
@@ -251,6 +252,7 @@ const Home: React.FC = () => {
                       </ul>
                     </div>
 
+                    <AdCardGoogle />
                     <button
                       onClick={() => alert('Contact us to get started with your project!')}
                       className="relative z-10 font-semibold px-5 py-2 rounded-xl transition duration-300 text-white hover:text-[#121212] border border-white hover:bg-white bg-[#121212]"
