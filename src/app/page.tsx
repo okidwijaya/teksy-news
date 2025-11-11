@@ -12,6 +12,7 @@ import LoadingLogoDefault from '@/components/Loading';
 import axios from 'axios';
 import PublicLayout from '@/components/PublicLayout';
 import AdCardGoogle from '@/components/AdsCardGoogle';
+import { X } from 'lucide-react';
 
 
 const formatPublishDate = (date: string) => {
@@ -30,6 +31,7 @@ const formatPublishDate = (date: string) => {
 const Home: React.FC = () => {
   const [posts, setPosts] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
+  const [hideBanner, setHideBanner] = useState(false);
 
   const services = [
     'Custom Web Themes',
@@ -227,43 +229,49 @@ const Home: React.FC = () => {
 
                   </section>
                 </section>
+
                 <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
                   <AdCardGoogle />
-                  
-                  {/* service add */}
-                  <div
-                    className="w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] bg-[#121212] p-6 flex flex-col items-center justify-between text-white rounded-2xl shadow-2xl relative overflow-hidden"
-                  >
-                    <div className="absolute inset-0 opacity-10">
-                      <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
-                    </div>
 
-                    <div className="relative z-10 mb-4 md:mb-0 w-full">
-                      <h2 className="text-xl md:text-2xl font-bold mb-2">
-                        Premium Web Solutions
-                      </h2>
-                      <p className="text-xs md:text-sm opacity-90 mb-3">
-                        Transform your business with cutting-edge development.
-                      </p>
-                      <ul className="hidden lg:block space-y-1 text-xs opacity-90">
-                        {services.map((service, index) => (
-                          <li key={index} className="flex items-start">
-                            <span className="mr-2">✦</span>
-                            <span>{service}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <button
-                      onClick={() => alert('Contact us to get started with your project!')}
-                      className="relative z-10 font-semibold px-5 py-2 rounded-xl transition duration-300 text-white hover:text-[#121212] border border-white hover:bg-white bg-[#121212]"
+                  <div className="hidden lg:flex flex-col gap-4">
+                  {/* <div className="w-full grid gap-4 grid-cols-[200px_200px_200px] lg:grid-cols-1 overflow-x-scroll lg:overflow-x-hidden min-h-fit"> */}
+                    {/* service add */}
+                    <div
+                      className={`${hideBanner ? 'hidden' : 'flex'} w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] bg-[#121212] p-6 flex-col items-center justify-between text-white rounded-2xl shadow-2xl relative overflow-hidden`}
                     >
-                      Get Started Today
-                    </button>
-                  </div>
+                      <button className='absolute top-1 right-2 z-10' onClick={() => setHideBanner(true)}>
+                        <X className="h-4 w-4 text-white" />
+                      </button>
+                      <div className="absolute inset-0 opacity-10">
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl animate-pulse"></div>
+                      </div>
 
-                  <AdCard gradient />
-                  <AdCard />
+                      <div className="relative z-10 mb-4 md:mb-0 w-full">
+                        <h2 className="text-xl md:text-2xl font-bold mb-2">
+                          Premium Web Solutions
+                        </h2>
+                        <p className="text-xs md:text-sm opacity-90 mb-3">
+                          Transform your business with cutting-edge development.
+                        </p>
+                        <ul className="hidden lg:block space-y-1 text-xs opacity-90">
+                          {services.map((service, index) => (
+                            <li key={index} className="flex items-start">
+                              <span className="mr-2">✦</span>
+                              <span>{service}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <button
+                        onClick={() => alert('Contact us to get started with your project!')}
+                        className="relative z-10 font-semibold px-5 py-2 rounded-xl transition duration-300 text-white hover:text-[#121212] border border-white hover:bg-white bg-[#121212]"
+                      >
+                        Get Started Today
+                      </button>
+                    </div>
+                    <AdCard gradient />
+                    <AdCard />
+                  </div>
                 </section>
               </div>
             </main>
