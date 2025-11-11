@@ -108,14 +108,14 @@ const Home: React.FC = () => {
                         timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
                         excerpt={posts[0].meta_description}
-                        imageUrl="/assets/placeholder-image.webp"
+                        // imageUrl="/assets/placeholder-image.webp"
                         date={posts[0].published_at}
                         readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
                         category={posts[0].category_id}
                         showImage={true}
                         showButton={true}
                         slug={posts[0].slug}
-                        className="w-full h-fit lg:max-w-[320px] bg-white rounded-2xl p-0 border border-[#EEEEEE]"
+                        className="w-full h-fit p-4 lg:max-w-[320px] bg-white rounded-2xl p-0 border border-[#EEEEEE]"
                       />)}
 
                       <div className="flex flex-col gap-4">
@@ -163,10 +163,10 @@ const Home: React.FC = () => {
                         author={'Brian'}
                         timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
-                        imageUrl="/assets/placeholder-image.webp"
+                        // imageUrl="/assets/placeholder-image.webp"
                         showImage={true}
                         slug={posts[0].slug}
-                        className="border h-fit border-[#EEEEEE] rounded-2xl p-0 bg-white w-full max-w-full lg:max-w-[320px]"
+                        className="border h-fit p-4 border-[#EEEEEE] rounded-2xl p-0 bg-white w-full max-w-full lg:max-w-[320px]"
                       />)}
 
                       <div className="space-y-6 w-full max-w-lg">
@@ -228,6 +228,9 @@ const Home: React.FC = () => {
                   </section>
                 </section>
                 <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
+                  <AdCardGoogle />
+                  
+                  {/* service add */}
                   <div
                     className="w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] bg-[#121212] p-6 flex flex-col items-center justify-between text-white rounded-2xl shadow-2xl relative overflow-hidden"
                   >
@@ -251,8 +254,6 @@ const Home: React.FC = () => {
                         ))}
                       </ul>
                     </div>
-
-                    <AdCardGoogle />
                     <button
                       onClick={() => alert('Contact us to get started with your project!')}
                       className="relative z-10 font-semibold px-5 py-2 rounded-xl transition duration-300 text-white hover:text-[#121212] border border-white hover:bg-white bg-[#121212]"

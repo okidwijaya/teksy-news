@@ -1,6 +1,4 @@
-import Link from "next/link";
-import React, { useEffect } from "react";
-
+import React, { useEffect, useRef } from "react";
 declare global {
     interface Window {
         adsbygoogle: (Record<string, unknown> | undefined)[];
@@ -12,40 +10,50 @@ type AdCardProps = {
 };
 
 export default function AdCardGoogle({ gradient }: AdCardProps) {
+    const adRef = useRef<HTMLElement | null>(null);
+    const initializedRef = useRef(false);
+
     useEffect(() => {
-        try {
-            (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) {
-            console.error("Adsense error:", e);
+        if (!adRef.current || initializedRef.current) return;
+        if (adRef.current.offsetWidth > 0) {
+            try {
+                (window.adsbygoogle = window.adsbygoogle || []).push({});
+                initializedRef.current = true;
+            } catch (e) {
+                console.error("Adsense error:", e);
+            }
+        } else {
+            // Try again after a short delay if not visible yet
+            const timer = setTimeout(() => {
+                if (adRef.current && adRef.current.offsetWidth > 0 && !initializedRef.current) {
+                    try {
+                        (window.adsbygoogle = window.adsbygoogle || []).push({});
+                        initializedRef.current = true;
+                    } catch (e) {
+                        console.error("Adsense error:", e);
+                    }
+                }
+            }, 500);
+            return () => clearTimeout(timer);
         }
     }, []);
 
     return (
         <div
-            className={`w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] ${gradient
+            className={`w-full min-w-[200px] h-auto max-w-full lg:max-w-[240px] ${gradient
                 ? "bg-gradient-to-r via-[#FF9013] from-[#121212] to-[#ededed]"
-                : "bg-[#121212]"
+                : "bg-[#12121224]"
                 } p-6 flex flex-col items-center justify-between text-white rounded-2xl`}
+            style={{ minWidth: 200 }}
         >
-            <div className="mb-4 md:mb-0">
-                <ins
-                    className="adsbygoogle"
+            <div className="mb-4 md:mb-0 w-full">
+                <ins className="adsbygoogle"
                     style={{ display: "block" }}
-                    data-ad-client="ca-pub-XXXXXXX"
-                    data-ad-slot="YYYYYYY"
+                    data-ad-client="ca-pub-4774376429155227"
+                    data-ad-slot="9141606422"
                     data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
+                    data-full-width-responsive="true"></ins>
             </div>
-            <Link
-                href="#"
-                className={`font-semibold px-5 py-2 rounded-xl transition duration-300 ${gradient
-                    ? "bg-white text-indigo-600 hover:bg-indigo-100"
-                    : "text-white hover:text-[#121212] border border-white hover:bg-white bg-[#121212]"
-                    }`}
-            >
-                Advertise Now
-            </Link>
         </div>
     );
 }

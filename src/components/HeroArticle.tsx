@@ -37,6 +37,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
       };
     return (
         <div className={`w-full max-w-full lg:max-w-xl bg-white rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
+            {/* <div className="relative w-full h-auto md:h-full hidden"> */}
             <div className="relative w-full h-[400px] md:h-full">
                 <Image
                     src={imageUrl}
@@ -59,7 +60,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                 </div>
 
                 <div className="flex flex-col flex-wrap lg:flex-nowrap lg:flex-row gap-4 items-center justify-between">
-                    <div className="flex items-center">
+                    <div className="hidden items-center">
                         <div className="flex -space-x-2">
                             <Image
                                 src="/assets/placeholder-image.webp"

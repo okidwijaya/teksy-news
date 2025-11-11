@@ -33,7 +33,7 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
                     alt={title}
                     width={600}
                     height={400}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover hidden"
                 />
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#121212]/70 to-transparent p-4">
                     <div className="flex items-center text-white text-xs mb-1">
