@@ -1,10 +1,9 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
-import Script from "next/script";
 
 declare global {
     interface Window {
-        adsbygoogle: any;
+        adsbygoogle: (Record<string, unknown> | undefined)[];
     }
 }
 
@@ -16,7 +15,9 @@ export default function AdCardGoogle({ gradient }: AdCardProps) {
     useEffect(() => {
         try {
             (window.adsbygoogle = window.adsbygoogle || []).push({});
-        } catch (e) { }
+        } catch (e) {
+            console.error("Adsense error:", e);
+        }
     }, []);
 
     return (
