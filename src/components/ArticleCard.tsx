@@ -47,7 +47,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   return (
     <div className={`border border-[#EEEEEE] h-fit rounded-2xl bg-white max-w-[768px] ${className}`}>
       {showImage && imageUrl && (
-        <div className="relative w-full h-44 mb-3">
+        <div className="relative w-full h-44 mb-3 hidden">
           <Image
             src={imageUrl}
             alt={title}
@@ -65,7 +65,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
 
         {date && readTime && category && (
-          <div className="flex items-center text-xs text-gray-400 mb-2 space-x-3">
+          <div className="items-center text-xs text-gray-400 mb-2 space-x-3 hidden">
             <span>{date}</span>
             <span>{readTime}</span>
             <span>{category}</span>

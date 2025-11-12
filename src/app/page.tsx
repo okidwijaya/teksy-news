@@ -117,7 +117,7 @@ const Home: React.FC = () => {
                         showImage={true}
                         showButton={true}
                         slug={posts[0].slug}
-                        className="w-full h-fit p-4 lg:max-w-[320px] bg-white rounded-2xl p-0 border border-[#EEEEEE]"
+                        className="w-full h-fit p-4 lg:max-w-[320px] bg-white rounded-2xl border border-[#EEEEEE]"
                       />)}
 
                       <div className="flex flex-col gap-4">
