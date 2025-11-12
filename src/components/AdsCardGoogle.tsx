@@ -5,11 +5,7 @@ declare global {
     }
 }
 
-type AdCardProps = {
-    gradient?: boolean;
-};
-
-export default function AdCardGoogle({ gradient }: AdCardProps) {
+export default function AdCardGoogle() {
     const adRef = useRef<HTMLElement | null>(null);
     const initializedRef = useRef(false);
 
