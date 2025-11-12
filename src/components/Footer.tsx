@@ -22,36 +22,36 @@ export default function Footer() {
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Pages</h4>
                             <ul className="space-y-1">
-                                <li><Link href="/blogs" className="hover:text-[#1C1C1C]">News</Link></li>
-                                <li><Link href="/services" className="hover:text-[#1C1C1C]">Service</Link></li>
-                                <li><Link href="/pricing" className="hover:text-[#1C1C1C]">Pricing</Link></li>
-                                <li><Link href="/portofolio" className="hover:text-[#1C1C1C]">Portofolio</Link></li>
-                                {/* <li><Link href="#" className="hover:text-[#1C1C1C]">Demo</Link></li> */}
+                                <li><Link href="/blogs" className="hover:text-[#1C1C1C] text-[10px]">News</Link></li>
+                                <li><Link href="/services" className="hover:text-[#1C1C1C] text-[10px]">Service</Link></li>
+                                <li><Link href="/pricing" className="hover:text-[#1C1C1C] text-[10px]">Pricing</Link></li>
+                                <li><Link href="/portofolio" className="hover:text-[#1C1C1C] text-[10px]">Portofolio</Link></li>
+                                {/* <li><Link href="#" className="hover:text-[#1C1C1C] text-[10px]">Demo</Link></li> */}
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Socials</h4>
                             <ul className="space-y-1">
-                                <li><Link href="x.com/kitadevelopers" className="hover:text-[#1C1C1C]">Twitter</Link></li>
-                                <li><Link href="instagram.com/kitadevelopers" className="hover:text-[#1C1C1C]">Instagram</Link></li>
-                                <li><Link href="linkedin.com/kitadevelopers" className="hover:text-[#1C1C1C]">LinkedIn</Link></li>
-                                <li><Link href="facebook.com/kitadevelopers" className="hover:text-[#1C1C1C]">Facebook</Link></li>
+                                <li><Link href="x.com/kitadevelopers" className="hover:text-[#1C1C1C] text-[10px]">Twitter</Link></li>
+                                <li><Link href="instagram.com/kitadevelopers" className="hover:text-[#1C1C1C] text-[10px]">Instagram</Link></li>
+                                <li><Link href="linkedin.com/kitadevelopers" className="hover:text-[#1C1C1C] text-[10px]">LinkedIn</Link></li>
+                                <li><Link href="facebook.com/kitadevelopers" className="hover:text-[#1C1C1C] text-[10px]">Facebook</Link></li>
                             </ul>
                         </div>
                         <div>
                             <h4 className="font-semibold text-[#374151] mb-2">Contact</h4>
                             <ul className="space-y-1">
-                                <li><Link href="/about" className="hover:text-[#1C1C1C]">About us</Link></li>
-                                <li><Link href="/faq" className="hover:text-[#1C1C1C]">FAQ&apos;s</Link></li>
-                                <li><Link href="/privacy-policy" className="hover:text-[#1C1C1C]">Privacy Policies</Link></li>
-                                <li><Link href="/terms-of-service" className="hover:text-[#1C1C1C]">Terms of Service</Link></li>
+                                <li><Link href="/about" className="hover:text-[#1C1C1C] text-[10px]">About us</Link></li>
+                                <li><Link href="/faq" className="hover:text-[#1C1C1C] text-[10px]">FAQ&apos;s</Link></li>
+                                <li><Link href="/privacy-policy" className="hover:text-[#1C1C1C] text-[10px]">Privacy Policies</Link></li>
+                                <li><Link href="/terms-of-service" className="hover:text-[#1C1C1C] text-[10px]">Terms of Service</Link></li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
                 <div className="space-y-6">
-                    <h2 className="text-2xl font-bold text-[#374151]">
+                    <h2 className="text-lg font-bold text-[#374151]">
                         KITADevelopers. Stay Ahead in Tech. Get the News That Matters.
                     </h2>
                     <p className="text-gray-400">
@@ -67,8 +67,8 @@ export default function Footer() {
                                 </button>
                             </form>
                             <div className="sm:space-y-0 flex gap-4 items-center justify-center w-full max-w-[195px]">
-                                <span className="font-light leading-tight"> Or </span>
-                                <button className="bg-[#FF6000] text-[#121212] hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] h-[48px] uppercase font-semibold px-6 py-3 rounded-xl w-full">Contact Us</button>
+                                <span className="font-light leading-tight opacity-5"> Or </span>
+                                <button className="bg-[#FF6000] text-white hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] h-[42px] uppercase font-semibold !text-[14px] px-6 py-3 rounded-xl w-full">Contact Us</button>
                                 <button className="hidden border border-white hover:border-gray-400 text-white font-semibold px-6 py-3 rounded-2xl w-full sm:w-auto">Subscribe</button>
                             </div>
                         </div>

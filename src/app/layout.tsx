@@ -49,7 +49,7 @@ export default function RootLayout({
     '@type': 'WebSite',
     name: 'Teksy',
     url: 'https://www.kitadevelopers.com',
-    description: 'Stay Updated and Catch it up',
+    description: 'KITA Developers - Stay Updated and Catch it up',
     publisher: {
       '@type': 'Organization',
       name: 'Teksy',

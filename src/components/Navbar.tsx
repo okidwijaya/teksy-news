@@ -49,26 +49,27 @@ export default function Navbar() {
     return (
         <nav
             id="navbar"
-            className={`bg-[#121212] text-[#E5E7EB] transition-all duration-300 z-50 ${navbarFixed ? "lg:max-w-[920px] lg:mx-auto lg:rounded-4xl border border-[#EEEEEE] fixed top-0 left-0 right-0 lg:mt-2" : "relative"
+            className={`bg-[#E5E7EB] text-[#121212] bg-opacity-30 backdrop-blur-lg shadow-sm transition-all duration-300 z-50 ${navbarFixed ? "lg:max-w-[920px] lg:mx-auto lg:rounded-4xl border border-[#EEEEEE] fixed top-0 left-0 right-0 lg:mt-2" : "relative"
                 }`}
             style={{
                 transform: navbarHidden ? "translateY(-140%)" : "translateY(0)",
             }}
         >
+            {/* bg-[#E5E7EB] */}
             {/* border-b border-b-[#EEEEEE] */}
             <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
+                <div className="flex justify-between items-center h-10">
 
                     <div className="flex-shrink-0 flex gap-4 flex-row flex-wrap items-center">
                         <Link
                             href="/"
-                            className="text-2xl w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            className="text-lg w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                         >
                             <Image
                                 src={logo}
                                 alt="KITA DEV"
-                                width={32}
-                                height={32}
+                                width={24}
+                                height={24}
                                 priority
                             />
                         </Link>
@@ -76,25 +77,25 @@ export default function Navbar() {
                         <div className="hidden lg:flex items-center p-4 gap-0 uppercase">
                             <Link
                                 href={`/services`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Service
                             </Link>
                             <Link
                                 href={`/pricing`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Pricing
                             </Link>
                             <Link
                                 href={`/portfolio`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Portofolio
                             </Link>
                             <Link
                                 href={`/about`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 About
                             </Link>
@@ -130,13 +131,13 @@ export default function Navbar() {
                     </div>
 
                     <div className="hidden md:flex items-center space-x-0">
-                        <div className="relative group hover:border border-[#DDDDDD] rounded-md">
+                        <div className="relative group hover:border border-[#DDDDDD] rounded-xl">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
+                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border-1 border-[#12121297] hover:border-2 hover:border-[#FFA559] text-[10px] rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
                         </div>
                         <Link href="/contact-us" className="bg-[#FF6000] hidden text-[#121212] px-2 py-1 rounded-md hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Contact</Link>
                     </div>
