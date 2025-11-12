@@ -63,11 +63,8 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <head />
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`} cz-shortcut-listen="true">
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4774376429155227"
-          crossOrigin="anonymous"
-        />
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4774376429155227"
+          crossOrigin="anonymous"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

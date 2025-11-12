@@ -57,7 +57,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
       )}
 
-      <div className={`${showImage && imageUrl ? "p-4" : ""}`}>
+      <div className={`${showImage && imageUrl ? "p-4" : ""} hidden`}>
         <div className="flex items-center text-sm text-gray-800 mb-1 showImage && imageUrl">
           <span className="font-semibold">{author}</span>
           <span className="mx-2">•</span>

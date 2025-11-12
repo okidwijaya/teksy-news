@@ -47,25 +47,16 @@ export default function AdCardGoogle({ gradient }: AdCardProps) {
             style={{ minWidth: 200 }}
         >
             <div className="mb-4 md:mb-0 w-full">
+                {/* <!-- first-ads-tst-kita --> */}
                 <ins className="adsbygoogle"
                     style={{ display: "block" }}
                     data-ad-client="ca-pub-4774376429155227"
                     data-ad-slot="9141606422"
                     data-ad-format="auto"
                     data-full-width-responsive="true"></ins>
-            
-            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4774376429155227"
-                crossOrigin="anonymous"></script>
-            {/* <!-- first-ads-tst-kita --> */}
-            <ins className="adsbygoogle"
-                style={{ display: "block" }}
-                data-ad-client="ca-pub-4774376429155227"
-                data-ad-slot="9141606422"
-                data-ad-format="auto"
-                data-full-width-responsive="true"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({ });
-            </script>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({ });
+                </script>
             </div>
         </div>
     );

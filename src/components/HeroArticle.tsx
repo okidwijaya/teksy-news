@@ -103,7 +103,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                         </span>
                     </div>
 
-                    <div className="flex items-center justify-end">
+                    <div className="flex items-center justify-end hidden">
                         <div className="flex items-center bg-white/90 rounded-xl px-4 py-2">
                             <Image
                                 src={writerImage}

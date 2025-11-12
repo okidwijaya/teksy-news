@@ -37,8 +37,8 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
                 />
                 <div className="absolute bottom-0 left-0 w-full bg-gradient-to-t from-[#121212]/70 to-transparent p-4">
                     <div className="flex items-center text-white text-xs mb-1">
-                        <span className="font-medium">{author}</span>
-                        <span className="mx-2">•</span>
+                        <span className="hidden font-medium">{author}</span>
+                        <span className="hidden mx-2">•</span>
                         <h6>{timeAgo}</h6>
                     </div>
                     <div onClick={()=> handleClick(slug)} className="cursor-pointer text-white font-medium text-lg leading-tight">

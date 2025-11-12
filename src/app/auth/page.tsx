@@ -22,7 +22,7 @@ export default function Page() {
     const [password, setPassword] = useState("");
 
     useEffect(() => {
-        const value = localStorage.getItem('userSessionTeksy');
+        const value = localStorage.getItem('userSessionKitaDev');
         try {
             const parsed = value ? JSON.parse(value) : null;
             setStoredValue(parsed);
@@ -47,7 +47,7 @@ export default function Page() {
         e.preventDefault();
         setIsAuthLoading(true);
         try {
-            localStorage.setItem("userSessionTeksy", JSON.stringify('dummy_token'));
+            localStorage.setItem("userSessionKitaDev", JSON.stringify('dummy_token'));
             setTimeout(() => {
                 setIsAuthLoading(true);
                 router.push('/');
