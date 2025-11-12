@@ -55,8 +55,9 @@ export default function Footer() {
                         KITADevelopers. Stay Ahead in Tech. Get the News That Matters.
                     </h2>
                     <p className="text-gray-400">
-                        Join thousands of readers who get the latest updates, in-depth reviews, and breakthrough trends in tech — delivered straight to your inbox.
+                        Kickstart Ideas Transform Applications. Were a passionate team of developers, designers, and innovators dedicated to turning your boldest ideas into powerful digital solutions.
                     </p>
+                    {/* Join thousands of readers who get the latest updates, in-depth reviews, and breakthrough trends in tech — delivered straight to your inbox. */}
                     <div className="space-y-2">
                         <h4 className="font-medium leading-tight">Subscribe to our newsletter</h4>
                         <div className="flex flex-col flex-wrap lg:flex-nowrap lg:flex-row gap-4 w-full">

@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kickstart Ideas, Transform Applications",
-  description: "KITADevelopers. Stay Updated and Catch it up with KITA Developers",
+  title: "kitadevelopers",
+  description: "Kickstart Ideas, Transform Applications. Stay Updated and Catch it up with KITA Developers",
   icons: {
     icon: 'final-logo.svg'
   },
@@ -47,12 +47,12 @@ export default function RootLayout({
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Teksy',
+    name: 'KITA Developers',
     url: 'https://www.kitadevelopers.com',
     description: 'KITA Developers - Stay Updated and Catch it up',
     publisher: {
       '@type': 'Organization',
-      name: 'Teksy',
+      name: 'KITA Developers',
       logo: {
         '@type': 'ImageObject',
         url: 'https://www.kitadevelopers.com/final-logo.svg'
