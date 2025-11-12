@@ -52,7 +52,7 @@ export default function Footer() {
 
                 <div className="space-y-6">
                     <h2 className="text-2xl font-bold text-[#374151]">
-                        Stay Ahead in Tech. Get the News That Matters.
+                        KITADevelopers. Stay Ahead in Tech. Get the News That Matters.
                     </h2>
                     <p className="text-gray-400">
                         Join thousands of readers who get the latest updates, in-depth reviews, and breakthrough trends in tech — delivered straight to your inbox.

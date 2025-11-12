@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Kickstart Ideas, Transform Applications",
-  description: "Stay Updated and Catch it up",
+  description: "KITADevelopers. Stay Updated and Catch it up with KITA Developers",
   icons: {
     icon: 'final-logo.svg'
   },
