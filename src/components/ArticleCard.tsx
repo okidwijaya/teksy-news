@@ -47,7 +47,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   return (
     <div className={`border border-[#EEEEEE] h-fit rounded-2xl bg-white max-w-[768px] ${className}`}>
       {showImage && imageUrl && (
-        <div className="relative w-full h-44 mb-3 hidden">
+        <div className="relative w-full h-44 mb-3">
           <Image
             src={imageUrl}
             alt={title}
@@ -57,7 +57,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
       )}
 
-      <div className={`${showImage && imageUrl ? "p-4" : ""} hidden`}>
+      <div className={`${showImage && imageUrl ? "p-4" : ""}`}>
         <div className="flex items-center text-sm text-gray-800 mb-1 showImage && imageUrl">
           <span className="font-semibold">{author}</span>
           <span className="mx-2">•</span>
@@ -65,7 +65,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         </div>
 
         {date && readTime && category && (
-          <div className="items-center text-xs text-gray-400 mb-2 space-x-3 hidden">
+          <div className="items-center text-xs text-gray-400 mb-2 space-x-3">
             <span>{date}</span>
             <span>{readTime}</span>
             <span>{category}</span>
@@ -83,7 +83,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         )}
 
         {showMetrics && (
-          <div className="flex items-center mb-3 hidden">
+          <div className="flex items-center mb-3">
             <div className="flex -space-x-2">
               <Image
                 src="/assets/placeholder-image.webp"

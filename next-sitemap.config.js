@@ -22,6 +22,7 @@ module.exports = {
         allow: '/',
         disallow: [
           '/auth',
+          '/dashboard',
           '/article/add',
           '/api',
           '/_next',

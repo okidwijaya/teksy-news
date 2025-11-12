@@ -40,13 +40,9 @@ export default function AdCardGoogle({ gradient }: AdCardProps) {
 
     return (
         <div
-            className={`w-full min-w-[200px] h-auto max-w-full lg:max-w-[240px] ${gradient
-                ? "bg-gradient-to-r via-[#FF9013] from-[#121212] to-[#ededed]"
-                : "bg-[#12121224]"
-                } p-6 flex flex-col items-center justify-between text-white rounded-2xl`}
-            style={{ minWidth: 200 }}
-        >
-            <div className="mb-4 md:mb-0 w-full">
+            className="w-full min-w-[200px] h-auto max-w-full lg:max-w-[240px] p-6 flex flex-col items-center justify-between text-white rounded-2xl"
+            style={{ minWidth: 200 }}>
+            <div className="w-full">
                 {/* <!-- first-ads-tst-kita --> */}
                 <ins className="adsbygoogle"
                     style={{ display: "block" }}

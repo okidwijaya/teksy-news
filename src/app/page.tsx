@@ -131,9 +131,9 @@ const Home: React.FC = () => {
                             readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
                             category={item.category_id}
                             slug={item.slug}
-                            likes={890}
-                            comments={78}
-                            showMetrics={true}
+                            // likes={890}
+                            // comments={78}
+                            showMetrics={false}
                             className="p-4"
                           />
                         ))}

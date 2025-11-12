@@ -133,11 +133,11 @@ export default function Navbar() {
                     <div className="hidden md:flex items-center space-x-0">
                         <div className="relative group hover:border border-[#DDDDDD] rounded-xl">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#d5d5d5]" fill="none" stroke="white" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border-1 border-[#12121297] hover:border-2 hover:border-[#FFA559] text-[10px] rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
+                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border-1 text-white border-[#F96E2A] hover:border-2 hover:border-[#FFA559] bg-[#F96E2A] text-[10px] rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
                         </div>
                         <Link href="/contact-us" className="bg-[#FF6000] hidden text-[#121212] px-2 py-1 rounded-md hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Contact</Link>
                     </div>
