@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     icon: 'final-logo.svg'
   },
   verification: {
-    google: 'ca-pub-4774376429155227',
+    google: 'rhYVoimb4tFcrPTTQQut7vJGFtQYPo1rNiqwzGgISRc',
     other: {
       'baidu': 'YOUR_BAIDU_VERIFICATION_ID',
       'yandex': 'YOUR_YANDEX_VERIFICATION_ID',
@@ -38,6 +38,7 @@ export const metadata: Metadata = {
     },
   },
 };
+// google-site-verification=rhYVoimb4tFcrPTTQQut7vJGFtQYPo1rNiqwzGgISRc
 
 export default function RootLayout({
   children,
