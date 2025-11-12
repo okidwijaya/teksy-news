@@ -168,7 +168,7 @@ const Home: React.FC = () => {
                         // imageUrl="/assets/placeholder-image.webp"
                         showImage={true}
                         slug={posts[0].slug}
-                        className="border h-fit p-4 border-[#EEEEEE] rounded-2xl p-0 bg-white w-full max-w-full lg:max-w-[320px]"
+                        className="border h-fit p-4 border-[#EEEEEE] rounded-2xl bg-white w-full max-w-full lg:max-w-[320px]"
                       />)}
 
                       <div className="space-y-6 w-full max-w-lg">

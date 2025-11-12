@@ -83,7 +83,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         )}
 
         {showMetrics && (
-          <div className="flex items-center mb-3">
+          <div className="flex items-center mb-3 hidden">
             <div className="flex -space-x-2">
               <Image
                 src="/assets/placeholder-image.webp"
