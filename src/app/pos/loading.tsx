@@ -1,7 +1,7 @@
 'use client';
 import React from 'react'
 import Image from 'next/image'
-import logo from "../../public/final-logo.svg";
+import logo from "../../../public/final-logo.svg";
 
 export default function LoadingLogoDefault() {
     return (
