@@ -78,7 +78,7 @@ export default function Page() {
                 Kickstart Ideas,<br />Transform Applications
               </h1>
               <p className="text-xl md:text-2xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-                Were a passionate team of developers, designers, and innovators dedicated to turning your boldest ideas into powerful digital solutions.
+                KITADevelopers. Were a passionate team of developers, designers, and innovators dedicated to turning your boldest ideas into powerful digital solutions.
               </p>
             </div>
 

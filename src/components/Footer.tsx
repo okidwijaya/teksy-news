@@ -60,17 +60,19 @@ export default function Footer() {
                     {/* Join thousands of readers who get the latest updates, in-depth reviews, and breakthrough trends in tech — delivered straight to your inbox. */}
                     <div className="space-y-2">
                         <h4 className="font-medium leading-tight">Subscribe to our newsletter</h4>
-                        <div className="flex flex-col flex-wrap lg:flex-nowrap lg:flex-row gap-4 w-full">
-                            <form className="flex items-center h-[48px] rounded-2xl bg-[#f4f4fb] overflow-hidden max-w-sm w-full">
-                                <input type="email" placeholder="Your email" className="w-full bg-transparent px-4 py-3 text-[#121212] placeholder-gray-400 focus:outline-none" />
-                                <button type="submit" className="px-4 text-[#121212]">
-                                    <span className="text-xl">→</span>
-                                </button>
-                            </form>
-                            <div className="sm:space-y-0 flex gap-4 items-center justify-center w-full max-w-[195px]">
-                                <span className="font-light leading-tight opacity-5"> Or </span>
-                                <Link href="/contact-us" className="bg-[#FF6000] text-white hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] h-[42px] uppercase font-semibold !text-[14px] px-6 py-3 rounded-xl w-full">Contact Us</Link>
-                                <button className="hidden border border-white hover:border-gray-400 text-white font-semibold px-6 py-3 rounded-2xl w-full sm:w-auto">Subscribe</button>
+                        <div className="flex flex-col flex-nowrap lg:flex-wrap lg:flex-row items-start justify-start lg:items-center gap-4 w-full">
+                            <div className="sm:space-y-0 flex-row flex-nowrap flex gap-4 items-center justify-center w-full max-w-[320px]">
+                                <form className="flex items-center h-[46px] rounded-2xl bg-[#f4f4fb] overflow-hidden max-w-[200px] min-w-[160px] lg:max-w-[250px] w-full">
+                                    <input type="email" placeholder="Your email" className="w-full bg-transparent px-4 py-2 text-[#121212] placeholder-gray-400 focus:outline-none" />
+                                    <button type="submit" className="px-4 text-[#121212]">
+                                        <span className="text-xl">→</span>
+                                    </button>
+                                </form>
+                                <button className="border border-white hover:border-gray-400 text-white font-semibold px-2 py-2 max-w-sm rounded-2xl w-full sm:w-auto">Subscribe</button>
+                            </div>
+                            <div className="w-full max-w-[320px]">
+                                <span className="hidden font-light leading-tight opacity-5"> Or </span>
+                                <Link href="/contact-us" className="bg-[#FF6000] text-white text-center hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] h-[42px] uppercase font-semibold !text-[12px] px-2 py-3 rounded-xl w-full">Contact Us</Link>
                             </div>
                         </div>
                     </div>

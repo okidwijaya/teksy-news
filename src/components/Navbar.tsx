@@ -77,25 +77,25 @@ export default function Navbar() {
                         <div className="hidden lg:flex items-center p-4 gap-0 uppercase">
                             <Link
                                 href={`/services`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Service
                             </Link>
                             <Link
                                 href={`/pricing`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Pricing
                             </Link>
                             <Link
                                 href={`/portfolio`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Portofolio
                             </Link>
                             <Link
                                 href={`/about`}
-                                className="text-left !text-[10px] font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 About
                             </Link>
@@ -137,7 +137,7 @@ export default function Navbar() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
                             </div>
-                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border-1 text-white border-[#F96E2A] hover:border-2 hover:border-[#FFA559] bg-[#F96E2A] text-[10px] rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
+                            <input type="text" placeholder="Search..." className="pl-10 pr-4 py-1 border-1 text-white border-[#F96E2A] hover:border-2 hover:border-[#FFA559] bg-[#F96E2A] text-[12px] rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-transparent outline-none transition-all duration-200 w-40" />
                         </div>
                         <Link href="/contact-us" className="bg-[#FF6000] hidden text-[#121212] px-2 py-1 rounded-md hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] hover:border border-none uppercase font-semibold transition-colors duration-200">Contact</Link>
                     </div>
@@ -244,25 +244,25 @@ export default function Navbar() {
 
                     <Link
                         href="/services"
-                        className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                     >
                         Service
                     </Link>
                     <Link
                         href="/pricing"
-                        className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                     >
                         Pricing
                     </Link>
                     <Link
                         href="/portfolio"
-                        className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                     >
                         Portofolio
                     </Link>
                     <Link
                         href="/about"
-                        className="text-left !text-[10px] font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                        className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                     >
                         About
                     </Link>
