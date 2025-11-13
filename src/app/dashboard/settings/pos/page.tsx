@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { CheckCircle, Circle } from 'lucide-react';
 
-export default function page() {
+export default function Page() {
   return (
     <div className="bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">

@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-export default function page() {
+export default function Page() {
   return (
     <div className="w-full text-[#212121] mx-auto p-6 space-y-8 h-full bg-[#F1F1F1]">
       {/* Store Details */}
