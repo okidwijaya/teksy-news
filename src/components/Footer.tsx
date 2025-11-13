@@ -69,7 +69,7 @@ export default function Footer() {
                             </form>
                             <div className="sm:space-y-0 flex gap-4 items-center justify-center w-full max-w-[195px]">
                                 <span className="font-light leading-tight opacity-5"> Or </span>
-                                <button className="bg-[#FF6000] text-white hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] h-[42px] uppercase font-semibold !text-[14px] px-6 py-3 rounded-xl w-full">Contact Us</button>
+                                <Link href="/contact-us" className="bg-[#FF6000] text-white hover:bg-[#FFA559] hover:!no-underline hover:text-[#454545] h-[42px] uppercase font-semibold !text-[14px] px-6 py-3 rounded-xl w-full">Contact Us</Link>
                                 <button className="hidden border border-white hover:border-gray-400 text-white font-semibold px-6 py-3 rounded-2xl w-full sm:w-auto">Subscribe</button>
                             </div>
                         </div>

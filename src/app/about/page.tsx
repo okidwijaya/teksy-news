@@ -34,7 +34,7 @@ export default function Page() {
     { icon: Code, title: 'Web Development', count: '200+' },
     { icon: Smartphone, title: 'Mobile Apps', count: '150+' },
     { icon: ShoppingBag, title: 'E-Commerce', count: '180+' },
-    { icon: Server, title: 'SaaS Solutions', count: '90+' }
+    { icon: Server, title: 'Inventory Management', count: '90+' }
   ];
 
   const milestones = [
@@ -82,7 +82,7 @@ export default function Page() {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid-cols-2 md:grid-cols-4 gap-6 hidden">
               {expertise.map((item, index) => {
                 const Icon = item.icon;
                 return (

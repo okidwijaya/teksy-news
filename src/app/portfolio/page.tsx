@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ExternalLink, ArrowRight } from 'lucide-react';
 import PublicLayout from '@/components/PublicLayout';
+import Link from 'next/link';
 
 export default function Page() {
   const [showBanner, setShowBanner] = useState(true);
@@ -13,30 +14,31 @@ export default function Page() {
     { id: 'ecommerce', label: 'E-Commerce' },
     { id: 'mobile', label: 'Mobile Apps' },
     { id: 'shopify', label: 'Shopify' },
-    { id: 'saas', label: 'SaaS & Server' }
+    { id: 'saas', label: 'Inventory Management' },
+    { id: 'website', label: 'Website' }
   ];
 
   const projects = [
     {
       id: 1,
-      title: 'LuxeStore - Fashion E-Commerce',
+      title: 'Vegetarian E-Commerce',
       category: 'ecommerce',
       type: 'E-Commerce Website',
-      description: 'Premium fashion marketplace with custom checkout flow and inventory management',
+      description: 'Premium Vegetable marketplace with custom checkout flow and inventory management',
       image: '🛍️',
       stats: { revenue: '+240%', users: '50K+', rating: '4.9/5' },
-      tech: ['Next.js', 'Shopify', 'Tailwind CSS', 'Stripe'],
-      link: '#'
+      tech: ['Next.js', 'MySql', 'Tailwind CSS', 'Django'],
+      link: 'https://web-commerce-gules.vercel.app/'
     },
     {
       id: 2,
-      title: 'FoodieGo - Food Delivery App',
+      title: 'Inventory Management App',
       category: 'mobile',
       type: 'Mobile Application',
-      description: 'Real-time food delivery platform with GPS tracking and payment integration',
+      description: 'Real-time Inventory Management, POS and payment integration',
       image: '🍔',
       stats: { downloads: '100K+', orders: '500K+', rating: '4.8/5' },
-      tech: ['React Native', 'Firebase', 'Google Maps API', 'Stripe'],
+      tech: ['Flutter', 'Firebase', 'Google Maps API', 'NodeJs'],
       link: '#'
     },
     {
@@ -47,8 +49,8 @@ export default function Page() {
       description: 'Custom Shopify theme for beauty products with AR try-on feature',
       image: '💄',
       stats: { conversion: '+180%', sales: 'Rp 2B+', stores: '50+' },
-      tech: ['Liquid', 'JavaScript', 'Shopify API', 'AR.js'],
-      link: '#'
+      tech: ['Liquid', 'JavaScript', 'Shopify API', 'Shopify'],
+      link: 'https://quickstart-e2b0e499.myshopify.com/'
     },
     {
       id: 4,
@@ -59,53 +61,87 @@ export default function Page() {
       image: '📊',
       stats: { clients: '200+', items: '1M+', uptime: '99.9%' },
       tech: ['React', 'Node.js', 'PostgreSQL', 'AWS'],
-      link: '#'
+      link: 'www.kitadevelopers.com/dashboard'
     },
     {
       id: 5,
-      title: 'FitnessPro - Workout App',
-      category: 'mobile',
-      type: 'Mobile Application',
-      description: 'AI-powered fitness tracking app with personalized workout plans',
+      title: 'Landing Page Rental',
+      category: 'website',
+      type: 'Landing Page',
+      description: 'Ready to use landing page for rental business',
       image: '💪',
       stats: { users: '75K+', workouts: '2M+', retention: '85%' },
-      tech: ['Flutter', 'TensorFlow', 'Firebase', 'HealthKit'],
-      link: '#'
+      tech: ['HTML', 'CSS', 'Tailwind', 'Javascript'],
+      link: 'https://cloudsand.my.id/courtrental.html'
     },
     {
       id: 6,
-      title: 'TechMart - Electronics Store',
-      category: 'ecommerce',
-      type: 'E-Commerce Website',
-      description: 'Multi-vendor electronics marketplace with advanced search and filters',
-      image: '💻',
-      stats: { vendors: '500+', products: '10K+', gmv: 'Rp 50B+' },
-      tech: ['Vue.js', 'Laravel', 'Elasticsearch', 'Redis'],
-      link: '#'
+      title: 'Landing Page Beverage',
+      category: 'website',
+      type: 'Landing Page',
+      description: 'Ready to use landing page for FnB',
+      image: '💪',
+      stats: { users: '75K+', workouts: '2M+', retention: '85%' },
+      tech: ['HTML', 'CSS', 'Tailwind', 'Javascript'],
+      link: 'https://cloudsand.my.id/drinkfun.html'
     },
     {
       id: 7,
-      title: 'PetCare - Shopify Plus Store',
-      category: 'shopify',
-      type: 'Shopify Plus',
-      description: 'Enterprise Shopify store for pet supplies with subscription service',
-      image: '🐕',
-      stats: { subscribers: '20K+', mrr: 'Rp 500M', retention: '92%' },
-      tech: ['Shopify Plus', 'React', 'GraphQL', 'Recharge'],
-      link: '#'
+      title: 'Landing Page Beverage',
+      category: 'website',
+      type: 'Landing Page',
+      description: 'Ready to use landing page for FnB',
+      image: '💪',
+      stats: { users: '75K+', workouts: '2M+', retention: '85%' },
+      tech: ['HTML', 'CSS', 'Tailwind', 'Javascript'],
+      link: 'https://cloudsand.my.id/food.html'
     },
     {
-      id: 8,
-      title: 'CloudSync - Server Management',
-      category: 'saas',
-      type: 'Server Infrastructure',
-      description: 'Automated server monitoring and management dashboard',
-      image: '☁️',
-      stats: { servers: '1000+', alerts: '50K+', response: '<1min' },
-      tech: ['Python', 'Docker', 'Kubernetes', 'Prometheus'],
-      link: '#'
-    }
+      id: 5,
+      title: 'Landing Page Furniture',
+      category: 'website',
+      type: 'Landing Page',
+      description: 'Ready to use landing page for furniture business',
+      image: '💪',
+      stats: { users: '75K+', workouts: '2M+', retention: '85%' },
+      tech: ['HTML', 'CSS', 'Tailwind', 'Javascript'],
+      link: 'https://cloudsand.my.id/furniture.html'
+    },
   ];
+
+  // {
+  //   id: 6,
+  //   title: 'TechMart - Electronics Store',
+  //   category: 'ecommerce',
+  //   type: 'E-Commerce Website',
+  //   description: 'Multi-vendor electronics marketplace with advanced search and filters',
+  //   image: '💻',
+  //   stats: { vendors: '500+', products: '10K+', gmv: 'Rp 50B+' },
+  //   tech: ['Vue.js', 'Laravel', 'Elasticsearch', 'Redis'],
+  //   link: '#'
+  // },
+  // {
+  //   id: 7,
+  //   title: 'PetCare - Shopify Plus Store',
+  //   category: 'shopify',
+  //   type: 'Shopify Plus',
+  //   description: 'Enterprise Shopify store for pet supplies with subscription service',
+  //   image: '🐕',
+  //   stats: { subscribers: '20K+', mrr: 'Rp 500M', retention: '92%' },
+  //   tech: ['Shopify Plus', 'React', 'GraphQL', 'Recharge'],
+  //   link: '#'
+  // },
+  // {
+  //   id: 8,
+  //   title: 'CloudSync - Server Management',
+  //   category: 'saas',
+  //   type: 'Server Infrastructure',
+  //   description: 'Automated server monitoring and management dashboard',
+  //   image: '☁️',
+  //   stats: { servers: '1000+', alerts: '50K+', response: '<1min' },
+  //   tech: ['Python', 'Docker', 'Kubernetes', 'Prometheus'],
+  //   link: '#'
+  // }
 
   const filteredProjects = activeFilter === 'all'
     ? projects
@@ -146,14 +182,14 @@ export default function Page() {
                 Our Work Speaks for Itself
               </div>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6">
-                Portfolio
+                Portfolio and Product
               </h1>
               <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
                 Explore our successful projects across e-commerce, mobile apps, and enterprise solutions
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+            <div className="grid-cols-2 md:grid-cols-4 gap-6 mb-16 hidden">
               <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 text-center">
                 <div className="text-4xl font-bold text-white mb-2">500+</div>
                 <div className="text-gray-400 text-sm">Projects Delivered</div>
@@ -178,8 +214,8 @@ export default function Page() {
                   key={filter.id}
                   onClick={() => setActiveFilter(filter.id)}
                   className={`px-6 py-3 rounded-full font-medium transition-all ${activeFilter === filter.id
-                      ? 'bg-white text-black'
-                      : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
+                    ? 'bg-white text-black'
+                    : 'bg-white/10 text-white border border-white/20 hover:bg-white/20'
                     }`}
                 >
                   {filter.label}
@@ -207,9 +243,9 @@ export default function Page() {
                       <div className="text-gray-400 text-sm mb-2">{project.type}</div>
                       <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
                     </div>
-                    <button className="text-white hover:text-gray-300 transition-colors">
+                    <Link href={project.link} className="text-white hover:text-gray-300 transition-colors">
                       <ExternalLink className="w-6 h-6" />
-                    </button>
+                    </Link>
                   </div>
 
                   <p className="text-gray-400 mb-6 leading-relaxed">
@@ -236,10 +272,10 @@ export default function Page() {
                     ))}
                   </div>
 
-                  <button className="w-full bg-white text-black py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group">
+                  <Link href={project.link} className="w-full bg-white text-black py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group">
                     View Case Study
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </Link>
                 </div>
               </div>
             ))}

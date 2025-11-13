@@ -37,7 +37,6 @@ const Home: React.FC = () => {
     'Custom Web Themes',
     'Mobile App Development',
     'Shopify Store Setup',
-    'SaaS Server Management',
     'Inventory Systems'
   ];
 
