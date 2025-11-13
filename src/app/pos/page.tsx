@@ -1,24 +1,11 @@
 "use client";
 import React, { useState } from 'react';
 import { Search, Plus, Minus, Trash2, Send } from 'lucide-react';
-
-// Types
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  discount?: number;
-  image: string;
-  category: 'all' | 'foods' | 'beverage' | 'other';
-}
-
-interface CartItem extends Product {
-  quantity: number;
-}
-
+import { ProductPosType, CartItemPosType } from '@/types/pos/postypes';
+import ProductCard from '@/components/Pos/ProductCard';
+import CartItemCard from '@/components/Pos/CartCardItem';
 // Sample Products Data
-const productsData: Product[] = [
+const productsData: ProductPosType[] = [
   {
     id: '1',
     name: 'Healthy Salad',
@@ -95,105 +82,9 @@ const productsData: Product[] = [
   }
 ];
 
-// Product Card Component
-const ProductCard: React.FC<{
-  product: Product;
-  onAddToCart: (product: Product) => void;
-}> = ({ product, onAddToCart }) => {
-  return (
-    <div
-      onClick={() => onAddToCart(product)}
-      className="bg-white rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow border border-gray-200"
-    >
-      <div className="relative h-40">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-3">
-        <h3 className="font-medium text-gray-800 mb-2 text-sm">{product.name}</h3>
-        <div className="flex items-center gap-2">
-          {product.originalPrice && (
-            <span className="text-xs text-gray-400 line-through">
-              Rp {product.originalPrice.toLocaleString()}
-            </span>
-          )}
-          {product.discount && (
-            <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded">
-              {product.discount}% Off
-            </span>
-          )}
-        </div>
-        <p className="text-gray-900 font-semibold mt-1">
-          Rp {product.price.toLocaleString()}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-// Cart Item Component
-const CartItemCard: React.FC<{
-  item: CartItem;
-  onIncrease: (id: string) => void;
-  onDecrease: (id: string) => void;
-  onRemove: (id: string) => void;
-}> = ({ item, onIncrease, onDecrease, onRemove }) => {
-  return (
-    <div className="flex items-center gap-3 bg-white rounded-lg p-3 mb-3">
-      <img
-        src={item.image}
-        alt={item.name}
-        className="w-16 h-16 rounded-lg object-cover"
-      />
-      <div className="flex-1">
-        <h4 className="font-medium text-gray-800 text-sm">{item.name}</h4>
-        <div className="flex items-center gap-2 mt-1">
-          <span className="text-gray-900 font-semibold text-sm">
-            Rp {item.price.toLocaleString()}
-          </span>
-          {item.discount && (
-            <span className="text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded">
-              {item.discount}% Off
-            </span>
-          )}
-        </div>
-      </div>
-      <button
-        onClick={() => onRemove(item.id)}
-        className="text-red-500 hover:text-red-700"
-      >
-        <Trash2 size={18} />
-      </button>
-      <div className="flex items-center gap-2">
-        <button
-          onClick={() => onDecrease(item.id)}
-          className="w-7 h-7 rounded border border-gray-300 flex items-center justify-center hover:bg-gray-100"
-        >
-          <Minus size={14} />
-        </button>
-        <span className="w-8 text-center font-medium">{item.quantity}</span>
-        <button
-          onClick={() => onIncrease(item.id)}
-          className="w-7 h-7 rounded border border-gray-300 flex items-center justify-center hover:bg-gray-100"
-        >
-          <Plus size={14} />
-        </button>
-      </div>
-      <div className="w-24 text-right">
-        <p className="font-semibold text-gray-900">
-          Rp {(item.price * item.quantity).toLocaleString()}
-        </p>
-      </div>
-    </div>
-  );
-};
-
 // Main POS Component
 const Page: React.FC = () => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItemPosType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [customer, setCustomer] = useState('');
@@ -211,7 +102,7 @@ const Page: React.FC = () => {
     return matchesCategory && matchesSearch;
   });
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: ProductPosType) => {
     setCart(prevCart => {
       const existingItem = prevCart.find(item => item.id === product.id);
       if (existingItem) {
