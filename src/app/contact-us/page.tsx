@@ -37,7 +37,7 @@ export default function Page(){
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
           <p className="text-gray-300 text-lg mb-12 leading-relaxed">
             Have a project in mind or want to discuss how we can help? We had love to hear from you. 
-            Drop us a message and we'll get back to you as soon as possible.
+            Drop us a message and we will get back to you as soon as possible.
           </p>
           
           <div className="space-y-6">
