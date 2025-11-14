@@ -1,4 +1,5 @@
 import { ProductPosType } from '@/types/pos/postypes';
+import Image from 'next/image';
 
 type Props = {
   product: ProductPosType;
@@ -12,7 +13,9 @@ const ProductCard: React.FC<Props> = ({ product, onAddToCart }) => {
       className="bg-white rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition-shadow border border-gray-200"
     >
       <div className="relative h-40">
-        <img
+        <Image
+        width={100}
+        height={100}
           src={product.image}
           alt={product.name}
           className="w-full h-full object-cover"

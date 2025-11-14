@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Search, Plus, Minus, Trash2, Send } from 'lucide-react';
+import { Search, Plus, Send } from 'lucide-react';
 import { ProductPosType, CartItemPosType } from '@/types/pos/postypes';
 import ProductCard from '@/components/Pos/ProductCard';
 import CartItemCard from '@/components/Pos/CartCardItem';
