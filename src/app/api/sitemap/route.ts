@@ -48,41 +48,14 @@ export async function GET() {
       throw new Error('Invalid posts data format');
     }
 
-    // Generate sitemap XML with proper formatting
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      <!-- Static Routes -->
-      <url>
-        <loc>${DEFAULT_DOMAIN}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>1.0</priority>
-      </url>
-      <url>
-        <loc>${DEFAULT_DOMAIN}/blogs</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <changefreq>daily</changefreq>
-        <priority>0.9</priority>
-      </url>
-
-      <!-- Dynamic Blog Posts -->
-      ${(posts as BlogPost[]).map((post: BlogPost) => {
-        // Ensure we have valid dates
-        const lastmod = post.updatedAt || post.createdAt || new Date().toISOString();
-        return `
-        <url>
-          <loc>${DEFAULT_DOMAIN}/blogs/${post.id}</loc>
-          <lastmod>${new Date(lastmod).toISOString()}</lastmod>
-          <changefreq>weekly</changefreq>
-          <priority>0.7</priority>
-        </url>`;
-      }).join('')}
-    </urlset>`;
+    // Generate sitemap XML with proper formatting (no leading whitespace)
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <!-- Static Routes -->\n  <url>\n    <loc>${DEFAULT_DOMAIN}</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>${DEFAULT_DOMAIN}/blogs</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <!-- Dynamic Blog Posts -->\n  ${(posts as BlogPost[]).map((post: BlogPost) => {\n    const lastmod = post.updatedAt || post.createdAt || new Date().toISOString();\n    return `<url>\n    <loc>${DEFAULT_DOMAIN}/blogs/${post.id}</loc>\n    <lastmod>${new Date(lastmod).toISOString()}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`;\n  }).join('')}\n</urlset>`;
 
     // Return the XML with proper content type and caching headers
     return new NextResponse(xml, {
+      status: 200,
       headers: {
-        'Content-Type': 'application/xml',
+        'Content-Type': 'application/xml; charset=utf-8',
         'Cache-Control': 'public, max-age=3600, stale-while-revalidate=600',
       },
     });
@@ -94,21 +67,13 @@ export async function GET() {
       console.error('Error details:', error.message, error.stack);
     }
     
-    // Return a proper XML error response
-    const errorXml = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      <!-- Error occurred, falling back to static routes -->
-      <url>
-        <loc>${DEFAULT_DOMAIN}</loc>
-        <lastmod>${new Date().toISOString()}</lastmod>
-        <priority>1.0</priority>
-      </url>
-    </urlset>`;
+    // Return a proper XML error response (no leading whitespace)
+    const errorXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <!-- Error occurred, falling back to static routes -->\n  <url>\n    <loc>${DEFAULT_DOMAIN}</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <priority>1.0</priority>\n  </url>\n</urlset>`;
 
     return new NextResponse(errorXml, {
-      status: 200, // Still return 200 but with minimal sitemap
+      status: 200,
       headers: {
-        'Content-Type': 'application/xml',
+        'Content-Type': 'application/xml; charset=utf-8',
       },
     });
   }
