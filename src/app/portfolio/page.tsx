@@ -243,7 +243,7 @@ export default function Page() {
                       <div className="text-gray-400 text-sm mb-2">{project.type}</div>
                       <h3 className="text-2xl font-bold text-white mb-3">{project.title}</h3>
                     </div>
-                    <Link href={project.link} className="text-white hover:text-gray-300 transition-colors">
+                    <Link href={project.link} target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-300 transition-colors">
                       <ExternalLink className="w-6 h-6" />
                     </Link>
                   </div>
@@ -272,7 +272,7 @@ export default function Page() {
                     ))}
                   </div>
 
-                  <Link href={project.link} className="w-full bg-white text-black py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group">
+                  <Link href={project.link} target="_blank" rel="noopener noreferrer" className="w-full bg-white text-black py-3 rounded-xl font-semibold hover:bg-gray-200 transition-all flex items-center justify-center gap-2 group">
                     View Case Study
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </Link>

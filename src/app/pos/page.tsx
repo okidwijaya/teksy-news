@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from 'react';
-import { Search, Plus, Send } from 'lucide-react';
+import { Search, Plus } from 'lucide-react';
 import { ProductPosType, CartItemPosType } from '@/types/pos/postypes';
 import ProductCard from '@/components/Pos/ProductCard';
 import CartItemCard from '@/components/Pos/CartCardItem';
+import Sidebar from '@/components/Pos/SideBar';
 // Sample Products Data
 const productsData: ProductPosType[] = [
   {
@@ -143,56 +144,57 @@ const Page: React.FC = () => {
   const total = subtotal + serviceTax;
 
   return (
-    <div className="min-h-screen bg-[#121212] p-6">
-      <div className="max-w-7xl mx-auto flex gap-6">
-        {/* Left Section - Products */}
-        <div className="flex-1">
-          <div className="mb-6">
-            <h1 className="text-2xl font-bold text-white mb-1">Sales Transaction</h1>
-            <p className="text-gray-400 text-sm">February 18, 2025</p>
-          </div>
+    <div className="h-full w-full bg-white p-2">
+      <div className="w-full mx-auto flex gap-6 flex-col lg:flex-row">
+        <Sidebar />
+        <div className="flex-1 h-full w-full">
+          <div className='flex w-full justify-between lg:items-center flex-col md:flex-row items-start gap-2'>
+            <div className="mb-0">
+              <h1 className="text-[14px] font-bold text-[#121212] mb-1">Sales Transaction</h1>
+              <p className="text-gray-400 text-[12px]">February 18, 2025</p>
+            </div>
 
-          {/* Search Bar */}
-          <div className="mb-6">
-            <div className="relative">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-              <input
-                type="text"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-white rounded-lg pl-12 pr-4 py-3 outline-none"
-              />
+            <div className="mb-6">
+              <div className="relative">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" size={12} />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full pl-10 pr-4 py-1 border border-gray-200 rounded-lg text-[12px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex gap-3 mb-6 overflow-x-auto">
+          <div className="flex gap-3 mb-6 pt-4 overflow-x-auto">
             {categories.map(category => (
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-6 py-3 rounded-lg whitespace-nowrap transition-colors ${
-                  selectedCategory === category.id
-                    ? 'bg-white text-blue-600 border-2 border-blue-600'
-                    : 'bg-white text-gray-700 hover:bg-gray-50'
-                }`}
+                className={`px-2 py-2 rounded-lg relative whitespace-nowrap transition-colors text-[12px] ${selectedCategory === category.id
+                  ? 'bg-white text-black border border-black'
+                  : 'bg-white text-gray-700 border-gray-300 border hover:bg-gray-50'
+                  }`}
               >
                 <div className="font-medium">{category.name}</div>
-                <div className="text-xs text-gray-500">{category.count} items</div>
+                <div className={`border rounded-2xl absolute top-[-8px] right-[-6px] text-[#121212] text-[8px] flex items-center justify-center text-center font-semibold p-0 w-4.5 h-4.5
+                ${selectedCategory === category.id
+                    ? 'bg-[#121212] text-white border border-black'
+                    : 'bg-white text-gray-700 border-gray-300'
+                  }
+                `}>{category.count}</div>
               </button>
             ))}
           </div>
 
-          {/* Products Grid */}
-          <div className="grid grid-cols-4 gap-4">
-            {/* Add New Product Card */}
-            <div className="bg-white rounded-lg border-2 border-dashed border-gray-300 flex flex-col items-center justify-center h-64 cursor-pointer hover:border-gray-400 transition-colors">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 h-full max-h-[600px] overflow-scroll w-full pb-[2.5rem]">
+            <div className="hidden bg-white rounded-lg border-2 border-dashed border-gray-300 flex-col items-center justify-center h-full cursor-pointer hover:border-gray-400 transition-colors">
               <Plus size={32} className="text-gray-400 mb-2" />
               <p className="text-gray-600 font-medium">Add New Product</p>
             </div>
 
-            {/* Product Cards */}
             {filteredProducts.map(product => (
               <ProductCard
                 key={product.id}
@@ -203,13 +205,11 @@ const Page: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Section - Order Details */}
-        <div className="w-96 bg-white rounded-lg p-6">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Detail Order</h2>
+        <div className="w-full max-w-[300px] bg-white rounded-lg p-6 border border-gray-300">
+          <h2 className="text-[14px] font-bold text-gray-800 mb-2">Detail Order</h2>
 
-          {/* Customer Input */}
           <div className="mb-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-[12px] font-medium text-gray-700 mb-2">
               Customer
             </label>
             <input
@@ -217,14 +217,13 @@ const Page: React.FC = () => {
               placeholder="Type or Select Customer"
               value={customer}
               onChange={(e) => setCustomer(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 outline-none focus:border-blue-500"
+              className="w-full px-2 py-1 border border-gray-200 rounded-lg text-[12px] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
 
-          {/* Cart Items */}
           <div className="mb-4">
-            <h3 className="text-sm font-medium text-gray-700 mb-3">Your order :</h3>
-            <div className="max-h-96 overflow-y-auto">
+            <h3 className="text-[14px] font-medium text-gray-700 pb-2 mb-2 border-b border-b-[#121212]">Your Order</h3>
+            <div className="max-h-full overflow-y-auto">
               {cart.length === 0 ? (
                 <p className="text-center text-gray-400 py-8">No items in cart</p>
               ) : (
@@ -241,17 +240,16 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          {/* Order Summary */}
           <div className="border-t pt-4 space-y-2">
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-[12px]">
               <span className="text-gray-600">Subtotal ({cart.length})</span>
               <span className="font-semibold">Rp {subtotal.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-[12px]">
               <span className="text-gray-600">Service Tax</span>
               <span className="font-semibold">Rp {serviceTax.toLocaleString()}</span>
             </div>
-            <div className="flex justify-between text-lg font-bold pt-2 border-t">
+            <div className="flex justify-between text-[14px] font-bold pt-2 border-t">
               <span>Total payment</span>
               <span>Rp {total.toLocaleString()}</span>
             </div>
@@ -259,19 +257,18 @@ const Page: React.FC = () => {
 
           {/* Payment Method */}
           <div className="mt-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-[12px] font-medium text-gray-700 mb-2">
               Payment method: <span className="text-red-500">*</span>
             </label>
-            <button className="w-full border border-gray-300 rounded-lg px-4 py-3 flex items-center justify-between hover:bg-gray-50">
+            <button className="w-full border border-gray-300 rounded-lg text-[12px] px-4 py-1 flex items-center justify-between hover:bg-gray-50">
               <span className="text-gray-700">Cash</span>
               <span className="text-gray-400">›</span>
             </button>
           </div>
 
           {/* Make Order Button */}
-          <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg mt-6 flex items-center justify-center gap-2 transition-colors">
+          <button className="w-full bg-[#121212] hover:bg-black text-white font-semibold py-3 text-[12px] rounded-lg mt-6 flex items-center justify-center gap-2 transition-colors">
             Make Order
-            <Send size={18} />
           </button>
         </div>
       </div>

@@ -32,14 +32,34 @@ export interface Tag {
 export interface BlogPost {
     title: string;
     content: string;
-    featuredImage?: File;
     summary: string;
     publishDate: string;
     status: 'draft' | 'publish' | 'scheduled';
     allowComments: boolean;
     pageTitle: string;
     metaDescription: string;
-    urlHandle: string;
-    tags: Tag[];
-    category?: string;
+    urlHandle: string; 
+    tags?: Tag[];
+    category?: string; 
+    keywords?: string; 
+    featuredImage?: File; 
+    isFeatured?: boolean; 
+    views?: number; 
+    readingTime?: number;
+    authorId?: number;
 }
+
+// export interface BlogPost {
+//     title: string;
+//     content: string;
+//     featuredImage?: File;
+//     summary: string;
+//     publishDate: string;
+//     status: 'draft' | 'publish' | 'scheduled';
+//     allowComments: boolean;
+//     pageTitle: string;
+//     metaDescription: string;
+//     urlHandle: string;
+//     tags: Tag[];
+//     category?: string;
+// }

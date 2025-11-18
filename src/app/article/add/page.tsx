@@ -12,7 +12,6 @@ const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
 });
 
 const Page: React.FC = () => {
-
     const [formData, setFormData] = useState<BlogPost>({
         title: '',
         content: '',
@@ -23,9 +22,28 @@ const Page: React.FC = () => {
         pageTitle: '',
         metaDescription: '',
         urlHandle: 'article/',
-        tags: [],
-        category: ''
+        category: '',
+        keywords: '',
+        isFeatured: false,
+        views: 0,
+        readingTime: 2,
+        authorId: 1
     });
+    // tags: [],
+
+    // const [formData, setFormData] = useState<BlogPost>({
+    //     title: '',
+    //     content: '',
+    //     summary: '',
+    //     publishDate: '',
+    //     status: 'draft',
+    //     allowComments: true,
+    //     pageTitle: '',
+    //     metaDescription: '',
+    //     urlHandle: 'article/',
+    //     tags: [],
+    //     category: ''
+    // });
 
     const [imagePreview, setImagePreview] = useState<string>('');
     const [tags, setTags] = useState<Tag[]>([]);
@@ -54,22 +72,40 @@ const Page: React.FC = () => {
                 featuredImageUrl = uploadRes.url;
             }
 
+            // const payload = {
+            //     title: formData.title,
+            //     content: formData.content,
+            //     summary: formData.summary,
+            //     publishDate: formData.publishDate,
+            //     status: formData.status,
+            //     pageTitle: formData.pageTitle,
+            //     metaDescription: formData.metaDescription,
+            //     urlHandle: formData.urlHandle,
+            //     tags: tags.map((tag) => tag.text),
+            //     featured_image: featuredImageUrl,
+            //     category: formData.category || 'Uncategorized'
+            // };
+
             const payload = {
                 title: formData.title,
+                slug: formData.urlHandle,
                 content: formData.content,
-                summary: formData.summary,
-                publishDate: formData.publishDate,
-                status: formData.status,
-                pageTitle: formData.pageTitle,
-                metaDescription: formData.metaDescription,
-                urlHandle: formData.urlHandle,
-                tags: tags.map((tag) => tag.text),
+                excerpt: formData.summary,
                 featured_image: featuredImageUrl,
-                category: formData.category || 'Uncategorized'
+                category_id: formData.category,
+                author_id: formData.authorId,
+                published_at: formData.publishDate,
+                meta_title: formData.pageTitle,
+                meta_description: formData.metaDescription,
+                keywords: formData.keywords,
+                status: formData.status || 'draft',
+                is_featured: formData.isFeatured ? 1 : 0,
+                views: formData.views,
+                reading_time: formData.readingTime,
+                allow_comments: formData.allowComments ? 1 : 0
             };
 
-
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/all`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,9 +128,9 @@ const Page: React.FC = () => {
                 pageTitle: '',
                 metaDescription: '',
                 urlHandle: 'article/',
-                tags: [],
                 category: ''
             });
+            // tags: [],
             setTags([]);
             setImagePreview('');
             setUploadProgress(0);
