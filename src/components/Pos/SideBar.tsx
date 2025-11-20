@@ -30,7 +30,13 @@ interface MenuItem {
     children?: MenuItem[];
 }
 
-const Sidebar = () => {
+interface SidebarProps {
+    display?: boolean;
+    hideFn?: () => void;
+    screenSize?: boolean;
+}
+
+const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
     const [openMenus, setOpenMenus] = useState<string[]>(['sales']);
     const [activeItem, setActiveItem] = useState('sales-transaction');
 
@@ -139,9 +145,11 @@ const Sidebar = () => {
     };
 
     return (
-        <div className="flex flex-col h-screen w-full max-w-[220px] bg-white border-r border-gray-200">
+        // <div className={`${isMobileScreen ? "absolute z-50 top-0 right-0 w-full h-screen bg-[#1212125f]" : "hidden"}`}></div>
+        <div className={`${display ? "flex" : "hidden"} ${screenSize ? "" : ""} flex-col h-screen w-full max-w-[220px] bg-white border-r border-gray-200`}>
             {/* Logo */}
             <div className="p-2 flex items-center flex-row gap-2 border-b border-gray-200">
+                {display ? <p onClick={hideFn}>Hide Menu</p> : <></>}
                 <Link
                     href="/"
                     className="text-lg w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"

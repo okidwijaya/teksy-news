@@ -1,10 +1,11 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Search, Plus } from 'lucide-react';
 import { ProductPosType, CartItemPosType } from '@/types/pos/postypes';
 import ProductCard from '@/components/Pos/ProductCard';
 import CartItemCard from '@/components/Pos/CartCardItem';
 import Sidebar from '@/components/Pos/SideBar';
+import { set } from 'date-fns';
 // Sample Products Data
 const productsData: ProductPosType[] = [
   {
@@ -89,6 +90,27 @@ const Page: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [customer, setCustomer] = useState('');
+  const [sidebarDisplay, setSidebarDisplay] = useState(true);
+  const [isMobileScreen, setMobileScreen] = useState(true);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setSidebarDisplay(window.innerWidth >= 1024); 
+      if(window.innerWidth < 1024){
+        setMobileScreen(true);
+      }else{
+        setMobileScreen(false);
+      }
+    }
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, [])
+
+  const handleOpenSidebar = () => {
+    setSidebarDisplay(!sidebarDisplay);
+  }
 
   const categories = [
     { id: 'all', name: 'All Product', count: productsData.length },
@@ -144,10 +166,14 @@ const Page: React.FC = () => {
   const total = subtotal + serviceTax;
 
   return (
-    <div className="h-full w-full bg-white p-2">
-      <div className="w-full mx-auto flex gap-6 flex-col lg:flex-row">
-        <Sidebar />
+    <div className="h-full w-full bg-white p-0">
+      <div className="w-full mx-auto flex gap-6 flex-row">
+        {/* <div style={{display: sidebarDisplay ? "block" : "hidden"}} className={`${isMobileScreen ? "absolute z-50 top-0 right-0 w-full h-screen bg-[#1212125f]" : "hidden"}`}> */}
+        {/* <div className={`${isMobileScreen ? "absolute z-50 top-0 right-0 w-full h-screen bg-[#1212125f]" : "hidden"}`}> */}
+          <Sidebar screenSize={isMobileScreen} display={sidebarDisplay} hideFn={handleOpenSidebar}/>
+        {/* </div> */}
         <div className="flex-1 h-full w-full">
+          <p className='block lg:hidden' onClick={handleOpenSidebar}>Menu</p>
           <div className='flex w-full justify-between lg:items-center flex-col md:flex-row items-start gap-2'>
             <div className="mb-0">
               <h1 className="text-[14px] font-bold text-[#121212] mb-1">Sales Transaction</h1>
