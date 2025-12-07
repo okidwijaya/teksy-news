@@ -351,23 +351,23 @@ export default function Page() {
         <nav className="mb-6 text-sm text-gray-500" aria-label="Breadcrumb">
           <ol className="flex items-center space-x-2">
             <li>
-              <Link href="/" className="hover:text-emerald-600">Home</Link>
+              <Link href="/" className="hover:text-[#000000] text-[#121212]">Home</Link>
             </li>
             <li>
               <span className="mx-2">›</span>
-              <Link href="/articles" className="hover:text-emerald-600">Articles</Link>
+              <Link href="/articles" className="hover:text-[#000000] text-[#121212]">Articles</Link>
             </li>
             {article.category && (
               <li>
                 <span className="mx-2">›</span>
-                <Link href={`/category/${typeof article.category === 'string' ? article.category.toLowerCase() : article.category.slug}`} className="hover:text-emerald-600">
+                <Link href={`/category/${typeof article.category === 'string' ? article.category.toLowerCase() : article.category.slug}`} className="hover:text-[#000000] text-[#121212]">
                   {typeof article.category === 'string' ? article.category : article.category.name}
                 </Link>
               </li>
             )}
             <li>
               <span className="mx-2">›</span>
-              <span className="text-gray-400">{article.title}</span>
+              <span className="text-[#121212]">{article.title}</span>
             </li>
           </ol>
         </nav>
@@ -476,7 +476,7 @@ export default function Page() {
           <MdPreview value={article.content} />
         </div>
 
-        <div className="mt-16 p-6 bg-gray-50 rounded-xl border">
+        <div className="hidden mt-16 p-6 bg-gray-50 rounded-xl border">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Continue Reading</h3>
           <div className="flex flex-wrap gap-2">
             <Link href="/articles" className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
@@ -548,7 +548,7 @@ export default function Page() {
           </div>
         )}
 
-        <div className="flex justify-center gap-4 my-10 border-t border-b py-6">
+        <div className="hidden justify-center gap-4 my-10 border-t border-b py-6">
           <button
             onClick={() => setIsLiked(!isLiked)}
             className={`flex items-center gap-2 px-6 py-3 rounded-lg transition-all ${isLiked

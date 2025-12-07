@@ -2,7 +2,6 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 interface ArticleCardProps {
   author?: string;
@@ -39,13 +38,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   className = '',
   slug
 }) => {
-  const router = useRouter();
-
-  const handleClick = (id:string) => {
-    router.push(`/article/${id}`);
-  };
   return (
-    <div className={`border border-[#EEEEEE] h-fit rounded-2xl bg-white max-w-[768px] ${className}`}>
+    <div className={`border border-[#444444] h-fit rounded-2xl bg-[#121212] max-w-[768px] ${className}`}>
       {showImage && imageUrl && (
         <div className="relative w-full h-44 mb-3">
           <Image
@@ -58,26 +52,29 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
       )}
 
       <div className={`${showImage && imageUrl ? "p-4" : ""}`}>
-        <div className="flex items-center text-sm text-gray-800 mb-1 showImage && imageUrl">
+        <div className="flex items-center text-sm text-[#F9FAFB] mb-1 showImage && imageUrl">
           <span className="font-semibold">{author}</span>
           <span className="mx-2">•</span>
           <span>{timeAgo}</span>
         </div>
 
         {date && readTime && category && (
-          <div className="items-center text-xs text-gray-400 mb-2 space-x-3">
+          <div className="items-center text-xs text-[#F9FAFB] mb-2 space-x-2">
             <span>{date}</span>
-            <span>{readTime}</span>
+            <span>•</span>
+            {/* <span>{readTime}</span> */}
             <span>{category}</span>
           </div>
         )}
 
-        <div onClick={() => handleClick(slug)} className={`cursor-pointer font-medium mb-2 ${showButton ? 'text-3xl font-bold leading-tight mb-4' : 'text-[#121212]'}`}>
-          {title}
-        </div>
+        <Link href={`/article/${slug}`}>
+          <h2 className={`font-space cursor-pointer text-[14px] font-semibold mb-2 ${showButton ? '!text-lg lg:!text-3xl font-bold leading-tight mb-4' : 'text-[#F9FAFB]'}`}>
+            {title}
+          </h2>
+        </Link>
 
         {excerpt && (
-          <p className="text-gray-500 mb-6">
+          <p className="text-[#F9FAFB] mb-6">
             {excerpt}
           </p>
         )}
@@ -89,28 +86,28 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
                 src="/assets/placeholder-image.webp"
                 width={28}
                 height={28}
-                className="rounded-full border-2 border-white"
+                className="rounded-full border-2 border-[#444444]"
                 alt="User 1"
               />
               <Image
                 src="/assets/placeholder-image.webp"
                 width={28}
                 height={28}
-                className="rounded-full border-2 border-white"
+                className="rounded-full border-2 border-[#444444]"
                 alt="User 2"
               />
               <Image
                 src="/assets/placeholder-image.webp"
                 width={28}
                 height={28}
-                className="rounded-full border-2 border-white"
+                className="rounded-full border-2 border-[#444444]"
                 alt="User 3"
               />
             </div>
-            <span className="ml-2 font-semibold text-gray-700">+</span>
+            <span className="ml-2 font-semibold text-[#F9FAFB]">+</span>
 
             {likes && (
-              <span className="flex items-center ml-4 text-gray-700 text-base">
+              <span className="flex items-center ml-4 text-[#F9FAFB] text-base">
                 <svg className="w-5 h-5 mr-1 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M3 10a7 7 0 1114 0A7 7 0 013 10zm7-3a1 1 0 100 2 1 1 0 000-2zm0 4a1 1 0 100 2 1 1 0 000-2z" />
                 </svg>
@@ -119,7 +116,7 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             )}
 
             {comments && (
-              <span className="flex items-center ml-4 text-gray-700 text-base">
+              <span className="flex items-center ml-4 text-[#F9FAFB] text-base">
                 <svg className="w-5 h-5 mr-1 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                   <path d="M18 10c0 3.866-3.582 7-8 7a8.96 8.96 0 01-4.39-1.11L2 17l1.11-3.61A8.96 8.96 0 012 10c0-3.866 3.582-7 8-7s8 3.134 8 7z" />
                 </svg>
@@ -130,11 +127,11 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         )}
 
         {showButton ? (
-          <Link href="#" className="inline-block bg-[#121212] text-white rounded-full px-6 py-2 font-medium hover:bg-gray-800 transition">
+          <Link href={`/article/${slug}`} className="inline-block bg-[#121212] border border-[#444444] text-[#F9FAFB] rounded-full px-6 py-2 font-medium hover:bg-[#000000] transition">
             Read More
           </Link>
         ) : (
-          <Link href="#" className="text-gray-700 underline text-sm">
+          <Link href={`/article/${slug}`} className="text-[#F9FAFB] text-sm">
             Read more
           </Link>
         )}

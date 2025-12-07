@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 interface FeaturedArticleProps {
     imageUrl: string;
@@ -20,11 +20,6 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
     className = '',
     slug
 }) => {
-      const router = useRouter();
-    
-      const handleClick = (id:string) => {
-        router.push(`/article/${id}`);
-      };
     return (
         <div className={`w-full h-fit max-w-full lg:max-w-md rounded-2xl overflow-hidden mb-6 border-none bg-white ${className}`}>
             <div className="relative">
@@ -41,9 +36,11 @@ export const FeaturedArticle: React.FC<FeaturedArticleProps> = ({
                         <span className="hidden mx-2">•</span>
                         <h6>{timeAgo}</h6>
                     </div>
-                    <div onClick={()=> handleClick(slug)} className="cursor-pointer text-white font-medium text-lg leading-tight">
+                    <Link href={`/article/${slug}`}>
+                    <h2 className="font-jakarta cursor-pointer text-white font-medium text-lg leading-tight">
                         {title}
-                    </div>
+                    </h2>
+                    </Link>
                 </div>
             </div>
         </div>

@@ -4,10 +4,10 @@ import Link from 'next/link';
 
 export default function BlogBanner() {
     const services = [
-        { icon: Code, text: 'Premium Web Themes', link: '/dashboard' },
-        { icon: Smartphone, text: 'Mobile Development', link: '/dashboard' },
-        { icon: ShoppingBag, text: 'Shopify Solutions', link: '/dashboard' },
-        { icon: Server, text: 'ERP System', link: '/dashboard' },
+        { icon: Code, text: 'Premium Web Themes', link: '/services' },
+        { icon: Smartphone, text: 'Mobile Development', link: '/services' },
+        { icon: ShoppingBag, text: 'Shopify Solutions', link: '/services' },
+        { icon: Server, text: 'ERP System', link: '/services' },
     ];
 
     return (
@@ -34,12 +34,12 @@ export default function BlogBanner() {
                     </p>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-                        <button className="bg-white text-[#121212] px-8 py-3 rounded-full font-semibold text-lg hover:bg-purple-50 transition-all hover:shadow-xl hover:-translate-y-0.5 w-full sm:w-auto">
+                        <button className="hidden bg-white text-[#121212] px-8 py-3 rounded-full font-semibold text-lg hover:bg-purple-50 transition-all hover:shadow-xl hover:-translate-y-0.5 w-full sm:w-auto">
                             Get Started
                         </button>
-                        <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white/10 transition-all w-full sm:w-auto">
+                        <Link href="/portofolio" className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-white/10 transition-all w-full sm:w-auto">
                             View Our Work
-                        </button>
+                        </Link>
                     </div>
                 </div>
 

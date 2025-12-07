@@ -39,7 +39,7 @@ module.exports = {
       "/": 1.0,
       "/about": 0.8,
       "/services": 0.8,
-      "/portfolio": 0.8,
+      "/portofolio": 0.8,
       "/pricing": 0.8,
       "/contact-us": 0.7,
       "/blogs": 0.9,

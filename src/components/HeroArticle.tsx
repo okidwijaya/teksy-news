@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import React from 'react';
 
 interface HeroArticleProps {
@@ -30,13 +30,8 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
     className = '',
     slug
 }) => {
-      const router = useRouter();
-    
-      const handleClick = (id:string) => {
-        router.push(`/article/${id}`);
-      };
     return (
-        <div className={`w-full max-w-full lg:max-w-xl bg-white rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
+        <div className={`w-full max-w-full lg:max-w-xl bg-[#444444] rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
             {/* <div className="relative w-full h-auto md:h-full hidden"> */}
             <div className="relative w-full h-[400px] md:h-full">
                 <Image
@@ -47,16 +42,19 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                 />
             </div>
 
-            <div className="absolute left-0 bottom-0 w-full flex flex-col px-6 pb-4 bg-gradient-to-t from-[#121212]/70 to-transparent">
-                <div className="text-white">
-                    <div className="flex items-center text-sm text-white mb-1">
+            {/* <div className="absolute left-0 bottom-0 w-full flex flex-col px-6 pb-4 bg-gradient-to-t from-[#121212]/70 to-transparent"> */}
+            <div className="absolute left-0 bottom-0 w-full flex flex-col px-6 pb-4">
+                <div className="text-[#121212]">
+                    <div className="flex items-center text-sm text-[#121212] mb-1">
                         <span className="font-semibold">{author}</span>
                         <span className="mx-2">•</span>
                         <h6>{timeAgo}</h6>
                     </div>
-                    <div onClick={()=> handleClick(slug)} className="cursor-pointer text-lg font-semibold mb-1">
-                        {title}
-                    </div>
+                    <Link href={`/article/${slug}`}>
+                        <h2 className="text-[#121212] font-space cursor-pointer text-lg font-semibold mb-1">
+                            {title}
+                        </h2>
+                    </Link>
                 </div>
 
                 <div className="flex flex-col flex-wrap lg:flex-nowrap lg:flex-row gap-4 items-center justify-between">
@@ -103,7 +101,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                         </span>
                     </div>
 
-                    <div className="flex items-center justify-end hidden">
+                    <div className="items-center justify-end hidden">
                         <div className="flex items-center bg-white/90 rounded-xl px-4 py-2">
                             <Image
                                 src={writerImage}
@@ -113,9 +111,9 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                                 alt={writerName}
                             />
                             <div>
-                                <div className="text-xs text-gray-500">
+                                <h1 className="text-xs text-gray-500">
                                     {writerTitle}
-                                </div>
+                                </h1>
                                 <div className="text-sm font-semibold text-gray-800">
                                     {writerName}
                                 </div>

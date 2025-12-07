@@ -14,11 +14,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     className = ''
 }) => {
     return (
-        <div className={`border-b border-b-[#EEEEEE] pb-2 flex items-center justify-between mb-4 mt-12 w-full max-w-[1024px] mx-auto ${className}`}>
+        <div className={`pb-2 flex items-center justify-between mb-4 mt-12 w-full max-w-[1024px] mx-auto ${className}`}>
             <div className="flex items-center space-x-2">
                 <span className="font-semibold text-lg uppercase">{title}</span>
                 <svg
-                    className="w-4 h-4 text-gray-400"
+                    className="w-4 h-4 text-gray-400 hidden"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"

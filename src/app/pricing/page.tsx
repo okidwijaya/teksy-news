@@ -43,8 +43,16 @@ export default function Page() {
     <PublicLayout>
       <div className="min-h-screen">
         <div className="bg-[#121212] relative overflow-hidden">
-          <div className="relative z-10 px-4 py-12 md:py-16">
-            <div className="max-w-6xl mx-auto text-center text-white mb-8">
+          <div className="pt-12 pb-0 justify-center flex max-w-7xl mx-auto px-0">
+            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-0 border border-white/20">
+              <span className="text-[#F9FAFB] text-sm font-medium tracking-wide">
+                Professional Development Services
+              </span>
+            </div>
+          </div>
+          
+          <div className="relative z-10 px-4 pt-6 pb-12">
+            <div className="max-w-6xl mx-auto text-center text-white mb-12">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                 Transparent Pricing
               </h1>

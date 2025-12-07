@@ -5,7 +5,7 @@ import { Code, Smartphone, ShoppingBag, Server, Users, Target, Award, Zap } from
 import PublicLayout from '@/components/PublicLayout';
 
 export default function Page() {
-  const [showBanner, setShowBanner] = useState(true);
+  const [showBanner, setShowBanner] = useState(false);
 
   const values = [
     {
@@ -187,7 +187,7 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="bg-gradient-to-br to-[#F96E2A] via-[#121212] from-[#323232] rounded-3xl p-12 text-center text-white">
+          <div className="bg-gradient-to-br to-[#E4E4E4] via-[#121212] from-[#323232] rounded-3xl p-12 text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Transform Your Idea?
             </h2>

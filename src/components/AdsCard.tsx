@@ -10,10 +10,11 @@ type AdCardProps = {
 export default function AdCard({ gradient }: AdCardProps) {
     const [hideBanner, setHideBanner] = useState(false);
     return (
+        // ? "bg-gradient-to-r via-[#FF9013] from-[#121212] to-[#ededed]"
         <div
-            className={`${hideBanner ? 'hidden' : 'flex'} relative w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] ${gradient
-                ? "bg-gradient-to-r via-[#FF9013] from-[#121212] to-[#ededed]"
-                : "bg-[#121212]"
+            className={`${hideBanner ? 'hidden' : 'flex'}] relative w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] ${gradient
+                ? "bg-[#673AB7] border border-[#444444]"
+                : "bg-[#121212] border border-[#FF5722]"
                 } p-6 flex flex-col items-center justify-between text-white rounded-2xl`}
         >
             <button className='absolute top-1 right-2' onClick={() => setHideBanner(true)}>
