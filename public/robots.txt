@@ -2,13 +2,15 @@
 User-agent: *
 Allow: /
 Disallow: /auth
+Disallow: /dashboard
+Disallow: /pos
 Disallow: /article/add
 Disallow: /api
 Disallow: /_next
 
 # Host
-Host: https://www.kitadevelopers.com
+Host: https://www.cloudsand.my.id
 
 # Sitemaps
-Sitemap: https://www.kitadevelopers.com/sitemap.xml
+Sitemap: https://www.cloudsand.my.id/sitemap.xml
 Sitemap: https://www.kitadevelopers.com/api/sitemap
