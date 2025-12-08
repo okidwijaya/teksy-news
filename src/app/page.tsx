@@ -95,7 +95,7 @@ const Home: React.FC = () => {
 
                     <p className="mb-4 lg:mb-10 max-w-xl leading-relaxed">
                       Your software is your strongest competitive advantage.
-                      We'll help you realize it, embed it deeply into your
+                      We&apos;ll help you realize it, embed it deeply into your
                       business, and transform it into genuine momentum.
                     </p>
 

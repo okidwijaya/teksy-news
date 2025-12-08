@@ -5,8 +5,7 @@ import { ProductPosType, CartItemPosType } from '@/types/pos/postypes';
 import ProductCard from '@/components/Pos/ProductCard';
 import CartItemCard from '@/components/Pos/CartCardItem';
 import Sidebar from '@/components/Pos/SideBar';
-import { set } from 'date-fns';
-// Sample Products Data
+
 const productsData: ProductPosType[] = [
   {
     id: '1',
@@ -84,7 +83,6 @@ const productsData: ProductPosType[] = [
   }
 ];
 
-// Main POS Component
 const Page: React.FC = () => {
   const [cart, setCart] = useState<CartItemPosType[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
