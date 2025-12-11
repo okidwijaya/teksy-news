@@ -1,10 +1,10 @@
 'use client';
-
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, use } from 'react';
 import dynamic from 'next/dynamic';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
 import { BlogPost, Tag } from '@/types';
+import axios from 'axios';
 
 const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
     ssr: false,
@@ -18,41 +18,29 @@ const Page: React.FC = () => {
         summary: '',
         publishDate: '',
         status: 'draft',
-        allowComments: true,
         pageTitle: '',
         metaDescription: '',
-        urlHandle: 'article/',
-        category: '',
+        urlHandle: '',
+        categoryId: 'cat-tech-001',
         keywords: '',
+        featuredImageUrl: '',
         isFeatured: false,
         views: 0,
         readingTime: 2,
-        authorId: 1
+        authorId: 'auth-001',
     });
-    // tags: [],
-
-    // const [formData, setFormData] = useState<BlogPost>({
-    //     title: '',
-    //     content: '',
-    //     summary: '',
-    //     publishDate: '',
-    //     status: 'draft',
-    //     allowComments: true,
-    //     pageTitle: '',
-    //     metaDescription: '',
-    //     urlHandle: 'article/',
-    //     tags: [],
-    //     category: ''
-    // });
+    // allowComments: true,
 
     const [imagePreview, setImagePreview] = useState<string>('');
     const [tags, setTags] = useState<Tag[]>([]);
     const [tagInput, setTagInput] = useState('');
+    const [isTagFetchingFailed, setTagFetchingFailed] = useState<Boolean>(false);
     const [tagIdCounter, setTagIdCounter] = useState(0);
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
-
+    const [imageFile, setImageFile] = useState<File | null>(null);
+    const [uploadedUrl, setUploadedUrl] = useState<string | null>(null);
 
     useEffect(() => {
         const now = new Date();
@@ -60,31 +48,86 @@ const Page: React.FC = () => {
         setFormData(prev => ({ ...prev, publishDate: localDateTime }));
     }, []);
 
+    // *LOAD TAGS TESTING*
+    // const getTagAll = async (id: string) => {
+    //     try {
+    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/article/tag/all`, {
+    //             article_id: id
+    //         });
+    //         return response.data.result;
+    //     } catch (error) {
+    //         console.error('Error fetching tags:', error);
+    //     }
+    // }
+    // useEffect(() => {
+    //     getTagAll('1');
+    // }, []);
+    // *LOAD TAGS TESTING*
+
+    const submitTagsSequentially = async (id: string) => {
+        const apiEndpoint = `${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/article/tag`;
+
+        if (!tags || tags.length === 0) {
+            return;
+        }
+
+        for (const tag of tags) {
+            const tagText = tag.text;
+            try {
+                const response = await axios.post(apiEndpoint, {
+                    article_id: id,
+                    tag: tagText,
+                });
+                // id: tagText.toLowerCase().replace(/[\s\.\,]/g, "-"),
+            } catch (error: any) {
+                const errorMessage = error.response
+                    ? `Status ${error.response.status}: ${error.response.data.message || 'API error occurred'}`
+                    : error.message;
+                console.error(`${tagText}, ${errorMessage}`);
+                setTagFetchingFailed(true);
+            }
+        }
+    };
+
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const validTypes = ["image/jpeg", "image/png", "image/webp"];
+        const maxSizeMB = 5;
+
+        if (!validTypes.includes(file.type)) {
+            alert("Only JPG, PNG, or WEBP allowed.");
+            return;
+        }
+
+        if (file.size > maxSizeMB * 1024 * 1024) {
+            alert(`File size must be under ${maxSizeMB}MB.`);
+            return;
+        }
+
+        const ext = file.name.split('.').pop();
+        const friendlyName = "artImg";
+        const newFile = new File([file], `${friendlyName}.${ext}`, { type: file.type });
+
+        setImageFile(newFile)
+
+        const reader = new FileReader();
+        reader.onload = (event) => setImagePreview(event.target?.result as string);
+        reader.readAsDataURL(newFile);
+    };
+
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
         try {
             setIsSubmitting(true);
-
             let featuredImageUrl = '';
-            if (formData.featuredImage) {
-                const uploadRes = await uploadImageWithProgress(formData.featuredImage, setUploadProgress);
+            if (imageFile) {
+                const uploadRes = await uploadImageWithProgress(imageFile, setUploadProgress);
                 featuredImageUrl = uploadRes.url;
             }
-
-            // const payload = {
-            //     title: formData.title,
-            //     content: formData.content,
-            //     summary: formData.summary,
-            //     publishDate: formData.publishDate,
-            //     status: formData.status,
-            //     pageTitle: formData.pageTitle,
-            //     metaDescription: formData.metaDescription,
-            //     urlHandle: formData.urlHandle,
-            //     tags: tags.map((tag) => tag.text),
-            //     featured_image: featuredImageUrl,
-            //     category: formData.category || 'Uncategorized'
-            // };
 
             const payload = {
                 title: formData.title,
@@ -92,31 +135,28 @@ const Page: React.FC = () => {
                 content: formData.content,
                 excerpt: formData.summary,
                 featured_image: featuredImageUrl,
-                category_id: formData.category,
+                category_id: formData.categoryId,
                 author_id: formData.authorId,
                 published_at: formData.publishDate,
                 meta_title: formData.pageTitle,
                 meta_description: formData.metaDescription,
                 keywords: formData.keywords,
-                status: formData.status || 'draft',
+                status: formData.status,
                 is_featured: formData.isFeatured ? 1 : 0,
                 views: formData.views,
                 reading_time: formData.readingTime,
-                allow_comments: formData.allowComments ? 1 : 0
             };
+            // allow_comments: formData.allowComments ? 1 : 0
 
-            const res = await fetch(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(payload),
-            });
-
-            if (!res.ok) {
-                const errorData = await res.json();
-                throw new Error(errorData.error || 'Failed to create article');
-            }
+            const response = await axios.post(
+                `${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles`,
+                payload,
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
 
             setFormData({
                 title: '',
@@ -124,23 +164,32 @@ const Page: React.FC = () => {
                 summary: '',
                 publishDate: new Date().toISOString().slice(0, 16),
                 status: 'draft',
-                allowComments: true,
                 pageTitle: '',
                 metaDescription: '',
-                urlHandle: 'article/',
+                urlHandle: '',
+                categoryId: 'cat-tech-001',
+                keywords: '',
+                featuredImageUrl: '',
+                isFeatured: false,
+                views: 0,
+                readingTime: 2,
+                authorId: 'auth-001',
                 category: ''
             });
-            // tags: [],
+            // allowComments: true,
             setTags([]);
             setImagePreview('');
             setUploadProgress(0);
 
             alert('Article created successfully!');
 
+            submitTagsSequentially(response.data.result.articleid);
+
         } catch (error) {
             alert('Error creating article: ' + (error instanceof Error ? error.message : 'Unknown error'));
         } finally {
             setIsSubmitting(false);
+            setTagFetchingFailed(false);
         }
     };
 
@@ -159,32 +208,8 @@ const Page: React.FC = () => {
         setFormData(prev => ({ ...prev, content: content || '' }));
     };
 
-    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (!file) return;
-
-        const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
-        const maxSizeMB = 5;
-
-        if (!validTypes.includes(file.type)) {
-            alert('Only JPG, PNG, or WEBP formats are allowed.');
-            return;
-        }
-
-        if (file.size > maxSizeMB * 1024 * 1024) {
-            alert(`File size must be under ${maxSizeMB}MB.`);
-            return;
-        }
-
-        setFormData((prev) => ({ ...prev, featuredImage: file }));
-
-        const reader = new FileReader();
-        reader.onload = (event) => setImagePreview(event.target?.result as string);
-        reader.readAsDataURL(file);
-    };
-
     const removeImage = () => {
-        setFormData(prev => ({ ...prev, featuredImage: undefined }));
+        setImageFile(null)
         setImagePreview('');
         if (fileInputRef.current) {
             fileInputRef.current.value = '';
@@ -263,7 +288,6 @@ const Page: React.FC = () => {
 
             alert('Draft saved successfully!');
         } catch (error) {
-            console.error('Save draft error:', error);
             alert('Error saving draft: ' + (error instanceof Error ? error.message : 'Unknown error'));
         }
     };
@@ -287,17 +311,9 @@ const Page: React.FC = () => {
                 </div>
             )}
             <div className="bg-white rounded-lg border border-gray-200 p-6">
-                <div className="mb-8">
-                    <h1 className="text-2xl font-bold text-gray-900">
-                        Create New Blog Post
-                    </h1>
-                    <p className="text-gray-600 mt-2">
-                        Fill in the details below to create your blog post
-                    </p>
-                    <button onClick={handleLogout}>
-                        Logout
-                    </button>
-                </div>
+                <button className="mb-6 mr-0 ml-auto block w-full text-sm py-2 px-3 rounded-xl font-semibold bg-red-700 text-white hover:bg-red-800 max-w-28 text-center" onClick={handleLogout}>
+                    Logout
+                </button>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
@@ -437,7 +453,7 @@ const Page: React.FC = () => {
                                     height={100}
                                     src={imagePreview}
                                     alt="Preview"
-                                    className="h-32 w-32 object-cover rounded-md"
+                                    className="h-28 w-28 object-cover rounded-md"
                                 />
                                 <button
                                     type="button"
@@ -448,6 +464,48 @@ const Page: React.FC = () => {
                                 </button>
                             </div>
                         )}
+
+                        {imagePreview && (
+                            <button
+                                type="button"
+                                className="mt-3 px-4 py-2 bg-blue-600 text-white rounded-md"
+                                onClick={async () => {
+                                    if (!imageFile) return alert("No file selected");
+
+                                    try {
+                                        setUploadedUrl(null);
+                                        const result = await uploadImageWithProgress(
+                                            imageFile,
+                                            (p) => setUploadProgress(p)
+                                        );
+
+                                        setUploadedUrl(result.url);
+                                        setFormData(prev => ({ ...prev, featuredImageUrl: result.url }));
+
+                                    } catch (error) {
+                                        alert("Upload failed");
+                                    }
+                                }}
+                            >
+                                Submit Upload
+                            </button>
+                        )}
+
+                        {uploadProgress > 0 && uploadProgress < 100 && (
+                            <p className="mt-2 text-sm text-blue-600">
+                                Uploading... {uploadProgress}%
+                            </p>
+                        )}
+
+                        {uploadedUrl && (
+                            <div className="mt-3 text-green-600 text-sm">
+                                Uploaded Successfully!
+                                <a href={uploadedUrl} target="_blank" className="underline ml-1">
+                                    View Image
+                                </a>
+                            </div>
+                        )}
+
                     </div>
 
                     <div>
@@ -521,12 +579,12 @@ const Page: React.FC = () => {
                             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-[#F96E2A] focus:border-[#F96E2A] outline-none"
                         >
                             <option value="draft">Draft</option>
-                            <option value="publish">Publish</option>
-                            <option value="scheduled">Scheduled</option>
+                            <option value="published">Publish</option>
+                            <option value="archived">Archived</option>
                         </select>
                     </div>
 
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <input
                             type="checkbox"
                             id="allowComments"
@@ -538,7 +596,7 @@ const Page: React.FC = () => {
                         <label htmlFor="allowComments" className="ml-2 block text-sm text-gray-700">
                             Allow Comments
                         </label>
-                    </div>
+                    </div> */}
 
                     <div className="bg-white rounded-lg p-0">
                         <div className="flex justify-between items-center mb-4">

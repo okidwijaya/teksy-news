@@ -7,7 +7,6 @@ import SearchAndFilter from '@/components/DashboardComponents/SearchAndFilter';
 import Image from 'next/image';
 import Link from 'next/link';
 
-// Types
 interface Product {
     id: number;
     name: string;
@@ -27,7 +26,6 @@ interface PaginationProps {
     totalPages: number;
 }
 
-// HeaderButton Component
 const HeaderButton: React.FC<{ children: React.ReactNode; primary?: boolean }> = ({ children, primary = false }) => {
     return (
         <button
@@ -41,7 +39,6 @@ const HeaderButton: React.FC<{ children: React.ReactNode; primary?: boolean }> =
     );
 };
 
-// Header Component
 const Header: React.FC = () => {
     return (
         <div className="flex items-center justify-between mb-6 text-[#212121] flex-wrap md:flex-nowrap">
@@ -70,7 +67,6 @@ const Header: React.FC = () => {
     );
 };
 
-// Product Table Component
 const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
     return (
         <div className="border-none rounded-lg overflow-scroll h-[500px]">
@@ -117,7 +113,6 @@ const ProductTable: React.FC<ProductTableProps> = ({ products }) => {
     );
 };
 
-// Pagination Component
 const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
     return (
         <div className="flex items-center justify-between mt-4">
@@ -136,7 +131,6 @@ const Pagination: React.FC<PaginationProps> = ({ currentPage, totalPages }) => {
     );
 };
 
-// Main Component
 const Page: React.FC = () => {
     const tabs = ['All', 'Active', 'Draft', 'Archived'];
     const [products, setProducts] = useState<Product[]>([]);

@@ -17,7 +17,13 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'example.com',
+        hostname: 'www.cloudsand.my.id',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cloudsand.my.id',
         port: '',
         pathname: '/**',
       },

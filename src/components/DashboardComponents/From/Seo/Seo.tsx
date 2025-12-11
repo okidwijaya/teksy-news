@@ -18,7 +18,6 @@ export const Seo: React.FC<SeoProps> = ({ formData, onChange }) => {
       </p>
 
       <div className="mt-4 space-y-4">
-        {/* Page Title */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Page title</label>
           <input
@@ -31,7 +30,6 @@ export const Seo: React.FC<SeoProps> = ({ formData, onChange }) => {
           <p className="text-xs text-gray-500 mt-1">{formData.seoTitle.length} of 70 characters used</p>
         </div>
 
-        {/* Meta Description */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Meta description</label>
           <textarea
@@ -44,7 +42,6 @@ export const Seo: React.FC<SeoProps> = ({ formData, onChange }) => {
           <p className="text-xs text-gray-500 mt-1">{formData.seoDescription.length} of 160 characters used</p>
         </div>
 
-        {/* URL Handle (read-only for now) */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">URL handle</label>
           <input

@@ -38,7 +38,6 @@ const Page: React.FC = () => {
 
   return (
     <div className="bg-gray-50">
-      {/* Header */}
       <div className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -54,9 +53,7 @@ const Page: React.FC = () => {
       </div>
 
       <div className="flex gap-6 p-6 max-w-7xl mx-auto flex-column md:flex-row">
-        {/* Main Content */}
         <div className="flex-1 space-y-6">
-          {/* Title Section */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <div className="space-y-4">
               <div>
@@ -72,7 +69,6 @@ const Page: React.FC = () => {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">Description</label>
                 <div className="border border-gray-300 rounded-lg">
-                  {/* Rich Text Editor Toolbar */}
                   <div className="flex items-center gap-1 p-2 border-b border-gray-200 bg-gray-50 flex-wrap md:flex-nowrap">
                     <select className="text-sm border-none bg-transparent focus:outline-none">
                       <option>Paragraph</option>
@@ -126,7 +122,6 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          {/* Collection Type */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Collection type</h3>
             <div className="space-y-4">
@@ -169,7 +164,6 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          {/* Products Section */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Products</h3>
             <div className="flex gap-4 mb-6">
@@ -201,7 +195,6 @@ const Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Empty State */}
             <div className="text-center py-12">
               <div className="w-16 h-16 mx-auto mb-4 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center">
                 <Tag className="w-8 h-8 text-gray-400" />
@@ -213,7 +206,6 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          {/* Search Engine Listing */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-medium text-gray-900">Search engine listing</h3>
@@ -227,9 +219,7 @@ const Page: React.FC = () => {
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="w-80 space-y-6">
-          {/* Publishing */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-medium text-gray-900">Publishing</h3>
@@ -265,7 +255,6 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          {/* Image */}
           <div className="bg-white rounded-lg p-6 shadow-sm">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Image</h3>
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">

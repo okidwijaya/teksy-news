@@ -32,7 +32,6 @@ export default function Page(){
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center p-5">
       <div className="max-w-6xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden grid md:grid-cols-2 animate-fadeIn">
-        {/* Info Section */}
         <div className="bg-black text-white p-12 md:p-16 flex flex-col justify-center">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get in Touch</h1>
           <p className="text-gray-300 text-lg mb-12 leading-relaxed">
@@ -58,7 +57,6 @@ export default function Page(){
           </div>
         </div>
 
-        {/* Form Section */}
         <div className="p-12 md:p-16 bg-white">
           {showSuccess && (
             <div className="bg-black text-white p-4 rounded-lg mb-6 animate-slideDown">

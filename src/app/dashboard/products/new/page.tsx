@@ -4,7 +4,6 @@ import {
   ChevronDown,
   Plus,
 } from 'lucide-react';
-// import { supabase } from '@/lib/supabaseClient';
 import TextInput from '@/components/DashboardComponents/From/Text/TextInput';
 import { FormDataProduct } from '@/lib/productInterface';
 import { TextEditor } from '@/components/DashboardComponents/From/Text/RichText';

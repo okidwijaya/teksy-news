@@ -67,7 +67,6 @@ export default function Page() {
         <PublicLayout>
             <div className="min-h-screen bg-white p-4 md:p-8">
                 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-                    {/* Left Sidebar */}
                     <div className="lg:sticky lg:top-8 lg:self-start bg-transparent">
                         <div className="bg-transparent p-8 md:p-12">
                             <div className="w-16 h-16 bg-gradient-to-br from-pink-500 via-purple-500 to-blue-400 rounded-full mb-8"></div>
@@ -83,7 +82,6 @@ export default function Page() {
                         </div>
                     </div>
 
-                    {/* Right Content - FAQ Items */}
                     <div className="space-y-4">
                         {faqData.map((item) => (
                             <div

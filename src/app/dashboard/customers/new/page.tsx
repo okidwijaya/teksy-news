@@ -59,7 +59,6 @@ export default function Page() {
 
   return (
     <div className="bg-gray-50 p-6">
-      {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <User className="w-6 h-6 text-gray-600" />
@@ -82,9 +81,7 @@ export default function Page() {
       </div>
 
       <div className="flex gap-6">
-        {/* Main Form */}
         <div className="flex-1 space-y-6">
-          {/* Customer Overview */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Customer overview</h2>
             
@@ -202,7 +199,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Default Address */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-2">Default address</h2>
             <p className="text-sm text-gray-500 mb-4">The primary address of this customer</p>
@@ -215,7 +211,6 @@ export default function Page() {
             </button>
           </div>
 
-          {/* Tax Details */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Tax details</h2>
             
@@ -236,9 +231,7 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="w-80 space-y-6">
-          {/* Notes */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-medium text-gray-900">Notes</h3>
@@ -256,7 +249,6 @@ export default function Page() {
             />
           </div>
 
-          {/* Tags */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-medium text-gray-900">Tags</h3>

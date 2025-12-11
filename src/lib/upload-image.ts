@@ -1,27 +1,35 @@
-export const uploadImageWithProgress = async (file: File, onProgress?: (progress: number) => void) => {
-  const formData = new FormData();
-  formData.append('file', file);
+export const uploadImageWithProgress = async (
+  file: File,
+  onProgress?: (progress: number) => void
+): Promise<{ url: string }> => {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    const formData = new FormData();
+    formData.append("file", file);
 
-  try {
-    const response = await fetch('/api/upload', {
-      method: 'POST',
-      body: formData,
-    });
+    xhr.open("POST", `${process.env.NEXT_PUBLIC_API_CP}/upload_image/upload.php`);
 
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.error || 'Upload failed');
-    }
+    xhr.upload.onprogress = (e) => {
+      if (e.lengthComputable && onProgress) {
+        const percent = Math.round((e.loaded / e.total) * 100);
+        onProgress(percent);
+      }
+    };
 
-    const data = await response.json();
-    
-    if (onProgress) {
-      onProgress(100);
-    }
+    xhr.onload = () => {
+      if (xhr.status === 200) {
+        try {
+          const data = JSON.parse(xhr.responseText);
+          resolve({ url: data.url });
+        } catch (err) {
+          reject(err);
+        }
+      } else {
+        reject("Upload error");
+      }
+    };
 
-    return { url: data.url };
-  } catch (error) {
-    console.error('Upload error:', error);
-    throw error;
-  }
+    xhr.onerror = () => reject("Failed to upload");
+    xhr.send(formData);
+  });
 };

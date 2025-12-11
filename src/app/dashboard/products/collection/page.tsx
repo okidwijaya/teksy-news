@@ -110,7 +110,6 @@ const Page: React.FC = () => {
 
   return (
     <div className="bg-white">
-      {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 rounded-full bg-gray-800 flex items-center justify-center">
@@ -123,7 +122,6 @@ const Page: React.FC = () => {
         </button>
       </div>
 
-      {/* Filters and Controls */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -149,7 +147,6 @@ const Page: React.FC = () => {
         </div>
       </div>
 
-      {/* Table */}
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead className="bg-gray-50 border-b border-gray-200">

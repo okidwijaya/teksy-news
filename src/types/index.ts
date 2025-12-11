@@ -17,6 +17,7 @@ export type Article = {
   reading_time?: number;
   category_id?: string;
   author: Author;
+  featured_image?: string;
 };
 
 export interface AccordionItem {
@@ -35,31 +36,18 @@ export interface BlogPost {
     summary: string;
     publishDate: string;
     status: 'draft' | 'publish' | 'scheduled';
-    allowComments: boolean;
     pageTitle: string;
     metaDescription: string;
     urlHandle: string; 
     tags?: Tag[];
     category?: string; 
+    categoryId?: string; 
     keywords?: string; 
     featuredImage?: File; 
     isFeatured?: boolean; 
     views?: number; 
     readingTime?: number;
-    authorId?: number;
-}
-
-// export interface BlogPost {
-//     title: string;
-//     content: string;
-//     featuredImage?: File;
-//     summary: string;
-//     publishDate: string;
-//     status: 'draft' | 'publish' | 'scheduled';
-//     allowComments: boolean;
-//     pageTitle: string;
-//     metaDescription: string;
-//     urlHandle: string;
-//     tags: Tag[];
-//     category?: string;
-// }
+    authorId?: string;
+    featuredImageUrl?: string;
+  }
+  // allowComments: boolean;

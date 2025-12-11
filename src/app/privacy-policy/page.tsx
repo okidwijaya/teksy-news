@@ -29,7 +29,6 @@ export default function Page() {
   return (
     <PublicLayout>
       <div className="min-h-screen bg-white">
-        {/* Header */}
         <header className="text-center py-16 px-4">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
             Privacy Policy
@@ -39,10 +38,8 @@ export default function Page() {
           </p>
         </header>
 
-        {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Left Content */}
             <div className="lg:col-span-2 space-y-8">
               <div>
                 <p className="text-2xl md:text-3xl text-gray-900 mb-6 leading-relaxed">
@@ -66,7 +63,6 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Right Sidebar - Table of Contents */}
             <div className="lg:sticky lg:top-8 lg:self-start">
               <div className="bg-gray-50 rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">

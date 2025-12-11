@@ -147,7 +147,6 @@ const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
     return (
         // <div className={`${isMobileScreen ? "absolute z-50 top-0 right-0 w-full h-screen bg-[#1212125f]" : "hidden"}`}></div>
         <div className={`${display ? "flex" : "hidden"} ${screenSize ? "" : ""} flex-col h-screen w-full max-w-[220px] bg-white border-r border-gray-200`}>
-            {/* Logo */}
             <div className="p-2 flex items-center flex-row gap-2 border-b border-gray-200">
                 {display ? <p onClick={hideFn}>Hide Menu</p> : <></>}
                 <Link
@@ -165,7 +164,6 @@ const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
                 <div className="text-xs text-[#121212]">KITA POS</div>
             </div>
 
-            {/* Search */}
             <div className="p-4 border-b border-gray-200">
                 <div className="relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={12} />
@@ -177,7 +175,6 @@ const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
                 </div>
             </div>
 
-            {/* Menu */}
             <div className="flex-1 overflow-y-auto">
                 <div className="px-4 py-4">
                     <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Menu</div>
@@ -210,7 +207,6 @@ const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
                                     )}
                                 </button>
 
-                                {/* Submenu */}
                                 {item.children && openMenus.includes(item.id) && (
                                     <div className="ml-3 mt-0 space-y-1">
                                         {item.children.map((child) => (
@@ -236,7 +232,6 @@ const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
                 </div>
             </div>
 
-            {/* Bottom Section */}
             <div className="border-t border-gray-200 flex gap-2 flex-col pt-2 px-0">
                 <button className="w-full flex items-center gap-2 px-6 py-0 text-[12px] text-gray-700 hover:bg-gray-50 transition-colors">
                     <Settings size={12} className="text-gray-500" />
@@ -248,7 +243,6 @@ const Sidebar = ({display, hideFn, screenSize}: SidebarProps) => {
                     <span className="font-medium">Log out</span>
                 </button>
 
-                {/* User Profile */}
                 <div className="flex items-center gap-3 px-4 pt-2 pb-6 border-t border-gray-200">
                     <div className="w-8 h-8 text-[12px] rounded-full bg-gray-800 flex items-center justify-center text-white font-semibold">
                         HD

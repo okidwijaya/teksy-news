@@ -54,20 +54,7 @@ const Home: React.FC = () => {
 
     fetchPosts()
   }, [])
-  // [#F9FAFB] [#121212] [#DDDDDD]
-  //   Background: #181818 (dark gray)
-  // Primary Text: #F7F7F7 (off-white)
-  // Accent 1: #FF5722 (vibrant orange)
-  // Accent 2: #673AB7 (deep purple)
-  // Hover Effects: #FFEB3B (bright yellow)
-  //   Background: #2C2C2C (slate gray)
-  // Primary Text: #E4E4E4 (light gray)
 
-  //   Background: #121212 (charcoal black)
-  // Primary Text: #E0E0E0 (light gray)
-  // Secondary Text: #B0B0B0 (medium gray)
-  // Borders/Dividers: #444444 (dark gray)
-  // Accent: #888888 (soft gray)
   return (
     <PublicLayout>
       <div className="bg-[#181818] text-[#F9FAFB]">
@@ -171,11 +158,11 @@ const Home: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap md:flex-nowrap gap-8 w-fit mx-auto items-start justify-center flex-col-reverse lg:flex-row pt-6 lg:pt-16 px-4 lg:px-0">
-                <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
-                  <section className="card w-full max-w-[1024px] mx-auto lg:mr-0">
+                <section className="card w-full max-w-5xl mx-auto lg:mr-0">
+                  <section className="card w-full max-w-5xl mx-auto lg:mr-0">
                     <div className="mb-12 flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
                       {posts.length > 0 && (<HeroArticle
-                        imageUrl="/assets/placeholder-image.webp"
+                        imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
                         author={'Brian'}
                         timeAgo={timeAgo(posts[0].published_at)}
                         title={posts[0].title}
@@ -183,14 +170,14 @@ const Home: React.FC = () => {
                         comments={1000}
                         writerName={'Brian'}
                         writerTitle={'Brian'}
-                        writerImage="/assets/placeholder-image.webp"
+                        writerImage='/assets/placeholder-image.webp'
                         slug={posts[0].slug}
                       />)}
 
                       <div>
                         {posts.length > 0 && (
                           <FeaturedArticle
-                            imageUrl="/assets/placeholder-image.webp"
+                            imageUrl={posts[1].featured_image || '/assets/placeholder-image.webp'}
                             author={'Brian'}
                             timeAgo={timeAgo(posts[1].published_at)}
                             title={posts[1].title}
@@ -237,7 +224,7 @@ const Home: React.FC = () => {
                         timeAgo={timeAgo(posts[5].published_at)}
                         title={posts[5].title}
                         excerpt={posts[5].meta_description}
-                        imageUrl="/assets/placeholder-image.webp"
+                        imageUrl={posts[5].featured_image || '/assets/placeholder-image.webp'}
                         date={posts[5].published_at}
                         readTime={posts[5].reading_time !== undefined ? posts[5].reading_time.toString() : undefined}
                         category={posts[5].category_id}
@@ -275,7 +262,7 @@ const Home: React.FC = () => {
                           author={'Brian'}
                           timeAgo={timeAgo(posts[0].published_at)}
                           title={posts[0].title}
-                          imageUrl="/assets/placeholder-image.webp"
+                          imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
                           showImage={true}
                           slug={posts[0].slug}
                           className="border h-fit p-4 border-[#EEEEEE] rounded-2xl bg-white w-full max-w-full lg:max-w-[320px]"
@@ -304,7 +291,7 @@ const Home: React.FC = () => {
                             title={posts[0].title}
                             excerpt={posts[0].meta_description}
                             showImage={true}
-                            imageUrl="/assets/placeholder-image.webp"
+                            imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
                             date={posts[0].published_at}
                             readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
                             category={posts[0].category_id}
@@ -347,7 +334,6 @@ const Home: React.FC = () => {
 
                   <div className="hidden lg:flex flex-col gap-4">
                     {/* <div className="w-full grid gap-4 grid-cols-[200px_200px_200px] lg:grid-cols-1 overflow-x-scroll lg:overflow-x-hidden min-h-fit"> */}
-                    {/* service add */}
                     <div
                       className={`${hideBanner ? 'hidden' : 'flex'} border border-[#FFEB3B] w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] bg-[#121212] p-6 flex-col items-center justify-between text-[#F9FAFB] rounded-2xl shadow-2xl relative overflow-hidden`}
                     >

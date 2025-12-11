@@ -5,7 +5,6 @@ import React from 'react'
 export default function Page() {
   return (
     <div className="w-full text-[#212121] mx-auto p-6 space-y-8 h-full bg-[#F1F1F1]">
-      {/* Store Details */}
       <div className="w-full max-w-[820px] mx-auto bg-white border-[#D4D4D4] border rounded-md shadow p-4 space-y-4">
         <h2 className="text-[12px] text-[#212121] font-semibold">Store details</h2>
         <div className="space-y-2">
@@ -24,7 +23,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Store Defaults */}
       <div className="w-full max-w-[820px] mx-auto bg-white border-[#D4D4D4] border rounded-md shadow p-4 space-y-6">
         <h2 className="text-[12px] text-[#212121] font-semibold">Store defaults</h2>
         <div>
@@ -68,7 +66,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Order ID */}
       <div className="w-full max-w-[820px] mx-auto bg-white border-[#D4D4D4] border rounded-md shadow p-4 space-y-4">
         <h2 className="text-[12px] text-[#212121] font-semibold">Order ID</h2>
         <div className="grid grid-cols-2 gap-4">
@@ -84,7 +81,6 @@ export default function Page() {
         <p className="text-[#212121]">Your order ID will appear as #1001, #1002, #1003 …</p>
       </div>
 
-      {/* Order Processing */}
       <div className="w-full max-w-[820px] mx-auto bg-white border-[#D4D4D4] border rounded-md shadow p-4 space-y-4">
         <h2 className="text-[12px] text-[#212121] font-semibold">Order processing</h2>
         <fieldset className="space-y-2">
@@ -110,14 +106,12 @@ export default function Page() {
         <p className="text-[#212121]">The order will be removed from your list of open orders.</p>
       </div>
 
-      {/* Brand Assets */}
       <div className="w-full max-w-[820px] mx-auto bg-white border-[#D4D4D4] border rounded-md shadow p-4">
         <h2 className="text-[12px] text-[#212121] font-semibold mb-2">Brand assets</h2>
         <p className="text-[#212121] mb-4">Integrate brand assets across sales channels, themes, and apps</p>
         <button className="px-4 py-2 bg-[#212121] text-white rounded-md text-[12px]">Manage</button>
       </div>
 
-      {/* Resources */}
       <div className="w-full max-w-[820px] mx-auto bg-white border-[#D4D4D4] border rounded-md shadow p-4">
         <h2 className="text-[12px] px-2 py-0 mb-2 text-[#212121] font-semibold">Resources</h2>
 

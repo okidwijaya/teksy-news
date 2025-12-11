@@ -12,7 +12,6 @@ export const MediaUpload: React.FC<MediaUploadProps> = ({ value, onChange }) => 
     const files = e.target.files;
     if (!files || files.length === 0) return;
 
-    // Simulate upload and return file URLs (replace this with actual upload logic)
     const uploaded = Array.from(files).map((file) => URL.createObjectURL(file));
 
     onChange([...value, ...uploaded]);

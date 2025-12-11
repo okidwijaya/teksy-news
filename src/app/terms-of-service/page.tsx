@@ -32,7 +32,6 @@ export default function Page() {
   return (
     <PublicLayout>
       <div className="min-h-screen bg-white">
-        {/* Header */}
         <header className="text-center py-16 px-4">
           <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-4">
             Terms of Service
@@ -42,19 +41,15 @@ export default function Page() {
           </p>
         </header>
 
-        {/* Main Content */}
         <div className="max-w-7xl mx-auto px-4 pb-16">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Left Content */}
             <div className="lg:col-span-2 space-y-8">
-              {/* Introduction */}
               <div>
                 <p className="text-2xl md:text-3xl text-gray-900 mb-6 leading-relaxed">
                   Please read these Terms of Service carefully before using our themes or development services.
                 </p>
               </div>
 
-              {/* Section 1 */}
               <section id="acceptance">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   1. Acceptance of Terms
@@ -67,7 +62,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 2 */}
               <section id="services">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   2. Services Offered
@@ -91,7 +85,6 @@ export default function Page() {
                 </div>
               </section>
 
-              {/* Section 3 */}
               <section id="theme-licenses">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   3. Theme Licenses and Usage Rights
@@ -115,7 +108,6 @@ export default function Page() {
                 </div>
               </section>
 
-              {/* Section 4 */}
               <section id="development-services">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   4. Development Services
@@ -139,7 +131,6 @@ export default function Page() {
                 </div>
               </section>
 
-              {/* Section 5 */}
               <section id="payment-terms">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   5. Payment Terms
@@ -155,7 +146,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 6 */}
               <section id="refund-policy">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   6. Refund Policy
@@ -168,7 +158,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 7 */}
               <section id="intellectual-property">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   7. Intellectual Property Rights
@@ -181,7 +170,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 8 */}
               <section id="user-responsibilities">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   8. User Responsibilities
@@ -199,7 +187,6 @@ export default function Page() {
                 </ul>
               </section>
 
-              {/* Section 9 */}
               <section id="warranties">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   9. Warranties and Disclaimers
@@ -215,7 +202,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 10 */}
               <section id="limitation-liability">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   10. Limitation of Liability
@@ -228,7 +214,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 11 */}
               <section id="support-updates">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   11. Support and Updates
@@ -244,7 +229,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 12 */}
               <section id="termination">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   12. Termination
@@ -257,7 +241,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 13 */}
               <section id="modifications">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   13. Modifications to Terms
@@ -270,7 +253,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 14 */}
               <section id="governing-law">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   14. Governing Law
@@ -283,7 +265,6 @@ export default function Page() {
                 </p>
               </section>
 
-              {/* Section 15 */}
               <section id="contact">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   15. Contact Information
@@ -298,7 +279,6 @@ export default function Page() {
                 </div>
               </section>
 
-              {/* Footer Note */}
               <div className="border-t border-gray-200 pt-8 mt-12">
                 <p className="text-sm text-gray-500 italic">
                   By using our themes or development services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.
@@ -306,7 +286,6 @@ export default function Page() {
               </div>
             </div>
 
-            {/* Right Sidebar - Table of Contents */}
             <div className="lg:sticky lg:top-8 lg:self-start">
               <div className="bg-gray-50 rounded-2xl p-6">
                 <h3 className="text-xl font-bold text-gray-900 mb-6">

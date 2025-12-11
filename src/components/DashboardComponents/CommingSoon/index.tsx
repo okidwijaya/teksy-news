@@ -6,7 +6,6 @@ export default function ComingSoon() {
   const [email, setEmail] = useState('');
 
   const handleNotify = () => {
-    // Placeholder action
     alert(`We'll notify: ${email}`);
   };
 

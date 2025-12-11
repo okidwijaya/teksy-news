@@ -1,6 +1,5 @@
-// lib/productOrderSummary.ts
 export interface ProductOrderSummary {
-  id: string; // could be product_id or variant_id depending on your use
+  id: string; 
   product_id: string;
   variant_id?: string;
   title: string;

@@ -409,7 +409,6 @@ export default function Page() {
 
   return (
     <div className="bg-gray-50 p-6">
-      {/* Enhanced Header */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-3">
@@ -455,7 +454,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Enhanced Top Metrics Row */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <EnhancedMetricCard 
           title="Gross sales"
@@ -484,18 +482,14 @@ export default function Page() {
         />
       </div>
 
-      {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-        {/* Sales Over Time Chart */}
         <div className="lg:col-span-2">
           <SalesOverTimeChart />
         </div>
         
-        {/* Enhanced Sales breakdown */}
         <EnhancedSalesBreakdown />
       </div>
 
-      {/* Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <InteractiveChartCard title="Total sales by sales channel" isEmpty />
         <InteractiveChartCard title="Average order value over time" isEmpty>
@@ -512,7 +506,6 @@ export default function Page() {
         <InteractiveChartCard title="Total sales by product" isEmpty />
       </div>
 
-      {/* Conversion and Sessions Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <InteractiveChartCard title="Sessions over time" isEmpty>
           <ResponsiveContainer width="100%" height="100%">
@@ -529,14 +522,12 @@ export default function Page() {
         <ConversionBreakdownChart />
       </div>
 
-      {/* Device and Location Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <DeviceBreakdownCard />
         <InteractiveChartCard title="Sessions by location" isEmpty />
         <InteractiveChartCard title="Total sales by social referrer" isEmpty />
       </div>
 
-      {/* Enhanced Cohort Analysis */}
       <div className="mb-6">
         <InteractiveDataTable 
           title="Customer cohort analysis"
@@ -546,7 +537,6 @@ export default function Page() {
         />
       </div>
 
-      {/* Products and Sessions Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <InteractiveChartCard title="Sessions by landing page" isEmpty />
         <div className="bg-white rounded-lg border border-gray-200 p-4">
@@ -579,20 +569,17 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Marketing and Referrer Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <InteractiveChartCard title="Sessions by social referrer" isEmpty />
         <InteractiveChartCard title="Total sales by referrer" isEmpty />
         <InteractiveChartCard title="Sales attributed to marketing" isEmpty />
       </div>
 
-      {/* Bottom Analytics Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <InteractiveChartCard title="Sessions by referrer" isEmpty />
         <InteractiveChartCard title="Total sales by POS location" isEmpty />
       </div>
 
-      {/* POS Staff Sales with Enhanced Layout */}
       <div className="mb-6">
         <div className="bg-white rounded-lg border border-gray-200 p-4">
           <div className="flex justify-between items-center mb-4">
@@ -611,7 +598,6 @@ export default function Page() {
         </div>
       </div>
 
-      {/* Footer */}
       <div className="mt-8 pt-6 border-t border-gray-200">
         <div className="flex items-center justify-between text-xs text-gray-500">
           <div className="flex items-center space-x-4">

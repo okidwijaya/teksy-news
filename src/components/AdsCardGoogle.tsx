@@ -19,7 +19,6 @@ export default function AdCardGoogle() {
                 console.error("Adsense error:", e);
             }
         } else {
-            // Try again after a short delay if not visible yet
             const timer = setTimeout(() => {
                 if (adRef.current && adRef.current.offsetWidth > 0 && !initializedRef.current) {
                     try {

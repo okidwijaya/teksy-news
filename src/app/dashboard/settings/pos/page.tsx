@@ -5,7 +5,6 @@ export default function Page() {
   return (
     <div className="bg-gray-50 p-6">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Panel */}
         <div className="lg:col-span-2 space-y-6">
           <div className="bg-white rounded-2xl shadow p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-1">Quick start guide</h2>
@@ -13,7 +12,6 @@ export default function Page() {
             <h3 className="text-lg font-semibold text-gray-900 mb-2">POS Setup guide</h3>
             <p className="text-sm text-gray-500 mb-6">Get started with this step-by-step guide</p>
 
-            {/* Steps */}
             <div className="space-y-4">
               <Step checked label="Import your products from Square" />
               <Step label="Double check your migration" />
@@ -32,7 +30,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* POS Pro Section */}
           <div className="bg-white rounded-2xl shadow p-6">
             <p className="text-sm text-gray-500 mb-2">1 of 4 tasks complete</p>
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Streamline in-store operations with POS Pro</h3>
@@ -46,7 +43,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Right Panel */}
         <div className="bg-white rounded-2xl shadow p-6 flex flex-col items-center justify-center text-center">
           <Image src="/pos-demo.jpg" width={200} height={200} alt="POS demo" className="rounded-xl mb-4" />
           <h4 className="text-md font-semibold text-gray-900 mb-1">Sell anywhere from a single back-office</h4>

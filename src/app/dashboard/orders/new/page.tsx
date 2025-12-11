@@ -32,7 +32,6 @@ interface OrderData {
 }
 
 const Page: React.FC = () => {
-  // Initialize state with proper types
   const [orderData, setOrderData] = useState<OrderData>({
     searchProduct: '',
     customer: '',
@@ -55,7 +54,6 @@ const Page: React.FC = () => {
     }
   ]);
 
-  // Handler functions
   const handleInputChange = (field: string, value: string | boolean) => {
     setOrderData(prev => ({
       ...prev,
@@ -75,7 +73,6 @@ const Page: React.FC = () => {
     setProducts(prev => prev.filter(product => product.id !== productId));
   };
 
-  // Calculation functions
   const calculateSubtotal = () => {
     return products.reduce((sum, product) => sum + (product.price * product.quantity), 0);
   };
@@ -95,7 +92,6 @@ const Page: React.FC = () => {
   return (
     <div className="bg-gray-50 p-6">
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
         <div className="flex items-center gap-2 mb-6">
           <div className="p-2 border border-gray-300 rounded-md bg-white">
             <div className="w-4 h-4 border-2 border-gray-400 rounded"></div>
@@ -104,11 +100,8 @@ const Page: React.FC = () => {
           <h1 className="text-xl font-semibold text-gray-900">Create order</h1>
         </div>
 
-        {/* Main content grid */}
         <div className="grid grid-cols-1 lg:grid-cols-1 gap-6">
-          {/* Left column */}
           <div className="grid grid-cols-1 gap-4">
-            {/* Products Section */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200">
               <div className="p-6 border-b border-gray-200">
                 <div className="flex items-center justify-between mb-4">
@@ -118,7 +111,6 @@ const Page: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Search and Actions */}
                 <div className="flex gap-2 mb-4">
                   <div className="flex-1 relative">
                     <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
@@ -138,7 +130,6 @@ const Page: React.FC = () => {
                   </button>
                 </div>
 
-                {/* Product Headers */}
                 <div className="grid grid-cols-12 gap-4 mb-4 text-sm font-medium text-gray-700">
                   <div className="col-span-6">Product</div>
                   <div className="col-span-3">Quantity</div>
@@ -146,7 +137,6 @@ const Page: React.FC = () => {
                 </div>
               </div>
 
-              {/* Product List */}
               <div className="p-6">
                 {products.map((product) => (
                   <div key={product.id} className="grid grid-cols-12 gap-4 items-center py-4 border-b border-gray-100 last:border-b-0">
@@ -186,11 +176,9 @@ const Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Payment Section */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
               <h2 className="text-lg font-medium text-gray-900 mb-6">Payment</h2>
 
-              {/* Payment Summary */}
               <div className="space-y-4">
                 <div className="flex justify-between items-center">
                   <span className="text-gray-700">Subtotal</span>
@@ -235,7 +223,6 @@ const Page: React.FC = () => {
                 </div>
               </div>
 
-              {/* Payment Options */}
               <div className="mt-6">
                 <div className="flex items-center">
                   <input
@@ -251,7 +238,6 @@ const Page: React.FC = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex gap-3 mt-6">
                 <button className="px-4 py-2 border border-gray-300 rounded-md hover:bg-gray-50">
                   Send invoice
@@ -264,9 +250,7 @@ const Page: React.FC = () => {
             </div>
           </div>
 
-          {/* Right column */}
           <div className="grid grid-cols-1 gap-4">
-            {/* Notes */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-gray-900">Notes</h3>
@@ -277,7 +261,6 @@ const Page: React.FC = () => {
               <p className="text-gray-600">{orderData.notes}</p>
             </div>
 
-            {/* Customer */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Customer</h3>
               <div className="relative">
@@ -292,7 +275,6 @@ const Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Markets */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-gray-900">Markets</h3>
@@ -306,7 +288,6 @@ const Page: React.FC = () => {
               </div>
             </div>
 
-            {/* Currency */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <h3 className="text-lg font-medium text-gray-900 mb-4">Currency</h3>
               <select
@@ -320,7 +301,6 @@ const Page: React.FC = () => {
               </select>
             </div>
 
-            {/* Tags */}
             <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-gray-900">Tags</h3>

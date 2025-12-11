@@ -4,7 +4,6 @@ import { Search, Filter, Download, Upload, Package, MoreHorizontal, PlusCircle, 
 import ImagePlaceholder from '../../../../public/banners/picture-placeholder.svg'
 import Image from 'next/image';
 
-// Types
 interface InventoryItem {
     id: number;
     name: string;
@@ -29,7 +28,6 @@ interface TabProps {
     counts?: Record<string, number>;
 }
 
-// Button Component
 const Button: React.FC<{
     children: React.ReactNode;
     primary?: boolean;
@@ -49,7 +47,6 @@ const Button: React.FC<{
     );
 };
 
-// Header Component
 const Header: React.FC = () => {
     return (
         <div className="flex items-center justify-between mb-6 flex-wrap md:flex-nowrap">
@@ -68,7 +65,6 @@ const Header: React.FC = () => {
     );
 };
 
-// Tabs Component
 const Tabs: React.FC<TabProps> = ({ tabs, activeTab, onChange, counts }) => {
     return (
         <div className="border-b bg-white rounded-t-md">
@@ -93,7 +89,6 @@ const Tabs: React.FC<TabProps> = ({ tabs, activeTab, onChange, counts }) => {
     );
 };
 
-// Stats Cards Component
 const StatsCards: React.FC = () => {
     return (
         <div className="grid grid-cols-4 gap-4 mb-6">
@@ -117,7 +112,6 @@ const StatsCards: React.FC = () => {
     );
 };
 
-// Search and Filter Component
 const SearchFilter: React.FC = () => {
     return (
         <div className="bg-white flex justify-between items-center px-4 py-2 overflow-scroll">
@@ -140,7 +134,6 @@ const SearchFilter: React.FC = () => {
     );
 };
 
-// Status Badge Component
 const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
     let bgColor = 'bg-green-100 text-green-800';
 
@@ -157,7 +150,6 @@ const StatusBadge: React.FC<{ status: string }> = ({ status }) => {
     );
 };
 
-// Inventory Table Component
 const InventoryTable: React.FC<{ items: InventoryItem[] }> = ({ items }) => {
     return (
         <div className="bg-white rounded-b-md overflow-scroll">
@@ -217,7 +209,6 @@ const InventoryTable: React.FC<{ items: InventoryItem[] }> = ({ items }) => {
     );
 };
 
-// Main Component
 const Page: React.FC = () => {
     const [activeTab, setActiveTab] = useState('All inventory');
     const tabs = ['All inventory', 'In stock', 'Low stock', 'Out of stock'];

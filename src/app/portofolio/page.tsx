@@ -109,40 +109,6 @@ export default function Page() {
     },
   ];
 
-  // {
-  //   id: 6,
-  //   title: 'TechMart - Electronics Store',
-  //   category: 'ecommerce',
-  //   type: 'E-Commerce Website',
-  //   description: 'Multi-vendor electronics marketplace with advanced search and filters',
-  //   image: '💻',
-  //   stats: { vendors: '500+', products: '10K+', gmv: 'Rp 50B+' },
-  //   tech: ['Vue.js', 'Laravel', 'Elasticsearch', 'Redis'],
-  //   link: '#'
-  // },
-  // {
-  //   id: 7,
-  //   title: 'PetCare - Shopify Plus Store',
-  //   category: 'shopify',
-  //   type: 'Shopify Plus',
-  //   description: 'Enterprise Shopify store for pet supplies with subscription service',
-  //   image: '🐕',
-  //   stats: { subscribers: '20K+', mrr: 'Rp 500M', retention: '92%' },
-  //   tech: ['Shopify Plus', 'React', 'GraphQL', 'Recharge'],
-  //   link: '#'
-  // },
-  // {
-  //   id: 8,
-  //   title: 'CloudSync - Server Management',
-  //   category: 'saas',
-  //   type: 'Server Infrastructure',
-  //   description: 'Automated server monitoring and management dashboard',
-  //   image: '☁️',
-  //   stats: { servers: '1000+', alerts: '50K+', response: '<1min' },
-  //   tech: ['Python', 'Docker', 'Kubernetes', 'Prometheus'],
-  //   link: '#'
-  // }
-
   const filteredProjects = activeFilter === 'all'
     ? projects
     : projects.filter(p => p.category === activeFilter);

@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from "next/server";
 
 interface BlogPost {
   id: string;
@@ -7,73 +7,67 @@ interface BlogPost {
   updatedAt?: string;
 }
 
-const DEFAULT_DOMAIN = process.env.NEXT_PUBLIC_API_CP || 
-  (process.env.NODE_ENV === 'development' 
-    ? 'http://localhost:3000'
-    : 'https://www.kitadevelopers.com');
+const DEFAULT_DOMAIN =
+  process.env.NEXT_PUBLIC_API_CP ||
+  (process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://www.kitadevelopers.com");
 
 export async function GET() {
   try {
-    // Add CORS headers for development
-    // const headers = {
-    //   'Content-Type': 'application/xml; charset=utf-8',
-    //   'Cache-Control': 'public, max-age=3600, stale-while-revalidate=600'
-    // };
-
-    // Mock data for testing - replace this with your actual API call
     const posts = [
       {
-        id: '1',
-        title: 'Sample Blog Post 1',
+        id: "1",
+        title: "Sample Blog Post 1",
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
+        updatedAt: new Date().toISOString(),
       },
       {
-        id: '2',
-        title: 'Sample Blog Post 2',
+        id: "2",
+        title: "Sample Blog Post 2",
         createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString()
-      }
+        updatedAt: new Date().toISOString(),
+      },
     ];
 
-    // TODO: Uncomment and modify this when API is ready
-    // const response = await api.get('/posts');
-    // if (!response.data) {
-    //   throw new Error('No data received from API');
-    // }
-    // const posts = response.data;
-
-    // Validate posts data
     if (!Array.isArray(posts)) {
-      throw new Error('Invalid posts data format');
+      throw new Error("Invalid posts data format");
     }
 
-    // Generate sitemap XML with proper formatting (no leading whitespace)
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <!-- Static Routes -->\n  <url>\n    <loc>${DEFAULT_DOMAIN}</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>${DEFAULT_DOMAIN}/blogs</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <!-- Dynamic Blog Posts -->\n  ${(posts as BlogPost[]).map((post: BlogPost) => {const lastmod = post.updatedAt || post.createdAt || new Date().toISOString();   return `<url>\n    <loc>${DEFAULT_DOMAIN}/blogs/${post.id}</loc>\n    <lastmod>${new Date(lastmod).toISOString()}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`;  }).join('')}\n</urlset>`;
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <!-- Static Routes -->\n  <url>\n    <loc>${DEFAULT_DOMAIN}</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>1.0</priority>\n  </url>\n  <url>\n    <loc>${DEFAULT_DOMAIN}/blogs</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>daily</changefreq>\n    <priority>0.9</priority>\n  </url>\n  <!-- Dynamic Blog Posts -->\n  ${(
+      posts as BlogPost[]
+    )
+      .map((post: BlogPost) => {
+        const lastmod =
+          post.updatedAt || post.createdAt || new Date().toISOString();
+        return `<url>\n    <loc>${DEFAULT_DOMAIN}/blogs/${
+          post.id
+        }</loc>\n    <lastmod>${new Date(
+          lastmod
+        ).toISOString()}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
+      })
+      .join("")}\n</urlset>`;
 
-    // Return the XML with proper content type and caching headers
     return new NextResponse(xml, {
       status: 200,
       headers: {
-        'Content-Type': 'application/xml; charset=utf-8',
-        'Cache-Control': 'public, max-age=3600, stale-while-revalidate=600',
+        "Content-Type": "application/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600, stale-while-revalidate=600",
       },
     });
   } catch (error) {
-    console.error('Error generating sitemap:', error);
-    
-    // Log detailed error for debugging
+    console.error("Error generating sitemap:", error);
+
     if (error instanceof Error) {
-      console.error('Error details:', error.message, error.stack);
+      console.error("Error details:", error.message, error.stack);
     }
-    
-    // Return a proper XML error response (no leading whitespace)
+
     const errorXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <!-- Error occurred, falling back to static routes -->\n  <url>\n    <loc>${DEFAULT_DOMAIN}</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <priority>1.0</priority>\n  </url>\n</urlset>`;
 
     return new NextResponse(errorXml, {
       status: 200,
       headers: {
-        'Content-Type': 'application/xml; charset=utf-8',
+        "Content-Type": "application/xml; charset=utf-8",
       },
     });
   }

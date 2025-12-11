@@ -106,7 +106,6 @@ export default function Page() {
 
   return (
     <div className="bg-gray-50 p-6">
-      {/* Header */}
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Percent className="w-6 h-6 text-gray-600" />
@@ -129,9 +128,7 @@ export default function Page() {
       </div>
 
       <div className="flex gap-6">
-        {/* Main Form */}
         <div className="flex-1 space-y-6">
-          {/* Discount Type Selection */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Discount type</h2>
             
@@ -198,7 +195,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Method */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Method</h2>
             
@@ -255,7 +251,6 @@ export default function Page() {
             )}
           </div>
 
-          {/* Discount Configuration based on type */}
           {formData.discountType === 'amount-off-products' && (
             <div className="bg-white rounded-lg border border-gray-200 p-6">
               <h2 className="text-lg font-medium text-gray-900 mb-6">Discount Value</h2>
@@ -496,7 +491,6 @@ export default function Page() {
             </div>
           )}
 
-          {/* Minimum Purchase Requirements */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Minimum purchase requirements</h2>
             
@@ -565,7 +559,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Eligibility */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Eligibility</h2>
             <p className="text-sm text-gray-500 mb-4">Redeemable on all sales channels you have set up</p>
@@ -609,7 +602,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Maximum discount uses */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Maximum discount uses</h2>
             
@@ -651,7 +643,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Combinations */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Combinations</h2>
             
@@ -691,7 +682,6 @@ export default function Page() {
             </div>
           </div>
 
-          {/* Active dates */}
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h2 className="text-lg font-medium text-gray-900 mb-6">Active dates</h2>
             
@@ -766,7 +756,6 @@ export default function Page() {
           </div>
         </div>
 
-        {/* Sidebar */}
         <div className="w-80">
           <div className="bg-white rounded-lg border border-gray-200 p-6">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Summary</h3>
