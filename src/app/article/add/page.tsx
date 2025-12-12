@@ -48,22 +48,6 @@ const Page: React.FC = () => {
         setFormData(prev => ({ ...prev, publishDate: localDateTime }));
     }, []);
 
-    // *LOAD TAGS TESTING*
-    // const getTagAll = async (id: string) => {
-    //     try {
-    //         const response = await axios.post(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/article/tag/all`, {
-    //             article_id: id
-    //         });
-    //         return response.data.result;
-    //     } catch (error) {
-    //         console.error('Error fetching tags:', error);
-    //     }
-    // }
-    // useEffect(() => {
-    //     getTagAll('1');
-    // }, []);
-    // *LOAD TAGS TESTING*
-
     const submitTagsSequentially = async (id: string) => {
         const apiEndpoint = `${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/article/tag`;
 

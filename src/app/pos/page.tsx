@@ -246,7 +246,7 @@ const Page: React.FC = () => {
           </div>
 
           <div className="mb-4">
-            <h3 className="text-[14px] font-medium text-gray-700 pb-2 mb-2 border-b border-b-[#121212]">Your Order</h3>
+            <h3 className="text-[14px] font-medium text-gray-700 pb-2 mb-2 border-b border-b-[#E4E4E4]">Your Order</h3>
             <div className="max-h-full overflow-y-auto">
               {cart.length === 0 ? (
                 <p className="text-center text-gray-400 py-8">No items in cart</p>

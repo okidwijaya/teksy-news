@@ -101,14 +101,14 @@ export default function Page() {
                     <div className="w-full flex justify-center mb-2 gap-2">
                         <button
                             type="button"
-                            className={`w-full text-center py-0 px-0 cursor-pointer font-medium ${isLogin ? 'border-b-2 border-[#261e4f] text-[#0b081a] font-semibold' : 'text-gray-500'}`}
+                            className={`w-full text-center py-0 px-0 cursor-pointer font-medium ${isLogin ? 'border-b-2 border-[#E4E4E4] text-[#0b081a] font-semibold' : 'text-gray-500'}`}
                             onClick={() => setIsLogin(true)}
                         >
                             Sign In
                         </button>
                         <button
                             type="button"
-                            className={`w-full text-center py-2 px-0 cursor-pointer font-medium ${!isLogin ? 'border-b-2 border-[#261e4f] text-[#0b081a] font-semibold' : 'text-gray-500'}`}
+                            className={`w-full text-center py-2 px-0 cursor-pointer font-medium ${!isLogin ? 'border-b-2 border-[#E4E4E4] text-[#0b081a] font-semibold' : 'text-gray-500'}`}
                             onClick={() => setIsLogin(false)}
                         >
                             Register

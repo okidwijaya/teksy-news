@@ -61,7 +61,7 @@ export default function Navbar() {
             <div className="max-w-10xl mx-auto py-1 px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-10">
 
-                    <div className="flex-shrink-0 flex gap-4 flex-row flex-wrap items-center">
+                    <div className="shrink-0 flex gap-4 flex-row flex-wrap items-center">
                         <Link
                             href="/"
                             className="text-lg w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
@@ -77,20 +77,20 @@ export default function Navbar() {
 
                         <div className="hidden lg:flex items-center p-4 gap-0 uppercase">
                             <Link
-                                href={`/services`}
+                                href={`/blogs`}
                                 className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
-                                Service
+                                Blog
                             </Link>
                             <Link
                                 href={`/pricing`}
-                                className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left font-semibold hidden px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Pricing
                             </Link>
                             <Link
                                 href={`/portofolio`}
-                                className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
+                                className="text-left font-semibold hidden px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
                             >
                                 Portofolio
                             </Link>
@@ -131,8 +131,15 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="!hidden md:flex items-center space-x-0">
-                        <div className="!hidden relative group hover:border border-[#DDDDDD] rounded-xl">
+                    <Link
+                        href={`/services`}
+                        className="text-left font-bold px-6 py-2 text-sm hover:bg-[#121212] text-[#F96E2A] ml-auto mr-0 hidden lg:block uppercase rounded-3xl transition-colors duration-200"
+                    >
+                        Services
+                    </Link>
+
+                    <div className="hidden md:flex items-center space-x-0">
+                        <div className="hidden relative group hover:border border-[#DDDDDD] rounded-xl">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                 <svg className="h-4 w-4 text-[#F96E2A] group-hover:stroke-[#96E2A]" fill="none" stroke="#F96E2A" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -194,7 +201,7 @@ export default function Navbar() {
             <div id="mobileMenu" className={`lg:hidden ${mobileMenuOpen ? "" : "hidden"} bg-[#121212] border-t border-gray-100`}>
                 <div className="px-4 pt-2 pb-3 space-y-1">
 
-                    <div className="relative mb-3 group !hidden">
+                    <div className="relative mb-3 group hidden">
                         <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                             <svg className="h-4 w-4 text-gray-400 group-hover:stroke-[#F96E2A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -248,20 +255,26 @@ export default function Navbar() {
 
                     <div className="grid grid-cols-4 gap-2 w-full">
                         <Link
+                            href="/blog"
+                            className="hidden text-left font-semibold px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                        >
+                            Blog
+                        </Link>
+                        <Link
                             href="/services"
                             className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                         >
-                            Service
+                            Services
                         </Link>
                         <Link
                             href="/pricing"
-                            className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            className="hidden text-left font-semibold px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                         >
                             Pricing
                         </Link>
                         <Link
                             href="/portofolio"
-                            className="text-left font-semibold block px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
+                            className="hidden text-left font-semibold px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
                         >
                             Portofolio
                         </Link>
@@ -273,7 +286,7 @@ export default function Navbar() {
                         </Link>
                     </div>
 
-                    <div className="hidden pt-3 border-t border-gray-100 mt-3 grid grid-cols-[1fr_auto] gap-1">
+                    <div className="hidden pt-3 border-t border-gray-100 mt-3 grid-cols-[1fr_auto] gap-1">
                         <Link href="#" className="w-full bg-[#F96E2A] text-white text-center px-4 py-2 rounded-lg font-bold uppercase flex flex-col items-center justify-center hover:bg-[#F96E2A] transition-colors duration-200">
                             Subscribe our Newsletter
                         </Link>

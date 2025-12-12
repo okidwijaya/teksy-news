@@ -14,9 +14,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     className = ''
 }) => {
     return (
-        <div className={`pb-2 flex items-center justify-between mb-4 mt-12 w-full max-w-[1024px] mx-auto ${className}`}>
+        <div className={`py-2 px-0 my-4 flex items-center justify-between w-full max-w-[1024px] mx-auto border-b border-b-[#E4E4E4] ${className}`}>
             <div className="flex items-center space-x-2">
-                <span className="font-semibold text-lg uppercase">{title}</span>
+                <span className="font-semibold text-lg uppercase text-[#121212]">{title}</span>
                 <svg
                     className="w-4 h-4 text-gray-400 hidden"
                     fill="none"

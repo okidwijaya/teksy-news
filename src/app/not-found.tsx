@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function NotFound() {
     return (
-        <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-indigo-500 via-purple-500 to-purple-700 flex items-center justify-center">
+        <div className="relative min-h-screen overflow-hidden bg-linear-to-br from-[#D4D4D4] via-[#121212] to-[#000000] flex items-center justify-center">
             <div className="absolute inset-0 overflow-hidden">
                 <div className="absolute -top-24 -left-24 w-72 h-72 bg-white/10 rounded-full animate-float" />
                 <div className="absolute -bottom-12 right-24 w-48 h-48 bg-white/10 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] animate-float-delayed" />

@@ -13,7 +13,7 @@ export default function AdCard({ gradient }: AdCardProps) {
         // ? "bg-gradient-to-r via-[#FF9013] from-[#121212] to-[#ededed]"
         <div
             className={`${hideBanner ? 'hidden' : 'flex'}] relative w-full h-[175px] lg:h-[400px] max-w-full lg:max-w-[240px] ${gradient
-                ? "bg-[#673AB7] border border-[#444444]"
+                ? "bg-[#673AB7] border border-[#E4E4E4]"
                 : "bg-[#121212] border border-[#FF5722]"
                 } p-6 flex flex-col items-center justify-between text-white rounded-2xl`}
         >

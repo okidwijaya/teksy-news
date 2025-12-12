@@ -60,8 +60,8 @@ const Home: React.FC = () => {
       <div className="bg-[#181818] text-[#F9FAFB]">
         {!loading ?
           <>
-            <main className="relative pt-0 pb-8 px-0">
-              <div className="px-4 lg:px-0 relative overflow-hidden bg-gradient-to-br from-[#F7F7F7] via-[#181818] to-[#181818] border-b border-b-[#2C2C2C]">
+            <main className="relative pt-0 pb-0 px-0">
+              <div className="hidden px-4 lg:px-4 relative overflow-hidden bg-gradient-to-br from-[#F7F7F7] via-[#181818] to-[#181818] border-b border-b-[#2C2C2C]">
 
                 <div className="pt-12 justify-start max-w-7xl mx-auto px-0">
                   <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6 border border-white/20">
@@ -92,7 +92,7 @@ const Home: React.FC = () => {
                   </div>
 
                   <div className="absolute bottom-8 right-2 hidden lg:block">
-                    <div className="w-80 bg-[#FF4500] rounded-2xl p-8 shadow-2xl border border-[#444444]">
+                    <div className="w-80 bg-[#FF4500] rounded-2xl p-8 shadow-2xl border border-[#E4E4E4]">
 
                       <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
                         <Code2 className="w-8 h-8 text-[#121212]" />
@@ -103,19 +103,19 @@ const Home: React.FC = () => {
                       </p>
 
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <Code2 className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">Web Dev</span>
                         </div>
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <Smartphone className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">Mobile</span>
                         </div>
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <ShoppingBag className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">Themes</span>
                         </div>
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <Database className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">POS SaaS</span>
                         </div>
@@ -124,7 +124,7 @@ const Home: React.FC = () => {
                   </div>
 
                   <div className="lg:hidden mt-16">
-                    <div className="bg-[#FF4500] rounded-2xl p-8 shadow-2xl border border-[#444444]">
+                    <div className="bg-[#FF4500] rounded-2xl p-8 shadow-2xl border border-[#E4E4E4]">
                       <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6">
                         <Code2 className="w-8 h-8 text-[#121212]" />
                       </div>
@@ -134,19 +134,19 @@ const Home: React.FC = () => {
                       </p>
 
                       <div className="grid grid-cols-2 gap-3">
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <Code2 className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">Web Dev</span>
                         </div>
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <Smartphone className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">Mobile</span>
                         </div>
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <ShoppingBag className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">Themes</span>
                         </div>
-                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#444444]">
+                        <div className="bg-[#181818] backdrop-blur-sm rounded-lg px-4 py-3 flex items-center justify-center border border-[#E4E4E4]">
                           <Database className="w-5 h-5 text-[#F9FAFB] mr-2" />
                           <span className="text-[#F9FAFB] text-xs font-semibold">POS SaaS</span>
                         </div>
@@ -157,176 +157,94 @@ const Home: React.FC = () => {
 
               </div>
 
-              <div className="flex flex-wrap md:flex-nowrap gap-8 w-fit mx-auto items-start justify-center flex-col-reverse lg:flex-row pt-6 lg:pt-16 px-4 lg:px-0">
-                <section className="card w-full max-w-5xl mx-auto lg:mr-0">
-                  <section className="card w-full max-w-5xl mx-auto lg:mr-0">
-                    <div className="mb-12 flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
-                      {posts.length > 0 && (<HeroArticle
-                        imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
+              <div className="flex flex-wrap md:flex-nowrap gap-4 lg:gap-8 mx-auto mb-8 items-start bg-[#F9FAFB] w-full justify-center flex-col-reverse lg:flex-row pt-0 lg:pt-0 px-4 lg:px-0">
+                <section className="card w-full max-w-5xl mx-auto lg:mr-0 px-4">
+                  <SectionHeader title="New" />
+                  <div className="mb-12 flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
+                    <HeroArticle
+                      imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
+                      author={'Brian'}
+                      timeAgo={timeAgo(posts[0].published_at)}
+                      title={posts[0].title}
+                      likes={230}
+                      comments={0}
+                      writerName={'Brian'}
+                      writerTitle={'Brian'}
+                      writerImage='/assets/placeholder-image.webp'
+                      slug={posts[0].slug}
+                    />
+
+                    {/* <FeaturedArticle
+                      imageUrl={posts[1].featured_image || '/assets/placeholder-image.webp'}
+                      author={'Brian'}
+                      timeAgo={timeAgo(posts[1].published_at)}
+                      title={posts[1].title}
+                      slug={posts[1].slug}
+                    /> */}
+
+                    <div className='grid grid-cols-1 w-full gap-2'>
+                      <ArticleListItem
+                        key={posts[2].id}
                         author={'Brian'}
-                        timeAgo={timeAgo(posts[0].published_at)}
-                        title={posts[0].title}
-                        likes={2300}
-                        comments={1000}
-                        writerName={'Brian'}
-                        writerTitle={'Brian'}
-                        writerImage='/assets/placeholder-image.webp'
-                        slug={posts[0].slug}
-                      />)}
-
-                      <div>
-                        {posts.length > 0 && (
-                          <FeaturedArticle
-                            imageUrl={posts[1].featured_image || '/assets/placeholder-image.webp'}
-                            author={'Brian'}
-                            timeAgo={timeAgo(posts[1].published_at)}
-                            title={posts[1].title}
-                            slug={posts[1].slug}
-                          />
-                        )}
-
-                        <div className="flex flex-wrap flex-col gap-4 w-full">
-                          <div className="space-y-6">
-
-                            <ArticleListItem
-                              key={posts[2].id}
-                              author={'Brian'}
-                              timeAgo={formatPublishDate(posts[2].published_at)}
-                              title={posts[2].title}
-                              slug={posts[2].slug}
-                            />
-
-                            <ArticleListItem
-                              key={posts[3].id}
-                              author={'Brian'}
-                              timeAgo={formatPublishDate(posts[3].published_at)}
-                              title={posts[3].title}
-                              slug={posts[3].slug}
-                            />
-
-                            <ArticleListItem
-                              key={posts[4].id}
-                              author={'Brian'}
-                              timeAgo={formatPublishDate(posts[4].published_at)}
-                              title={posts[4].title}
-                              slug={posts[4].slug}
-                              className='border-none'
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <SectionHeader title="Recommended" />
-                    <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#2C2C2C] my-4">
-                      {posts.length > 0 && (<ArticleCard
+                        timeAgo={formatPublishDate(posts[2].published_at)}
+                        title={posts[2].title}
+                        slug={posts[2].slug}
+                      />
+                      <ArticleListItem
+                        key={posts[3].id}
                         author={'Brian'}
-                        timeAgo={timeAgo(posts[5].published_at)}
-                        title={posts[5].title}
-                        excerpt={posts[5].meta_description}
-                        imageUrl={posts[5].featured_image || '/assets/placeholder-image.webp'}
-                        date={posts[5].published_at}
-                        readTime={posts[5].reading_time !== undefined ? posts[5].reading_time.toString() : undefined}
-                        category={posts[5].category_id}
-                        showImage={true}
-                        showButton={true}
-                        slug={posts[5].slug}
-                        className="w-full h-fit p-0 lg:max-w-[320px] bg-[#181818] text-[#F9FAFB] rounded-2xl border border-[#444444]"
-                      />)}
-
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                        {posts.slice(6).map((item) => (
-                          <ArticleCard
-                            key={item.id}
-                            author={'Brian'}
-                            timeAgo={formatPublishDate(item.published_at)}
-                            title={item.title}
-                            date={formatPublishDate(item.published_at)}
-                            readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
-                            category={item.category_id}
-                            slug={item.slug}
-                            // showButton={true}
-                            // likes={890}
-                            // comments={78}
-                            showMetrics={false}
-                            className="p-4"
-                          />
-                        ))}
-                      </div>
+                        timeAgo={formatPublishDate(posts[3].published_at)}
+                        title={posts[3].title}
+                        slug={posts[3].slug}
+                      />
+                      <ArticleListItem
+                        key={posts[4].id}
+                        author={'Brian'}
+                        timeAgo={formatPublishDate(posts[4].published_at)}
+                        title={posts[4].title}
+                        slug={posts[4].slug}
+                        className='border-none'
+                      />
                     </div>
+                  </div>
 
-                    {/* <div className='!hidden'>
-                      <SectionHeader title="Popular Now" />
-                      <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
-                        {posts.length > 0 && (<ArticleCard
+                  <SectionHeader title="Recommended" />
+                  <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#2C2C2C] my-4">
+                    {posts.length > 0 && (<ArticleCard
+                      author={'Brian'}
+                      timeAgo={timeAgo(posts[5].published_at)}
+                      title={posts[5].title}
+                      excerpt={posts[5].meta_description}
+                      imageUrl={posts[5].featured_image || '/assets/placeholder-image.webp'}
+                      date={posts[5].published_at}
+                      readTime={posts[5].reading_time !== undefined ? posts[5].reading_time.toString() : undefined}
+                      category={posts[5].category_id}
+                      showImage={true}
+                      showButton={true}
+                      slug={posts[5].slug}
+                      className="w-full h-fit p-0 lg:max-w-[320px] text-[#181818] bg-[#F9FAFB] rounded-2xl border border-[#E4E4E4]"
+                    />)}
+
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                      {posts.slice(6).map((item) => (
+                        <ArticleCard
+                          key={item.id}
                           author={'Brian'}
-                          timeAgo={timeAgo(posts[0].published_at)}
-                          title={posts[0].title}
-                          imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
-                          showImage={true}
-                          slug={posts[0].slug}
-                          className="border h-fit p-4 border-[#EEEEEE] rounded-2xl bg-white w-full max-w-full lg:max-w-[320px]"
-                        />)}
-
-                        <div className="space-y-6 w-full max-w-lg">
-                          {posts.slice(1).map((item) => (
-                            <ArticleListItem
-                              key={item.id || item.slug}
-                              author={item.author?.name ?? 'Anon'}
-                              timeAgo={formatPublishDate(item.published_at ?? '')}
-                              title={item.title}
-                              slug={item.slug}
-                              className="min-w-full w-full max-w-full lg:max-w-full"
-                            />
-                          ))}
-                        </div>
-                      </div>
-
-                      <SectionHeader title="Sponsored Article" />
-                      <div className="flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 my-6">
-                        <div className="flex flex-col flex-wrap gap-4">
-                          {posts.length > 0 && (<ArticleCard
-                            author={'Brian'}
-                            timeAgo={timeAgo(posts[0].published_at)}
-                            title={posts[0].title}
-                            excerpt={posts[0].meta_description}
-                            showImage={true}
-                            imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
-                            date={posts[0].published_at}
-                            readTime={posts[0].reading_time !== undefined ? posts[0].reading_time.toString() : undefined}
-                            category={posts[0].category_id}
-                            slug={posts[0].slug}
-                            showButton={true}
-                            className="border border-[#EEEEEE] h-fit w-full max-w-full lg:max-w-[320px] bg-white rounded-2xl p-6 mb-8"
-                          />)}
-                        </div>
-
-                        <div className="space-y-6 w-full max-w-lg">
-                          {posts.slice(1).map((item) => (
-                            <ArticleListItem
-                              key={item.id || item.slug}
-                              author={item.author?.name ?? 'Anon'}
-                              timeAgo={formatPublishDate(item.published_at ?? '')}
-                              title={item.title}
-                              slug={item.slug}
-                              className="min-w-full w-full max-w-full lg:max-w-full"
-                            />
-                          ))}
-                        </div>
-                      </div>
-                    </div> */}
-                  </section>
-
-                  <section className="px-6 md:px-4 py-8 border-b border-[#2C2C2C] !hidden">
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                      <h2 className="text-5xl font-bold">THE TECH SPOTLIGHT</h2>
-                      <p className="text-gray-700 text-lg">
-                        <span className="text-purple-500 text-xl mr-2">→</span>
-                        More relevant to a tech news context, inviting readers to learn about trends, startups, gadgets, and AI.
-                      </p>
+                          timeAgo={formatPublishDate(item.published_at)}
+                          title={item.title}
+                          date={formatPublishDate(item.published_at)}
+                          readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
+                          category={item.category_id}
+                          slug={item.slug}
+                          // showButton={true}
+                          // likes={890}
+                          // comments={78}
+                          showMetrics={false}
+                          className="p-4"
+                        />
+                      ))}
                     </div>
-
-                  </section>
+                  </div>
                 </section>
 
                 <section className="lg:sticky lg:top-[5rem] lg:right-[1rem] w-full lg:max-w-[240px] flex gap-4 flex-col items-start">
@@ -360,12 +278,11 @@ const Home: React.FC = () => {
                           ))}
                         </ul>
                       </div>
-                      <button
-                        onClick={() => alert('Contact us to get started with your project!')}
-                        className="relative z-10 font-semibold px-5 py-2 rounded-xl transition duration-300 text-[#F9FAFB] hover:text-[#F9FAFB] border border-white hover:bg-white bg-[#121212]"
+                      <Link href={'/services'}
+                        className="relative z-10 font-semibold px-5 py-2 rounded-xl transition duration-300 text-[#F9FAFB] hover:text-[#181818] border border-white hover:bg-white bg-[#121212]"
                       >
                         Get Started Today
-                      </button>
+                      </Link>
                     </div>
                     <AdCard gradient />
                     <AdCard />

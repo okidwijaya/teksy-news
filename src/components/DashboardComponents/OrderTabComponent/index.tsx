@@ -13,7 +13,7 @@ function OrderTab({ label, active = false, onClick }: OrderTabProps) {
     return (
         <button
             className={`px-4 py-2 text-sm ${active
-                ? 'bg-white rounded-t-md border-b-2 border-gray-900 font-medium'
+                ? 'bg-white rounded-t-md border-b-2 border-[#E4E4E4] font-medium'
                 : 'text-gray-700 hover:text-gray-900'}`}
             onClick={onClick}
         >

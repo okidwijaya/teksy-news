@@ -31,7 +31,7 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
     slug
 }) => {
     return (
-        <div className={`w-full max-w-full lg:max-w-xl bg-[#444444] rounded-3xl border-grey-200 overflow-hidden relative ${className}`}>
+        <div className={`w-full max-w-full lg:max-w-xl bg-[#E4E4E4] rounded-3xl border-none overflow-hidden relative ${className}`}>
             {/* <div className="relative w-full h-auto md:h-full hidden"> */}
             <div className="relative w-full h-[400px] md:h-full">
                 <Image
@@ -111,12 +111,12 @@ export const HeroArticle: React.FC<HeroArticleProps> = ({
                                 alt={writerName}
                             />
                             <div>
-                                <h1 className="text-xs text-gray-500">
+                                <p className="text-xs text-gray-500">
                                     {writerTitle}
-                                </h1>
-                                <div className="text-sm font-semibold text-gray-800">
+                                </p>
+                                <p className="text-sm font-semibold text-gray-800">
                                     {writerName}
-                                </div>
+                                </p>
                             </div>
                         </div>
                     </div>

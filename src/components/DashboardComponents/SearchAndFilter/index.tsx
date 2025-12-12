@@ -18,7 +18,7 @@ const Tabs: React.FC<TabsProps> = ({ tabs, activeTab, onChange }) => {
             {tabs.map((tab) => (
                 <button
                     key={tab}
-                    className={`hover:bg-[#F1F1F1] !text-[12px] px-4 py-1 border-b-2 ${activeTab === tab ? 'border-b-[#212121] text-[#212121] font-semibold' : 'border-transparent'
+                    className={`hover:bg-[#F1F1F1] !text-[12px] px-4 py-1 border-b-2 ${activeTab === tab ? 'border-b-[#E4E4E4] text-[#212121] font-semibold' : 'border-transparent'
                         }`}
                     onClick={() => onChange(tab)}
                 >
@@ -77,7 +77,7 @@ export default function SearchAndFilter({ tabs, initialActiveTab }: SearchAndFil
     const [activeTab, setActiveTab] = React.useState<string>(initialActiveTab || tabs[0]);
 
     return (
-        <div className='border-b border-b-[#F1F1F1] flex items-center justify-between px-0 py-0 overflow-scroll'>
+        <div className='border-b border-b-[#E4E4E4] flex items-center justify-between px-0 py-0 overflow-scroll'>
             <Tabs tabs={tabs} activeTab={activeTab} onChange={setActiveTab} />
             <SearchFilter />
         </div>

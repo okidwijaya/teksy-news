@@ -67,7 +67,7 @@ export default function Accordion({ items }: AccordionProps) {
                                         <span>{formatPublishDate(art.published_at)}</span>
                                     </div>
                                     <h2 className="text-lg font-semibold mb-1">{art.title}</h2>
-                                    <Link href={`/article/${art.slug}`} className="text-gray-700 underline text-sm">Read more</Link>
+                                    <Link href={`/article/${art.slug}`} className="text-gray-700 underline text-[11px]">Read more</Link>
                                 </div>
                             ))}
                         </div>

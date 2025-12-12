@@ -119,8 +119,8 @@ export default function Page() {
         {showBanner && (
           <div className="bg-[#F9FAFB] border-b border-gray-200 px-4 py-3 relative">
             <div className="flex items-center justify-center text-center">
-              <span className="text-[#444444] mr-2">✨</span>
-              <span className="text-[#444444] text-sm md:text-base">
+              <span className="text-[#E4E4E4] mr-2">✨</span>
+              <span className="text-[#E4E4E4] text-sm md:text-base">
                 Get a FREE Expert Audit of Your Website, App, or Product
               </span>
               <span className="text-gray-600 ml-2">↗</span>

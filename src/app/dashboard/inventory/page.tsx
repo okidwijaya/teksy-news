@@ -72,7 +72,7 @@ const Tabs: React.FC<TabProps> = ({ tabs, activeTab, onChange, counts }) => {
                 {tabs.map((tab) => (
                     <button
                         key={tab}
-                        className={`text-[#212121] text-[10px] md:text-[14px] min-w-[140px] flex-row font-light px-4 py-2 border-b-2 flex items-center ${activeTab === tab ? 'border-[#212121] text-[#212121] font-semibold' : 'border-transparent'
+                        className={`text-[#212121] text-[10px] md:text-[14px] min-w-[140px] flex-row font-light px-4 py-2 border-b-2 flex items-center ${activeTab === tab ? 'border-[#E4E4E4] text-[#212121] font-semibold' : 'border-transparent'
                             }`}
                         onClick={() => onChange(tab)}
                     >
