@@ -19,6 +19,7 @@ interface ArticleCardProps {
   showButton?: boolean;
   className?: string;
   slug: string;
+  summary?: string;
 }
 
 export const ArticleCard: React.FC<ArticleCardProps> = ({
@@ -36,7 +37,8 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
   showImage = false,
   showButton = false,
   className = '',
-  slug
+  slug,
+  summary,
 }) => {
   return (
     // border border-[#E4E4E4]
@@ -73,9 +75,10 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
             {title}
           </h2>
         </Link>
+        <p className='hidden'>{summary}</p>
 
         {excerpt && (
-          <p className="text-[#181818] mb-6">
+          <p className="text-[#181818] mb-2 text-[11px]!">
             {excerpt}
           </p>
         )}

@@ -157,57 +157,8 @@ const Home: React.FC = () => {
 
               </div>
 
-              <div className="flex flex-wrap md:flex-nowrap gap-4 lg:gap-8 mx-auto mb-8 items-start bg-[#F9FAFB] w-full justify-center flex-col-reverse lg:flex-row pt-0 lg:pt-0 px-4 lg:px-0">
+              <div className="flex flex-wrap md:flex-nowrap gap-4 lg:gap-8 mx-auto pb-8 items-start bg-[#F9FAFB] w-full justify-center flex-col-reverse lg:flex-row pt-0 lg:pt-0 px-4 lg:px-0">
                 <section className="card w-full max-w-5xl mx-auto lg:mr-0 px-4">
-                  <SectionHeader title="New" />
-                  <div className="mb-12 flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
-                    <HeroArticle
-                      imageUrl={posts[0].featured_image || '/assets/placeholder-image.webp'}
-                      author={'Brian'}
-                      timeAgo={timeAgo(posts[0].published_at)}
-                      title={posts[0].title}
-                      likes={230}
-                      comments={0}
-                      writerName={'Brian'}
-                      writerTitle={'Brian'}
-                      writerImage='/assets/placeholder-image.webp'
-                      slug={posts[0].slug}
-                    />
-
-                    {/* <FeaturedArticle
-                      imageUrl={posts[1].featured_image || '/assets/placeholder-image.webp'}
-                      author={'Brian'}
-                      timeAgo={timeAgo(posts[1].published_at)}
-                      title={posts[1].title}
-                      slug={posts[1].slug}
-                    /> */}
-
-                    <div className='grid grid-cols-1 w-full gap-2'>
-                      <ArticleListItem
-                        key={posts[2].id}
-                        author={'Brian'}
-                        timeAgo={formatPublishDate(posts[2].published_at)}
-                        title={posts[2].title}
-                        slug={posts[2].slug}
-                      />
-                      <ArticleListItem
-                        key={posts[3].id}
-                        author={'Brian'}
-                        timeAgo={formatPublishDate(posts[3].published_at)}
-                        title={posts[3].title}
-                        slug={posts[3].slug}
-                      />
-                      <ArticleListItem
-                        key={posts[4].id}
-                        author={'Brian'}
-                        timeAgo={formatPublishDate(posts[4].published_at)}
-                        title={posts[4].title}
-                        slug={posts[4].slug}
-                        className='border-none'
-                      />
-                    </div>
-                  </div>
-
                   <SectionHeader title="Recommended" />
                   <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#2C2C2C] my-4">
                     {posts.length > 0 && (<ArticleCard
@@ -226,7 +177,7 @@ const Home: React.FC = () => {
                     />)}
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                      {posts.slice(6).map((item) => (
+                      {posts.slice(1, 5).map((item) => (
                         <ArticleCard
                           key={item.id}
                           author={'Brian'}
@@ -236,6 +187,7 @@ const Home: React.FC = () => {
                           readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
                           category={item.category_id}
                           slug={item.slug}
+                          excerpt={item.meta_description}
                           // showButton={true}
                           // likes={890}
                           // comments={78}
@@ -244,6 +196,63 @@ const Home: React.FC = () => {
                         />
                       ))}
                     </div>
+                  </div>
+
+                  <SectionHeader title="Latest Update" />
+                  <div className="mb-4 flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
+                    <HeroArticle
+                      imageUrl={posts[6].featured_image || '/assets/placeholder-image.webp'}
+                      author={'Brian'}
+                      timeAgo={timeAgo(posts[6].published_at)}
+                      title={posts[6].title}
+                      likes={236}
+                      comments={6}
+                      writerName={'Brian'}
+                      writerTitle={'Brian'}
+                      writerImage='/assets/placeholder-image.webp'
+                      slug={posts[6].slug}
+                    />
+
+                    {/* <FeaturedArticle
+                      imageUrl={posts[1].featured_image || '/assets/placeholder-image.webp'}
+                      author={'Brian'}
+                      timeAgo={timeAgo(posts[1].published_at)}
+                      title={posts[1].title}
+                      slug={posts[1].slug}
+                    /> */}
+
+                    <div className='grid grid-cols-1 w-full gap-2'>
+                      {posts.slice(7, 10).map((item) => (
+                        <ArticleListItem
+                          key={item.id}
+                          author={'Brian'}
+                          timeAgo={formatPublishDate(item.published_at)}
+                          title={item.title}
+                          slug={item.slug}
+                        />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {posts.slice(11).map((item) => (
+                      <ArticleCard
+                        key={item.id}
+                        author={'Brian'}
+                        timeAgo={formatPublishDate(item.published_at)}
+                        title={item.title}
+                        date={formatPublishDate(item.published_at)}
+                        readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
+                        category={item.category_id}
+                        slug={item.slug}
+                        excerpt={item.meta_description}
+                        // showButton={true}
+                        // likes={890}
+                        // comments={78}
+                        showMetrics={false}
+                        className="p-4"
+                      />
+                    ))}
                   </div>
                 </section>
 

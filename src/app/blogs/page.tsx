@@ -63,7 +63,7 @@ export default function Page() {
               <section className="card w-full max-w-5xl mx-auto">
                 <SectionHeader title="New" />
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-                  {posts.map((item) => (
+                  {[...posts].reverse().map((item) => (
                     <ArticleCard
                       key={item.id}
                       author={'Brian'}
@@ -82,8 +82,8 @@ export default function Page() {
                   ))}
                 </div>
 
-                <SectionHeader title="Featured" />
-                <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#2C2C2C] my-4">
+                {/* <SectionHeader title="Featured" /> */}
+                <div className="hidden w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#2C2C2C] my-4">
                   {posts.length > 0 && (<ArticleCard
                     author={'Brian'}
                     timeAgo={timeAgo(posts[5].published_at)}
