@@ -70,3 +70,29 @@ h6 {
 a {
   @apply hover:underline cursor-pointer;
 }
+
+/* globals.css */
+.md-editor-preview-wrapper {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.md-editor-preview-wrapper h1 {
+  font-size: 2rem;
+  margin-top: 2rem;
+}
+
+.md-editor-preview-wrapper p {
+  margin: 1rem 0;
+}
+
+.prose p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.prose h2 {
+  margin-top: 2.5em;
+}

@@ -5,7 +5,10 @@ import Head from "next/head";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { MdPreview } from 'md-editor-rt';
+// import { MdPreview } from 'md-editor-rt';
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import remarkBreaks from 'remark-breaks'
 import axios from "axios";
 
 declare global {
@@ -60,6 +63,12 @@ interface ArticleData {
     article: string;
     alt_text: string;
   }>;
+}
+
+const normalizeContent = (text: string) => {
+  return text
+    .replace(/\.([A-Z])/g, '.\n\n$1')
+    .replace(/^([A-Z][^:\n]{3,}):/gm, '## $1\n')
 }
 
 export default function Page() {
@@ -472,14 +481,19 @@ export default function Page() {
           </div>
         )}
 
-        <div id="article-content" className="prose prose-lg max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
-          <MdPreview value={article.content} />
+        <div id="article-content" className="max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
+          <article className="prose prose-lg max-w-3xl mx-auto">
+            {/* <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}> */}
+            <ReactMarkdown>
+              {normalizeContent(article.content)}
+            </ReactMarkdown>
+          </article>
         </div>
 
         <div className="hidden mt-16 p-6 bg-gray-50 rounded-xl border">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Continue Reading</h3>
           <div className="flex flex-wrap gap-2">
-            <Link href="/articles" className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
+            <Link href="/article" className="inline-block bg-emerald-600 text-white px-4 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
               View All Articles
             </Link>
             {article.category && (
