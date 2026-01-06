@@ -1,15 +1,16 @@
 'use client';
-import React, { useState, useEffect, useRef, use } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useState, useEffect, useRef } from 'react';
 import { uploadImageWithProgress } from '@/lib/upload-image';
 import Image from 'next/image';
 import { BlogPost, Tag } from '@/types';
 import axios from 'axios';
+import dynamic from "next/dynamic";
+import "react-quill-new/dist/quill.snow.css";
 
-const MDEditor = dynamic(() => import('@uiw/react-md-editor'), {
+const ReactQuill = dynamic(() => import("react-quill-new"), {
     ssr: false,
-    loading: () => <div className="h-80 bg-gray-100 animate-pulse rounded">Loading editor...</div>
 });
+
 
 const Page: React.FC = () => {
     const [formData, setFormData] = useState<BlogPost>({
@@ -321,14 +322,7 @@ const Page: React.FC = () => {
                             Content
                         </label>
                         <div className="h-80">
-                            <MDEditor
-                                value={formData.content}
-                                onChange={handleContentChange}
-                                preview="edit"
-                                height={300}
-                                className='h-64'
-                                data-color-mode="light"
-                            />
+                            <ReactQuill className='h-60 w-full' theme="snow" value={formData.content} onChange={handleContentChange} />
                         </div>
                     </div>
 
