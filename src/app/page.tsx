@@ -5,7 +5,7 @@ import { ArticleListItem } from '@/components/ArticleListItem';
 import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
 import { HeroArticle } from '@/components/HeroArticle';
-import { FeaturedArticle } from '@/components/FeaturedArticle';
+// import { FeaturedArticle } from '@/components/FeaturedArticle';
 import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
 import LoadingLogoDefault from '@/components/Loading';
@@ -33,6 +33,7 @@ const Home: React.FC = () => {
   const [posts, setPosts] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
   const [hideBanner, setHideBanner] = useState(false);
+  const [isFetchError, setIsFetchError] = useState(false);
 
   const services = [
     'Custom Web Themes',
@@ -45,15 +46,21 @@ const Home: React.FC = () => {
     async function fetchPosts() {
       try {
         const response = await axios.get(`${process.env.NEXT_PUBLIC_API_CP}/api/v1/blog/articles/all`);
-        setPosts(response.data.result)
+        const sortedPosts = response.data.result.filter((post: Article) => post.status === 'published');
+        setPosts(sortedPosts);
+        console.log('Fetched posts:', sortedPosts.length);
       } catch (error) {
-        console.error(error);
+        setIsFetchError(true);
       }
       setLoading(false)
     }
 
     fetchPosts()
   }, [])
+
+  if (isFetchError) {
+    console.error('Error fetching posts');
+  }
 
   return (
     <PublicLayout>
@@ -161,7 +168,7 @@ const Home: React.FC = () => {
                 <section className="card w-full max-w-5xl mx-auto lg:mr-0 px-4">
                   <SectionHeader title="Recommended" />
                   <div className="w-full flex flex-wrap md:flex-nowrap items-start gap-4 border-[#2C2C2C] my-4">
-                    {posts.length > 0 && (<ArticleCard
+                    {posts.length > 0 ? <ArticleCard
                       author={'Brian'}
                       timeAgo={timeAgo(posts[5].published_at)}
                       title={posts[5].title}
@@ -174,44 +181,63 @@ const Home: React.FC = () => {
                       showButton={true}
                       slug={posts[5].slug}
                       className="w-full h-fit p-0 lg:max-w-[320px] text-[#181818] bg-[#F9FAFB] rounded-2xl border border-[#E4E4E4]"
-                    />)}
+                    /> :
+                      <div className='h-75 w-full flex justify-start items-start flex-col'>
+                        <h4 className='w-fit text-center text-[#121212]'>
+                          No Post Available
+                        </h4>
+                      </div>
+                    }
 
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                      {posts.slice(1, 5).map((item) => (
-                        <ArticleCard
-                          key={item.id}
-                          author={'Brian'}
-                          timeAgo={formatPublishDate(item.published_at)}
-                          title={item.title}
-                          date={formatPublishDate(item.published_at)}
-                          readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
-                          category={item.category_id}
-                          slug={item.slug}
-                          excerpt={item.meta_description}
-                          // showButton={true}
-                          // likes={890}
-                          // comments={78}
-                          showMetrics={false}
-                          className="p-4"
-                        />
-                      ))}
+                      {posts.length > 0 ?
+                        posts.slice(1, 5).map((item) => (
+                          <ArticleCard
+                            key={item.id}
+                            author={'Brian'}
+                            timeAgo={formatPublishDate(item.published_at)}
+                            title={item.title}
+                            date={formatPublishDate(item.published_at)}
+                            readTime={item.reading_time !== undefined ? item.reading_time.toString() : undefined}
+                            category={item.category_id}
+                            slug={item.slug}
+                            excerpt={item.meta_description}
+                            // showButton={true}
+                            // likes={890}
+                            // comments={78}
+                            showMetrics={false}
+                            className="p-4"
+                          />
+                        )) :
+                        <div className='h-75 w-full flex justify-center items-center flex-col'>
+                          <h4 className='w-fit mx-auto'>
+                            No Post Available
+                          </h4>
+                        </div>}
                     </div>
                   </div>
 
                   <SectionHeader title="Latest Update" />
                   <div className="mb-4 flex flex-col flex-wrap md:flex-nowrap md:flex-row gap-4 w-full">
-                    <HeroArticle
-                      imageUrl={posts[6].featured_image || '/assets/placeholder-image.webp'}
-                      author={'Brian'}
-                      timeAgo={timeAgo(posts[6].published_at)}
-                      title={posts[6].title}
-                      likes={236}
-                      comments={6}
-                      writerName={'Brian'}
-                      writerTitle={'Brian'}
-                      writerImage='/assets/placeholder-image.webp'
-                      slug={posts[6].slug}
-                    />
+                    {posts.length > 0 ?
+                      <HeroArticle
+                        imageUrl={posts[6].featured_image || '/assets/placeholder-image.webp'}
+                        author={'Brian'}
+                        timeAgo={timeAgo(posts[6].published_at)}
+                        title={posts[6].title}
+                        likes={236}
+                        comments={6}
+                        writerName={'Brian'}
+                        writerTitle={'Brian'}
+                        writerImage='/assets/placeholder-image.webp'
+                        slug={posts[6].slug}
+                      /> :
+                      <div className='h-75 w-full flex justify-start items-start flex-col'>
+                        <h4 className='w-fit text-center text-[#121212]'>
+                          No Post Available
+                        </h4>
+                      </div>
+                    }
 
                     {/* <FeaturedArticle
                       imageUrl={posts[1].featured_image || '/assets/placeholder-image.webp'}
@@ -222,20 +248,27 @@ const Home: React.FC = () => {
                     /> */}
 
                     <div className='grid grid-cols-1 w-full gap-2'>
-                      {posts.slice(7, 10).map((item) => (
-                        <ArticleListItem
-                          key={item.id}
-                          author={'Brian'}
-                          timeAgo={formatPublishDate(item.published_at)}
-                          title={item.title}
-                          slug={item.slug}
-                        />
-                      ))}
+                      {posts.length > 0 ?
+                        posts.slice(7, 10).map((item) => (
+                          <ArticleListItem
+                            key={item.id}
+                            author={'Brian'}
+                            timeAgo={formatPublishDate(item.published_at)}
+                            title={item.title}
+                            slug={item.slug}
+                          />
+                        )) :
+                        <div className='h-75 w-full flex justify-center items-center flex-col'>
+                          <h4 className='w-fit mx-auto'>
+                            No Post Available
+                          </h4>
+                        </div>
+                      }
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {posts.slice(11).map((item) => (
+                    {posts.length > 0 && posts.slice(11).map((item) => (
                       <ArticleCard
                         key={item.id}
                         author={'Brian'}
@@ -302,7 +335,7 @@ const Home: React.FC = () => {
           </>
           : <LoadingLogoDefault />}
       </div>
-    </PublicLayout>
+    </PublicLayout >
   );
 };
 

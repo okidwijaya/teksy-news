@@ -12,6 +12,7 @@ export type Article = {
   title: string;
   slug: string;
   content: string;
+  status?: 'draft' | 'published' | 'scheduled';
   meta_description?: string;
   published_at: string;
   reading_time?: number;
