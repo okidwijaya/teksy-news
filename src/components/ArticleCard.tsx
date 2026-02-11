@@ -64,9 +64,9 @@ export const ArticleCard: React.FC<ArticleCardProps> = ({
         {date && readTime && category && (
           <div className="items-center text-xs text-[#181818] mb-2 space-x-2">
             <span>{date}</span>
-            <span>•</span>
+            <span className='hidden'>•</span>
             {/* <span>{readTime}</span> */}
-            <span>{category}</span>
+            <span className='hidden'>{category}</span>
           </div>
         )}
 
