@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 .font-jakarta {
   font-family: var(--font-jakarta);
 }

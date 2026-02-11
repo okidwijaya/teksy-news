@@ -6,11 +6,11 @@ import Image from "next/image";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 // import { MdPreview } from 'md-editor-rt';
-import ReactMarkdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
-import remarkBreaks from 'remark-breaks'
+// import ReactMarkdown from 'react-markdown'
+// import remarkGfm from 'remark-gfm'
+// import remarkBreaks from 'remark-breaks'
 import axios from "axios";
-
+import DOMPurify from "dompurify";
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
@@ -82,6 +82,30 @@ export default function Page() {
   const [isShareOpen, setIsShareOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
+  function generateId(text: string) {
+    return text
+      .replace(/\u00A0/g, " ")
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w-]/g, "");
+  }
+
+  let processedContent = (article?.content ?? "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\u00A0/g, " ");
+
+  const headings =
+    processedContent.match(/<h[2-3][^>]*>.*?<\/h[2-3]>/g) || [];
+
+  processedContent = processedContent.replace(
+    /<h([2-3])[^>]*>(.*?)<\/h[2-3]>/g,
+    (match, level, innerText) => {
+      const cleanText = innerText.replace(/<[^>]*>/g, "").trim();
+      const id = generateId(cleanText);
+      return `<h${level} id="${id}">${innerText}</h${level}>`;
+    }
+  );
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -461,34 +485,77 @@ export default function Page() {
           </figure>
         )}
 
-        {article.content.includes('<h2>') && (
-          <div className="bg-gray-50 p-6 rounded-xl mb-10 border">
-            <h2 className="text-lg font-semibold mb-4 text-gray-900">Table of Contents</h2>
-            <div className="prose prose-sm max-w-none">
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: article.content
-                    .match(/<h[2-3][^>]*>(.*?)<\/h[2-3]>/g)
-                    ?.map((heading) => {
-                      const level = parseInt(heading.match(/<h([2-3])/)?.[1] || '2');
-                      const text = heading.replace(/<[^>]*>/g, '');
-                      const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
-                      return `<div style="margin-left: ${(level - 2) * 20}px"><a href="#${id}" class="text-emerald-600 hover:text-emerald-800">${text}</a></div>`;
-                    }).join('') || ''
-                }}
+        {/* <div className="article-content_detail w-full max-w-3xl mx-auto">
+          {article.content.includes('<h2>') && (
+            <div className="bg-gray-50 p-6 rounded-xl mb-10 border">
+              <h2 className="text-lg font-semibold mb-4 text-gray-900">Table of Contents</h2>
+              <div className="prose prose-sm max-w-none">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: article.content
+                      .match(/<h[2-3][^>]*>(.*?)<\/h[2-3]>/g)
+                      ?.map((heading) => {
+                        const level = parseInt(heading.match(/<h([2-3])/)?.[1] || '2');
+                        const text = heading.replace(/<[^>]*>/g, '');
+                        const id = text.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '');
+                        return `<div style="margin-left: ${(level - 2) * 20}px"><a href="#${id}" class="text-emerald-600 hover:text-emerald-800">${text}</a></div>`;
+                      }).join('') || ''
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
+          <div id="article-content" className="max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
+            <div
+              dangerouslySetInnerHTML={{ __html: article.content }}
               />
+          </div>
+        </div> */}
+        {/* <article className="prose prose-lg max-w-3xl mx-auto">
+              {/* <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
+              <ReactMarkdown>
+                {normalizeContent(article.content)}
+              </ReactMarkdown> 
+            </article> */}
+        {/* {article.content} */}
+        {headings.length > 0 && (
+          <div className="bg-gray-50 p-6 rounded-xl mb-10 border">
+            <h2 className="text-lg font-semibold mb-4 text-gray-900">
+              Table of Contents
+            </h2>
+
+            <div className="space-y-2 text-sm">
+              {headings.map((heading, index) => {
+                const level = heading.includes("<h2") ? 2 : 3;
+                const text = heading.replace(/<[^>]*>/g, "").trim();
+                const id = generateId(text);
+
+                return (
+                  <div
+                    key={index}
+                    className={level === 3 ? "ml-5" : ""}
+                  >
+                    <a
+                      href={`#${id}`}
+                      className="text-emerald-600 hover:text-emerald-800 block"
+                    >
+                      {text}
+                    </a>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
 
-        <div id="article-content" className="max-w-none text-gray-700 leading-relaxed prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-p:mb-6 prose-img:rounded-lg prose-img:shadow-md prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-blockquote:border-l-emerald-500 prose-blockquote:bg-emerald-50 prose-blockquote:p-4 prose-blockquote:rounded-r-lg prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 prose-pre:text-gray-100">
-          <article className="prose prose-lg max-w-3xl mx-auto">
-            {/* <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}> */}
-            <ReactMarkdown>
-              {normalizeContent(article.content)}
-            </ReactMarkdown>
-          </article>
-        </div>
+        <div
+          id="article-content"
+          className="prose prose-lg max-w-none text-gray-700"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(processedContent),
+          }}
+        />
 
         <div className="hidden mt-16 p-6 bg-gray-50 rounded-xl border">
           <h3 className="text-xl font-semibold mb-4 text-gray-900">Continue Reading</h3>
