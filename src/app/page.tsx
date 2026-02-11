@@ -63,8 +63,6 @@ const Home: React.FC = () => {
     console.error('Error fetching posts');
   }
 
-  console.log('Rendering Home with posts:', posts);
-
   return (
     <PublicLayout>
       <div className="bg-[#181818] text-[#F9FAFB]">
