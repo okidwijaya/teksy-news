@@ -1,6 +1,17 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -27,6 +38,14 @@ html {
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+    /* Register your custom Syne & DM Sans font engines */
+  --font-display: "Syne", sans-serif;
+  --font-sans: "DM Sans", sans-serif;
+  
+  /* Register your specific color configurations */
+  --color-brand-orange: #e8461e;
+  --color-brand-orange-hover: #c93a18;
 }
 
 @media (prefers-color-scheme: dark) {

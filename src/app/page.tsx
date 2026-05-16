@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { ArticleListItem } from '@/components/ArticleListItem';
 import { ArticleCard } from '@/components/ArticleCard';
 import { SectionHeader } from '@/components/SectionHeader';
-import { HeroArticle } from '@/components/HeroArticle';
+// import { HeroArticle } from '@/components/HeroArticle';
 // import { FeaturedArticle } from '@/components/FeaturedArticle';
 import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
