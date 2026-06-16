@@ -7,6 +7,8 @@ import logo from "../../public/final-logo.svg";
 import { Category } from "@/lib/getCategories";
 import axios from "axios";
 
+import { Lang, translations } from '@/constanst/translationTest';
+
 export default function Navbar() {
     const [categories, setCategories] = useState<Category[]>([]);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,6 +16,9 @@ export default function Navbar() {
     const [navbarHidden, setNavbarHidden] = useState(false);
     const lastScrollY = useRef(0);
     const [openParents, setOpenParents] = useState<Record<string, boolean>>({});
+
+    const [lang, setLang] = useState<Lang>('en');
+    const t = translations[lang];
 
     const toggleParent = (parentId: number) => {
         setOpenParents((prev) => ({
@@ -61,7 +66,7 @@ export default function Navbar() {
             <div className="max-w-10xl mx-auto py-1 px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-10">
 
-                    <div className="shrink-0 flex gap-4 flex-row flex-wrap items-center">
+                    <div className="shrink-0 flex gap-4 flex-row flex-wrap items-center justify-between lg:w-full">
                         <Link
                             href="/"
                             className="text-lg w-fit font-bold text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"
@@ -75,7 +80,35 @@ export default function Navbar() {
                             />
                         </Link>
 
-                        <div className="hidden lg:flex items-center p-4 gap-0 uppercase">
+                        <div className="hidden lg:flex items-center p-4 gap-4 uppercase">
+                            <Link href="/v2/service" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.servicesPage || "Services"}</Link>
+                            <Link href="/v2/porto" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Portfolio</Link>
+                            <Link href="/v2/template" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Templates</Link>
+                            <Link href="/v2/pricing" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.pricing}</Link>
+                            <Link href="/v2/contact" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.contact}</Link>
+                        </div>
+
+                        <div className="hidden lg:flex items-center gap-3">
+                            <div className="flex items-center bg-[#f5f4f0] border border-black/18 rounded-full p-[3px] gap-[2px]">
+                                <button
+                                    onClick={() => setLang('en')}
+                                    className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all duration-200 tracking-wide ${lang === 'en' ? 'bg-white text-[#0d0d0d] shadow-sm' : 'bg-transparent text-[#8a8a8a]'}`}
+                                >
+                                    EN
+                                </button>
+                                <button
+                                    onClick={() => setLang('id')}
+                                    className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all duration-200 tracking-wide ${lang === 'id' ? 'bg-white text-[#0d0d0d] shadow-sm' : 'bg-transparent text-[#8a8a8a]'}`}
+                                >
+                                    ID
+                                </button>
+                            </div>
+                            <a href="#contact" className="bg-[#e8461e] text-white px-5 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 hover:bg-[#c93a18] hover:-translate-y-[1px]">
+                                {t.nav.cta}
+                            </a>
+                        </div>
+
+                        <div className="!hidden lg:flex items-center p-4 gap-0 uppercase">
                             <Link
                                 href={`/blogs`}
                                 className="text-left font-semibold block px-2 py-0 text-sm text-[#121212] hover:text-[#F96E2A] transition-colors duration-200"
@@ -133,7 +166,7 @@ export default function Navbar() {
 
                     <Link
                         href={`/services`}
-                        className="text-left font-bold px-6 py-2 text-sm hover:bg-[#121212] text-[#F96E2A] ml-auto mr-0 hidden lg:block uppercase rounded-3xl transition-colors duration-200"
+                        className="!hidden text-left font-bold px-6 py-2 text-sm hover:bg-[#121212] text-[#F96E2A] ml-auto mr-0 hidden lg:block uppercase rounded-3xl transition-colors duration-200"
                     >
                         Services
                     </Link>
@@ -254,6 +287,35 @@ export default function Navbar() {
                     ))}
 
                     <div className="grid grid-cols-4 gap-2 w-full">
+                        <Link href="/v2/landing" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.services}</Link>
+                        <Link href="/v2/service" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.servicesPage || "Services"}</Link>
+                        <Link href="/v2/porto" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Portfolio</Link>
+                        <Link href="/v2/template" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Templates</Link>
+                        <Link href="/v2/pricing" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.pricing}</Link>
+                        <Link href="/v2/contact" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.contact}</Link>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                        <div className="flex items-center bg-[#f5f4f0] border border-black/18 rounded-full p-[3px] gap-[2px]">
+                            <button
+                                onClick={() => setLang('en')}
+                                className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all duration-200 tracking-wide ${lang === 'en' ? 'bg-white text-[#0d0d0d] shadow-sm' : 'bg-transparent text-[#8a8a8a]'}`}
+                            >
+                                EN
+                            </button>
+                            <button
+                                onClick={() => setLang('id')}
+                                className={`px-3 py-1 rounded-full text-[11px] font-bold transition-all duration-200 tracking-wide ${lang === 'id' ? 'bg-white text-[#0d0d0d] shadow-sm' : 'bg-transparent text-[#8a8a8a]'}`}
+                            >
+                                ID
+                            </button>
+                        </div>
+                        <a href="#contact" className="bg-[#e8461e] text-white px-5 py-2 rounded-full text-[13px] font-semibold transition-all duration-200 hover:bg-[#c93a18] hover:-translate-y-[1px]">
+                            {t.nav.cta}
+                        </a>
+                    </div>
+
+                    <div className="hidden grid-cols-4 gap-2 w-full">
                         <Link
                             href="/blog"
                             className="hidden text-left font-semibold px-2 py-2 text-sm text-[#E5E7EB] hover:text-[#F96E2A] transition-colors duration-200"

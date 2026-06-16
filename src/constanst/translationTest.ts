@@ -4,6 +4,7 @@ export const translations = {
   en: {
     nav: {
       services: "Services",
+      servicesPage: "Services",
       pricing: "Pricing",
       hiring: "Hire Me",
       stack: "Stack",
@@ -12,19 +13,61 @@ export const translations = {
     },
     hero: {
       badge: "Available for projects & full-time roles",
-      h1a: "Shopify Expert &",
-      h1b: "Full-Stack Dev",
+      h1a: "Custom Business Systems",
+      h1b: "Built for Speed & Growth",
       h1c: "ready to grow your business.",
-      sub: "3+ years building Shopify stores, web apps, and dashboards for fashion, F&B, and Indonesian fintech. Clean code, on-time delivery, real results.",
+      sub: "I design and build e-commerce stores, ERP systems, POS platforms, and dashboards using Shopify, Next.js, React, Remix, Node.js and Java — tailored to how your business actually runs.",
       cta1: "See Pricing →",
-      cta2: "Free Consultation",
-      stat1: "Shopify stores delivered",
-      stat2: "Years of experience",
-      stat3: "Companies (Fintech & E-com)",
+      cta2: "View Services",
+      stat1: "Years of experience",
+      stat2: "Business features built",
+      stat3: "Remote collaboration",
+    },
+    trust: {
+      title: "Currently building production systems at OCBC / Bank Raya.",
+      desc: "Working end-to-end as a Frontend Developer on the VIO project since June 2025 — bringing enterprise-grade engineering standards to every client project.",
     },
     brands: {
       label: "Brands I've worked with",
       more: "+ many more",
+    },
+    build: {
+      b1: {
+        title: "E-Commerce",
+        desc: "Shopify stores, custom storefronts, headless commerce with Next.js & Remix.",
+      },
+      b2: {
+        title: "ERP & Inventory",
+        desc: "Stock management, purchase orders, sales orders, multi-warehouse tracking.",
+      },
+      b3: {
+        title: "POS Systems",
+        desc: "Point-of-sale platforms with real-time inventory sync and reporting.",
+      },
+      b4: {
+        title: "Dashboards & Internal Tools",
+        desc: "Admin panels, analytics dashboards, and internal workflow tools.",
+      },
+      viewAll: "View all services",
+    },
+    portfolio: {
+      label: "Featured Work",
+      title: "Systems I've Built",
+      p1: {
+        tag: "Warranty Management",
+        title: "Warranty Registration Platform",
+        desc: "End-to-end product registration, warranty claims, customer tracking, and admin dashboard.",
+      },
+      p2: {
+        tag: "ERP System",
+        title: "Inventory & Order Management",
+        desc: "Real-time stock tracking, purchase orders, sales orders across multiple warehouses.",
+      },
+      p3: {
+        tag: "CRM",
+        title: "Customer Relationship Platform",
+        desc: "Lead management, follow-up automation, customer history, and sales pipeline tracking.",
+      },
     },
     services: {
       label: "Services",
@@ -55,6 +98,54 @@ export const translations = {
       title: "Technical Consultation & Audit",
       desc: "Not sure where to start? I can audit your code, review system architecture, or help you pick the right stack for your business needs.",
     },
+    detail: {
+      d1: [
+        "Shopify theme customization",
+        "Headless storefronts (Next.js/Remix)",
+        "Custom checkout flows",
+        "Product & inventory sync",
+      ],
+      d2: [
+        "Private app & custom function development",
+        "Webhook integrations",
+        "Backend logic with Node.js & Remix",
+        "Third-party API connections",
+      ],
+      d3: [
+        "Landing pages & company profiles",
+        "Dashboards & internal tools",
+        "SEO-ready, mobile-first builds",
+        "Deploy to Vercel / VPS",
+      ],
+      d4: [
+        "REST API with Node.js & Express.js",
+        "JWT authentication & RBAC",
+        "Payment gateway integration",
+        "Database design & management",
+      ],
+      d5: [
+        "Page speed optimization",
+        "UI/UX revamp",
+        "Conversion rate optimization",
+        "No full rebuild required",
+      ],
+      d6: [
+        "Code & architecture audit",
+        "Stack recommendation",
+        "Technical roadmap planning",
+        "Scalability review",
+      ],
+    },
+    case: {
+      label: "Case Study",
+      title: "From Problem to Platform",
+      challenge: "Challenge",
+      challengeDesc: "Customers struggled to register warranties and track claim status, creating support overload.",
+      solution: "Solution",
+      solutionDesc: "Built a centralized warranty registration and claims platform with self-service tracking.",
+      result: "Result",
+      resultDesc: "Faster registration, easier claim tracking, and significantly reduced support workload.",
+    },
     why: {
       label: "Why me?",
       title: "Not just a coder — I understand your business.",
@@ -67,7 +158,7 @@ export const translations = {
     },
     w2: {
       title: "Security mindset from fintech",
-      desc: "Working at Bank Raya shaped secure coding habits — RBAC, PII handling, proper auth. Ideal for businesses that demand trust.",
+      desc: "Working at Bank Raya / OCBC shaped secure coding habits — RBAC, PII handling, proper auth. Ideal for businesses that demand trust.",
     },
     w3: {
       title: "Full-stack, one person handles a lot",
@@ -78,10 +169,20 @@ export const translations = {
       desc: "I translate your business needs into sensible technical solutions. Progress is always updated — no disappearing mid-project.",
     },
     exp1: {
-      role: "Frontend Engineer — Fintech Platform",
-      year: "2025 – Present",
+      role: "Frontend Developer — VIO Project (End-to-End)",
+      company: "OCBC (PT. Bank OCBC NISP)",
+      year: "May 2026 – Present",
     },
-    exp2: { role: "Frontend & Backend Engineer — Shopify" },
+    exp2: {
+      role: "Frontend Developer",
+      company: "Bank Raya (PT. Bank Raya Indonesia)",
+      year: "March 2025 – April 2026",
+    },
+    exp3: {
+      role: "Frontend & Backend Engineer — Shopify",
+      company: "Expatify (PT. Semesta Kaiser Pertama)",
+      year: "March 2022 – November 2024",
+    },
     pricing: {
       label: "Freelance Pricing",
       title: "Transparent. No hidden fees.",
@@ -93,6 +194,11 @@ export const translations = {
       btn3: "Discuss Scope →",
       popular: "⭐ Most Popular",
       note: "💡 Note: Prices above are initial estimates for standard scope. More complex, multi-feature, or specially integrated projects will be consulted first before fixing a price. No surprise costs mid-project — all scope and pricing are agreed upfront in a project brief.",
+      teaser1: "Perfect for small Shopify stores getting started.",
+      teaser2: "Most chosen — full custom storefront + integrations.",
+      teaser3: "Complex multi-feature web platforms.",
+      viewFull: "View Full Pricing",
+      promo: "🎉 First Client Offer — 20% off your first project + free 30-min consultation. Limited slots.",
     },
     p1: {
       name: "Shopify Starter",
@@ -131,6 +237,15 @@ export const translations = {
       f5: "Deploy & server configuration",
       f6: "Basic technical documentation",
       f7: "30-day support",
+    },
+    addons: {
+      label: "Add-Ons",
+      title: "Extra Services",
+      items: [
+        { title: "Monthly Maintenance", desc: "Bug fixes, updates, and minor changes.", price: "Rp 500rb / month" },
+        { title: "Hosting & Deployment Setup", desc: "Server setup, domain config, SSL, CI/CD.", price: "Rp 750rb" },
+        { title: "Training Session", desc: "1-on-1 walkthrough on managing your system.", price: "Rp 300rb / session" },
+      ],
     },
     process: {
       label: "How It Works",
@@ -175,6 +290,22 @@ export const translations = {
       title: "Modern tools for scalable products.",
       sub: "I pick reliable, fast, and modern technology frameworks to ensure stability and seamless multi-platform growth.",
     },
+    faq: {
+      label: "FAQ",
+      title: "Common Questions",
+      q1: { q: "How long does development take?", a: "Usually 2–8 weeks depending on project complexity." },
+      q2: { q: "Do you provide source code?", a: "Yes, full source code ownership is transferred to you." },
+      q3: { q: "Can you work with existing systems?", a: "Yes — I can integrate with your existing software, databases, and APIs." },
+      q4: { q: "Do you work with international clients?", a: "Yes, I work remotely with clients across Southeast Asia and beyond." },
+    },
+    pricingFaq: {
+      title: "Pricing Questions",
+      q1: { q: "What's included in the base price?", a: "Design, development, basic testing, and one round of revisions. Hosting and domain are separate." },
+      q2: { q: "Do you offer payment plans?", a: "Yes — typically 50% upfront, 50% on delivery. Larger projects can be split into milestones." },
+      q3: { q: "What if I need changes after delivery?", a: "Minor fixes within 14 days are free. After that, monthly maintenance or hourly rates apply." },
+      q4: { q: "Can I upgrade my package later?", a: "Yes, you only pay the difference between packages plus any additional scope." },
+      q5: { q: "Do prices include source code ownership?", a: "Yes, full source code is transferred to you upon final payment." },
+    },
     cta: {
       title: "Have a project in mind? Let's talk.",
       sub: "Drop me an email or find me on messaging apps. I usually reply within a couple of hours.",
@@ -183,6 +314,7 @@ export const translations = {
   id: {
     nav: {
       services: "Layanan",
+      servicesPage: "Layanan",
       pricing: "Harga",
       hiring: "Rekrut Saya",
       stack: "Teknologi",
@@ -191,19 +323,61 @@ export const translations = {
     },
     hero: {
       badge: "Tersedia untuk proyek & peran penuh waktu",
-      h1a: "Pakar Shopify &",
-      h1b: "Developer Full-Stack",
+      h1a: "Sistem Bisnis Custom",
+      h1b: "Dibangun untuk Kecepatan & Pertumbuhan",
       h1c: "siap menumbuhkan bisnis Anda.",
-      sub: "3+ tahun membangun toko Shopify, aplikasi web, dan dasbor untuk fashion, F&B, dan fintech Indonesia. Kode bersih, pengiriman tepat waktu, hasil nyata.",
+      sub: "Saya merancang dan membangun toko e-commerce, sistem ERP, platform POS, dan dashboard menggunakan Shopify, Next.js, React, Remix, Node.js dan Java — disesuaikan dengan cara bisnis Anda berjalan.",
       cta1: "Lihat Harga →",
-      cta2: "Konsultasi Gratis",
-      stat1: "Toko Shopify diselesaikan",
-      stat2: "Tahun pengalaman",
-      stat3: "Perusahaan (Fintech & E-com)",
+      cta2: "Lihat Layanan",
+      stat1: "Tahun pengalaman",
+      stat2: "Fitur bisnis dibangun",
+      stat3: "Kolaborasi remote",
+    },
+    trust: {
+      title: "Saat ini membangun sistem VIO di OCBC.",
+      desc: "Bekerja end-to-end sebagai Frontend Developer pada proyek VIO sejak Juni 2026 — membawa standar engineering tingkat enterprise ke setiap proyek klien.",
     },
     brands: {
       label: "Merek yang pernah bekerja sama dengan saya",
       more: "+ banyak lagi",
+    },
+    build: {
+      b1: {
+        title: "E-Commerce",
+        desc: "Toko Shopify, storefront custom, headless commerce dengan Next.js & Remix.",
+      },
+      b2: {
+        title: "ERP & Inventaris",
+        desc: "Manajemen stok, purchase order, sales order, pelacakan multi-gudang.",
+      },
+      b3: {
+        title: "Sistem POS",
+        desc: "Platform point-of-sale dengan sinkronisasi inventaris real-time dan laporan.",
+      },
+      b4: {
+        title: "Dashboard & Tools Internal",
+        desc: "Panel admin, dashboard analitik, dan tools workflow internal.",
+      },
+      viewAll: "Lihat semua layanan",
+    },
+    portfolio: {
+      label: "Proyek Unggulan",
+      title: "Sistem yang Telah Saya Bangun",
+      p1: {
+        tag: "Manajemen Garansi",
+        title: "Platform Registrasi Garansi",
+        desc: "Registrasi produk end-to-end, klaim garansi, pelacakan pelanggan, dan dashboard admin.",
+      },
+      p2: {
+        tag: "Sistem ERP",
+        title: "Manajemen Inventaris & Pesanan",
+        desc: "Pelacakan stok real-time, purchase order, sales order di berbagai gudang.",
+      },
+      p3: {
+        tag: "CRM",
+        title: "Platform Customer Relationship",
+        desc: "Manajemen lead, follow-up otomatis, riwayat pelanggan, dan pelacakan sales pipeline.",
+      },
     },
     services: {
       label: "Layanan",
@@ -234,6 +408,54 @@ export const translations = {
       title: "Konsultasi Teknis & Audit",
       desc: "Bingung harus mulai dari mana? Saya dapat mengaudit kode Anda, meninjau arsitektur sistem, atau membantu Anda memilih teknologi yang tepat untuk kebutuhan bisnis Anda.",
     },
+    detail: {
+      d1: [
+        "Kustomisasi tema Shopify",
+        "Headless storefront (Next.js/Remix)",
+        "Custom checkout flow",
+        "Sinkronisasi produk & inventaris",
+      ],
+      d2: [
+        "Pengembangan private app & custom function",
+        "Integrasi webhook",
+        "Logika backend dengan Node.js & Remix",
+        "Koneksi API pihak ketiga",
+      ],
+      d3: [
+        "Landing page & profil perusahaan",
+        "Dashboard & tools internal",
+        "Siap SEO, mobile-first",
+        "Deploy ke Vercel / VPS",
+      ],
+      d4: [
+        "REST API dengan Node.js & Express.js",
+        "Autentikasi JWT & RBAC",
+        "Integrasi payment gateway",
+        "Desain & manajemen basis data",
+      ],
+      d5: [
+        "Optimasi kecepatan halaman",
+        "Revamp UI/UX",
+        "Optimasi conversion rate",
+        "Tanpa perlu rebuild total",
+      ],
+      d6: [
+        "Audit kode & arsitektur",
+        "Rekomendasi stack",
+        "Perencanaan roadmap teknis",
+        "Tinjauan skalabilitas",
+      ],
+    },
+    case: {
+      label: "Studi Kasus",
+      title: "Dari Masalah ke Platform",
+      challenge: "Tantangan",
+      challengeDesc: "Pelanggan kesulitan mendaftarkan garansi dan melacak status klaim, menyebabkan beban support berlebih.",
+      solution: "Solusi",
+      solutionDesc: "Membangun platform registrasi garansi dan klaim terpusat dengan pelacakan self-service.",
+      result: "Hasil",
+      resultDesc: "Registrasi lebih cepat, pelacakan klaim lebih mudah, dan beban support berkurang signifikan.",
+    },
     why: {
       label: "Mengapa saya?",
       title: "Bukan sekadar coder — saya memahami bisnis Anda.",
@@ -246,7 +468,7 @@ export const translations = {
     },
     w2: {
       title: "Pola pikir keamanan dari fintech",
-      desc: "Bekerja di Bank Raya membentuk kebiasaan pengodean yang aman — RBAC, penanganan PII, autentikasi yang tepat. Ideal untuk bisnis yang mengutamakan kepercayaan.",
+      desc: "Bekerja di Bank Raya / OCBC membentuk kebiasaan pengodean yang aman — RBAC, penanganan PII, autentikasi yang tepat. Ideal untuk bisnis yang mengutamakan kepercayaan.",
     },
     w3: {
       title: "Full-stack, satu orang menangani banyak hal",
@@ -282,6 +504,11 @@ export const translations = {
       btn3: "Diskusikan Lingkup →",
       popular: "⭐ Paling Populer",
       note: "💡 Catatan: Harga di atas adalah perkiraan awal untuk ruang lingkup standar. Proyek yang lebih kompleks, multi-fitur, atau terintegrasi khusus akan dikonsultasikan terlebih dahulu sebelum menetapkan harga pasti. Tidak ada biaya kejutan di tengah proyek — semua lingkup dan harga disepakati di awal.",
+      teaser1: "Cocok untuk toko Shopify kecil yang baru mulai.",
+      teaser2: "Paling banyak dipilih — storefront custom penuh + integrasi.",
+      teaser3: "Platform web multi-fitur yang kompleks.",
+      viewFull: "Lihat Semua Harga",
+      promo: "🎉 Penawaran Klien Pertama — Diskon 20% untuk proyek pertama Anda + konsultasi gratis 30 menit. Slot terbatas.",
     },
     p1: {
       name: "Shopify Starter",
@@ -320,6 +547,15 @@ export const translations = {
       f5: "Penyebaran & konfigurasi server",
       f6: "Dokumentasi teknis dasar",
       f7: "Dukungan 30 hari",
+    },
+    addons: {
+      label: "Layanan Tambahan",
+      title: "Layanan Ekstra",
+      items: [
+        { title: "Maintenance Bulanan", desc: "Perbaikan bug, update, dan perubahan kecil.", price: "Rp 500rb / bulan" },
+        { title: "Setup Hosting & Deployment", desc: "Setup server, konfigurasi domain, SSL, CI/CD.", price: "Rp 750rb" },
+        { title: "Sesi Training", desc: "Panduan 1-on-1 cara mengelola sistem Anda.", price: "Rp 300rb / sesi" },
+      ],
     },
     process: {
       label: "Cara Kerja",
@@ -363,6 +599,22 @@ export const translations = {
       label: "Teknologi Saya",
       title: "Alat modern untuk produk yang dapat diskalakan.",
       sub: "Saya memilih kerangka kerja teknologi yang andal, cepat, dan modern untuk memastikan stabilitas serta pertumbuhan multi-platform yang lancar.",
+    },
+    faq: {
+      label: "FAQ",
+      title: "Pertanyaan Umum",
+      q1: { q: "Berapa lama waktu pengembangan?", a: "Biasanya 2–8 minggu tergantung kompleksitas proyek." },
+      q2: { q: "Apakah Anda menyediakan source code?", a: "Ya, kepemilikan source code penuh akan diserahkan kepada Anda." },
+      q3: { q: "Bisakah Anda mengintegrasikan sistem yang sudah ada?", a: "Ya — saya dapat mengintegrasikan dengan software, database, dan API yang sudah Anda miliki." },
+      q4: { q: "Apakah Anda bekerja dengan klien internasional?", a: "Ya, saya bekerja secara remote dengan klien di Asia Tenggara dan sekitarnya." },
+    },
+    pricingFaq: {
+      title: "Pertanyaan Seputar Harga",
+      q1: { q: "Apa yang termasuk dalam harga dasar?", a: "Desain, pengembangan, testing dasar, dan satu putaran revisi. Hosting dan domain terpisah." },
+      q2: { q: "Apakah ada opsi pembayaran bertahap?", a: "Ya — biasanya 50% di awal, 50% saat pengiriman. Proyek besar dapat dibagi menjadi beberapa milestone." },
+      q3: { q: "Bagaimana jika saya perlu perubahan setelah pengiriman?", a: "Perbaikan kecil dalam 14 hari gratis. Setelah itu, berlaku maintenance bulanan atau tarif per jam." },
+      q4: { q: "Bisakah saya upgrade paket nanti?", a: "Ya, Anda hanya membayar selisih antar paket plus tambahan lingkup kerja jika ada." },
+      q5: { q: "Apakah harga sudah termasuk kepemilikan source code?", a: "Ya, source code lengkap diserahkan kepada Anda setelah pembayaran final." },
     },
     cta: {
       title: "Punya proyek dalam pikiran? Mari bicara.",

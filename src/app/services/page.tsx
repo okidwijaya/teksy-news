@@ -60,11 +60,25 @@ export default function Page() {
                             {t.hero.badge}
                         </div>
 
-                        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight text-white max-w-[900px] mb-6 animate-[fadeIn_0.7s_forwards]">
+                        <h1 className="hidden font-display text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight text-white max-w-[900px] mb-6 animate-[fadeIn_0.7s_forwards]">
                             {t.hero.h1a}<br />
                             <em className="not-italic text-[#e8461e]">{t.hero.h1b}</em><br />
                             {t.hero.h1c}
                         </h1>
+                        <h1 className="font-display text-4xl sm:text-5xl md:text-7xl font-extrabold leading-[1.05] tracking-tight text-white max-w-[1000px] mb-6">
+                            Build Custom Business Systems
+                            <br />
+                            <span className="text-[#e8461e]">
+                                That Save Time & Increase Efficiency
+                            </span>
+                        </h1>
+
+                        <p className="text-lg text-white/60 max-w-[700px] mb-10">
+                            We help businesses build custom dashboards,
+                            inventory systems, CRM platforms,
+                            warranty management solutions,
+                            Shopify stores and internal tools.
+                        </p>
 
                         <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-[560px] mb-10 font-light leading-relaxed animate-[fadeIn_0.7s_0.1s_forwards] opacity-0">
                             {t.hero.sub}
@@ -134,6 +148,174 @@ export default function Page() {
                                     <span className="absolute top-8 right-6 text-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[#e8461e]">→</span>
                                 </div>
                             ))}
+                        </div>
+                    </section>
+
+                    <section id="portfolio" className="py-24 px-[5vw] bg-[#fafafa]">
+                        <div className="max-w-7xl mx-auto">
+
+                            <div className="mb-16">
+                                <p className="uppercase text-[#e8461e] font-bold">
+                                    Featured Projects
+                                </p>
+
+                                <h2 className="text-5xl font-bold mt-3">
+                                    Business Solutions We've Built
+                                </h2>
+                            </div>
+
+                            <div className="grid lg:grid-cols-3 gap-8">
+                                <div className="bg-white rounded-xl p-8 border">
+
+                                    <div className="text-sm text-[#e8461e] mb-3">
+                                        Warranty Management
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold mb-4">
+                                        Warranty Registration Platform
+                                    </h3>
+
+                                    <p className="text-gray-600 mb-5">
+                                        Product registration,
+                                        warranty claim,
+                                        customer tracking,
+                                        admin dashboard.
+                                    </p>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        <span>Next.js</span>
+                                        <span>PostgreSQL</span>
+                                        <span>Supabase</span>
+                                    </div>
+
+                                </div>
+
+                                <div className="bg-white rounded-xl p-8 border">
+
+                                    <div className="text-sm text-[#e8461e] mb-3">
+                                        ERP System
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold mb-4">
+                                        Inventory & Order Management
+                                    </h3>
+
+                                    <p className="text-gray-600 mb-5">
+                                        Product stock,
+                                        purchase orders,
+                                        sales orders,
+                                        inventory tracking.
+                                    </p>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        <span>Next.js</span>
+                                        <span>PostgreSQL</span>
+                                        <span>Docker</span>
+                                    </div>
+
+                                </div>
+
+                                <div className="bg-white rounded-xl p-8 border">
+
+                                    <div className="text-sm text-[#e8461e] mb-3">
+                                        CRM
+                                    </div>
+
+                                    <h3 className="text-2xl font-bold mb-4">
+                                        Customer Relationship Platform
+                                    </h3>
+
+                                    <p className="text-gray-600 mb-5">
+                                        Lead management,
+                                        follow ups,
+                                        customer history,
+                                        sales pipeline.
+                                    </p>
+
+                                    <div className="flex flex-wrap gap-2">
+                                        <span>React</span>
+                                        <span>Node.js</span>
+                                        <span>PostgreSQL</span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id='studyCase' className="bg-[#111110] text-white py-24 px-[5vw] hidden">
+                        <div className="max-w-7xl mx-auto">
+                            <h2 className="text-5xl font-bold mb-12">
+                                Example Case Study
+                            </h2>
+
+                            <div className="grid lg:grid-cols-3 gap-8">
+
+                                <div>
+                                    <h3 className="font-bold text-[#e8461e]">
+                                        Challenge
+                                    </h3>
+
+                                    <p className="mt-3 text-white/60">
+                                        Customers had difficulty
+                                        registering warranties
+                                        and tracking claims.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-bold text-[#e8461e]">
+                                        Solution
+                                    </h3>
+
+                                    <p className="mt-3 text-white/60">
+                                        Built a centralized warranty
+                                        registration and claim platform.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-bold text-[#e8461e]">
+                                        Result
+                                    </h3>
+
+                                    <p className="mt-3 text-white/60">
+                                        Faster registration process,
+                                        easier claim tracking,
+                                        reduced support workload.
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="trustBar" className="bg-[#f5f4f0] py-10 **:hidden">
+                        <div className="max-w-7xl mx-auto px-[5vw]">
+                            <div className="grid md:grid-cols-4 gap-6">
+
+                                <div className="bg-white rounded-xl p-6">
+                                    <h3 className="text-4xl font-bold">3.5+</h3>
+                                    <p>Years Experience</p>
+                                </div>
+
+                                <div className="bg-white rounded-xl p-6">
+                                    <h3 className="text-4xl font-bold">18+</h3>
+                                    <p>Business Features Built</p>
+                                </div>
+
+                                <div className="bg-white rounded-xl p-6">
+                                    <h3 className="text-4xl font-bold">3</h3>
+                                    <p>Companies Worked With</p>
+                                </div>
+
+                                <div className="bg-white rounded-xl p-6">
+                                    <h3 className="text-4xl font-bold">100%</h3>
+                                    <p>Remote Collaboration</p>
+                                </div>
+
+                            </div>
                         </div>
                     </section>
 
@@ -297,7 +479,7 @@ export default function Page() {
                         </div>
                     </section>
 
-                    <section id="hiring" className="bg-[#e8461e] text-white px-[5vw] py-24">
+                    <section id="hiring" className="bg-[#e8461e] text-white px-[5vw] py-24 hidden">
                         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                             <div>
                                 <div className="text-xs font-bold tracking-[2px] uppercase text-white/60 mb-4">{t.hiring.label}</div>
@@ -369,6 +551,53 @@ export default function Page() {
                                     ))}
                                 </div>
                             </div>
+                        </div>
+                    </section>
+
+                    <section id="faq" className="py-24 px-[5vw]">
+                        <div className="max-w-5xl mx-auto">
+
+                            <h2 className="text-5xl font-bold mb-12">
+                                Frequently Asked Questions
+                            </h2>
+
+                            <div className="space-y-6">
+
+                                <div>
+                                    <h3 className="font-bold">
+                                        How long does development take?
+                                    </h3>
+
+                                    <p>
+                                        Usually 2–8 weeks depending
+                                        on project complexity.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-bold">
+                                        Do you provide source code?
+                                    </h3>
+
+                                    <p>
+                                        Yes, source code ownership
+                                        can be transferred.
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <h3 className="font-bold">
+                                        Can you work with existing systems?
+                                    </h3>
+
+                                    <p>
+                                        Yes. We can integrate
+                                        with existing software and APIs.
+                                    </p>
+                                </div>
+
+                            </div>
+
                         </div>
                     </section>
 
