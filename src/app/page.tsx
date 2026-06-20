@@ -1,3 +1,4 @@
+// release/v2.0------git tag -a v1.0.0 -m "Release version 1.0.0"
 "use client"
 import AdCard from '@/components/AdsCard';
 import React, { useEffect, useState } from 'react';
