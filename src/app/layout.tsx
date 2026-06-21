@@ -80,16 +80,39 @@ export default function RootLayout({
   };
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <head />
+      <head>
+        {/* for new landing page v3 */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+          rel="stylesheet"
+          />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${jakarta.variable} ${spaceGrotesk.variable} ${inter.variable} antialiased`} cz-shortcut-listen="true">
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4774376429155227"
           crossOrigin="anonymous"></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+          />
         {children}
       </body>
     </html>
   );
 }
+
+{/* for new landing page v3 */}
+// export const metadata: Metadata = {
+//   title: "KitaDevelopers — Sistem Digital untuk Bisnis yang Tumbuh Serius",
+//   description:
+//     "Shopify commerce, ERP custom build untuk UMKM, dan web app — semua dari satu tangan. Bukan sekadar jasa website.",
+//   keywords: ["Shopify developer Indonesia", "ERP custom UMKM", "jasa web app", "KitaDevelopers"],
+//   openGraph: {
+//     title: "KitaDevelopers — Sistem Digital untuk Bisnis yang Tumbuh Serius",
+//     description:
+//       "Shopify commerce, ERP custom build untuk UMKM, dan web app dari satu tangan.",
+//     url: "https://www.kitadevelopers.com",
+//     siteName: "KitaDevelopers",
+//     locale: "id_ID",
+//     type: "website",
+//   },
+// };
