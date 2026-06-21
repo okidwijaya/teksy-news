@@ -31,9 +31,25 @@ html {
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --ink: #111111;
+  --ink-soft: #4A4A4A;
+  --ink-faint: #8A8A8A;
+  --paper: #FAFAF8;
+  --paper-2: #F2F1ED;
+  --line: rgba(17,17,17,0.10);
+  --line-strong: rgba(17,17,17,0.16);
+  --accent: #2B5C4D;
+  --accent-soft: #E8EFEC;
 }
 
 @theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-accent: var(--accent);
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Inter Tight', sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -70,15 +86,19 @@ html {
   }
 }
 
-body {
+/* body {
   background: #cbdceb;
   color: var(--foreground);
   font-family: var(--font-jakarta);
-}
+} */
 
 /* Custom global styles can be added below this line */
 body {
-  @apply bg-white text-gray-800;
+  /* @apply bg-white text-gray-800; */
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1,

@@ -1,4 +1,5 @@
 'use client';
+import PageGuard from '@/components/PageGuard';
 import React, { useEffect } from 'react';
 
 export default function Page() {
@@ -9,9 +10,9 @@ export default function Page() {
     fetchPosts()
   }, []) 
   return (
-    <>
+    <PageGuard>
       <p>article</p>
-    </>
+    </PageGuard>
   )
 }
 

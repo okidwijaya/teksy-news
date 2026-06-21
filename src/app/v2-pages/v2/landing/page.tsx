@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Lang, translations } from '@/constanst/translationTest';
 import PublicLayout from '@/components/PublicLayout';
-import ContactForm from '@/components/v2/ContactForm/ContactForm';
+// import ContactForm from '@/components/v2/ContactForm/ContactForm';
 
 export default function Page() {
     const [lang, setLang] = useState<Lang>('en');
@@ -346,7 +346,7 @@ export default function Page() {
 
                             {/* RIGHT — form */}
                             <div className="bg-white rounded-2xl p-8">
-                                <ContactForm />
+                                {/* <ContactForm /> */}
                             </div>
                         </div>
                     </div>

@@ -9,6 +9,7 @@ import { timeAgo } from '@/lib/timeAgo';
 import { Article } from '@/types';
 import LoadingLogoDefault from '@/components/Loading';
 import axios from 'axios';
+import PageGuard from '@/components/PageGuard';
 
 const formatPublishDate = (date: string) => {
   const dateIso = new Date(date);
@@ -55,7 +56,7 @@ export default function Page() {
   }, [])
 
   return (
-    <>
+    <PageGuard>
       <div className="text-[#181818] bg-[#F9FAFB]">
         {!loading ?
           <>
@@ -252,6 +253,6 @@ export default function Page() {
           </>
           : <LoadingLogoDefault />}
       </div >
-    </>
+    </PageGuard>
   );
 };
