@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { Lang, translations } from '@/constanst/translation';
-import ContactForm from '@/components/v2/ContactForm/ContactForm';
+// import ContactForm from '@/components/v2/ContactForm/ContactForm';
 import PublicLayout from '@/components/PublicLayout';
 
 // ─── replace with your actual WhatsApp number ─────────────────────────────
@@ -38,7 +38,7 @@ export default function ContactPage() {
                         {/* FORM */}
                         <div className="lg:col-span-2">
                             <h2 className="font-display text-2xl font-bold mb-8">Send me a message</h2>
-                            <ContactForm />
+                            {/* <ContactForm /> */}
                         </div>
 
                         {/* SIDEBAR */}
