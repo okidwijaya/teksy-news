@@ -7,14 +7,29 @@ type PricingTier = {
   process: string;
 };
 
+// "Payment integration",
 const tiers: PricingTier[] = [
   {
     name: "Shopify store",
     desc: "Untuk brand yang siap jualan online dengan fondasi yang solid.",
-    amount: "Rp 8.000.000",
-    amountSub: "per proyek",
-    includes: ["Custom tema Shopify", "Integrasi payment & ongkir lokal", "Setup hingga 100 SKU"],
-    process: "2–3 minggu dari scoping hingga go-live.",
+    amount: "Rp 12.000.000",
+    amountSub: "Start From, per proyek",
+    includes: ["Full Shopify store setup",
+      "Theme configuration and light styling based on chosen template",
+      "Setting up a domain",
+      "Setting up email",
+      "Shipping integration (basic configuration)",
+      "Upload up to 10 collections or categories",
+      "Upload up to 50 products",
+      "Upload up to 5 content pages (About, Contact, FAQ, etc.)",
+      "Newsletter signup and social media links",
+      "Discount & promotion setup",
+      "Basic redirect setup (404)",
+      "Bugs fixing during setup",
+      "2 time revision",
+      "2 weeks of free support after launch",
+      "Quick training session (live or recorded)"],
+    process: "3-4 minggu dari scoping hingga go-live.",
   },
   {
     name: "Shopify + ERP",
