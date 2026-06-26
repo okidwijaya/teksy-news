@@ -16,7 +16,16 @@ const capabilities = [
   },
 ];
 
+import React, { useEffect, useState } from 'react';
+
 export default function CapabilityStrip() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => setMounted(true), 140);
+    return () => clearTimeout(id);
+  }, []);
+
   return (
     <div
       id="capabilities"
@@ -26,12 +35,13 @@ export default function CapabilityStrip() {
         {capabilities.map((c, i) => (
           <div
             key={c.num}
+            className={`md:border-b-0 transform transition-all duration-700 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} `}
             style={{
               padding: "32px 56px",
               borderRight: i < capabilities.length - 1 ? "0.5px solid rgba(17,17,17,0.10)" : "none",
               borderBottom: i < capabilities.length - 1 ? "0.5px solid rgba(17,17,17,0.10)" : "none",
+              transitionDelay: `${i * 120}ms`
             }}
-            className="md:border-b-0"
           >
             <div style={{ fontFamily: "'Inter Tight', sans-serif", fontSize: 12, color: "#8A8A8A", marginBottom: 10 }}>
               {c.num}

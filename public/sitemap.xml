@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<sitemap><loc>https://www.cloudsand.my.id/sitemap-0.xml</loc></sitemap>
-<sitemap><loc>https://www.kitadevelopers.com/api/sitemap</loc></sitemap>
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+		<loc>https://www.kitadevelopers.com/</loc>
+		<changefreq>daily</changefreq>
+		<priority>1.0</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/shopify-developer</loc>
+		<changefreq>weekly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/web-developer</loc>
+		<changefreq>weekly</changefreq>
+		<priority>0.9</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/pos-free</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.7</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/erp-free</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.7</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/blog/best-free-pos-for-small-business</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/blog/migrate-to-shopify-guide</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/blog/shopify-developer-cost</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/blog/best-free-pos-for-restaurants</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/blog/open-source-erp-comparison</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+	<url>
+		<loc>https://www.kitadevelopers.com/blog/shopify-migration-checklist</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.6</priority>
+	</url>
+</urlset>

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "postbuild": "next-sitemap",
-    "generate-sitemap": "next-sitemap"
+    "generate-sitemap": "next-sitemap",
+    "validate:jsonld": "node ./tools/validate-jsonld.js"
   },
   "dependencies": {
     "@next/font": "^14.2.15",

@@ -1,4 +1,13 @@
+import React, { useEffect, useState } from 'react';
+
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(id);
+  }, []);
+
   return (
     <section className="max-w-6xl mx-auto px-6 md:px-14 pt-20 md:pt-28 pb-16 md:pb-20">
       <div
@@ -11,6 +20,7 @@ export default function Hero() {
           gap: 8,
           marginBottom: 28,
         }}
+        className={`transition-all duration-700 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
       >
         <span style={{ width: 5, height: 5, background: "#2B5C4D", display: "inline-block" }} />
         KITADEVELOPERS — TANGERANG SELATAN, INDONESIA
@@ -30,7 +40,6 @@ export default function Hero() {
       >
         Kami membangun sistem commerce dan operasional untuk bisnis yang sudah melampaui software siap pakai.
       </h1>
-
       <p
         style={{
           fontSize: 16,
@@ -39,12 +48,13 @@ export default function Hero() {
           maxWidth: 560,
           marginBottom: 40,
         }}
+        className={`transition-all duration-900 ease-out ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'}`}
       >
         Shopify storefront, sistem ERP custom, dan web application — dikerjakan oleh developer dengan pengalaman
         produksi di fintech dan e-commerce.
       </p>
 
-      <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }} className={`${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'} transition-all duration-900` }>
         <a
           href="#kontak"
           style={{

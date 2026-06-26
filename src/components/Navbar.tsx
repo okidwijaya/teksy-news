@@ -85,6 +85,10 @@ export default function Navbar() {
                             <Link href="/v2/porto" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Portfolio</Link>
                             <Link href="/v2/template" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Templates</Link>
                             <Link href="/v2/pricing" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.pricing}</Link>
+                                <Link href="/shopify-developer" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Shopify Developer</Link>
+                                <Link href="/web-developer" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">Web Developer</Link>
+                                <Link href="/pos-free" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">POS Free</Link>
+                                <Link href="/erp-free" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">ERP Free</Link>
                             <Link href="/v2/contact" className="text-sm font-medium text-[#4a4a4a] hover:text-[#0d0d0d] transition-colors duration-200">{t.nav.contact}</Link>
                         </div>
 

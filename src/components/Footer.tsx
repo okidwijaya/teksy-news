@@ -24,6 +24,10 @@ export default function Footer() {
                             <ul className="space-y-1">
                                 <li><Link href="/blogs" className="hover:text-[#1C1C1C] text-[12px]">News</Link></li>
                                 <li><Link href="/services" className="hover:text-[#1C1C1C] text-[12px]">Service</Link></li>
+                                <li><Link href="/shopify-developer" className="hover:text-[#1C1C1C] text-[12px]">Shopify Developer</Link></li>
+                                <li><Link href="/web-developer" className="hover:text-[#1C1C1C] text-[12px]">Web Developer</Link></li>
+                                <li><Link href="/pos-free" className="hover:text-[#1C1C1C] text-[12px]">POS Free</Link></li>
+                                <li><Link href="/erp-free" className="hover:text-[#1C1C1C] text-[12px]">ERP Free</Link></li>
                                 <li><Link href="/pricing" className="hover:text-[#1C1C1C] text-[12px]">Pricing</Link></li>
                                 <li><Link href="/portofolio" className="hover:text-[#1C1C1C] text-[12px]">Portofolio</Link></li>
                                 {/* <li><Link href="#" className="hover:text-[#1C1C1C] text-[12px]">Demo</Link></li> */}

@@ -39,15 +39,31 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-9">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               style={{ color: "#4A4A4A", fontSize: 13, fontWeight: 500 }}
               className="hover:text-[#111111] transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
+          <Link href="/shopify-developer"
+            style={{ color: "#4A4A4A", fontSize: 13, fontWeight: 500 }}
+            className="hover:text-[#111111] transition-colors"
+          >Shopify Developer</Link>
+          <Link href="/web-developer"
+            style={{ color: "#4A4A4A", fontSize: 13, fontWeight: 500 }}
+            className="hover:text-[#111111] transition-colors"
+          >Web Developer</Link>
+          <Link href="/pos-free"
+            style={{ color: "#4A4A4A", fontSize: 13, fontWeight: 500 }}
+            className="hover:text-[#111111] transition-colors"
+          >POS Free</Link>
+          <Link href="/erp-free"
+            style={{ color: "#4A4A4A", fontSize: 13, fontWeight: 500 }}
+            className="hover:text-[#111111] transition-colors"
+          >ERP Free</Link>
         </div>
 
         <div className="hidden md:flex items-center gap-5">

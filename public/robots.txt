@@ -9,8 +9,8 @@ Disallow: /api
 Disallow: /_next
 
 # Host
-Host: https://www.cloudsand.my.id
+Host: https://www.kitadevelopers.com
 
 # Sitemaps
-Sitemap: https://www.cloudsand.my.id/sitemap.xml
-Sitemap: https://www.kitadevelopers.com/api/sitemap
+Sitemap: https://www.kitadevelopers.com/sitemap.xml
+Sitemap: https://www.kitadevelopers.com/sitemap-0.xml
