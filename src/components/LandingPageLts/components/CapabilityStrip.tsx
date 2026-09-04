@@ -1,3 +1,6 @@
+'use client';
+import React, { useEffect, useState } from 'react';
+
 const capabilities = [
   {
     num: "01",
@@ -15,8 +18,6 @@ const capabilities = [
     desc: "Internal tools dan dashboard dengan standar keamanan fintech.",
   },
 ];
-
-import React, { useEffect, useState } from 'react';
 
 export default function CapabilityStrip() {
   const [mounted, setMounted] = useState(false);
